@@ -60,6 +60,7 @@ wsproto="1.2.0"
 robotframework-csvlibrary = "^0.0.5"
 robotframework-datadriver = "^1.11.2"
 robotframework-debuglibrary = "^2.5.0"
+robotframework-requests = "^0.9.7"
 
 
 [build-system]
