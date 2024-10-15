@@ -1,3 +1,8 @@
+# 使用教程
+安装
+
+
+
 # 初始化环境一定需要 poetry
 安装步骤参考：
 https://yanxi123.com/post/2023/12/python-poetry/#%E4%B8%80%E5%AE%89%E8%A3%85-poetry
@@ -23,17 +28,23 @@ https://blog.csdn.net/qq_37615098/article/details/103434726
 
 
 
-
-
 # 初始化
 PS: 拉取代码之后，需要初始化一次项目，加载虚拟环境的依赖包
 poetry install 
+PS：使用 python 3.10 ，不要使用 3.12 或者以上
+每次要执行项目代码，需要进入虚拟环境
+poetry shell
 
+## 打开可视化编辑
+poetry run ride.py
 
-# 运行测试用例
+## 运行测试用例
 poetry run robot  --listener allure_robotframework:log4 --variable DATA_FILE:testData/data002_VN.csv --i debug tests/app/exampleAppByDataAndVar.robot 
 
 poetry run robot  --listener allure_robotframework:log4 --variable DATA_FILE:data/data002_VN.csv  tests/module/Login/TestLogin.robot
+
+PS： poetry run robot 用例路径/用例文件.robot 
+
 
 
 
