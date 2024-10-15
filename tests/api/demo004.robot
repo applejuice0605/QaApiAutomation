@@ -2,6 +2,9 @@
 Library    Collections
 Library    RequestsLibrary
 
+# Suite Setup 为用例执行前的初始化 内容，一个robot 文件运行，最先执行的初始化部分，和java代码的上下文初始化一样
+
+# 创建一个 可以复用的 网络请求上下文"jsonplaceholder" 然后指定一个url, 语法参考 session 部分
 Suite Setup    Create Session  jsonplaceholder  https://jsonplaceholder.typicode.com
 
 *** Test Cases ***
