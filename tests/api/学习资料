@@ -1,0 +1,8 @@
+
+#  学习api测试的框架使用
+#  https://marketsquare.github.io/robotframework-requests/doc/RequestsLibrary.html
+#  学习可视化操作的 web 页面的使用
+#  https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html
+#  学习数据库如何使用，存储token或者 上下文使用
+#  https://docs.robotframework.org/docs/different_libraries/database
+
