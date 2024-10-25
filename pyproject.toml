@@ -62,6 +62,10 @@ robotframework-datadriver = "^1.11.2"
 robotframework-debuglibrary = "^2.5.0"
 robotframework-requests = "^0.9.7"
 
+[[tool.poetry.source]]
+name = "tsinghua"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
+priority = "primary"
 
 [build-system]
 requires = ["poetry-core"]
