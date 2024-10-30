@@ -17,7 +17,7 @@ Suite Teardown    Delete All Sessions
 
 *** Test Cases ***
 PartnerPay OVO
-    [Tags]    order
+    [Tags]    uat
     Given I have a whitelist account and have logined
     When I send the quotation request to savebinderrfq API
     Then The status code should be 200

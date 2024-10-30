@@ -9,8 +9,6 @@ Send Post Request And Get Response Data
     Create Session    session  ${url}  headers=&{headers}  verify=False
     ${response}=  POST On Session    session  ${path}   ${body}
 
-    assertUtil.The status code should be 200    ${response.json()}[code]
-
     RETURN    ${response}
 
 

@@ -15,7 +15,7 @@ Suite Teardown    Delete All Sessions
 
 
 *** Test Cases ***
-LoginSuccess
+Login Success by Phone Number
     [Tags]    login
     Given I have a valid login account and password
     When I send a POST request to the byLogin API
@@ -37,7 +37,6 @@ I send a POST request to the byLogin API
     Log    ${jsonResult}
 
 The response should contain the user's openId and tenantId
-
     Should Be Equal As Strings    ${jsonResult}[data][0][tenantId]    1000662
     Should Not Be Equal As Strings    ${jsonResult}[data][0][openId]    null
     Set Test Variable    ${openId}  ${jsonResult}[data][0][openId]
