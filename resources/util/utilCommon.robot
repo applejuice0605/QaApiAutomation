@@ -1,6 +1,6 @@
 *** Settings ***
 Library    DateTime
-
+Library    Collections
 
 
 *** Keywords ***
@@ -28,3 +28,20 @@ Get Expire Time
     ${expireTime_timestamp_ms}    Evaluate    int(round(${expireTime_timestamp} * 1000))
     Log    ${expireTime_timestamp_ms}
     RETURN  ${expireTime_timestamp_ms}
+
+Get CouponId by ProductCode
+    [Arguments]    ${couponDTO}     ${productCode}
+    ${couponId}    Set Variable    ${None}
+    FOR    ${item}    IN    @{couponDTO}
+        Log    ${item}
+        ${couponId}   Set Variable    ${item}[couponAvailableList][0][couponId]
+        ${item_productCode}     Get From Dictionary    ${item}    productCode
+        Run Keyword If    '${item_productCode}' =='${productCode}'
+        ...    Set Variable     ${couponId}   ${item}[couponAvailableList][0][couponId]
+        ...    Exit For Loop
+#        Exit For Loop If    '${item_productCode}' =='${productCode}'
+    END
+
+    ${couponDTO}     Create Dictionary    couponId=${couponId}   productCode=${productCode}
+    Log     ${couponDTO}
+    RETURN    ${couponDTO}
