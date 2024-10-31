@@ -1,34 +1,25 @@
 *** Settings ***
 Library    RequestsLibrary
-Library    Collections
-Library    String
-Library    XML
+Library     OperatingSystem
+Library     Collections
+Library     BuiltIn
+Library    OperatingSystem
+Library     BuiltIn
+Resource    ../../lib/Common.robot
 
-Resource    ../../api/Login/fuse_user_login.robot
-Resource    ../../api/Login/api_bylogin.robot
-Resource    ../../api/Login/api_login.robot
+*** Variables ***
+${generateQuotePDF_url}=  https://ptr-uat.fuse.co.id/api/local/quote/generateQuotePDF
+${session}=  generateQuotePDFSession
 
-Variables   ../../varfile_defvar.py
 
 *** Keywords ***
-Login to Application using mobile
-    ${resonse}  api_bylogin.Send Request And Get Response Data      ${loginAccount}     ${password}
-    ${openId}   Set Variable     ${resonse.json()}[data][0][openId]
-    ${tenantId}   Set Variable     ${resonse.json()}[data][0][tenantId]
-    ${response}  api_login.Send Request And Get Response Data    ${loginAccount}     ${password}    ${openId}    ${tenantId}
-    ${token}    Set Variable    ${response.json()}[data][token]
-    RETURN    ${token}
+Send GenerateQuotePDF Post Request
+    [Arguments]    ${token}  ${rfq}  ${quoteNo}
+    &{headers}=  Create Dictionary    Content-Type=application/json  fusetoken=${token}  language=en_US
+    ${body}=  Set Variable    {"insuredName":"TestApi","rfqNo":"${rfq}","quoteNo":"${quoteNo}"}
 
-Login to Application using KTP
-    ${resonse}  fuse_user_login.Send Request And Get Response Data    password=${password}  loginWay=4  ktpNo=${ktpNo}
-    ${loginAccount}     Get Dictionary Values    ${resonse.json()}[resultObj]    accountId
-    ${token}=    Login to Application using mobile
-    RETURN    ${token}
-
-Login to Application using email
-    ${resonse}  fuse_user_login.Send Request And Get Response Data    password=${password}  loginWay=3  email=${email}
-    ${loginAccount}    Get Dictionary Values    ${resonse.json()}[resultObj]    accountId
-    ${token}=   Login to Application using mobile
-    RETURN    ${token}
-
-
+    ${response}=  Common.Send Post Request And Get Response Data  ${session}  ${generateQuotePDF_url}  ${body}  &{headers}
+    ${get_json}=  Set Variable    ${response.json()}
+    ${get_data}=  Get From Dictionary    ${get_json}  data
+    ${pdf_url}=  Get From Dictionary    ${get_data}  pdfFileUrl
+    RETURN  ${pdf_url}
