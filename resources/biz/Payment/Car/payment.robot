@@ -138,3 +138,29 @@ Order_Payment
     ${response}=  POST On Session    ovoConfirmSession  ${ovo_confirm}  ${body}
     Should Be Equal As Strings    ${response.status_code}  200
     ${get_json}=  Get From Dictionary    ${response.json()}  data
+
+CustomerPayment
+    [Arguments]    ${orderId}  ${payBillNo}  ${securityCode}  ${token}  ${tenantId}  ${orderNo}
+    ${headers}=  Create Dictionary    Content-Type=application/json  tenantId="${tenantId}"  fusetoken=${token}  language=en_US
+    Create Session    sendPaySession  ${ovo_sendPayment}  headers=${headers}  verify=False
+    ${body}=  Set Variable    {"payerType":1,"paymentScheme":1,"methodCode":"9203","bonusDeduction":0,"pointsDeduction":0,"orderId":"${orderId}","securityCode":"${securityCode}","selectType":2}
+    ${response}=  POST On Session    sendPaySession  ${ovo_sendPayment}  ${body}
+    Should Be Equal As Strings    ${response.status_code}  200
+    ${get_json}=  Get From Dictionary    ${response.json()}  data
+    ${get_amount}=  Get From Dictionary   ${get_json}   lessAmount
+    Log  amount:${get_amount}
+    ${get_dic}=  Create Dictionary   orderNo=${orderNo}   amount=${get_amount}   paymentBillNo=${payBillNo}  securityCode=${securityCode}  orderID=${orderId}  tenantId=${tenantId}  token=${token}
+    RETURN  ${get_dic}
+
+PartnerPayment
+    [Arguments]    ${orderId}  ${payBillNo}  ${securityCode}  ${token}  ${tenantId}  ${orderNo}
+    ${headers}=  Create Dictionary    Content-Type=application/json  tenantId="${tenantId}"  fusetoken=${token}  language=en_US
+    Create Session    sendPaySession  ${ovo_sendPayment}  headers=${headers}  verify=False
+    ${body}=  Set Variable    {"payerType":2,"paymentScheme":1,"methodCode":"9203","bonusDeduction":0,"pointsDeduction":0,"orderId":"${orderId}","securityCode":"${securityCode}","selectType":2}
+    ${response}=  POST On Session    sendPaySession  ${ovo_sendPayment}  ${body}
+    Should Be Equal As Strings    ${response.status_code}  200
+    ${get_json}=  Get From Dictionary    ${response.json()}  data
+    ${get_amount}=  Get From Dictionary   ${get_json}   lessAmount
+    Log  amount:${get_amount}
+    ${get_dic}=  Create Dictionary   orderNo=${orderNo}   amount=${get_amount}   paymentBillNo=${payBillNo}  securityCode=${securityCode}  orderID=${orderId}  tenantId=${tenantId}  token=${token}
+    RETURN  ${get_dic}
