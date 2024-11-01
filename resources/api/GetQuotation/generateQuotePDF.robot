@@ -16,7 +16,7 @@ ${session}=  generateQuotePDFSession
 Send CarGenerateQuotePDF Post Request
     [Arguments]    ${token}  ${rfq}  ${quoteNo}
     &{headers}=  Create Dictionary    Content-Type=application/json  fusetoken=${token}  language=en_US
-    ${body}=  Set Variable    {"insuredName":"TestApi","rfqNo":"${rfq}","quoteNo":"${quoteNo}"}
+    ${body}=  Set Variable    {"insuredName":"GetCarApi","rfqNo":"${rfq}","quoteNo":"${quoteNo}"}
 
     ${response}=  Common.Send Post Request And Get Response Data  ${session}  ${generateQuotePDF_url}  ${body}  &{headers}
     ${get_json}=  Set Variable    ${response.json()}

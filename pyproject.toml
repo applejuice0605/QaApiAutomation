@@ -61,6 +61,7 @@ robotframework-csvlibrary = "^0.0.5"
 robotframework-datadriver = "^1.11.2"
 robotframework-debuglibrary = "^2.5.0"
 robotframework-requests = "^0.9.7"
+robot = "^20071211"
 
 [[tool.poetry.source]]
 name = "tsinghua"

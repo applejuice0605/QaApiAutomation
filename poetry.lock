@@ -1114,6 +1114,21 @@ url = "https://pypi.tuna.tsinghua.edu.cn/simple"
 reference = "tsinghua"
 
 [[package]]
+name = "robot"
+version = "20071211"
+description = "Django application for Request Tracking"
+optional = false
+python-versions = "*"
+files = [
+    {file = "robot-20071211.tar.gz", hash = "sha256:b8f040c5a319c4ac6a2ecc09f4c1b6578be9bf3db74a1441534b08336088d406"},
+]
+
+[package.source]
+type = "legacy"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+reference = "tsinghua"
+
+[[package]]
 name = "robotframework"
 version = "7.0"
 description = "Generic automation framework for acceptance testing and robotic process automation (RPA)"
@@ -1677,4 +1692,4 @@ reference = "tsinghua"
 [metadata]
 lock-version = "2.0"
 python-versions = "3.10.9"
-content-hash = "616985bd60b83c1a2d8290df14317f976df5ef7630fa3c189667c6b8e8de8bc9"
+content-hash = "62db602fa4776243f65d4736c8a9adc27ea1d7ffcffaa712111f5379210467d4"
