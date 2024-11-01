@@ -14,12 +14,12 @@ Resource    ../../util/httpCommon.robot
 
 *** Keywords ***
 Send Request And Get Response Data
-    [Arguments]    ${token}   ${orderId}    ${securityCode}     ${amount}   ${account}
+    [Arguments]    ${token}   ${securityCode}    ${amount}
     # 1. 准备请求数据：请求路径、请求头、请求数据
     ${base_url}=   Set Variable     https://cashier-uat.fuse.co.id
     ${path}=   Set Variable     /cashier/partner/payment/slip/channel/process
     ${headers}=    Create Dictionary    Content-Type=application/json    clientType=ANDROID    appCode=IDP_FUSE_PRO    fusetoken=${token}
-    ${payload}=    Set Variable     {"amount": ${amount},"methodCode": "9203","securityCode": "${securityCode}","extJson": {"mobileNumber": "+${account}"}}
+    ${payload}=    Set Variable     {"amount": ${amount},"methodCode": "9203","securityCode": "${securityCode}","extJson": {"mobileNumber": "+628123268987"}}
 
     # 2. 发送请求
     ${response}=    httpCommon.Send Post Request And Get Response Data    ${base_url}    ${path}    ${headers}    ${payload}

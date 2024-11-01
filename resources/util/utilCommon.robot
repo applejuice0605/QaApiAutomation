@@ -38,10 +38,22 @@ Get CouponId by ProductCode
         ${item_productCode}     Get From Dictionary    ${item}    productCode
         Run Keyword If    '${item_productCode}' =='${productCode}'
         ...    Set Variable     ${couponId}   ${item}[couponAvailableList][0][couponId]
-        ...    Exit For Loop
-#        Exit For Loop If    '${item_productCode}' =='${productCode}'
+
+        Exit For Loop If    '${item_productCode}' =='${productCode}'
     END
 
     ${couponDTO}     Create Dictionary    couponId=${couponId}   productCode=${productCode}
     Log     ${couponDTO}
     RETURN    ${couponDTO}
+
+Generate Random identityNo
+    [Documentation]    生成随机十位数字
+    ${counter}  Set Variable    0
+    ${identityNo}=    Set Variable
+    FOR    ${counter}    IN RANGE    0    10
+        Log    ${counter}
+        ${num}   Evaluate    random.randint(0,9)
+        ${identityNo}=    Catenate    SEPARATOR=    ${identityNo}    ${num}
+    END
+#    ${type}    Evaluate    type(${identityNo})
+    RETURN    ${identityNo}

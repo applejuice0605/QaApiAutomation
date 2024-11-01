@@ -11,17 +11,12 @@ Library    RequestsLibrary
 
 Resource    ../../util/httpCommon.robot
 
-***Variables***
-${default_ktp}  ''
-${default_email}  ''
-
-
 
 *** Keywords ***
 # 发送请求
 Send Request And Get Response Data
     #定义Arguments的变量不是必填
-    [Arguments]    ${password}   ${loginWay}    ${ktpNo}=${default_ktp}    ${email}=${default_email}
+    [Arguments]    ${password}   ${loginWay}    ${ktpNo}=''    ${email}=''
     # 1. 准备请求数据：请求路径、请求头、请求数据
     ${base_url}=   Set Variable     https://app-uat.fuseinsurtech.com
     ${path}=   Set Variable     insurance-finance-vs-api/api/fuse/user/login

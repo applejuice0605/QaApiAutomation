@@ -1,0 +1,635 @@
+{
+  "quotationBody": {
+    "bizSource": 1,
+    "categoryId": "39",
+    "coverageDataJson": {
+      "auditFlag": true,
+      "discountSwitch": true,
+      "express": 0,
+      "filterRawProductCode": "R_00061",
+      "mainInsuranceCompanyCode": "6603000955",
+      "mainInsuranceCompanyName": "PT Sompo Insurance Indonesia",
+      "mpCode": "M_00037",
+      "mpName": "INTERNATIONAL - CLASSIC",
+      "mpNameLocal": "INTERNATIONAL - CLASSIC",
+      "mpPlanCode": "MP_00083",
+      "mpPlanName": "International Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+      "mpPlanNameLocal": "International Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+      "productHeaderPicture": "fuse-id-core-prod-rw_images/20240126/bf5637f9409c411080f61bb1e4ddb491.png",
+      "productHeaderPictureLocal": "fuse-id-core-prod-rw_images/20240126/bd471b7722d8479e8e650e86309866ee.png",
+      "productListPicture": "fuse-id-core-prod-rw_images/20240126/4acfc6cb8f7e4f7c9f92f289d78b3294.png",
+      "productListPictureLocal": "fuse-id-core-prod-rw_images/20240126/0790ba3afdf642e2ba68220f62034766.png",
+      "productLs": [
+        {
+          "commissionInfo": {
+            "mulitCommissionType": 0,
+            "partnerCommissionAmount": 936128,
+            "partnerMatchCommissionRule": null,
+            "partnerSpecialBonusAmount": 267465,
+            "partnerSupportingFeeAmount": 0,
+            "partnerCommissionIncomeTaxAmount": 23404,
+            "partnerCommissionRate": 0,
+            "partnerCommissionVatTaxAmount": 0,
+            "partnerSpecialBonusIncomeTaxAmount": 6687,
+            "partnerSpecialBonusRate": 0,
+            "partnerSpecialBonusVatTaxAmount": 0,
+            "partnerSupportingFeeIncomeTaxAmount": 0,
+            "partnerSupportingFeeRate": 0,
+            "partnerSupportingFeeVatTaxAmount": 0,
+            "partnerUplineReferralRate": 0
+          },
+          "adminFee": 10000,
+          "coverageLs": [
+            {
+              "coverageCode": "CM_00046",
+              "coverageFlag": 1,
+              "coverageId": 600000799,
+              "coverageName": "Classic",
+              "coverageNameLocal": "Classic",
+              "coverageRequired": 1,
+              "coverageStandardCode": "PC_300024",
+              "coverageTypeId": 3,
+              "dutyDTOList": [
+                {
+                  "coverageId": 600000799,
+                  "dutyCode": "D_00277",
+                  "dutyId": 1241,
+                  "dutyName": "Classic",
+                  "dutyNameLocal": "Classic",
+                  "dutyStandardCode": "PB_300031",
+                  "insuredAmount": [
+                    {
+                      "desc": "Dynamically calculated based on travel days.",
+                      "descLocal": "Dihitung secara dinamis berdasarkan hari perjalanan."
+                    }
+                  ],
+                  "insuredType": 6,
+                  "insuredUnit": 2,
+                  "planDutyId": 33232,
+                  "insuredAmountDesc": "Dynamically calculated based on travel days.",
+                  "insuredAmountDescLocal": "Dihitung secara dinamis berdasarkan hari perjalanan."
+                }
+              ],
+              "maxCoverageDiscount": 0,
+              "minCoverageDiscount": 0,
+              "planDutyId": 33232,
+              "rawPlanId": 501,
+              "vatRate": 0,
+              "auditFlag": true,
+              "commissionInfo": {
+                "mulitCommissionType": 0,
+                "partnerCommissionAmount": 936127,
+                "partnerCommissionRate": 0.35,
+                "partnerMatchCommissionRule": [
+                  "Rule:3591"
+                ],
+                "partnerSpecialBonusAmount": 267465,
+                "partnerSpecialBonusRate": 0.1,
+                "partnerSupportingFeeAmount": 0,
+                "partnerSupportingFeeRate": 0,
+                "partnerUplineReferralRate": 0,
+                "pdBreakupFeeRate": 0,
+                "pmBreakupFeeRate": 0,
+                "uplineReferralsRate": {
+                  "1": 0,
+                  "2": 0,
+                  "3": 0,
+                  "4": 0,
+                  "5": 0,
+                  "6": 0
+                }
+              },
+              "declineReason": [],
+              "declineReasonLocal": [],
+              "dutyLs": [
+                {
+                  "deductibleAmountVal": 0,
+                  "insuredAmountVal": 0,
+                  "coverageId": 600000799,
+                  "dutyCode": "D_00277",
+                  "dutyId": 1241,
+                  "dutyName": "Classic",
+                  "dutyNameLocal": "Classic",
+                  "dutyStandardCode": "PB_300031",
+                  "insuredAmount": 0,
+                  "insuredType": 6,
+                  "insuredUnit": 2,
+                  "planDutyId": 33232,
+                  "insuredAmountDesc": "Dynamically calculated based on travel days.",
+                  "insuredAmountDescLocal": "Dihitung secara dinamis berdasarkan hari perjalanan.",
+                  "dutyInsuredGroup": 1,
+                  "matchPremiumRule": [],
+                  "netPremium": 0,
+                  "premium": 0,
+                  "stamp": 0,
+                  "vatAmount": 0
+                }
+              ],
+              "installmentNetPremium": 0,
+              "installmentPremium": 0,
+              "installmentVatAmount": 0,
+              "insuredAmount": 0,
+              "netPremium": 2674650,
+              "originalNetPremium": 0,
+              "premium": 2674650,
+              "riskRate": 0,
+              "vatAmount": 0,
+              "isSelect": true
+            }
+          ],
+          "declineReason": [],
+          "declineReasonLocal": [],
+          "inspectionFlag": false,
+          "inspectionReason": [],
+          "inspectionReasonLocal": [],
+          "leaderGroup": true,
+          "matchPremiumRule": [
+            "Rule:25030"
+          ],
+          "planCode": "RP_00095",
+          "planName": "Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+          "planNameLocal": "Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+          "policyFee": 10000,
+          "productCode": "R_00061",
+          "productName": "INTERNATIONAL - CLASSIC",
+          "productNameLocal": "INTERNATIONAL - CLASSIC",
+          "serviceFee": 0,
+          "subPlanCode": "null|RP_00095",
+          "totalInstallmentNetPremium": 0,
+          "totalInstallmentPremium": 0,
+          "totalInstallmentVatAmount": 0,
+          "totalNetPremium": 2674650,
+          "totalNoCalculateCommissionPremium": 0,
+          "totalOriginalNetPremium": 0,
+          "totalPolicyDiscountAmount": 0,
+          "totalPolicyDiscountRate": 0,
+          "totalPremium": 2674650,
+          "totalRiderNetPremium": 0,
+          "totalRiderPremium": 0,
+          "totalStamp": 0,
+          "totalVATAmount": 0,
+          "insuranceFullName": "PT Sompo Insurance Indonesia",
+          "insuranceId": "6603000955",
+          "insuranceLogoUrl": "https://oss-pre.fuse.co.id/images/20240123/ca04e5eaefe74bc6bdcc7fb3a464d4f9.png?Expires=1730419199&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=nvBpat74nNV4o3pnwQsZsazZehA%3D",
+          "policyDiscountEnd": "0",
+          "policyDiscountStart": "0",
+          "rawPlanDTOList": [
+            {
+              "mandatory": 1,
+              "rawPlanCode": "RP_00095",
+              "rawPlanId": 501,
+              "rawPlanName": "Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+              "rawPlanNameLocal": "Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen"
+            }
+          ],
+          "rawProductId": 600200338,
+          "mandatory": 1,
+          "rawPlanCode": "RP_00095",
+          "rawPlanId": 501,
+          "rawPlanName": "Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+          "rawPlanNameLocal": "Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+          "coInsFlag": 1,
+          "discountCommissionType": 1,
+          "inputType": 1,
+          "leaderBookAs": 1,
+          "maxDiscountAmount": 936128,
+          "maxDiscountFromPartnerSpecialBonusAmount": 247405,
+          "partnerCommissionDeductRebateIncomeTax": 23403.175,
+          "shareRate": 1,
+          "transactionNumber": "4F9DBCA8FCB94BA78DEABF7C2B32102A",
+          "maxDiscountRate": 35,
+          "rebateAmount": 0,
+          "rebateRate": 0,
+          "maxDiscountFromPartnerSpecialBonusRate": 9,
+          "discountFromPartnerSpecialBonusAmount": 0,
+          "discountFromPartnerSpecialBonusRate": 0
+        }
+      ],
+      "starLabel": 1,
+      "totalNetPremium": 2674650,
+      "totalPolicyDiscountAmount": 0,
+      "totalPremium": 2674650,
+      "totalVATAmount": 0,
+      "availableCouponNum": 1,
+      "mpId": 600300263,
+      "mpPlanId": 2716,
+      "rawDTOList": [
+        {
+          "insuranceFullName": "PT Sompo Insurance Indonesia",
+          "insuranceId": "6603000955",
+          "insuranceLogoUrl": "https://oss-pre.fuse.co.id/images/20240123/ca04e5eaefe74bc6bdcc7fb3a464d4f9.png?Expires=1730419199&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=nvBpat74nNV4o3pnwQsZsazZehA%3D",
+          "policyDiscountEnd": "0",
+          "policyDiscountStart": "0",
+          "productCode": "R_00061",
+          "productName": "INTERNATIONAL - CLASSIC",
+          "productNameLocal": "INTERNATIONAL - CLASSIC",
+          "rawPlanDTOList": [
+            {
+              "mandatory": 1,
+              "rawPlanCode": "RP_00095",
+              "rawPlanId": 501,
+              "rawPlanName": "Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+              "rawPlanNameLocal": "Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen"
+            }
+          ],
+          "rawProductId": 600200338
+        }
+      ],
+      "adminFee": 10000,
+      "discountCommissionType": 1,
+      "maxRebateAmount": 936127,
+      "maxRebateRate": 0,
+      "partnerCommissionRateDimensionType": 2,
+      "serviceFee": 0
+    },
+    "quotationDataJson": {
+      "riskGroupInfo": {
+        "travel": {
+          "toDate": 1762102799000,
+          "travelType": 1,
+          "travelTypeLabel": "International",
+          "travelTypeLabelLocal": "International",
+          "travelDestination": 35,
+          "destination": "5",
+          "schengen": 1,
+          "schengenLabel": "Yes",
+          "schengenLabelLocal": "Yes",
+          "travelDestinationLabel": "Worldwide",
+          "travelDestinationLabelLocal": "Worldwide",
+          "policyType": 1,
+          "adult": 1,
+          "adultLabel": "1",
+          "adultLabelLocal": "1",
+          "totalTravelers": 1,
+          "policyTypeLabel": "Individual",
+          "policyTypeLabelLocal": "Individual",
+          "annualTrip": 1,
+          "travelTime": 31535999000,
+          "annualTripLabel": "Annual",
+          "annualTripLabelLocal": "Annual",
+          "fromDate": 1730566800000
+        }
+      },
+      "insuranceInfo": {
+        "premiumPaymentPeriod": 1,
+        "coveragePeriodUnit": 1,
+        "effectiveDate": 1730566800000,
+        "expiredDate": 1762102799000,
+        "productCode": "M_00037",
+        "productName": "INTERNATIONAL - CLASSIC",
+        "productNameLocal": "INTERNATIONAL - CLASSIC",
+        "planCode": "MP_00083",
+        "mpPlanName": "International Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+        "mpPlanNameLocal": "International Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+        "productInfo": [
+          {
+            "productCode": "R_00061",
+            "productName": "INTERNATIONAL - CLASSIC",
+            "productNameLocal": "INTERNATIONAL - CLASSIC",
+            "planCode": "RP_00095",
+            "rawPlanName": "Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+            "rawPlanNameLocal": "Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+            "policyDiscount": 0,
+            "coverageInfo": [
+              {
+                "auditFlag": true,
+                "coverageCode": "CM_00046",
+                "coverageName": "Classic",
+                "coverageNameLocal": "Classic",
+                "insuredAmount": 0,
+                "insuredPersonCount": 1,
+                "dutyInfo": [
+                  {
+                    "dutyCode": "D_00277",
+                    "dutyName": "Classic",
+                    "dutyNameLocal": "Classic",
+                    "insuredAmount": 0,
+                    "deductibleAmount": 0
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "placeOrderBody": {
+    "rfqNo": "RFQ-1851931997329428482",
+    "quoteNo": "QS-1851931997329428481",
+    "agentUid": "628123268987",
+    "bizSource": 1,
+    "creatorUid": "628123268987",
+    "appPlatform": "2",
+    "appVersion": "1.2.7",
+    "deviceId": "78717ed5c357c98c",
+    "osModel": "AKA-AL10",
+    "osVersion": "10",
+    "dataFormJson": {
+      "riskGroupInfo": {
+        "travel": {
+          "toDate": 1762102799000,
+          "travelType": 1,
+          "travelTypeLabel": "International",
+          "travelTypeLabelLocal": "International",
+          "travelDestination": 35,
+          "destination": "5",
+          "schengen": 1,
+          "schengenLabel": "Yes",
+          "schengenLabelLocal": "Yes",
+          "travelDestinationLabel": "Worldwide",
+          "travelDestinationLabelLocal": "Worldwide",
+          "policyType": 1,
+          "adult": 1,
+          "adultLabel": "1",
+          "adultLabelLocal": "1",
+          "totalTravelers": 1,
+          "policyTypeLabel": "Individual",
+          "policyTypeLabelLocal": "Individual",
+          "annualTrip": 1,
+          "travelTime": 31535999000,
+          "annualTripLabel": "Annual",
+          "annualTripLabelLocal": "Annual",
+          "fromDate": 1730566800000
+        }
+      },
+      "insuranceInfo": {
+        "premiumPaymentPeriod": 1,
+        "coveragePeriodUnit": 1,
+        "effectiveDate": 1730566800000,
+        "expiredDate": 1762102799000,
+        "productCode": "M_00037",
+        "productName": "INTERNATIONAL - CLASSIC",
+        "productNameLocal": "INTERNATIONAL - CLASSIC",
+        "planCode": "MP_00083",
+        "mpPlanName": "International Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+        "mpPlanNameLocal": "International Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+        "productInfo": [
+          {
+            "productCode": "R_00061",
+            "productName": "INTERNATIONAL - CLASSIC",
+            "productNameLocal": "INTERNATIONAL - CLASSIC",
+            "planCode": "RP_00095",
+            "rawPlanName": "Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+            "rawPlanNameLocal": "Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+            "policyDiscount": 0,
+            "coverageInfo": [
+              {
+                "auditFlag": true,
+                "coverageCode": "CM_00046",
+                "coverageName": "Classic",
+                "coverageNameLocal": "Classic",
+                "insuredAmount": 0,
+                "insuredPersonCount": 1,
+                "dutyInfo": [
+                  {
+                    "dutyCode": "D_00277",
+                    "dutyName": "Classic",
+                    "dutyNameLocal": "Classic",
+                    "insuredAmount": 0,
+                    "deductibleAmount": 0
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "insuredInfo": [
+        {
+          "passengerType": 1,
+          "passengerTypeLabel": "Adult",
+          "passengerTypeLabelLocal": "Adult",
+          "gender": 1,
+          "genderLabel": "Male",
+          "genderLabelLocal": "Male",
+          "age": 18,
+          "identityType": "3",
+          "identityTypeLabel": "Passport",
+          "identityTypeLabelLocal": "Passport",
+          "attachments": [
+            {
+              "confirmPhotoUsage": [
+                1
+              ],
+              "confirmPhotoUsageLabel": "Personal information and vehicle photos will only be used for claim documentation and other purposes as outlined in our terms and conditions Please contact FUSE to update your information after submission.",
+              "confirmPhotoUsageLabelLocal": "Informasi pribadi dan foto kendaraan hanya akan digunakan untuk dokumentasi klaim dan tujuan lain sebagaimana diuraikan dalam syarat dan ketentuan kami. Silakan hubungi FUSE untuk memperbarui informasi Anda setelah penyerahan.",
+              "passportPhoto": [
+                "fuse-id-core-prod-rw_images/20241031/97cb59f982e24b9f8684caaf95c6ee8a.jpg"
+              ],
+              "attachmentMeta": [
+                {
+                  "attachmentPath": "fuse-id-core-prod-rw_images/20241031/97cb59f982e24b9f8684caaf95c6ee8a.jpg",
+                  "attachmentFileType": "image",
+                  "metadata": {}
+                }
+              ]
+            }
+          ],
+          "firstName": "autoapi",
+          "lastName": "coupon",
+          "birthday": 1130778000000,
+          "relationship": 0,
+          "relationshipLabel": "Self",
+          "relationshipLabelLocal": "Self",
+          "mobilePhone": "8123268987",
+          "email": "Test@qq.com",
+          "homeAddress": {
+            "province": "1423416",
+            "provinceName": "Bali",
+            "provinceNameLocal": "Bali",
+            "city": "1423451",
+            "cityName": "Kab. Badung",
+            "cityNameLocal": "Kab. Badung",
+            "district": "1423962",
+            "districtName": "Abiansemal",
+            "districtNameLocal": "Abiansemal",
+            "urban": "1431033",
+            "urbanName": "Abiansemal",
+            "urbanNameLocal": "Abiansemal"
+          },
+          "homeDetailAddress": "Test",
+          "identityNo": "1234567892"
+        }
+      ],
+      "beneficiaryInfo": [
+        {
+          "firstName": "test",
+          "lastName": "Test",
+          "relationShip": 1,
+          "relationShipLabel": "Husband",
+          "relationShipLabelLocal": "Husband"
+        }
+      ]
+    },
+    "mpCode": "M_00037",
+    "mpPlanCode": "MP_00083",
+    "isAdvancePremium": 1,
+    "partnerToCustomerDiscountAmountProducts": [
+      {
+        "productName": "INTERNATIONAL - CLASSIC",
+        "productNameLocal": "INTERNATIONAL - CLASSIC",
+        "productCode": "R_00061",
+        "planCode": "RP_00095",
+        "discountAmount": 0,
+        "discountFromPartnerSpecialBonusAmount": 0
+      }
+    ],
+    "couponUseInfo":[]
+  },
+  "couponBody": {
+    "couponOrderQOList": [
+      {
+        "adminFee": 10000,
+        "auditFlag": true,
+        "discountFromPartnerSpecialBonusAmount": 0,
+        "filterRawProductCode": "R_00061",
+        "mainInsuranceCompanyCode": "6603000955",
+        "mainInsuranceCompanyName": "PT Sompo Insurance Indonesia",
+        "maxRebateAmount": 936127,
+        "maxRebateRate": 0,
+        "mpCode": "M_00037",
+        "mpName": "INTERNATIONAL - CLASSIC",
+        "mpNameLocal": "INTERNATIONAL - CLASSIC",
+        "mpPlanCode": "MP_00083",
+        "mpPlanName": "International Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+        "mpPlanNameLocal": "International Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+        "partnerCommissionRateDimensionType": 2,
+        "productHeaderPicture": "fuse-id-core-prod-rw_images/20240126/bf5637f9409c411080f61bb1e4ddb491.png",
+        "productHeaderPictureLocal": "fuse-id-core-prod-rw_images/20240126/bd471b7722d8479e8e650e86309866ee.png",
+        "productListPicture": "fuse-id-core-prod-rw_images/20240126/4acfc6cb8f7e4f7c9f92f289d78b3294.png",
+        "productListPictureLocal": "fuse-id-core-prod-rw_images/20240126/0790ba3afdf642e2ba68220f62034766.png",
+        "productLs": [
+          {
+            "adminFee": 10000,
+            "coInsFlag": 1,
+            "commissionInfo": {
+              "mulitCommissionType": 0,
+              "partnerCommissionAmount": 936128,
+              "partnerCommissionIncomeTaxAmount": 23404,
+              "partnerCommissionRate": 0,
+              "partnerCommissionVatTaxAmount": 0,
+              "partnerSpecialBonusAmount": 267465,
+              "partnerSpecialBonusIncomeTaxAmount": 6687,
+              "partnerSpecialBonusRate": 0,
+              "partnerSpecialBonusVatTaxAmount": 0,
+              "partnerSupportingFeeAmount": 0,
+              "partnerSupportingFeeIncomeTaxAmount": 0,
+              "partnerSupportingFeeRate": 0,
+              "partnerSupportingFeeVatTaxAmount": 0,
+              "partnerUplineReferralRate": 0
+            },
+            "coverageLs": [
+              {
+                "auditFlag": true,
+                "commissionInfo": {
+                  "mulitCommissionType": 0,
+                  "partnerCommissionAmount": 936127,
+                  "partnerCommissionRate": 0.35,
+                  "partnerMatchCommissionRule": [
+                    "Rule:3591"
+                  ],
+                  "partnerSpecialBonusAmount": 267465,
+                  "partnerSpecialBonusRate": 0.1,
+                  "partnerSupportingFeeAmount": 0,
+                  "partnerSupportingFeeRate": 0,
+                  "partnerUplineReferralRate": 0,
+                  "pdBreakupFeeRate": 0,
+                  "pmBreakupFeeRate": 0,
+                  "uplineReferralsRate": {
+                    "1": 0,
+                    "2": 0,
+                    "3": 0,
+                    "4": 0,
+                    "5": 0,
+                    "6": 0
+                  }
+                },
+                "coverageCode": "CM_00046",
+                "coverageName": "Classic",
+                "coverageNameLocal": "Classic",
+                "coverageRequired": 1,
+                "declineReason": [],
+                "declineReasonLocal": [],
+                "dutyLs": [
+                  {
+                    "dutyCode": "D_00277",
+                    "dutyInsuredGroup": 1,
+                    "dutyName": "Classic",
+                    "dutyNameLocal": "Classic",
+                    "dutyStandardCode": "PB_300031",
+                    "insuredAmount": 0,
+                    "insuredAmountDesc": "Dynamically calculated based on travel days.",
+                    "insuredAmountDescLocal": "Dihitung secara dinamis berdasarkan hari perjalanan.",
+                    "insuredType": 6,
+                    "insuredUnit": 2,
+                    "matchPremiumRule": [],
+                    "netPremium": 0,
+                    "premium": 0,
+                    "stamp": 0,
+                    "vatAmount": 0
+                  }
+                ],
+                "installmentNetPremium": 0,
+                "installmentPremium": 0,
+                "installmentVatAmount": 0,
+                "insuredAmount": 0,
+                "netPremium": 2674650,
+                "originalNetPremium": 0,
+                "premium": 2674650,
+                "riskRate": 0,
+                "vatAmount": 0,
+                "vatRate": 0
+              }
+            ],
+            "declineReason": [],
+            "declineReasonLocal": [],
+            "discountFromPartnerSpecialBonusAmount": 0,
+            "inputType": 1,
+            "inspectionFlag": false,
+            "inspectionReason": [],
+            "inspectionReasonLocal": [],
+            "leaderBookAs": 1,
+            "leaderGroup": true,
+            "matchPremiumRule": [
+              "Rule:25030"
+            ],
+            "maxDiscountFromPartnerSpecialBonusAmount": 247405,
+            "planCode": "RP_00095",
+            "planName": "Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+            "planNameLocal": "Classic C - Annual (Include Covid-19 Protection) Worldwide Schengen",
+            "policyFee": 10000,
+            "productCode": "R_00061",
+            "productName": "INTERNATIONAL - CLASSIC",
+            "productNameLocal": "INTERNATIONAL - CLASSIC",
+            "rebateAmount": 0,
+            "rebateRate": 0,
+            "serviceFee": 0,
+            "shareRate": 1,
+            "subPlanCode": "null|RP_00095",
+            "totalInstallmentNetPremium": 0,
+            "totalInstallmentPremium": 0,
+            "totalInstallmentVatAmount": 0,
+            "totalNetPremium": 2674650,
+            "totalNoCalculateCommissionPremium": 0,
+            "totalOriginalNetPremium": 0,
+            "totalPolicyDiscountAmount": 0,
+            "totalPolicyDiscountRate": 0,
+            "totalPremium": 2674650,
+            "totalRiderNetPremium": 0,
+            "totalRiderPremium": 0,
+            "totalStamp": 0,
+            "totalVATAmount": 0
+          }
+        ],
+        "rebateAmount": 0,
+        "serviceFee": 0,
+        "totalNetPremium": 2674650,
+        "totalPolicyDiscountAmount": 0,
+        "totalPremium": 2674650,
+        "totalVATAmount": 0
+      }
+    ]
+  }
+
+}
