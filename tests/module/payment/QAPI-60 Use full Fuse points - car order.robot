@@ -10,7 +10,7 @@ ${loginAccount}=  628123268989
 ${password}=  268989
 
 *** Test Cases ***
-Use full Bonus - car order Success
+Use full Fuse points - car order Success
     Given By Phone Number Login FusePro Success  ${loginAccount}   ${password}
     Then Send SaveBinderOrder Post Request
     Then Send CreateBinderOrder Post Request

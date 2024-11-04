@@ -10,7 +10,7 @@ ${loginAccount}=  628123268989
 ${password}=  268989
 
 *** Test Cases ***
-Use full Bonus - car order Success
+Full Bonus & Fuse Point - car order Success
     Given By Phone Number Login FusePro Success  ${loginAccount}   ${password}
     Then Send SaveBinderOrder Post Request
     Then Send CreateBinderOrder Post Request
@@ -53,9 +53,10 @@ Send PaymentBillingCreate Post Request
     Set Test Variable    ${paymentBillNo}   ${paymentBillNo}
 
 Send OVO_Send Post Request
-    ${data}=  Partner SuperNetPayment - User All Bonus  ${orderId}  ${paymentBillNo}  ${securityCode}  ${token}  ${tenantId}  ${orderNo}
+    ${data}=  Partner SuperNetPayment - Bonus & Fuse Point  ${orderId}  ${paymentBillNo}  ${securityCode}  ${token}  ${tenantId}  ${orderNo}
     ${amount}=  Get From Dictionary   ${data}  amount
     Set Global Variable    ${amount}  ${amount}
+
 
 
 

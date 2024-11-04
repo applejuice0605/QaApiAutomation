@@ -171,6 +171,44 @@ OVO_Confirm
     Should Be Equal As Strings    ${response.status_code}  200
     ${get_json}=  Get From Dictionary    ${response.json()}  data
 
+Partner SuperNetPayment - User All Bonus
+    [Arguments]    ${orderId}  ${payBillNo}  ${securityCode}  ${token}  ${tenantId}  ${orderNo}
+    ${headers}=  Create Dictionary    Content-Type=application/json  tenantId="${tenantId}"  fusetoken=${token}  language=en_US
+    Create Session    sendPaySession  ${ovo_sendPayment}  headers=${headers}  verify=False
+    ${body}=  Set Variable    {"payerType":2,"paymentScheme":"3","methodCode":"","bonusDeduction":7243820,"pointsDeduction":0,"orderId":"${orderId}","securityCode":"${securityCode}","selectType":2}
+    ${response}=  POST On Session    sendPaySession  ${ovo_sendPayment}  ${body}
+    Should Be Equal As Strings    ${response.status_code}  200
+    ${get_json}=  Get From Dictionary    ${response.json()}  data
+    ${get_amount}=  Get From Dictionary   ${get_json}   lessAmount
+    Log  amount:${get_amount}
+    ${get_dic}=  Create Dictionary   orderNo=${orderNo}   amount=${get_amount}   paymentBillNo=${payBillNo}  securityCode=${securityCode}  orderID=${orderId}  tenantId=${tenantId}  token=${token}
+    RETURN  ${get_dic}
+
+Partner SuperNetPayment - User All Fuse Points
+    [Arguments]    ${orderId}  ${payBillNo}  ${securityCode}  ${token}  ${tenantId}  ${orderNo}
+    ${headers}=  Create Dictionary    Content-Type=application/json  tenantId="${tenantId}"  fusetoken=${token}  language=en_US
+    Create Session    sendPaySession  ${ovo_sendPayment}  headers=${headers}  verify=False
+    ${body}=  Set Variable    {"payerType":2,"paymentScheme":"3","methodCode":"","bonusDeduction":0,"pointsDeduction":7243820,"orderId":"${orderId}","securityCode":"${securityCode}","selectType":2}
+    ${response}=  POST On Session    sendPaySession  ${ovo_sendPayment}  ${body}
+    Should Be Equal As Strings    ${response.status_code}  200
+    ${get_json}=  Get From Dictionary    ${response.json()}  data
+    ${get_amount}=  Get From Dictionary   ${get_json}   lessAmount
+    Log  amount:${get_amount}
+    ${get_dic}=  Create Dictionary   orderNo=${orderNo}   amount=${get_amount}   paymentBillNo=${payBillNo}  securityCode=${securityCode}  orderID=${orderId}  tenantId=${tenantId}  token=${token}
+    RETURN  ${get_dic}
+
+Partner SuperNetPayment - Bonus & Fuse Point
+    [Arguments]    ${orderId}  ${payBillNo}  ${securityCode}  ${token}  ${tenantId}  ${orderNo}
+    ${headers}=  Create Dictionary    Content-Type=application/json  tenantId="${tenantId}"  fusetoken=${token}  language=en_US
+    Create Session    sendPaySession  ${ovo_sendPayment}  headers=${headers}  verify=False
+    ${body}=  Set Variable    {"payerType":2,"paymentScheme":"3","methodCode":"","bonusDeduction":7233820,"pointsDeduction":10000,"orderId":"${orderId}","securityCode":"${securityCode}","selectType":2}
+    ${response}=  POST On Session    sendPaySession  ${ovo_sendPayment}  ${body}
+    Should Be Equal As Strings    ${response.status_code}  200
+    ${get_json}=  Get From Dictionary    ${response.json()}  data
+    ${get_amount}=  Get From Dictionary   ${get_json}   lessAmount
+    Log  amount:${get_amount}
+    ${get_dic}=  Create Dictionary   orderNo=${orderNo}   amount=${get_amount}   paymentBillNo=${payBillNo}  securityCode=${securityCode}  orderID=${orderId}  tenantId=${tenantId}  token=${token}
+    RETURN  ${get_dic}
 
 Order_Payment
     OVO_Confirm
