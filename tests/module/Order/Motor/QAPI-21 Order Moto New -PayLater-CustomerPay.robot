@@ -37,7 +37,7 @@ Send SaveBinderOrder Post Request
 Send CreateBinderOrder Post Request
     ${discountCommission}=  Set Variable     0
     ${discountSpecialBonusAmount}=  Set Variable     0
-    ${data}=  Send MotorCreateBinderOrder Post Request- PayLater  ${tenantId}  ${token}  ${quoteNo}  ${rfqNo}  ${discountCommission}  ${discountSpecialBonusAmount}
+    ${data}=  Send MotorCreateBinderOrder Post Request PayLater  ${tenantId}  ${token}  ${quoteNo}  ${rfqNo}  ${discountCommission}  ${discountSpecialBonusAmount}
     ${orderNo}=  Get From Dictionary    ${data}  orderNo
     ${orderId}=  Get From Dictionary    ${data}  orderId
     Set Test Variable    ${orderNo}  ${orderNo}

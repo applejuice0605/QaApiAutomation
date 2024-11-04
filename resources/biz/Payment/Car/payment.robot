@@ -35,8 +35,6 @@ Send PaymentBillingCreate Post Request
     ${get_dirct}=  Create Dictionary   orderNo=${orderNo}   paymentBillNo=${payBillNo}  securityCode=${get_securityCode}  orderID=${orderId}  tenantId=${tenantId}  token=${token}
     RETURN  ${get_dirct}
 
-
-
 paymentBillingList
     ${get_data}=  slipInfoCheck
     ${orderId}=  Get From Dictionary    ${get_data}  orderID
@@ -53,7 +51,6 @@ paymentBillingList
     ${response}=  POST On Session    paymentListSession  ${paymentBillingList}  ${body}
     Should Be Equal As Strings    ${response.status_code}  200
 
-
 OVO_sendPayment
     [Arguments]    ${orderId}  ${payBillNo}  ${securityCode}  ${token}  ${tenantId}  ${orderNo}
     ${headers}=  Create Dictionary    Content-Type=application/json  tenantId="${tenantId}"  fusetoken=${token}  language=en_US
@@ -67,8 +64,6 @@ OVO_sendPayment
     ${get_dic}=  Create Dictionary   orderNo=${orderNo}   amount=${get_amount}   paymentBillNo=${payBillNo}  securityCode=${securityCode}  orderID=${orderId}  tenantId=${tenantId}  token=${token}
     RETURN  ${get_dic}
 
-
-
 OVO_sendPayment_Customer
     [Arguments]    ${securityCode}  ${customer_token}  ${amount}
     ${headers}=  Create Dictionary    Content-Type=application/json   x-5a-temp-token=${customer_token}  language=en_US
@@ -80,11 +75,30 @@ OVO_sendPayment_Customer
 #    ${get_amount}=  Get From Dictionary    ${get_json}  bizAmount
 #    RETURN  ${get_amount}
 
+goPay_sendPayment_Customer
+    [Arguments]    ${securityCode}  ${customer_token}  ${amount}
+    ${headers}=  Create Dictionary    Content-Type=application/json   x-5a-temp-token=${customer_token}  language=en_US
+    Create Session    customerSession  ${send_customer_confirm}  headers=${headers}  verify=False
+    ${body}=  Set Variable    {"amount":"${amount}","methodCode":"9201","securityCode":"${securityCode}","extJson":{"mobileNumber":"+6246485"}}
+    ${response}=  POST On Session    customerSession  ${send_customer_confirm}  ${body}
+    Should Be Equal As Strings    ${response.status_code}  200
+    ${get_json}=  Get From Dictionary    ${response.json()}  data
+#    ${get_amount}=  Get From Dictionary    ${get_json}  bizAmount
+#    RETURN  ${get_amount}
+
 OVO_Confirm_Customer
     [Arguments]    ${securityCode}  ${token}  ${amount}
     ${headers}=  Create Dictionary    Content-Type=application/json  x-5a-temp-token=${token}    language=en_US
     Create Session    ovoConfirmSession  ${send_customer_confirm}  headers=${headers}  verify=False
     ${body}=  Set Variable    {"amount":"${amount}","methodCode":"9203","securityCode":"${securityCode}","extJson":{"mobileNumber":"+62467886"}}
+    ${response}=  POST On Session    ovoConfirmSession  ${send_customer_confirm}  ${body}
+    Should Be Equal As Strings    ${response.status_code}  200
+
+goPay_Confirm_Customer
+    [Arguments]    ${securityCode}  ${token}  ${amount}
+    ${headers}=  Create Dictionary    Content-Type=application/json  x-5a-temp-token=${token}    language=en_US
+    Create Session    ovoConfirmSession  ${send_customer_confirm}  headers=${headers}  verify=False
+    ${body}=  Set Variable    {"amount":"${amount}","methodCode":"9201","securityCode":"${securityCode}","extJson":{"mobileNumber":"+62467886"}}
     ${response}=  POST On Session    ovoConfirmSession  ${send_customer_confirm}  ${body}
     Should Be Equal As Strings    ${response.status_code}  200
 
@@ -127,8 +141,6 @@ Partner SuperNetPayment
     ${get_dic}=  Create Dictionary   orderNo=${orderNo}   amount=${get_amount}   paymentBillNo=${payBillNo}  securityCode=${securityCode}  orderID=${orderId}  tenantId=${tenantId}  token=${token}
     RETURN  ${get_dic}
 
-
-
 OVO_getChannelFee
     ${get_data}=  OVO_sendPayment
     ${orderId}=  Get From Dictionary    ${get_data}  orderID
@@ -160,7 +172,6 @@ OVO_Confirm
     ${get_json}=  Get From Dictionary    ${response.json()}  data
 
 
-
 Order_Payment
     OVO_Confirm
     ${get_data}=  OVO_sendPayment
@@ -183,7 +194,7 @@ CustomerPayment
     [Arguments]    ${orderId}  ${payBillNo}  ${securityCode}  ${token}  ${tenantId}  ${orderNo}
     ${headers}=  Create Dictionary    Content-Type=application/json  tenantId="${tenantId}"  fusetoken=${token}  language=en_US
     Create Session    sendPaySession  ${ovo_sendPayment}  headers=${headers}  verify=False
-    ${body}=  Set Variable    {"payerType":1,"paymentScheme":1,"methodCode":"9203","bonusDeduction":0,"pointsDeduction":0,"orderId":"${orderId}","securityCode":"${securityCode}","selectType":2}
+    ${body}=  Set Variable    {"payerType":1,"paymentScheme":1,"methodCode":"","bonusDeduction":0,"pointsDeduction":0,"orderId":"${orderId}","securityCode":"${securityCode}","selectType":2}
     ${response}=  POST On Session    sendPaySession  ${ovo_sendPayment}  ${body}
     Should Be Equal As Strings    ${response.status_code}  200
     ${get_json}=  Get From Dictionary    ${response.json()}  data
@@ -254,7 +265,15 @@ GetCustomerToken
     Should Be Equal As Strings    ${response.status_code}  200
     ${get_json}=  Get From Dictionary    ${response.json()}  data
     ${get_customerToken}=  Get From Dictionary    ${get_json}  token
+
     RETURN  ${get_customerToken}
+
+
+
+
+
+
+
 
 
 
