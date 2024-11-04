@@ -16,7 +16,6 @@ Resource    ../../../../resources/util/utilCommon.robot
 Suite Teardown    Delete All Sessions
 
 *** Variables ***
-#EXECDIR: 编译路径？类似的概念
 ${BODY_FILE_PATH}    resources/data/property/QAPI-39_PlaceOrderData.json
 
 

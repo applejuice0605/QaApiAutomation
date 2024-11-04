@@ -23,12 +23,11 @@ Suite Teardown    Delete All Sessions
 
 
 *** Variables ***
-#EXECDIR: 编译路径？类似的概念
 ${BODY_FILE_PATH}    resources/data/property/QAPI-39_PlaceOrderData.json
 
 
 *** Test Cases ***
-Travel PayNow
+Travel Supernet Payment With Coupon
     [Tags]    uatAndprod
     Given Setup Data Testing
     When I have a whitelist account and have logined
@@ -41,7 +40,6 @@ Travel PayNow
     Then I send the place order request to createrfqorder API
     Then the status code should be 200
     And the response should contain the value orderNo and orderId
-    Then finally Log the OrderNo
     Then I continue to pay the order and send request the create paymentBilling API
     Then the status code should be 200
     And the response should contain securityCode

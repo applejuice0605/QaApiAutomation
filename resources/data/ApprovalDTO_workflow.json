@@ -1,0 +1,132 @@
+{
+  "underwriting_OrderReviewTask_Approve_toOffline": {
+    "action": "ToOffline",
+    "comment": {
+        "classify1": "",
+        "content": "test"
+    },
+    "data": {
+        "comments": "test",
+        "confirmSlipLs": [],
+        "transactionId": "",
+        "paymentBillingNo": "",
+        "bizTransactionId": "",
+        "orderId": "1853311415630016513"
+    },
+    "taskId": "59f04318-9a6f-11ef-919f-3e796c2eae68"
+},
+  "underwriting_toOfflineTask_Approve": {
+    "action": "Approval",
+    "comment": {
+      "classify1": ""
+    },
+    "data": {
+      "slipId": "1853332271248814082",
+      "insuredName": "Test  Case",
+      "startTime": 1730703827000,
+      "endTime": 1762239827000,
+      "effectivePeriod": [],
+      "insuranceName": "PT Asuransi Simas Insurtech",
+      "productCategory": "property",
+      "rawPlanName": "SIMAS ALL RISK",
+      "policyType": 1,
+      "supplierName": "PT Pialang Asuransi Indotekno",
+      "rawName": "SIMAS PROPERTY ALL RISK",
+      "underwritingInsuranceTime": 1732896000000,
+      "policyNumber": "1853332271248814082",
+      "attachmentQOList": [
+        {
+          "fileKey": "fuse-id-core-prod-rw_pdf/20241104/2402fa2ef24e45028fe6a5a0a66916b6.pdf",
+          "fileName": "RFQ-1776140300506681347.pdf",
+          "fileType": "pdf",
+          "fileUrl": "https://oss-pre.fuse.co.id/pdf/20241104/2402fa2ef24e45028fe6a5a0a66916b6.pdf?Expires=1730764799&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=aIsJtza1kobbscwUrLQoKq3ITGY%3D",
+          "uploadUrl": "https://fuse-id-core-prod-rw.oss-ap-southeast-5.aliyuncs.com/pdf/20241104/2402fa2ef24e45028fe6a5a0a66916b6.pdf?Expires=1730704875&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=7ttJ6OoZojZlOjIaHXEHKGT%2B8Ow%3D",
+          "name": "RFQ-1776140300506681347.pdf",
+          "url": "https://oss-pre.fuse.co.id/pdf/20241104/2402fa2ef24e45028fe6a5a0a66916b6.pdf?Expires=1730764799&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=aIsJtza1kobbscwUrLQoKq3ITGY%3D",
+          "uid": 1730704585254,
+          "status": "success"
+        }
+      ],
+      "categoryOptions": [
+        {
+          "categoryId": "car",
+          "categoryName": "Car",
+          "categoryNameLocal": "汽车保险",
+          "uid": 50
+        },
+        {
+          "categoryId": "cargo",
+          "categoryName": "Marine Cargo",
+          "categoryNameLocal": "货运保险",
+          "uid": 51
+        },
+        {
+          "categoryId": "health",
+          "categoryName": "Health",
+          "categoryNameLocal": "健康保险",
+          "uid": 52
+        },
+        {
+          "categoryId": "life",
+          "categoryName": "Life",
+          "categoryNameLocal": "人寿保险",
+          "uid": 53
+        },
+        {
+          "categoryId": "moto",
+          "categoryName": "Motor",
+          "categoryNameLocal": "摩托车保险",
+          "uid": 54
+        },
+        {
+          "categoryId": "moveable",
+          "categoryName": "Moveable All Risk",
+          "categoryNameLocal": "移动设备保险",
+          "uid": 55
+        },
+        {
+          "categoryId": "pa",
+          "categoryName": "PA",
+          "categoryNameLocal": "意外险",
+          "uid": 56
+        },
+        {
+          "categoryId": "property",
+          "categoryName": "Property",
+          "categoryNameLocal": "财产保险",
+          "uid": 57
+        },
+        {
+          "categoryId": "sme",
+          "categoryName": "SME",
+          "categoryNameLocal": "企业团险",
+          "uid": 58
+        },
+        {
+          "categoryId": "standard",
+          "categoryName": "General",
+          "categoryNameLocal": "一般保险",
+          "uid": 59
+        },
+        {
+          "categoryId": "travel",
+          "categoryName": "Travel",
+          "categoryNameLocal": "旅游保险",
+          "uid": 60
+        },
+        {
+          "categoryId": "vas",
+          "categoryName": "VAS",
+          "categoryNameLocal": "服务产品",
+          "uid": 61
+        }
+      ],
+      "confirmSlipLs": [],
+      "transactionId": "",
+      "paymentBillingNo": "",
+      "bizTransactionId": "",
+      "orderId": "1853332269097136130"
+    },
+    "taskId": "fb60d777-9a7a-11ef-919f-3e796c2eae68"
+  }
+}

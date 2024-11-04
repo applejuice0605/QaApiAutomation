@@ -20,3 +20,9 @@ The response data should contain the keyword ${keyword}
     [Arguments]     ${jsonResult}    ${keyword}
     Should Contain    ${jsonResult}[data][list]    ${keyword}
 
+
+Finally Log the orderNo
+    [Arguments]    ${orderNo}
+    Log    ${orderNo}
+
+

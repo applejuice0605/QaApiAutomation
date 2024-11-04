@@ -7,6 +7,8 @@ Library    XML
 Resource    ../../api/Login/fuse_user_login.robot
 Resource    ../../api/Login/api_bylogin.robot
 Resource    ../../api/Login/api_login.robot
+Resource    ../../api/Login/boss/login.robot
+Resource    ../../api/Login/boss/bylogin.robot
 
 Variables   ../../varfile_defvar.py
 
@@ -29,5 +31,13 @@ Login to Application using email
     ${resonse}  fuse_user_login.Send Request And Get Response Data    password=${password}  loginWay=3  email=${email}
     ${loginAccount}    Get Dictionary Values    ${resonse.json()}[resultObj]    accountId
     ${token}=   Login to Application using mobile
+    RETURN    ${token}
+
+Login to Boss
+    ${resonse}  bylogin.Send Request And Get Response Data      ${BossAccount}     ${BossPassword}
+    ${openId}   Set Variable     ${resonse.json()}[data][1][openId]
+    ${tenantId}   Set Variable     ${resonse.json()}[data][1][tenantId]
+    ${response}  login.Send Request And Get Response Data    ${BossAccount}     ${BossPassword}    ${openId}    ${tenantId}
+    ${token}    Set Variable    ${response.json()}[data][token]
     RETURN    ${token}
 

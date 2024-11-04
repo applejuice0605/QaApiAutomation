@@ -16,7 +16,7 @@ Suite Teardown    Delete All Sessions
 
 
 *** Test Cases ***
-Property PayNow
+Property PayLater PartnerPay
     [Tags]    uatAndprod
     Given I have a whitelist account and have logined
     When I send the quotation request to savebinderrfq API

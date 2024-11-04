@@ -13,11 +13,10 @@ Resource    ../../../../resources/api/order/createBinderOrder.robot
 Resource    ../../../../resources/util/utilCommon.robot
 #Setup Test
 #Suite Setup     Setup Data Testing
-Suite Teardown    Delete All Sessions
+#Suite Teardown    Delete All Sessions
 
 
 *** Variables ***
-#EXECDIR: 编译路径？类似的概念
 ${BODY_FILE_PATH}    resources/data/property/QAPI-39_PlaceOrderData.json
 
 
