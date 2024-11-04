@@ -1,9 +1,8 @@
 *** Settings ***
-Resource    ../../../../resources/lib/Common.robot
-Resource    ../../../../resources/api/Motor/CreateBinderMotor.robot
-Resource    ../../../../resources/api/Motor/SaveBinderRFQMotor.robot
-Resource    ../../../../resources/api/Motor/getCoupon.robot
-Resource    ../../../../resources/biz/Payment/Car/payment.robot
+Resource    ../../../resources/lib/Common.robot
+Resource    ../../../resources/biz/order/Car/SaveBinderRFQ.robot
+Resource    ../../../resources/biz/order/Car/CreateBinderOrder.robot
+Resource    ../../../resources/biz/Payment/Car/payment.robot
 
 
 *** Variables ***
@@ -11,13 +10,13 @@ ${loginAccount}=  628123268989
 ${password}=  268989
 
 *** Test Cases ***
-Order MotorNew -PayNow-Customer Pay Success
+Partner Pay- Supernet Payment-car order Success
     Given By Phone Number Login FusePro Success  ${loginAccount}   ${password}
     Then Send SaveBinderOrder Post Request
-    Then Send GetMotorCoupon Post Request
     Then Send CreateBinderOrder Post Request
     Then Send PaymentBillingCreate Post Request
     Then Send OVO_Send Post Request
+    Then Send OVO_Confirm Post Request
 
 *** Keywords ***
 By Phone Number Login FusePro Success
@@ -29,21 +28,17 @@ By Phone Number Login FusePro Success
     Set Test Variable    ${token}   ${token}
 
 Send SaveBinderOrder Post Request
-    ${data}=  Send MotorSaveBinderOrder Post Request  ${token}
+    ${data}=  Send CarSaveBinderOrder Post Request  ${tenantId}  ${token}
     ${quoteNo}=  Get From Dictionary    ${data}   quoteNo
     ${rfqNo}=  Get From Dictionary    ${data}  rfqNo
     Set Test Variable     ${quoteNo}  ${quoteNo}
     Set Global Variable    ${rfqNo}  ${rfqNo}
 
-Send GetMotorCoupon Post Request
-    ${data}=  Send MotorGetCoupon Post Request  ${token}
-    ${couponId}=  Get From Dictionary    ${data}  couponId
-    Set Test Variable    ${couponId}  ${couponId}
-    
+
 Send CreateBinderOrder Post Request
     ${discountCommission}=  Set Variable     0
     ${discountSpecialBonusAmount}=  Set Variable     0
-    ${data}=  Send MotorCreateBinderOrder Post Request- PayLater And Coupon   ${token}  ${quoteNo}  ${rfqNo}  ${discountCommission}  ${discountSpecialBonusAmount}  ${couponId}
+    ${data}=  Send CarCreateBinderOrder Post Request  ${tenantId}  ${token}  ${quoteNo}  ${rfqNo}  ${discountCommission}   ${discountSpecialBonusAmount}
     ${orderNo}=  Get From Dictionary    ${data}  orderNo
     ${orderId}=  Get From Dictionary    ${data}  orderId
     Set Test Variable    ${orderNo}  ${orderNo}
@@ -58,6 +53,13 @@ Send PaymentBillingCreate Post Request
     Set Test Variable    ${paymentBillNo}   ${paymentBillNo}
 
 Send OVO_Send Post Request
-    ${data}=  PartnerPayment SuperNetPayment  ${orderId}  ${paymentBillNo}  ${securityCode}  ${token}  ${tenantId}  ${orderNo}
+    ${data}=  Partner SuperNetPayment  ${orderId}  ${paymentBillNo}  ${securityCode}  ${token}  ${tenantId}  ${orderNo}
     ${amount}=  Get From Dictionary   ${data}  amount
     Set Global Variable    ${amount}  ${amount}
+
+Send OVO_Confirm Post Request
+    ${data}=  OVO_Confirm  ${orderId}  ${paymentBillNo}  ${securityCode}  ${token}  ${tenantId}  ${orderNo}  ${amount}
+
+
+
+

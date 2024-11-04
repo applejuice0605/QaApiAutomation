@@ -21,12 +21,14 @@ Send MotorGetCoupon Post Request
     ${get_data}=  Get From Dictionary    ${get_json}  data
     ${get_list1}=  Get From List        ${get_data}  0
     ${get_couponAvailableList}=  Get From Dictionary   ${get_list1}  couponAvailableList
+    ${get_productCode}=  Get From Dictionary   ${get_list1}  productCode
     ${get_list2}=  Get From List  ${get_couponAvailableList}  0
 
     ${get_couponId}=  Get From Dictionary    ${get_list2}  couponId
     Log  ${get_couponId}
+    ${data}=  Create Dictionary    couponId=${get_couponId}  productCode=${get_productCode}
 #    ${data}=  Create Dictionary    quoteNo=${get_quoteNo}   rfqNo=${get_rfqNo}     token=${token}
-    RETURN  ${get_couponId}
+    RETURN  ${data}
 
 
 

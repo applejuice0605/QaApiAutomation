@@ -4,7 +4,7 @@ Resource    ../../../../resources/biz/order/Car/SaveBinderRFQ.robot
 Resource    ../../../../resources/biz/order/Car/CreateBinderOrder.robot
 Resource    ../../../../resources/biz/order/Car/getCarCoupon.robot
 Resource    ../../../../resources/biz/Payment/Car/payment.robot
-
+Test Setup   Delete All Sessions
 
 *** Variables ***
 ${loginAccount}=  628123268989
@@ -27,6 +27,7 @@ By Phone Number Login FusePro Success
     ${token}=  Get From Dictionary    ${data}  token
     Set Test Variable    ${tenantId}   ${tenantId}
     Set Test Variable    ${token}   ${token}
+    Log  token:${token}
 
 Send SaveBinderOrder Post Request
     ${data}=  Send CarSaveBinderOrder Post Request  ${tenantId}  ${token}

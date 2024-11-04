@@ -4,7 +4,8 @@ Resource    ../../../../resources/biz/order/Car/SaveBinderRFQ.robot
 Resource    ../../../../resources/biz/order/Car/CreateBinderOrder.robot
 Resource    ../../../../resources/biz/order/Car/getCarCoupon.robot
 Resource    ../../../../resources/biz/Payment/Car/payment.robot
-
+#Setup Test
+Test Teardown   Delete All Sessions
 
 *** Variables ***
 ${loginAccount}=  628123268989
