@@ -17,7 +17,7 @@ Suite Teardown    Delete All Sessions
 
 
 *** Variables ***
-${BODY_FILE_PATH}    resources/data/property/QAPI-39_PlaceOrderData.json
+${BODY_FILE_PATH}    resources/data/property/Travel_PlaceOrderData.json
 
 
 *** Test Cases ***

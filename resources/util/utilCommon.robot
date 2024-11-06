@@ -57,3 +57,28 @@ Generate Random identityNo
     END
 #    ${type}    Evaluate    type(${identityNo})
     RETURN    ${identityNo}
+
+
+Get Installment Amount
+    [Arguments]    ${installmentSchemaDTOList}    ${installmentNumber}
+    ${installmentAmount}=    Set Variable    0
+
+    Run Keyword If    ${installmentNumber} == 1
+    ...    Set Test Variable     ${installmentAmount}    ${installmentSchemaDTOList}[0][amount]
+    ...  ELSE IF    ${installmentNumber} == 3
+    ...    Set Test Variable     ${installmentAmount}    ${installmentSchemaDTOList}[1][amount]
+    ...  ELSE IF    ${installmentNumber} == 6
+    ...    Set Test Variable     ${installmentAmount}    ${installmentSchemaDTOList}[2][amount]
+    ...  ELSE IF    ${installmentNumber} == 12
+    ...    Set Test Variable     ${installmentAmount}    ${installmentSchemaDTOList}[3][amount]
+
+#
+#    FOR    ${item}    IN    @{installmentSchemaDTOList}
+#        Log    ${item}
+#        ${num}    Get From Dictionary    ${item}    count
+#        Log     ${num}
+#        Run Keyword If    ${num} == ${installmentNumber}    Set Variable     ${installmentAmount}    ${item}[amount]
+#        Exit For Loop If    '${num}' =='${installmentNumber}'
+#    END
+    Log   ${installmentAmount}
+    RETURN    ${installmentAmount}

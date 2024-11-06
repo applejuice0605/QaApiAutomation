@@ -9,7 +9,7 @@ Library    DateTime
 Library    JSONLibrary
 
 Resource    ../../../resources/biz/Login/login.robot
-Resource    ../../../resources/biz/order/property/property_order.robot
+Resource    ../../../resources/biz/order/travel_order.robot
 
 Resource    ../../../resources/api/order/saveBinderRfqOrder.robot
 Resource    ../../../resources/api/order/createBinderOrder.robot
@@ -22,10 +22,12 @@ Resource    ../../../resources/api/payment/CustomerPay/slip_process.robot
 Resource    ../../../resources/api/payment/CustomerPay/slip_channel_process.robot
 Resource    ../../../resources/api/payment/CustomerPay/getChannelFee.robot
 Resource    ../../../resources/api/payment/generate_Customer_payment_token.robot
+Resource    ../../../resources/api/payment/CustomerPay/getInstallmentPlan.robot
 
-Resource    ../../../resources/api/payment/mock/mockVA.robot
+Resource    ../../../resources/api/payment/mock/mockCC.robot
 
 Resource    ../../../resources/util/utilCommon.robot
+
 
 #Setup Test
 #Suite Setup     Setup Data Testing
@@ -33,18 +35,16 @@ Resource    ../../../resources/util/utilCommon.robot
 
 
 *** Variables ***
-${BODY_FILE_PATH}    resources/data/property/Travel_PlaceOrderData.json
-${methodCode}   9204
+${methodCode}   9202
 ${paymentScheme}    1
 ${payerType}    1
 
 
 *** Test Cases ***
-VA_CustomerPay_FullPayment
+CC CustomerPay FullPayment
     [Tags]    uat
-    Given Setup Data Testing
-    When I have an unpaid order and have logined
-    Then I send request to createPaymentBilling API
+    Given I have an unpaid order and have logined
+    When I send request to createPaymentBilling API
     Then the status code should be 200
     Then I send request to paymentBillingList API
     Then the status code should be 200
@@ -52,32 +52,35 @@ VA_CustomerPay_FullPayment
     Then I choose Cutsomerpay and send request to generator/customer/payment/token API
     Then the status code should be 200
     And the response should contain customerToken
-    Then I choose Customer Pay & Full payment & VA payment method and send request to /slip/process API
+    Then I choose Customer Pay & Full payment & CC payment method and send request to /slip/process API
     Then the status code should be 200
     And the response should contain lessAmount
-    Then I choose bank BCA and send request to getChannelFee API
+
+    Then Send request to getInstallmentPlan API
     Then the status code should be 200
-    And the response should contain channelFee
+    And the response should contain installmentSchemaDTOList
+
+
+#    Then I choose bank BCA and send request to getChannelFee API
+#    Then the status code should be 200
+#    And the response should contain channelFee
     Then I click Next send request to slip/channel/process API
     Then the status code should be 200
     And the response should contain referenceNo
-    Then I call the Mock VA Payment API to change the payment status
+
+    Then I call the Mock CC Payment API to change the payment status
     And the response should contain msg "COMPLETED"
     Then finally Log the OrderNo
 
 
 
 *** Keywords ***
-Setup Data Testing
-    ${AP_POSITIVE_DATA}=    Load JSON From File    ${BODY_FILE_PATH}
-    Set Test Variable    ${AP_POSITIVE_DATA}
-    Set Test Variable    ${bank}    BCA
 
 I have an unpaid order and have logined
     # 调用登录接口
     ${token}  login.Login to Application using mobile
     # 调用下单业务
-    ${orderInfo}    property_order.Property Order Pay Now without discount    ${token}
+    ${orderInfo}    travel_order.Travel Order Pay Now without discount    ${token}
     Log     ${orderInfo}
     Set Test Variable    ${orderNo}    ${orderInfo[0]}
     Set Test Variable    ${orderId}    ${orderInfo[1]}
@@ -116,7 +119,7 @@ the response should contain customerToken
 
 
 
-I choose Customer Pay & Full payment & VA payment method and send request to /slip/process API
+I choose Customer Pay & Full payment & CC payment method and send request to /slip/process API
     ${response}    slip_process.Send Request And Get Response Data    token=${token}    orderId=${orderId}    securityCode=${securityCode}  paymentScheme=${paymentScheme}    payerType=${payerType}
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
@@ -126,18 +129,38 @@ the response should contain lessAmount
     Should Contain    ${jsonResult}[data]   lessAmount
 
 
-I choose bank BCA and send request to getChannelFee API
-    ${response}    getChannelFee.Send Request And Get Response Data    token=${token}    securityCode=${securityCode}
+send request to getInstallmentPlan API
+    ${response}    getInstallmentPlan.Send Request And Get Response Data    token=${token}    securityCode=${securityCode}
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
 
 
-the response should contain channelFee
-    Should Contain    ${jsonResult}[data]   channelFee
-    Set Test Variable    ${amount}    ${jsonResult}[data][amount]
+
+the response should contain installmentSchemaDTOList
+    Should Contain    ${jsonResult}[data]    installmentSchemaDTOList
+
+    #1. 选择分期
+    ${installmentSchemaDTOList}    Get From Dictionary    ${jsonResult}[data]    installmentSchemaDTOList
+    #2. 选择分期: 索引0：不分期，1：分3期，2：分6期，3：分12期
+    Set Test Variable    ${installmentNumber}   1
+    ${amount}=   Get Installment Amount     ${installmentSchemaDTOList}    ${installmentNumber}
+    Set Test Variable    ${amount}
+
+
 
 I click Next send request to slip/channel/process API
-    ${response}    slip_channel_process.Send Request And Get Response Data    token=${token}    securityCode=${securityCode}    methodCode=${methodCode}     amount=${amount}
+    Log     ${amount}
+#    ${base_url}=   Set Variable     https://cashier-uat.fuse.co.id
+#    ${path}=   Set Variable     /api/cashier/customer/payment/slip/channel/process
+#    ${headers}=    Create Dictionary    Content-Type=application/json    appCode=IDP_BOSS    x-5a-temp-token=${token}
+#    ${payload}=    Set Variable     {"amount":${amount},"methodCode":"9202","securityCode":"${securityCode}","extJson":{"installmentNumber":1,"bankCode":"BCA"}}
+#
+#    # 2. 发送请求
+#    ${response}=    httpCommon.Send Post Request And Get Response Data    ${base_url}    ${path}    ${headers}    ${payload}
+
+
+
+    ${response}    slip_channel_process.Send Request And Get Response Data    token=${token}    securityCode=${securityCode}    methodCode=${methodCode}     amount=${amount}     installmentNumber=${installmentNumber}
 
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
@@ -145,12 +168,22 @@ I click Next send request to slip/channel/process API
 
 the response should contain referenceNo
     Should Contain    ${jsonResult}[data][paymentDTO]   referenceNo
+    #获取referenceNo
     Set Test Variable    ${referenceNo}     ${jsonResult}[data][paymentDTO][referenceNo]
+    #获取channelFee
+    ${channelFee}  Set Variable    ${jsonResult}[data][gatewayDTO][paymentChannelFeeSchemaDTO][channelFee]
+    #获取amount
+    ${amount}   Set Variable    ${jsonResult}[data][gatewayDTO][paymentChannelFeeSchemaDTO][amount]
+    #获取transactionAmount
+    ${amount}   Evaluate    sum(${channelFee},${amount})
+    Set Test Variable    ${transactionAmount}       ${amount}
     Log     ${referenceNo}
+    Log     ${transactionAmount}
 
 
-I call the Mock VA Payment API to change the payment status
-    ${response}     mockVA.Send Request And Get Response Data        amount=${amount}    referenceNo=${referenceNo}
+
+I call the Mock CC Payment API to change the payment status
+    ${response}     mockCC.Send Request And Get Response Data        amount=${amount}    referenceNo=${referenceNo}
 
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}

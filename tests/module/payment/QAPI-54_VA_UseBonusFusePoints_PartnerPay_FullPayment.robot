@@ -27,8 +27,12 @@ Resource    ../../../resources/api/payment/mock/mockVA.robot
 
 
 *** Variables ***
-${BODY_FILE_PATH}    resources/data/property/QAPI-39_PlaceOrderData.json
-
+${BODY_FILE_PATH}    resources/data/property/Travel_PlaceOrderData.json
+${methodCode}   9204
+${paymentScheme}    1
+${payerType}    2
+${bonusDeduction}   100
+${pointsDeduction}  100000
 
 *** Test Cases ***
 VA_UseBonusFusePoints_PartnerPay_FullPayment
@@ -91,7 +95,7 @@ the response should contain securityCode
 
 
 I choose Partner Pay & Full payment & VA payment method and send request to /slip/process API
-    ${response}    slip_process.Send Request And Get Response Data    token=${token}    orderId=${orderId}    securityCode=${securityCode}  paymentScheme=3    payerType=2   bonusDeduction=100     pointsDeduction=100000
+    ${response}    slip_process.Send Request And Get Response Data    token=${token}    orderId=${orderId}    securityCode=${securityCode}  paymentScheme=${paymentScheme}    payerType=${payerType}   bonusDeduction=${bonusDeduction}     pointsDeduction=${pointsDeduction}
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
 
@@ -115,7 +119,7 @@ the response should contain channelFee
     Set Test Variable    ${amount}    ${jsonResult}[data][amount]
 
 I click Next send request to slip/channel/process API
-    ${response}    new_slip_channel_process.Send Request And Get Response Data    token=${token}    securityCode=${securityCode}    methodCode=9204     amount=${amount}
+    ${response}    new_slip_channel_process.Send Request And Get Response Data    token=${token}    securityCode=${securityCode}    methodCode=${methodCode}     amount=${amount}
 
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}

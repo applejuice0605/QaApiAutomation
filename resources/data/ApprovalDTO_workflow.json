@@ -2,19 +2,19 @@
   "underwriting_OrderReviewTask_Approve_toOffline": {
     "action": "ToOffline",
     "comment": {
-        "classify1": "",
-        "content": "test"
+      "classify1": "",
+      "content": "test"
     },
     "data": {
-        "comments": "test",
-        "confirmSlipLs": [],
-        "transactionId": "",
-        "paymentBillingNo": "",
-        "bizTransactionId": "",
-        "orderId": "1853311415630016513"
+      "comments": "test",
+      "confirmSlipLs": [],
+      "transactionId": "",
+      "paymentBillingNo": "",
+      "bizTransactionId": "",
+      "orderId": "1853311415630016513"
     },
     "taskId": "59f04318-9a6f-11ef-919f-3e796c2eae68"
-},
+  },
   "underwriting_toOfflineTask_Approve": {
     "action": "Approval",
     "comment": {
@@ -128,5 +128,22 @@
       "orderId": "1853332269097136130"
     },
     "taskId": "fb60d777-9a7a-11ef-919f-3e796c2eae68"
+  },
+  "decline": {
+    "action": "Decline",
+    "comment": {
+      "classify1": "forceCancelTestOrder",
+      "content": "test"
+    },
+    "data": {
+      "reason": "forceCancelTestOrder",
+      "comments": "test",
+      "confirmSlipLs": [],
+      "transactionId": "",
+      "paymentBillingNo": "",
+      "bizTransactionId": "",
+      "orderId": "1853636286363811842"
+    },
+    "taskId": "bef4f5ad-9b23-11ef-919f-3e796c2eae68"
   }
 }
