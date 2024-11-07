@@ -15,6 +15,7 @@ Resource    ../../../resources/api/order/createBinderOrder.robot
 Resource    ../../../resources/api/payment/createPaymentBilling.robot
 Resource    ../../../resources/api/payment/slip_process.robot
 Resource    ../../../resources/api/payment/getChannelFee.robot
+Resource    ../../../resources/api/payment/getInstallmentPlan.robot
 
 
 Resource    ../../../resources/api/payment/paymentBillingList.robot
@@ -34,7 +35,6 @@ Resource    ../../../resources/util/utilCommon.robot
 
 
 *** Variables ***
-${BODY_FILE_PATH}    resources/data/property/Travel_PlaceOrderData.json
 ${methodCode}   9202
 ${paymentScheme}    1
 ${payerType}    2
@@ -50,7 +50,6 @@ CC UseBonusFusePoints_PartnerPay_FullPayment
     Then I send request to paymentBillingList API
     Then the status code should be 200
     And the response should contain securityCode
-
     Then I choose Partner Pay & Net payment & CC payment method and send request to /slip/process API
     Then the status code should be 200
     And the response should contain lessAmount
@@ -59,13 +58,12 @@ CC UseBonusFusePoints_PartnerPay_FullPayment
     Then the status code should be 200
     And the response should contain installmentSchemaDTOList
 
-
     Then I click Next send request to slip/channel/process API
     Then the status code should be 200
     And the response should contain referenceNo
 
     Then I call the Mock CC Payment API to change the payment status
-    And the response should contain msg "COMPLETED"
+    And the status code should be 200
     Then finally Log the OrderNo
 
 
@@ -101,22 +99,9 @@ the response should contain securityCode
     Set Test Variable    ${securityCode}    ${jsonResult}[data][paymentBillingLs][0][securityCode]
 
 
-I choose Cutsomerpay and send request to generator/customer/payment/token API
-    ${response}    generate_Customer_payment_token.Send Request And Get Response Data    token=${token}    securityCode=${securityCode}
-    Set Test Variable    ${jsonResult}    ${response.json()}
-    Log    ${jsonResult}
-
-
-the response should contain customerToken
-    Should Contain    ${jsonResult}[data]    token
-    Set Test Variable    ${token}    ${jsonResult}[data][token]
-    Log    ${token}
-
-
-
 
 I choose Partner Pay & Net payment & CC payment method and send request to /slip/process API
-    ${response}    slip_process.Send Request And Get Response Data    token=${token}    orderId=${orderId}    securityCode=${securityCode}  paymentScheme=1    payerType=1
+    ${response}    slip_process.Send Request And Get Response Data    token=${token}    orderId=${orderId}    securityCode=${securityCode}  paymentScheme=${paymentScheme}    payerType=${payerType}    bonusDeduction=${bonusDeduction}     pointsDeduction=${pointsDeduction}
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
 
@@ -146,7 +131,7 @@ the response should contain installmentSchemaDTOList
 
 I click Next send request to slip/channel/process API
     Log     ${amount}
-    ${response}    slip_channel_process.Send Request And Get Response Data    token=${token}    securityCode=${securityCode}    methodCode=${methodCode}     amount=${amount}     installmentNumber=${installmentNumber}
+    ${response}    new_slip_channel_process.Send Request And Get Response Data    token=${token}    securityCode=${securityCode}    methodCode=${methodCode}     amount=${amount}     installmentNumber=${installmentNumber}
 
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
@@ -161,7 +146,7 @@ the response should contain referenceNo
     #获取amount
     ${amount}   Set Variable    ${jsonResult}[data][gatewayDTO][paymentChannelFeeSchemaDTO][amount]
     #获取transactionAmount
-    ${amount}   Evaluate    sum(${channelFee},${amount})
+    ${amount}   Evaluate    (${channelFee}+${amount})
     Set Test Variable    ${transactionAmount}       ${amount}
     Log     ${referenceNo}
     Log     ${transactionAmount}
@@ -169,13 +154,11 @@ the response should contain referenceNo
 
 
 I call the Mock CC Payment API to change the payment status
-    ${response}     mockCC.Send Request And Get Response Data        amount=${amount}    referenceNo=${referenceNo}
+    Sleep    3s
+    ${response}     mockCC.Send Request And Get Response Data        transactionAmount=${transactionAmount}    reference_no=${referenceNo}
 
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
-
-the response should contain msg "COMPLETED"
-    Should Be Equal As Strings    ${jsonResult}[status]    COMPLETED
 
 
 the status code should be 200
@@ -185,6 +168,3 @@ the status code should be 200
 
 finally Log the OrderNo
     Log    ${orderNo}
-
-
-

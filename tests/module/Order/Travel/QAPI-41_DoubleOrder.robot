@@ -29,8 +29,8 @@ Travel Double Order
     Then the status code should be 200
     And the response should contain the value quoteNo and rfqNo
     Then I send the place order request to createrfqorder API
-    Then the status code should be 2001001
-    And the response should contain the msg "quotation decline"
+    Then the status code should be 200107002
+    And the response should contain the msg "You have already input this order."
 
 
 
@@ -112,10 +112,10 @@ the status code should be 200
     Log    ${jsonResult}[code]
     Should Be Equal As Numbers    ${jsonResult}[code]    200
 
-the status code should be 2001001
+the status code should be 200107002
     Log    ${jsonResult}
     Log    ${jsonResult}[code]
-    Should Be Equal As Numbers    ${jsonResult}[code]    2001001
+    Should Be Equal As Numbers    ${jsonResult}[code]    200107002
 
-the response should contain the msg "quotation decline"
-    Should Contain    ${jsonResult}[message]    quotation decline
+the response should contain the msg "You have already input this order."
+    Should Contain    ${jsonResult}[message]    You have already input this order.

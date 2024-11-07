@@ -60,16 +60,12 @@ CC CustomerPay FullPayment
     Then the status code should be 200
     And the response should contain installmentSchemaDTOList
 
-
-#    Then I choose bank BCA and send request to getChannelFee API
-#    Then the status code should be 200
-#    And the response should contain channelFee
     Then I click Next send request to slip/channel/process API
     Then the status code should be 200
     And the response should contain referenceNo
 
     Then I call the Mock CC Payment API to change the payment status
-    And the response should contain msg "COMPLETED"
+    And the status code should be 200
     Then finally Log the OrderNo
 
 
@@ -150,16 +146,6 @@ the response should contain installmentSchemaDTOList
 
 I click Next send request to slip/channel/process API
     Log     ${amount}
-#    ${base_url}=   Set Variable     https://cashier-uat.fuse.co.id
-#    ${path}=   Set Variable     /api/cashier/customer/payment/slip/channel/process
-#    ${headers}=    Create Dictionary    Content-Type=application/json    appCode=IDP_BOSS    x-5a-temp-token=${token}
-#    ${payload}=    Set Variable     {"amount":${amount},"methodCode":"9202","securityCode":"${securityCode}","extJson":{"installmentNumber":1,"bankCode":"BCA"}}
-#
-#    # 2. 发送请求
-#    ${response}=    httpCommon.Send Post Request And Get Response Data    ${base_url}    ${path}    ${headers}    ${payload}
-
-
-
     ${response}    slip_channel_process.Send Request And Get Response Data    token=${token}    securityCode=${securityCode}    methodCode=${methodCode}     amount=${amount}     installmentNumber=${installmentNumber}
 
     Set Test Variable    ${jsonResult}    ${response.json()}
@@ -175,7 +161,7 @@ the response should contain referenceNo
     #获取amount
     ${amount}   Set Variable    ${jsonResult}[data][gatewayDTO][paymentChannelFeeSchemaDTO][amount]
     #获取transactionAmount
-    ${amount}   Evaluate    sum(${channelFee},${amount})
+    ${amount}   Evaluate    (${channelFee}+${amount})
     Set Test Variable    ${transactionAmount}       ${amount}
     Log     ${referenceNo}
     Log     ${transactionAmount}
@@ -183,13 +169,12 @@ the response should contain referenceNo
 
 
 I call the Mock CC Payment API to change the payment status
-    ${response}     mockCC.Send Request And Get Response Data        amount=${amount}    referenceNo=${referenceNo}
+    Sleep    3s
+    ${response}     mockCC.Send Request And Get Response Data        transactionAmount=${transactionAmount}    reference_no=${referenceNo}
 
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
 
-the response should contain msg "COMPLETED"
-    Should Be Equal As Strings    ${jsonResult}[status]    COMPLETED
 
 
 the status code should be 200

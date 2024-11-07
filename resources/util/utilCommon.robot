@@ -1,6 +1,7 @@
 *** Settings ***
 Library    DateTime
 Library    Collections
+Library    JSONLibrary
 
 
 *** Keywords ***
@@ -81,4 +82,29 @@ Get Installment Amount
 #        Exit For Loop If    '${num}' =='${installmentNumber}'
 #    END
     Log   ${installmentAmount}
+    ${installmentAmount}    Evaluate    int(${installmentAmount})
     RETURN    ${installmentAmount}
+
+Get Data From Jsonfile
+    [Arguments]    ${BODY_FILE_PATH}    ${key}
+    Log     ${BODY_FILE_PATH}
+    Log     ${key}
+    ${AP_POSITIVE_DATA}=    Load JSON From File    ${BODY_FILE_PATH}
+    ${jsonBody}     Set Variable    ${AP_POSITIVE_DATA["${key}"]}
+    RETURN    ${jsonBody}
+
+
+Generate Random Number
+    [Documentation]    随机生成指定长度的数字字符串
+    [Arguments]    ${length}
+    ${counter}  Set Variable    0
+    ${numStr}=    Set Variable
+    FOR    ${counter}    IN RANGE    0    ${length}
+        Log    ${counter}
+        ${num}   Evaluate    random.randint(0,9)
+        ${numStr}=    Catenate    SEPARATOR=    ${numStr}    ${num}
+    END
+#    ${type}    Evaluate    type(${identityNo})
+    RETURN    ${numStr}
+
+
