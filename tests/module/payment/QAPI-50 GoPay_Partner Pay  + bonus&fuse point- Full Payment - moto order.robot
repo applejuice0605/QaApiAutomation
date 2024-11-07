@@ -77,7 +77,7 @@ Enter GoPay Payment Page
     Set Test Variable    ${paymentSlipNo}  ${bizTransactionId}
     Set Test Variable    ${referenceNo}  ${referenceNo}
 
-GoPay Mock CallBack
+GoPay Mock CallBack And Payment Success
 #    ${goPay_paymentGetWayFee}=   Set Variable      8803
 #    ${gross_amount}=   Evaluate    ${amount}+${goPay_paymentGetWayFee}
     Send GoPay Mock CallBack Post Request  ${totalAmount}  ${paymentSlipNo}  ${referenceNo}
