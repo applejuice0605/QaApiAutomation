@@ -14,4 +14,12 @@ Send Withdrawal Post Request
     ${res}=  Common.Send Post Request And Get Response Data  ${withdrawalSession}  ${withdrawal_url}  ${body}  &{headers}
     ${get_json}=  Get From Dictionary    ${res.json()}  data
     ${enMessage}=  Get From Dictionary    ${get_json}  enMessage
-    Should Be Equal As Strings    ${enMessage}  Your withdrawal confirmation is in the process.
+    RETURN  ${enMessage}
+
+Send Withdrawal Verification Assign To Me Post Request
+
+Send Withdrawal Review Post Request
+
+Send Withdrawal Payment Assign To Me Post Request
+
+Send Withdrawal Payment Confirm Post Request

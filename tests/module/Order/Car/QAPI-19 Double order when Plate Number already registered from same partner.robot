@@ -1,8 +1,8 @@
 *** Settings ***
-Resource    ../../../../../resources/lib/Common.robot
-Resource    ../../../../../resources/biz/order/Car/SaveBinderRFQ.robot
-Resource    ../../../../../resources/biz/order/Car/CreateBinderOrder.robot
-Resource    ../../../../../resources/biz/Payment/Car/payment.robot
+Resource    ../../../../resources/lib/Common.robot
+Resource    ../../../../resources/biz/order/Car/SaveBinderRFQ.robot
+Resource    ../../../../resources/biz/order/Car/CreateBinderOrder.robot
+Resource    ../../../../resources/biz/Payment/Car/payment.robot
 
 
 *** Variables ***

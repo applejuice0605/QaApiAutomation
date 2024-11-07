@@ -1,7 +1,7 @@
 *** Settings ***
-Resource    ../../../resources/lib/Common.robot
-Resource    ../../../resources/api/Motor/SaveBinderRFQMotor.robot
-Resource    ../../../resources/api/GetQuotation/generateQuotePDF.robot
+Resource    ../../../../resources/lib/Common.robot
+Resource    ../../../../resources/api/Motor/SaveBinderRFQMotor.robot
+Resource    ../../../../resources/api/GetQuotation/generateQuotePDF.robot
 
 
 
