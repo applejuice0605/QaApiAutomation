@@ -57,7 +57,6 @@ Create CurrentTime
     Log    Current Time is: ${CURRENT_TIME}
     RETURN  ${CURRENT_TIME}
 
-
 Get Token And TenantId And OpenId
     [Arguments]    ${loginAccount}  ${password}
     ${response}=  api_bylogin.Send Request And Get Response Data  ${loginAccount}  ${password}
