@@ -14,6 +14,8 @@ ${withdrawalSession}=  withdrawalSession
 ${manual_withdrawal}=   https://ptr-uat.fuse.co.id/api/local/id/bankCard/withdraw/manual
 ${withdrawalPaymentTaskId}=  https://boss-uat.fuse.co.id/api/trading/withdrawal/bpm/manager/payment/list
 ${withdrawalPaymentAssign}=  https://boss-uat.fuse.co.id/api/bpm/runtime/self/assign
+${BalanceHistory_url}=  https://ptr-uat.fuse.co.id/api/account/flow/list/v2
+${add_bank_account_url}=  https://ptr-uat.fuse.co.id/api/local/id/bankCard/add
 *** Keywords ***
 Send Withdrawal Post Request
     [Arguments]    ${fusetoken}   ${tenantId}  ${loginAccount}  ${withdrawalAmount}  ${password}
@@ -82,8 +84,41 @@ Send Withdrawal Payment Confirm Post Request
     ${res}=  Common.Send Post Request And Get Response Data  withdrawalPaymentConfirmSession  ${withdrawalPaymentConfirm_url}  ${body}  &{headers}
 
 Send Withdrawal Review Decline Post Request
-     [Arguments]    ${fusetoken}   ${taskId}  ${withdrawalId}
+    [Arguments]    ${fusetoken}   ${taskId}  ${withdrawalId}
     ${body}=  Set Variable      {"action":"Decline","comment":{"classify1":"","content":"api_test_decline"},"data":{"withdrawId":"${withdrawalId}","comments":"decline","confirmSlipLs":[],"transactionId":"","paymentBillingNo":"","bizTransactionId":"","orderId":""},"taskId":"${taskId}"}
     ${headers}=  Create Dictionary      Content-Type=application/json   fusetoken=${fusetoken}  language=en_US
     ${res}=  Common.Send Post Request And Get Response Data  reviewVerificationSession  ${withdrawalVerifation_review}  ${body}  &{headers}
 
+Send Bonus Balance History Post Request
+    [Arguments]    ${fusetoken}  ${tenantId}
+    ${body}=  Set Variable      {"mobile":"628123268987","pageSize":"10","pageNo":0,"queryCotFlag":"true","sort":"create_time","order":"DESC","controlAccount":"6","language":"en_US","isUpper":"no"}
+    ${headers}=  Create Dictionary      Content-Type=application/json   fusetoken=${fusetoken}  clientType=ANDROID  tenantId="${tenantId}"
+    ${res}=  Common.Send Post Request And Get Response Data  balanceHistorySession  ${BalanceHistory_url}  ${body}  &{headers}
+    ${get_data}=  Get From Dictionary    ${res.json()}  data
+    ${get_data2}=  Get From Dictionary    ${get_data}  data
+    ${get_dirt}=  Get From List        ${get_data2}  0
+    ${tradeAmount}=  Get From Dictionary      ${get_dirt}  tradeAmount
+    ${iniAmount}   Evaluate    int(${tradeAmount})
+    ${transactionName}=  Get From Dictionary      ${get_dirt}  transactionName
+    Should Be Equal        "${iniAmount}"    "10000000"
+    Should Be Equal As Strings            "${transactionName}"    "Withdrawal"
+
+Add Bank Account Not Meed The Condition Of Api Failed
+    [Arguments]  ${fusetoken}
+    ${body}=  Set Variable      {"bankName":"Allo Bank Indonesia","bankAccountOwner":"423412","bankAccountNumber":"34132432523","bankBranch":"532523","bankPicture":"fuse-id-core-prod-rw_images/20241108/51960fcfb8df41cca56ec69f3f1a5a92.jpg","password":"268988","bankUid":"1005000141"}
+    ${headers}=  Create Dictionary      Content-Type=application/json   fusetoken=${fusetoken}
+    ${res}=  Common.Send Post Request And Get Response Data  add_bank_accountSession  ${add_bank_account_url}  ${body}  &{headers}
+    ${get_data}=  Get From Dictionary    ${res.json()}  data
+    ${successMessage}=  Get From Dictionary    ${get_data}  successMessage
+    Should Be Equal As Strings            ${successMessage}    User Add Bank Account Successfully
+
+Send Check Bank Account Status Post Request
+    [Arguments]    ${fusetoken}   ${tenantId}  ${loginAccount}  ${withdrawalAmount}  ${password}
+    ${body}=  Set Variable      {"accountId":"${loginAccount}","cardId":"1854721094712242177","withdrawAmount":${withdrawalAmount},"withdrawType":1,"autoTransferVersion":1,"passWord":"${password}","manuallyWithdraw":false}
+    ${headers}=  Create Dictionary      Content-Type=application/json   fusetoken=${fusetoken}  language=en_US  clientType=ANDROID  appCode=IDP_FUSE_PRO  tenantId="${tenantId}"
+    ${res}=  Common.Send Post Request And Get Response Data   withdrawalSession  ${withdrawal_url}  ${body}  &{headers}
+    ${get_json}=  Get From Dictionary    ${res.json()}  data
+    ${enMessage}=  Get From Dictionary    ${get_json}  enMessage
+    Should Be Equal As Strings    ${enMessage}   Sorry, we cannot verify your bank account. Please check and re-enter your bank account number, or contact your bank provider for confirmation
+
+    
