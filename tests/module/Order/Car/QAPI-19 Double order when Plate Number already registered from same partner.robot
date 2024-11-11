@@ -2,21 +2,17 @@
 Resource    ../../../../resources/lib/Common.robot
 Resource    ../../../../resources/biz/order/Car/SaveBinderRFQ.robot
 Resource    ../../../../resources/biz/order/Car/CreateBinderOrder.robot
-Resource    ../../../../resources/biz/Payment/Car/payment.robot
 
 
 *** Variables ***
 ${loginAccount}=  628123268989
 ${password}=  268989
-${engine_number}=  1fda431
+${plate_no}=  1fda431
 *** Test Cases ***
 Double order when Plate Number already registered from same partner Success
     Given By Phone Number Login FusePro Success  ${loginAccount}   ${password}
     Then Send SaveBinderOrder Post Request
     Then Send CreateBinderOrder Post Request
-    Then Send PaymentBillingCreate Post Request
-    Then Send OVO_Send Post Request
-
 *** Keywords ***
 By Phone Number Login FusePro Success
     [Arguments]    ${loginAccount}   ${password}
@@ -37,21 +33,4 @@ Send SaveBinderOrder Post Request
 Send CreateBinderOrder Post Request
     ${discountCommission}=  Set Variable     0
     ${discountSpecialBonusAmount}=  Set Variable     0
-    ${data}=  Send CarCreateBinderOrder Post Request - Engine Number Exist  ${tenantId}  ${token}  ${quoteNo}  ${rfqNo}  ${engine_number}
-    ${orderNo}=  Get From Dictionary    ${data}  orderNo
-    ${orderId}=  Get From Dictionary    ${data}  orderId
-    Set Test Variable    ${orderNo}  ${orderNo}
-    Set Test Variable    ${orderId}  ${orderId}
-    Log  data:${data}
-
-Send PaymentBillingCreate Post Request
-    ${data}=  payment.Send PaymentBillingCreate Post Request  ${orderNo}  ${orderId}  ${tenantId}  ${token}
-    ${securityCode}=  Get From Dictionary    ${data}  securityCode
-    ${paymentBillNo}=  Get From Dictionary    ${data}  paymentBillNo
-    Set Test Variable    ${securityCode}   ${securityCode}
-    Set Test Variable    ${paymentBillNo}   ${paymentBillNo}
-
-Send OVO_Send Post Request
-    ${data}=  OVO_sendPayment  ${orderId}  ${paymentBillNo}  ${securityCode}  ${token}  ${tenantId}  ${orderNo}
-    ${amount}=  Get From Dictionary   ${data}  amount
-    Set Global Variable    ${amount}  ${amount}
+    Send CarCreateBinderOrder Post Request - Plate Number Exist  ${tenantId}  ${token}  ${quoteNo}  ${rfqNo}  ${plate_no}
