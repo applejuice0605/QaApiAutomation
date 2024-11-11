@@ -7,7 +7,7 @@ from robot.api.deco import keyword
 
 class SignGenerator(object):
     @keyword
-    def generate_sign(options):
+    def generate_sign(self, options):
         sign = ""
         appkey = "fuseApp"
         app_secret = "fuseapp123456"
@@ -36,7 +36,9 @@ class SignGenerator(object):
                 sign = hashlib.md5((appkey + value + salt + ss).encode('utf-8')).hexdigest()
             except Exception:
                 pass
-        return sign.upper()
+        print(type(sign.upper()))
+
+        return str(sign.upper())
 
     def get_keyword_names(self):
         return ['generate_sign']
@@ -58,5 +60,5 @@ class SignGenerator(object):
 #         "address": "",
 #         "addressId": "1464"
 #     }}
-#     result = generate_sign(options)
+#     result = SignGenerator.generate_sign("", options)
 #     print(result)

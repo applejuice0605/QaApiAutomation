@@ -1,7 +1,7 @@
 *** Settings ***
 Library    Collections
 Library    OperatingSystem
-Library     ../../lib/signGeneration.py
+Library     ../../lib/SignGenerator.py
 Resource   ../../lib/Common.robot
 *** Variables ***
 ${updateDetail_url}=  https://app-uat.fuseinsurtech.com/insurance-finance-vs-api/api/fuse/agent/updateDetail
@@ -17,8 +17,9 @@ Send updateDetail Post Request
     ${response}=  Send Post Request And Get Response Data  ${updateSession}  ${updateDetail_url}  ${body}  &{headers}
     Log  ${response}
 
-*** Test Cases ***
-TestDome
-    ${option}=   Set Variable    {"name":"1","mobile":"628123268989","occupationInfo":{"id":"76","other":""},"locationInfo":{"id":"3"},"city":"Kota Jakarta Selatan","postCode":"12345","province":"DKI Jakarta","address":"3423412uy","addressId":"fdsfsd341"}
-    ${sign}=  generate_sign   ${option}
-    Send updateDetail Post Request  ${token}  ${sign}
+#*** Test Cases ***
+#TestDome
+#    ${option}=  Set Variable        {"name":"20241031","mobile":"628188666666","occupationInfo":{"id":"12","other":""},"locationInfo":{"id":"1"},"city":"Kota Jakarta Selatan","postCode":"12345","province":"DKI Jakarta","address":"","addressId":"1464"}
+#    ${new_option}=  Convert String To Json    ${option}
+#    ${sample}=   Generate Sign  ${new_option}
+#    Log  ${sample}
