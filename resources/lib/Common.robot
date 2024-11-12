@@ -10,7 +10,7 @@ Resource    ../api/Login/api_bylogin.robot
 Resource    ../api/Login/api_login.robot
 
 *** Variables ***
-
+${FmsLogin_Url}=  https://app-uat.fuseinsurtech.com/insurance-finance-vs-api/api/fuse/user/login
 
 *** Keywords ***
 
@@ -74,6 +74,14 @@ Get Token And TenantId And OpenId
     RETURN  ${data}
 
 
+Get Fms UserToken
+    [Arguments]    ${loginAccount}  ${password}
+    ${body}=  Set Variable    {"customPhone":"${loginAccount}","loginWay":"0","loginPassWord":"${password}","countryCode":"02130000000000","vision":"5.28.0.0-uat","appVersion":"5.28.0.0-uat","loginErrorTimes":"0","deviceId":"55d7da1cff5d1e5927d45d1bf0b622f4fbec117a5edb0d3944d437ab37211772","osVision":"12","systemVersion":"12","udid":"HUAWEIALN-AL00","phoneModel":"ALN-AL00","phoneType":"HUAWEI","deviceType":"Android"}
+    ${headers}=  Create Dictionary    language=en_US   version=5.28.0.0-uat  clientType=ANDROID  timeZone=7  appCode=IDP_FUSE_PRO
+    ${response}=  Send Post Request And Get Response Data  getFmsSession    ${FmsLogin_Url}  ${body}   &{headers}
+    ${get_json}=  Get From Dictionary    ${response.json()}  resultObj
+    ${userTokken}=  Get From Dictionary    ${get_json}  userTokken
+    RETURN  ${userTokken}
 
 
 
