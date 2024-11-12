@@ -11,13 +11,13 @@ ${password}=  268989
 *** Test Cases ***
 Edit Profile Success
     Given Login Fms And Get UserToken
-    Then Update Post Request
+    Then Input Update Profile
 
 *** Keywords ***
 Login Fms And Get UserToken
     ${usertoken}=  fms_login_app  ${loginAccount}  ${password}
     Set Test Variable    ${usertoken}  ${usertoken}
 
-Update Post Request
+Input Update Profile
     editProfie  ${loginAccount}  ${usertoken}
 
