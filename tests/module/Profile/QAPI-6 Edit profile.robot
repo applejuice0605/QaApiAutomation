@@ -10,14 +10,14 @@ ${password}=  268989
 
 *** Test Cases ***
 Edit Profile Success
-    Given Login Fms And Get UserToken
-    Then Input Update Profile
+    Given Login FusePro By Phone Number
+    Then Update Nickname And Address Fields In Edit Profile
 
 *** Keywords ***
-Login Fms And Get UserToken
+Login FusePro By Phone Number
     ${usertoken}=  fms_login_app  ${loginAccount}  ${password}
     Set Test Variable    ${usertoken}  ${usertoken}
 
-Input Update Profile
+Update Nickname And Address Fields In Edit Profile
     editProfie  ${loginAccount}  ${usertoken}
 

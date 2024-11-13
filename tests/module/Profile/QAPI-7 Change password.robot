@@ -10,15 +10,15 @@ ${password}=  666666
 
 *** Test Cases ***
 Edit Profile Success
-    Given Login Fms And Get UserToken
-    Then Input Old Password And New Password
+    Given Login FusePro By Phone Number
+    Then Change Password
 
 *** Keywords ***
-Login Fms And Get UserToken
+Login FusePro By Phone Number
     ${usertoken}=  fms_login_app  ${loginAccount}  ${password}
     Set Test Variable    ${usertoken}  ${usertoken}
 
-Input Old Password And New Password
+Change Password
     ${new_passWord}=   Set Variable    000000
     # 628188666666 目前的密码为 000000
     ${oldPassword}=  Set Variable   666666
