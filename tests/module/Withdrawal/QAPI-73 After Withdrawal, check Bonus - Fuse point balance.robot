@@ -9,6 +9,7 @@ ${password}=  268987
 ${withdrawalAmount}=  10000000
 ${CheckAccamount}=  8123268987
 
+
 *** Test Cases ***
 trigger withdrawal bonus 10000000 success
     Given By Phone Number Login FusePro Success

@@ -148,6 +148,7 @@ class EditProfile:
 
     def editProfie(self,accountid, usertoken):
         current_date = datetime.now().strftime('%Y%m%d')
+        random_address =  random.randint(10000, 99999)
         random_name = ''.join(random.choices( string.ascii_letters, k=6))
         # token = self.login_app('628188666666','666666')
         # usertoken = self.fms_login_app('628188666666','666666')
@@ -180,8 +181,8 @@ class EditProfile:
     "city": "Kota Jakarta Selatan",
     "postCode": "12345",
     "province": "DKI Jakarta",
-    "address": "",
-    "addressId": "1464"
+    "address": f"{random_address}",
+    "addressId": f"{random_address}"
 }
         options = {'data': edit_data}
         print(f'options是:{options}')

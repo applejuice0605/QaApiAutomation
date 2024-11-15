@@ -43,22 +43,22 @@ class SignGenerator(object):
     def get_keyword_names(self):
         return ['generate_sign']
 
-# if __name__ == '__main__':
-#     options = {'data': {
-#         "name": "20241031 edit${random_5num}",
-#         "mobile": "628188666666",
-#         "occupationInfo": {
-#             "id": "12",
-#             "other": ""
-#         },
-#         "locationInfo": {
-#             "id": "1"
-#         },
-#         "city": "Kota Jakarta Selatan",
-#         "postCode": "12345",
-#         "province": "DKI Jakarta",
-#         "address": "",
-#         "addressId": "1464"
-#     }}
-#     result = SignGenerator.generate_sign("", options)
-#     print(result)
+if __name__ == '__main__':
+    options = {'data': {
+    "name": "Partner-1",
+    "mobile": "628123268989",
+    "occupationInfo": {
+        "id": "76",
+        "other": ""
+    },
+    "locationInfo": {
+        "id": "3"
+    },
+    "city": "Kota Jakarta Selatan",
+    "postCode": "12345",
+    "province": "DKI Jakarta",
+    "address": "3423412uy",
+    "addressId": "fdsfsd341"
+}}
+    result = SignGenerator.generate_sign("", options)
+
