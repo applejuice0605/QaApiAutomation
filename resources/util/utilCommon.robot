@@ -2,6 +2,7 @@
 Library    DateTime
 Library    Collections
 Library    JSONLibrary
+Library    String
 
 
 *** Keywords ***
@@ -106,5 +107,8 @@ Generate Random Number
     END
 #    ${type}    Evaluate    type(${identityNo})
     RETURN    ${numStr}
+
+finally Log the OrderNo ${orderNo}
+    Log    ${orderNo}
 
 

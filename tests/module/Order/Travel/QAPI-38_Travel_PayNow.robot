@@ -6,14 +6,18 @@ Library    XML
 Library    SeleniumLibrary
 Library    DateTime
 Library    JSONLibrary
+Library    json
 
 Resource    ../../../../resources/biz/Login/login.robot
 Resource    ../../../../resources/api/order/saveBinderRfqOrder.robot
 Resource    ../../../../resources/api/order/createBinderOrder.robot
+
 Resource    ../../../../resources/util/utilCommon.robot
+Resource    ../../../../resources/util/assertUtil.robot
+Resource    ../../../../resources/resource.robot
 #Setup Test
-#Suite Setup     Setup Data Testing
-#Suite Teardown    Delete All Sessions
+Test Setup    Setup Env Variable
+Test Teardown    Delete All Sessions
 
 
 *** Variables ***
@@ -22,17 +26,16 @@ ${BODY_FILE_PATH}    resources/data/property/Travel_PlaceOrderData.json
 
 *** Test Cases ***
 Travel PayNow
-    [Tags]    uatAndprod
+    [Tags]    uat   prod    order-travel
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API
-    Then the status code should be 200
+    Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value quoteNo and rfqNo
     Then I send the place order request to createrfqorder API
-    Then the status code should be 200
+    Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value orderNo and orderId
-    Then finally Log the OrderNo
-
+    Then finally Log the OrderNo ${orderNo}
 
 
 
@@ -42,15 +45,14 @@ Setup Data Testing
     Set Test Variable    ${AP_POSITIVE_DATA}
 
 I have a whitelist account and have logined
-    Set Test Variable    ${account}    628123268987
-    Set Test Variable    ${password}    268987
-    ${token}=   login.Login to Application using mobile
+    ${token}=   login.Login to Application using mobile     ${env_vars}[FUSE_ACCOUNT]    ${env_vars}[FUSE_PASSWORD]
     Set Test Variable    ${token}    ${token}
-    Setup Data Testing
+
 
 I send the quotation request to savebinderrfq API
     #1. getJsonBody
     ${jsonBody}     Set Variable    ${AP_POSITIVE_DATA["quotationBody"]}
+    Log     ${jsonBody}
 
     #2. updateJsonBody
     ${effectiveTime}=    utilCommon.Get Effective Time
@@ -61,6 +63,9 @@ I send the quotation request to savebinderrfq API
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quotationDataJson.riskGroupInfo.travel.toDate    ${expireTime}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quotationDataJson.insuranceInfo.effectiveDate    ${effectiveTime}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quotationDataJson.insuranceInfo.expiredDate    ${expireTime}
+
+
+    Log     ${jsonBody}
 
     #3. convert jsonBody to string
     ${strBody}  Convert Json To String    ${jsonBody}
@@ -115,11 +120,3 @@ The response should contain the value orderNo and orderId
     ${orderId}  Get From List    ${jsonResult}[data][orderIdLs]    0
     Set Test Variable    ${orderId}    ${orderIds[0]}
 
-
-the status code should be 200
-    Log    ${jsonResult}
-    Log    ${jsonResult}[code]
-    Should Be Equal As Numbers    ${jsonResult}[code]    200
-
-finally Log the OrderNo
-    Log    ${orderNo}

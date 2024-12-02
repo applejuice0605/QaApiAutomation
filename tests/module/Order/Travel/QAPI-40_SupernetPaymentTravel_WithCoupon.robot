@@ -17,38 +17,42 @@ Resource    ../../../../resources/api/payment/getChannelFee.robot
 Resource    ../../../../resources/api/order/getAvailableCoupon.robot
 
 Resource    ../../../../resources/util/utilCommon.robot
+Resource    ../../../../resources/util/assertUtil.robot
+Resource    ../../../../resources/resource.robot
 #Setup Test
-#Suite Setup     Setup Data Testing
-Suite Teardown    Delete All Sessions
+Test Setup    Setup Env Variable
+Test Teardown    Delete All Sessions
 
 
 *** Variables ***
 ${BODY_FILE_PATH}    resources/data/property/Travel_PlaceOrderData.json
+${paymentScheme}    3
+${payerType}    2
 
 
 *** Test Cases ***
 Travel Supernet Payment With Coupon
-    [Tags]    uatAndprod
+    [Tags]    uat   prod    order-travel    coupon
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API
-    Then the status code should be 200
+    Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value quoteNo and rfqNo
     Then I send request to getAvailableCoupon API
-    Then the status code should be 200
+    Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the available coupon list
     Then I send the place order request to createrfqorder API
-    Then the status code should be 200
+    Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value orderNo and orderId
     Then I continue to pay the order and send request the create paymentBilling API
-    Then the status code should be 200
+    Then The status code should be 200    ${jsonResult}[code]
     And the response should contain securityCode
     Then I choose partner pay & Supernet payment & a payment method amd send request to /slip/process API
-    Then the status code should be 200
+    Then The status code should be 200    ${jsonResult}[code]
     And the response should contain lessAmount
     Then I click continue and send request to getChannelFee API
-    Then the status code should be 200
-    Then finally Log the OrderNo
+    Then The status code should be 200    ${jsonResult}[code]
+    Then finally Log the OrderNo ${orderNo}
 
 
 
@@ -58,11 +62,8 @@ Setup Data Testing
     Set Test Variable    ${AP_POSITIVE_DATA}
 
 I have a whitelist account and have logined
-    Set Test Variable    ${account}    628123268987
-    Set Test Variable    ${password}    268987
-    ${token}=   login.Login to Application using mobile
-    Set Test Variable    ${token}    ${token}
-    Setup Data Testing
+    ${token}=   login.Login to Application using mobile     ${env_vars}[FUSE_ACCOUNT]    ${env_vars}[FUSE_PASSWORD]
+    Set Test Variable    ${token}
 
 I send the quotation request to savebinderrfq API
     #1. getJsonBody
@@ -170,7 +171,7 @@ the response should contain securityCode
 
 
 I choose partner pay & Supernet payment & a payment method amd send request to /slip/process API
-    ${response}    slip_process.Send Request And Get Response Data    token=${token}    orderId=${orderId}    securityCode=${securityCode}  paymentScheme=3    payerType=2
+    ${response}    slip_process.Send Request And Get Response Data    token=${token}    orderId=${orderId}    securityCode=${securityCode}  paymentScheme=${paymentScheme}    payerType=${payerType}
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
 
@@ -181,17 +182,3 @@ the response should contain lessAmount
 
 I click continue and send request to getChannelFee API
     ${response}    getChannelFee.Send Request And Get Response Data    token=${token}    securityCode=${securityCode}
-
-
-
-
-
-the status code should be 200
-    Log    ${jsonResult}
-    Log    ${jsonResult}[code]
-    Should Be Equal As Numbers    ${jsonResult}[code]    200
-
-finally Log the OrderNo
-    Log    ${orderNo}
-
-

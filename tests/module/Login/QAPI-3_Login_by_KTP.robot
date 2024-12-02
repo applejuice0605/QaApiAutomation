@@ -7,9 +7,11 @@ Library    XML
 Resource    ../../../resources/api/Login/fuse_user_login.robot
 Resource    ../../../resources/api/Login/api_bylogin.robot
 Resource    ../../../resources/api/Login/api_login.robot
+Resource    ../../../resources/resource.robot
 
 #Setup Test
-Suite Teardown    Delete All Sessions
+Test Setup    Setup Env Variable
+Test Teardown    Delete All Sessions
 
 *** Variables ***
 ${loginWay}    4
@@ -18,7 +20,7 @@ ${loginWay}    4
 
 *** Test Cases ***
 Login Success by KTP
-    [Tags]    login
+    [Tags]    uatAndprod
     Given I have a valid KTP and password
     When I send a POST request to the fuse_user_login API
     Then the response should contain the user's loginAccount
@@ -32,9 +34,8 @@ Login Success by KTP
 
 *** Keywords ***
 I have a valid KTP and password
-    # should get data from datajsonfile
-    Set Test Variable    ${ktpNo}    8525860906938569
-    Set Test Variable    ${password}    268987
+    Set Test Variable    ${ktpNo}    ${env_vars}[KTP_NO]
+    Set Test Variable    ${password}    ${env_vars}[FUSE_PASSWORD]
 
 I send a POST request to the fuse_user_login API
     ${response}    fuse_user_login.Send Request And Get Response Data    ${password}    ${loginWay}    ktpNo=${ktpNo}
@@ -58,8 +59,7 @@ The response should contain the user's openid and tenantId
     Log    ${jsonResult}
     Log    ${jsonResult}[data][0][openId]
     Log    ${jsonResult}[data][0][tenantId]
-    #   改进，应该根据国家注入租户号码
-    Should Be Equal As Strings    ${jsonResult}[data][0][tenantId]    1000662
+    Should Be Equal As Numbers    ${jsonResult}[data][0][tenantId]    ${env_vars}[TENANT_ID]
     Should Not Be Equal As Strings    ${jsonResult}[data][0][openId]    null
     Set Test Variable    ${openId}  ${jsonResult}[data][0][openId]
     Set Test Variable    ${tenantId}  ${jsonResult}[data][0][tenantId]

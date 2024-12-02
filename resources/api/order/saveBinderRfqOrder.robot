@@ -11,12 +11,13 @@ Library    RequestsLibrary
 Library    JSONLibrary
 
 Resource    ../../util/httpCommon.robot
+Variables   ../../varfile_defvar.py
 
 *** Keywords ***
 Send Request And Get Response Data
     [Arguments]    ${token}   ${data}
     # 1. 准备请求数据：请求路径、请求头、请求数据
-    ${base_url}=   Set Variable     https://ptr-uat.fuse.co.id
+    ${base_url}=   Set Variable     https://ptr-${env}.fuse.co.id
     ${path}=   Set Variable     /api/rfq/order/saveBinderRfqOrder
     ${headers}=    Create Dictionary    Content-Type=application/json    clientType=ANDROID    appCode=IDP_FUSE_PRO     fusetoken=${token}
     ${payload}=    Set Variable    ${data}

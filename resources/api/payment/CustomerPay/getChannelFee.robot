@@ -12,6 +12,8 @@ Library    JSONLibrary
 
 Resource    ../../../util/httpCommon.robot
 
+
+
 *** Keywords ***
 Send Request And Get Response Data
     [Arguments]    ${token}   ${securityCode}   ${bank}=BCA

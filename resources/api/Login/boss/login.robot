@@ -12,11 +12,13 @@ Library    RequestsLibrary
 Library    JSONLibrary
 Resource    ../../../util/httpCommon.robot
 
+Variables   ../../../varfile_defvar.py
+
 *** Keywords ***
 # 准备请求数据 not used now
 Set Request Data
     [Arguments]    ${loginAccount}    ${password}   ${openId}   ${tenantId}
-    Set Test Variable   ${base_url}     https://sso-uat.fuse.co.id
+    Set Test Variable   ${base_url}     https://sso-${env}.fuse.co.id
     Set Test Variable    ${path}     /api/sso/app/user/login
     ${header}=    Create Dictionary    Content-Type=application/json;charset=UTF-8    appCode=IDP_BOSS
     Set Test Variable    ${headers}     ${header}

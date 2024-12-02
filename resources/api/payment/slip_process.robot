@@ -19,12 +19,12 @@ Resource    ../../util/httpCommon.robot
 
 *** Keywords ***
 Send Request And Get Response Data
-    [Arguments]    ${token}   ${paymentScheme}    ${payerType}    ${orderId}    ${securityCode}     ${bonusDeduction}=0    ${pointsDeduction}=0
+    [Arguments]    ${token}   ${paymentScheme}    ${payerType}    ${orderId}    ${securityCode}     ${bonusDeduction}=0    ${pointsDeduction}=0     ${methodCode}=9204
     # 1. 准备请求数据：请求路径、请求头、请求数据
     ${base_url}=   Set Variable     https://cashier-uat.fuse.co.id
     ${path}=   Set Variable     api/cashier/partner/payment/slip/process
     ${headers}=    Create Dictionary    Content-Type=application/json    clientType=ANDROID    appCode=IDP_FUSE_PRO    fusetoken=${token}
-    ${payload}=    Set Variable     {"paymentScheme": ${paymentScheme},"payerType": ${payerType},"bonusDeduction": ${bonusDeduction},"orderId": "${orderId}","securityCode": "${securityCode}","selectType": 2,"pointsDeduction": ${pointsDeduction},"methodCode": "9203"}
+    ${payload}=    Set Variable     {"paymentScheme": ${paymentScheme},"payerType": ${payerType},"bonusDeduction": ${bonusDeduction},"orderId": "${orderId}","securityCode": "${securityCode}","selectType": 2,"pointsDeduction": ${pointsDeduction},"methodCode": ${methodCode}}
 
     # 2. 发送请求
     ${response}=    httpCommon.Send Post Request And Get Response Data    ${base_url}    ${path}    ${headers}    ${payload}

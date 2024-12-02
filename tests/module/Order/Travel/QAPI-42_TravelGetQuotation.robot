@@ -12,8 +12,11 @@ Resource    ../../../../resources/api/order/createBinderOrder.robot
 Resource    ../../../../resources/api/order/generateQuotePDF.robot
 
 Resource    ../../../../resources/util/utilCommon.robot
+Resource    ../../../../resources/util/assertUtil.robot
+Resource    ../../../../resources/resource.robot
 #Setup Test
-Suite Teardown    Delete All Sessions
+Test Setup    Setup Env Variable
+Test Teardown    Delete All Sessions
 
 *** Variables ***
 ${BODY_FILE_PATH}    resources/data/property/Travel_PlaceOrderData.json
@@ -21,14 +24,14 @@ ${BODY_FILE_PATH}    resources/data/property/Travel_PlaceOrderData.json
 
 *** Test Cases ***
 Travel Get Quotation
-    [Tags]    uatAndprod
+    [Tags]    uat   prod    quotation-travel
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API
-    Then The status code should be 200
+    Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value quoteNo and rfqNo
     Then I send the go quotation pdf request to generateQuotePDF API
-    Then The status code should be 200
+    Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value of pdfFileUrl
 
 
@@ -40,10 +43,8 @@ Setup Data Testing
 
 
 I have a whitelist account and have logined
-    Set Test Variable    ${account}    628123268987
-    Set Test Variable    ${password}    268987
-    ${token}=   login.Login to Application using mobile
-    Set Test Variable    ${token}    ${token}
+    ${token}=   login.Login to Application using mobile     ${env_vars}[FUSE_ACCOUNT]    ${env_vars}[FUSE_PASSWORD]
+    Set Test Variable    ${token}
 
 
 I send the quotation request to savebinderrfq API
@@ -73,8 +74,4 @@ the response should contain the value of pdfFileUrl
     Should Contain    ${jsonResult}[data]   pdfFileUrl
     Log     ${jsonResult}[data][pdfFileUrl]
 
-The status code should be 200
-    Log    ${jsonResult}
-    Log    ${jsonResult}[code]
-    Should Be Equal As Numbers    ${jsonResult}[code]    200
 

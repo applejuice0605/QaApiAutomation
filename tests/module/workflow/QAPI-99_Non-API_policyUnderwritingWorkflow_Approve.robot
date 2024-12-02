@@ -16,15 +16,19 @@ Resource    ../../../resources/api/underwriting/underwritingV2_list_todo.robot
 Resource    ../../../resources/api/underwriting/approval.robot
 
 Resource    ../../../resources/util/utilCommon.robot
+Resource    ../../../resources/util/assertUtil.robot
+Resource    ../../../resources/resource.robot
 
 #Setup Test
-#Suite Setup     Setup Data Testing
-#Suite Teardown    Finally Log the orderNo    ${orderNo}
+Test Setup    Setup Env Variable
+Test Teardown    Delete All Sessions
+
 
 
 *** Variables ***
 ${BODY_FILE_PATH}    resources/data/ApprovalDTO_workflow.json
-${taskName}     Order Review Task
+#${taskName1}     UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE
+#${taskName2}     UNDERWRITING_OFFLINE_EXISTSASSIGNEE
 
 *** Test Cases ***
 Non-API_policyUnderwritingWorkflow_Approve
@@ -32,27 +36,27 @@ Non-API_policyUnderwritingWorkflow_Approve
     Given Setup Data Testing
     When I have an underwriting order and have logined to Boss
     Then [Order Review Task] I send request to underwritingV2/list/manager API
-    Then the status code should be 200
+    Then The status code should be 200    ${jsonResult}[code]
     And the response should contain taskId
     Then I send request to assigneToMe API
-    Then the status code should be 200
+    Then The status code should be 200    ${jsonResult}[code]
     Then I send request to underwritingV2/list/todo API
-    Then the status code should be 200
+    Then The status code should be 200    ${jsonResult}[code]
     And the response should contain taskId
     Then [Order Review Task] I send request to approve API
 
 
     Then [toOffline Task] I send request to underwritingV2/list/manager API
-    Then the status code should be 200
+    Then The status code should be 200    ${jsonResult}[code]
     And the response should contain taskId
     Then I send request to assigneToMe API
-    Then the status code should be 200
+    Then The status code should be 200    ${jsonResult}[code]
     Then I send request to underwritingV2/list/todo API
-    Then the status code should be 200
+    Then The status code should be 200    ${jsonResult}[code]
     And the response should contain taskId
     Then [toOffline Task] I send request to approve API
 
-    Then finally Log the OrderNo
+    Then finally Log the OrderNo ${orderNo}
 
 
 
@@ -79,9 +83,8 @@ I have an underwriting order and have logined to Boss
     Sleep    10s
 
 
-
 [Order Review Task] I send request to underwritingV2/list/manager API
-    ${response}    underwritingV2_list_manager.Send Request And Get Response Data    ${bossToken}    ${orderNo}
+    ${response}    underwritingV2_list_manager.Send Request And Get Response Data    ${bossToken}    ${orderNo}     existsAssignee=${env_vars}[UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE]
 
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
@@ -90,7 +93,7 @@ I have an underwriting order and have logined to Boss
 [toOffline Task] I send request to underwritingV2/list/manager API
     Sleep    10s
 
-    ${response}    underwritingV2_list_manager.Send Request And Get Response Data    ${bossToken}    ${orderNo}     existsAssignee=true
+    ${response}    underwritingV2_list_manager.Send Request And Get Response Data    ${bossToken}    ${orderNo}     existsAssignee=${env_vars}[UNDERWRITING_OFFLINE_EXISTSASSIGNEE]
 
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
@@ -189,36 +192,6 @@ I send request to assigneToMe API
 
     ${response}    assignToMe.Send Request And Get Response Data    ${bossToken}    ${taskIds}
     Set Test Variable    ${jsonResult}    ${response.json()}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-the status code should be 200
-    Log    ${jsonResult}
-    Should Be Equal As Numbers    ${jsonResult}[code]    200
-
-finally Log the OrderNo
-    Log    ${orderNo}
 
 
 
