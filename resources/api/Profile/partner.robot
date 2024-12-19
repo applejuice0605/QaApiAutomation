@@ -4,7 +4,7 @@ Library    RequestsLibrary
 Resource    ../../util/httpCommon.robot
 
 *** Variables ***
-# 优化：根据环境加载域名sit/uat/prod
+# 优化：根据环境加载域名sit/uat/pre
 ${app_baseurl}  https://app-uat.fuseinsurtech.com/
 
 

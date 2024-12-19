@@ -7,9 +7,8 @@ Library    SeleniumLibrary
 Library    DateTime
 
 Resource    ../../../../resources/biz/Login/login.robot
-Resource    ../../../../resources/api/order/saveBinderRfqOrder.robot
-Resource    ../../../../resources/api/order/createBinderOrder.robot
-Resource    ../../../../resources/api/order/generateQuotePDF.robot
+Resource    ../../../../resources/biz/order/property/property_order.robot
+Resource    ../../../../resources/biz/order/goGuotation.robot
 
 Resource    ../../../../resources/util/utilCommon.robot
 Resource    ../../../../resources/util/assertUtil.robot
@@ -20,24 +19,29 @@ Test Setup    Setup Env Variable
 Test Teardown    Delete All Sessions
 
 *** Variables ***
-${BODY_FILE_PATH}    resources/data/property/Property_PlaceOrderData.json
+${BODY_FILE_PATH}    Property_PlaceOrderData.json
 
 *** Test Cases ***
 Property Get Quotation
-    [Tags]    uat   prod    quotation-travel
+    [Tags]    uat   prod    quotation-property
     Given Setup Data Testing
     When I have a whitelist account and have logined
-    Then I send the quotation request to savebinderrfq API
-    Then assertUtil.The status code should be 200    ${jsonResult}[code]
-    And the response should contain the value quoteNo and rfqNo
-    Then I send the go quotation pdf request to generateQuotePDF API
-    Then assertUtil.The status code should be 200    ${jsonResult}[code]
+    Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}
+    Then The status code should be 200    ${jsonResult}[code]
+    And the response should contain the value quoteNo and rfqNo     ${jsonResult}
+    Then I send the go quotation pdf request to generateQuotePDF API    ${token}    ${rfqNo}    ${quoteNo}
+    Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value of pdfFileUrl
 
 
 
 *** Keywords ***
 Setup Data Testing
+    Log    ${env}
+    Log    ${BODY_FILE_PATH}
+    Log    ${env_vars}[DATA_BASEURL]
+    ${BODY_FILE_PATH}    Set Variable    ${env_vars}[DATA_BASEURL]${BODY_FILE_PATH}
+    Log    ${BODY_FILE_PATH}
     ${AP_POSITIVE_DATA}=    Load JSON From File    ${BODY_FILE_PATH}
     Set Test Variable    ${AP_POSITIVE_DATA}
 
@@ -45,38 +49,5 @@ Setup Data Testing
 I have a whitelist account and have logined
     ${token}=   login.Login to Application using mobile     ${env_vars}[FUSE_ACCOUNT]    ${env_vars}[FUSE_PASSWORD]
     Set Test Variable    ${token}
-
-
-I send the quotation request to savebinderrfq API
-    Log     ${AP_POSITIVE_DATA}
-    ${strBody}  Convert Json To String    ${AP_POSITIVE_DATA["quotationBody"]}
-    ${response}    saveBinderRfqOrder.Send Request And Get Response Data    ${token}    ${strBody}
-
-    Log    ${response}
-    Set Test Variable    ${jsonResult}    ${response.json()}
-
-
-The response should contain the value quoteNo and rfqNo
-    Should Contain    ${jsonResult}[data]   rfqNo
-    Should Contain    ${jsonResult}[data]   quoteNo
-    Set Test Variable    ${rfqNo}    ${jsonResult}[data][rfqNo]
-    Set Test Variable    ${quoteNo}    ${jsonResult}[data][quoteNo]
-
-
-I send the go quotation pdf request to generateQuotePDF API
-    Sleep    3s
-    ${response}    generateQuotePDF.Send Request And Get Response Data    ${token}    ${rfqNo}    ${quoteNo}
-
-    Set Test Variable    ${jsonResult}    ${response.json()}
-
-
-the response should contain the value of pdfFileUrl
-    Should Contain    ${jsonResult}[data]   pdfFileUrl
-    Log     ${jsonResult}[data][pdfFileUrl]
-
-The status code should be 200
-    Log    ${jsonResult}
-    Log    ${jsonResult}[code]
-    Should Be Equal As Numbers    ${jsonResult}[code]    200
 
 

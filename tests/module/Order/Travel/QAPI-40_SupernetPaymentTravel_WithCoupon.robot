@@ -1,4 +1,4 @@
-
+// Todo: 根据产品信息自动获取对应原料产品code
 *** Settings ***
 Library    RequestsLibrary
 Library    Collections
@@ -28,6 +28,7 @@ Test Teardown    Delete All Sessions
 ${BODY_FILE_PATH}    resources/data/property/Travel_PlaceOrderData.json
 ${paymentScheme}    3
 ${payerType}    2
+${rawProductCode}   R_00067
 
 
 *** Test Cases ***
@@ -58,6 +59,11 @@ Travel Supernet Payment With Coupon
 
 *** Keywords ***
 Setup Data Testing
+    Log    ${env}
+    Log    ${BODY_FILE_PATH}
+    Log    ${env_vars}[DATA_BASEURL]
+    ${BODY_FILE_PATH}    Set Variable    ${env_vars}[DATA_BASEURL]${BODY_FILE_PATH}
+    Log    ${BODY_FILE_PATH}
     ${AP_POSITIVE_DATA}=    Load JSON From File    ${BODY_FILE_PATH}
     Set Test Variable    ${AP_POSITIVE_DATA}
 
@@ -109,7 +115,7 @@ I send request to getAvailableCoupon API
 
 
 the response should contain the available coupon list
-    ${couponDTO}=    utilCommon.Get CouponId by ProductCode    ${jsonResult}[data]    R_00061
+    ${couponDTO}=    utilCommon.Get CouponId by ProductCode    ${jsonResult}[data]    ${rawProductCode}
 #    ${couponUseInfo}    Create List     ${couponDTO}
 #    ${couponUseInfo}    Convert To String    ${couponUseInfo}
 #    ${couponUseInfo}    Replace String    ${couponUseInfo}    [    ${EMPTY}
@@ -126,10 +132,10 @@ I send the place order request to createrfqorder API
     Log     ${identityNo}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.rfqNo    ${rfqNo}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quoteNo    ${quoteNo}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quotationDataJson.riskGroupInfo.travel.fromDate    ${effectiveTime}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quotationDataJson.riskGroupInfo.travel.toDate    ${expireTime}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quotationDataJson.insuranceInfo.effectiveDate    ${effectiveTime}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quotationDataJson.insuranceInfo.expiredDate    ${expireTime}
+    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.riskGroupInfo.travel.fromDate    ${effectiveTime}
+    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.riskGroupInfo.travel.toDate    ${expireTime}
+    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.insuranceInfo.effectiveDate    ${effectiveTime}
+    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.insuranceInfo.expiredDate    ${expireTime}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.insuredInfo[0].identityNo    ${identityNo}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.couponUseInfo    ${couponUseInfo}
 

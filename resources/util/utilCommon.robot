@@ -8,7 +8,10 @@ Library    String
 *** Keywords ***
 Get Effective Time
     # 获取当前时间
-    ${effective}   Get Current Date  result_format=%Y-%m-%d %H:%M:%S time_zone=GMT+7
+    ${effective}   Get Current Date  result_format=%Y-%m-%d %H:%M:%S
+    ${effective}    Add Time To Date    ${effective}    3 days
+#    ${effective}    Evaluate    datetime.datetime(${now.year}, ${now.month}, ${now.day}, 1, 0, 0)    datetime
+
     Log    ${effective}
     # 转换为原始时间戳
     ${effective_timestamp}    Convert Date    ${effective}    epoch
@@ -19,8 +22,10 @@ Get Effective Time
     RETURN    ${effective_timestamp_ms}
 
 Get Expire Time
+#    todo:增加${effective}参数
     [Arguments]    ${add_days}
-    ${effective}   Get Current Date  result_format=%Y-%m-%d %H:%M:%S time_zone=GMT+7
+    ${effective}   Get Current Date  result_format=%Y-%m-%d %H:%M:%S time_zone=GMT
+    ${effective}    Add Time To Date    ${effective}    3 days
     ${expireTime}    Add Time To Date    ${effective}    365 days
     Log    ${expireTime}
     # 转换为原始时间戳

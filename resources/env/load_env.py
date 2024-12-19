@@ -13,12 +13,13 @@ def load_environment():
 
     if env == 'uat':
         load_dotenv('resources/env/uat.env')
-    elif env == 'prod':
-        load_dotenv('resources/env/prod.env')
+    elif env == 'pre':
+        load_dotenv('resources/env/pre.env')
     else:
         raise ValueError(f"Unknown environment: {env}")
 
     return {
+        "ENV": env,
         "FUSE_ACCOUNT": os.getenv("FUSE_ACCOUNT"),
         "FUSE_PASSWORD": os.getenv("FUSE_PASSWORD"),
         "TENANT_ID": os.getenv("TENANT_ID"),
@@ -27,7 +28,8 @@ def load_environment():
         "BOSS_ACCOUNT": os.getenv("BOSS_ACCOUNT"),
         "BOSS_PASSWORD": os.getenv("BOSS_PASSWORD"),
         "UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE": os.getenv("UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"),
-        "UNDERWRITING_OFFLINE_EXISTSASSIGNEE": os.getenv("UNDERWRITING_OFFLINE_EXISTSASSIGNEE")
+        "UNDERWRITING_OFFLINE_EXISTSASSIGNEE": os.getenv("UNDERWRITING_OFFLINE_EXISTSASSIGNEE"),
+        "DATA_BASEURL": 'resources/data/' + env + '/'
     }
 
 
@@ -39,8 +41,8 @@ def change_env(key, value):
     # env = os.getenv("ENV", "UAT")  # Default to UAT if ENV is not set
     if env == 'uat':
         load_dotenv('resources/env/uat/.env')
-    elif env == 'prod':
-        load_dotenv('resources/env/prod/.env')
+    elif env == 'pre':
+        load_dotenv('resources/env/pre/.env')
     else:
         raise ValueError(f"Unknown environment: {env}")
     key.upper()

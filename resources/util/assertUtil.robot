@@ -1,3 +1,6 @@
+*** Settings ***
+Library    Collections
+
 
 *** Keywords ***
 The status code should be 200
@@ -24,5 +27,32 @@ The response data should contain the keyword ${keyword}
 Finally Log the orderNo
     [Arguments]    ${orderNo}
     Log    ${orderNo}
+
+The response should contain the value quoteNo and rfqNo
+    [Arguments]    ${jsonResult}
+    Should Contain    ${jsonResult}[data]   rfqNo
+    Should Contain    ${jsonResult}[data]   quoteNo
+    Set Test Variable    ${rfqNo}    ${jsonResult}[data][rfqNo]
+    Set Test Variable    ${quoteNo}    ${jsonResult}[data][quoteNo]
+
+
+The response should contain the value orderNo and orderId
+    [Arguments]    ${jsonResult}
+    Should Contain    ${jsonResult}[data]   orderNo
+    Should Contain    ${jsonResult}[data]   orderIdLs
+    Set Test Variable    ${orderNo}    ${jsonResult}[data][orderNo]
+    ${orderIds}  Create List    ${jsonResult}[data][orderIdLs]
+    ${orderId}  Get From List    ${jsonResult}[data][orderIdLs]    0
+    Set Test Variable    ${orderId}    ${orderIds[0]}
+
+
+the response should contain securityCode
+    [Arguments]     ${jsonResult}
+    Should Contain    ${jsonResult}[data]   securityCode
+    Set Test Variable    ${securityCode}    ${jsonResult}[data][securityCode]
+
+the response should contain lessAmount
+    [Arguments]     ${jsonResult}
+    Should Contain    ${jsonResult}[data]   lessAmount
 
 

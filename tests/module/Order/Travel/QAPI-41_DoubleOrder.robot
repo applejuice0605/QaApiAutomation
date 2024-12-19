@@ -39,6 +39,11 @@ Travel Double Order
 
 *** Keywords ***
 Setup Data Testing
+    Log    ${env}
+    Log    ${BODY_FILE_PATH}
+    Log    ${env_vars}[DATA_BASEURL]
+    ${BODY_FILE_PATH}    Set Variable    ${env_vars}[DATA_BASEURL]${BODY_FILE_PATH}
+    Log    ${BODY_FILE_PATH}
     ${AP_POSITIVE_DATA}=    Load JSON From File    ${BODY_FILE_PATH}
     Set Test Variable    ${AP_POSITIVE_DATA}
 

@@ -28,6 +28,9 @@ Test Teardown    Delete All Sessions
 ${BODY_FILE_PATH}    resources/data/property/Travel_PlaceOrderData.json
 ${paymentScheme}    2
 ${payerType}    2
+${rawProductCode}   R_00067
+
+
 
 *** Test Cases ***
 Travel NetPayment With Coupon
@@ -43,6 +46,7 @@ Travel NetPayment With Coupon
     Then I send the place order request to createrfqorder API
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value orderNo and orderId
+
     Then I continue to pay the order and send request the create paymentBilling API
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain securityCode
@@ -57,6 +61,11 @@ Travel NetPayment With Coupon
 
 *** Keywords ***
 Setup Data Testing
+    Log    ${env}
+    Log    ${BODY_FILE_PATH}
+    Log    ${env_vars}[DATA_BASEURL]
+    ${BODY_FILE_PATH}    Set Variable    ${env_vars}[DATA_BASEURL]${BODY_FILE_PATH}
+    Log    ${BODY_FILE_PATH}
     ${AP_POSITIVE_DATA}=    Load JSON From File    ${BODY_FILE_PATH}
     Set Test Variable    ${AP_POSITIVE_DATA}
 
@@ -109,7 +118,7 @@ I send request to getAvailableCoupon API
 
 
 the response should contain the available coupon list
-    ${couponDTO}=    utilCommon.Get CouponId by ProductCode    ${jsonResult}[data]    R_00061
+    ${couponDTO}=    utilCommon.Get CouponId by ProductCode    ${jsonResult}[data]    ${rawProductCode}
 #    ${couponUseInfo}    Create List     ${couponDTO}
 #    ${couponUseInfo}    Convert To String    ${couponUseInfo}
 #    ${couponUseInfo}    Replace String    ${couponUseInfo}    [    ${EMPTY}
@@ -124,12 +133,14 @@ I send the place order request to createrfqorder API
     Log     ${couponUseInfo}
 
     Log     ${identityNo}
+    Log     ${effectiveTime}
+    Log     ${expireTime}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.rfqNo    ${rfqNo}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quoteNo    ${quoteNo}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quotationDataJson.riskGroupInfo.travel.fromDate    ${effectiveTime}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quotationDataJson.riskGroupInfo.travel.toDate    ${expireTime}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quotationDataJson.insuranceInfo.effectiveDate    ${effectiveTime}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quotationDataJson.insuranceInfo.expiredDate    ${expireTime}
+    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.riskGroupInfo.travel.fromDate    ${effectiveTime}
+    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.riskGroupInfo.travel.toDate    ${expireTime}
+    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.insuranceInfo.effectiveDate    ${effectiveTime}
+    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.insuranceInfo.expiredDate    ${expireTime}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.insuredInfo[0].identityNo    ${identityNo}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.couponUseInfo    ${couponUseInfo}
 

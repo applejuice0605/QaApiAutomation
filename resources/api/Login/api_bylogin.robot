@@ -21,7 +21,7 @@ Send Request And Get Response Data
     [Arguments]    ${loginAccount}    ${password}
 
     # 1. 准备请求数据：请求路径、请求头、请求数据
-        # 优化：根据环境加载域名sit/uat/prod
+        # 优化：根据环境加载域名sit/uat/pre
     ${base_url}=   Set Variable     https://sso-${env}.fuse.co.id
     ${path}=   Set Variable     /api/sso/h5/user/tenants/byLogin
         # 优化：根据平台加载headers:boss/fusepro
