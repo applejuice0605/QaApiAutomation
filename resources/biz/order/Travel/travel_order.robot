@@ -53,11 +53,13 @@ I send the quotation request to savebinderrfq API
 
 
 I send the place order request to createrfqorder API
-    [Arguments]     ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}     ${effectiveTime}     ${expireTime}
+    [Arguments]     ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}  ${discountFormCommission}=0    ${discountFromPartnerSpecialBonusAmount}=0      ${identityNo}='0'    ${couponUseInfo}=[]
     #1. getJsonBody
     ${jsonBody}     Set Variable    ${AP_POSITIVE_DATA["placeOrderBody"]}
+
     #2. updateJsonBody
-    ${identityNo}=    utilCommon.Generate Random identityNo
+    ${newidentityNo}=     utilCommon.Generate Random identityNo
+    Run Keyword If    ${identityNo} == '0'   Set Test Variable    ${identityNo}     ${newidentityNo}
 
     Log     ${identityNo}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.rfqNo    ${rfqNo}
@@ -67,7 +69,13 @@ I send the place order request to createrfqorder API
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.insuranceInfo.effectiveDate    ${effectiveTime}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.insuranceInfo.expiredDate    ${expireTime}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.insuredInfo[0].identityNo    ${identityNo}
+    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.partnerToCustomerDiscountAmountProducts[0].discountAmount    ${discountFormCommission}
+    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.partnerToCustomerDiscountAmountProducts[0].discountFromPartnerSpecialBonusAmount    ${discountFromPartnerSpecialBonusAmount}
 
+    Log    ${couponUseInfo}
+    IF    ${couponUseInfo} != []
+        ${jsonBody}=    Update Value To Json    ${jsonBody}    $.couponUseInfo    ${couponUseInfo}
+    END
     Log     ${jsonBody}
 
     #3. convert jsonBody to string

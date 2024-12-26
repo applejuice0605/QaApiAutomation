@@ -35,16 +35,18 @@ I send the place order request to createrfqorder API
 
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.rfqNo    ${rfqNo}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quoteNo    ${quoteNo}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quotationDataJson.riskGroupInfo.travel.fromDate    ${effectiveTime}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quotationDataJson.riskGroupInfo.travel.toDate    ${expireTime}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quotationDataJson.insuranceInfo.effectiveDate    ${effectiveTime}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quotationDataJson.insuranceInfo.expiredDate    ${expireTime}
+    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.insuranceInfo.effectiveDate    ${effectiveTime}
+    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.insuranceInfo.expiredDate    ${expireTime}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.isAdvancePremium    ${isAdvancePremium}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.partnerToCustomerDiscountAmountProducts[0].discountAmount    ${discountFormCommission_property}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.partnerToCustomerDiscountAmountProducts[0].discountFromPartnerSpecialBonusAmount    ${discountFromPartnerSpecialBonusAmount_property}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.partnerToCustomerDiscountAmountProducts[1].discountAmount    ${discountFormCommission_EQVET}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.partnerToCustomerDiscountAmountProducts[1].discountFromPartnerSpecialBonusAmount    ${discountFromPartnerSpecialBonusAmount_EQVET}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.couponUseInfo    ${couponUseInfo}
+
+    Log    ${couponUseInfo}
+    IF    ${couponUseInfo} != []
+        ${jsonBody}=    Update Value To Json    ${jsonBody}    $.couponUseInfo    ${couponUseInfo}
+    END
     Log     ${jsonBody}
 
     #3. convert jsonBody to string
@@ -56,4 +58,6 @@ I send the place order request to createrfqorder API
     Log    ${response}
 
     Set Test Variable    ${jsonResult}    ${response.json()}
+
+
 

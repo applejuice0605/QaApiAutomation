@@ -43,16 +43,7 @@ The response should contain the value orderNo and orderId
     Set Test Variable    ${orderNo}    ${jsonResult}[data][orderNo]
     ${orderIds}  Create List    ${jsonResult}[data][orderIdLs]
     ${orderId}  Get From List    ${jsonResult}[data][orderIdLs]    0
-    Set Test Variable    ${orderId}    ${orderIds[0]}
+    Set Test Variable    ${orderId}
 
-
-the response should contain securityCode
-    [Arguments]     ${jsonResult}
-    Should Contain    ${jsonResult}[data]   securityCode
-    Set Test Variable    ${securityCode}    ${jsonResult}[data][securityCode]
-
-the response should contain lessAmount
-    [Arguments]     ${jsonResult}
-    Should Contain    ${jsonResult}[data]   lessAmount
 
 

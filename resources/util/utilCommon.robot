@@ -3,6 +3,7 @@ Library    DateTime
 Library    Collections
 Library    JSONLibrary
 Library    String
+Library    os
 
 
 *** Keywords ***
@@ -116,4 +117,10 @@ Generate Random Number
 finally Log the OrderNo ${orderNo}
     Log    ${orderNo}
 
-
+Check JSON Data List Not Empty
+    [Documentation]    Check if the data list in JSON response is not empty.
+    [Arguments]    ${JSON_RESPONSE}
+    ${parsed_json}     Convert Json To String    ${JSON_RESPONSE}
+    ${is_not_empty}    Evaluate    len(${parsed_json['data']}) > 0
+#    Should Be True    ${is_not_empty}    Data list should not be empty
+    RETURN    ${is_not_empty}

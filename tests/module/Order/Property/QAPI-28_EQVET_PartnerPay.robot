@@ -23,6 +23,7 @@ ${BODY_FILE_PATH}    EQVET_Property_PlaceOrderData.json
 ${isAdvancePremium}     0
 ${paymentScheme}    1
 ${payerType}    2
+${paymentMethod}    VA
 
 
 *** Test Cases ***
@@ -37,21 +38,25 @@ Property EQVET PayLater
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value orderNo and orderId    ${jsonResult}
 
-    Then I continue to pay the order and send request the create paymentBilling API     ${token}     ${orderNo}
+
+
+
+
+    Then I continue to pay the order and send request the paymentBilling/create API     ${token}     ${orderNo}
     Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain securityCode    ${jsonResult}
-    Then I choose partner pay & Net payment & a payment method amd send request to /slip/process API     ${token}     ${orderId}     ${securityCode}    ${paymentScheme}    ${payerType}
+    And the response of paymentBilling/create API should contain securityCode    ${jsonResult}
+
+    Then I choose Partner Pay & Using Payment Scheme=${Payment Scheme} & paymentMethod=${paymentMethod} and send request to /slip/process API     ${token}     ${orderId}     ${securityCode}    ${paymentScheme}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain lessAmount      ${jsonResult}
-    Then I click continue and send request to getChannelFee API     ${token}     ${securityCode}
-    Then The status code should be 200    ${jsonResult}[code]
+
     Then finally Log the OrderNo ${orderNo}
 
 
 
 *** Keywords ***
 Setup Data Testing
-    Log    ${env}
+
     Log    ${BODY_FILE_PATH}
     Log    ${env_vars}[DATA_BASEURL]
     ${BODY_FILE_PATH}    Set Variable    ${env_vars}[DATA_BASEURL]${BODY_FILE_PATH}
@@ -63,3 +68,6 @@ Setup Data Testing
 I have a whitelist account and have logined
     ${token}=   login.Login to Application using mobile     ${env_vars}[FUSE_ACCOUNT]    ${env_vars}[FUSE_PASSWORD]
     Set Test Variable    ${token}
+
+Test
+

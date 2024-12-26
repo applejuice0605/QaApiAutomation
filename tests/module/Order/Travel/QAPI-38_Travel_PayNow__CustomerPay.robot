@@ -1,4 +1,3 @@
-// Todo: 根据产品信息自动获取对应原料产品code
 *** Settings ***
 Library    RequestsLibrary
 Library    Collections
@@ -7,15 +6,16 @@ Library    XML
 Library    SeleniumLibrary
 Library    DateTime
 Library    JSONLibrary
+Library    json
 
 Resource    ../../../../resources/biz/Login/login.robot
 Resource    ../../../../resources/biz/order/Travel/travel_order.robot
-Resource    ../../../../resources/biz/order/getCoupon.robot
 Resource    ../../../../resources/biz/Payment/creatBilling_choosePayTypeAndPaymentScheme.robot
 
 Resource    ../../../../resources/util/utilCommon.robot
 Resource    ../../../../resources/util/assertUtil.robot
 Resource    ../../../../resources/resource.robot
+
 #Setup Test
 Test Setup    Setup Env Variable
 Test Teardown    Delete All Sessions
@@ -23,26 +23,19 @@ Test Teardown    Delete All Sessions
 
 *** Variables ***
 ${BODY_FILE_PATH}    Travel_PlaceOrderData.json
-${payerType}    2
-${paymentScheme}    3
-${rawProductCode}   R_00067
-${paymentMethod}    VA
+${payerType}    1
+${paymentScheme}    1
 
 
 *** Test Cases ***
-Travel Supernet Payment With Coupon
-    [Tags]    uat   prod    order-travel    coupon
+Travel PayNow CustomerPay
+    [Tags]    uat   prod    order-travel
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value quoteNo and rfqNo     ${jsonResult}
-
-    Then I send request to getAvailableCoupon API    ${AP_POSITIVE_DATA}     ${token}
-    Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain the available coupon list   ${jsonResult}   ${rawProductCode}
-
-    Then I send the place order request to createrfqorder API   ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}     couponUseInfo=${couponUseInfo}
+    Then I send the place order request to createrfqorder API    ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value orderNo and orderId    ${jsonResult}
 
@@ -50,11 +43,13 @@ Travel Supernet Payment With Coupon
     Then The status code should be 200    ${jsonResult}[code]
     And the response of paymentBilling/create API should contain securityCode    ${jsonResult}
 
-    Then I choose Partner Pay & Using Payment Scheme=${Payment Scheme} & paymentMethod=${paymentMethod} and send request to /slip/process API     ${token}     ${orderId}     ${securityCode}    ${paymentScheme}
+    Then I choose CutsomerPay and send request to generator/customer/payment/token API     ${token}     ${securityCode}
+    Then The status code should be 200    ${jsonResult}[code]
+    And the response should contain customerToken    ${jsonResult}
+
+    Then I confirm to complete the payment using "CustomerPay FullPayment" and send the request to /slip/process API    ${token}   ${orderId}    ${securityCode}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain lessAmount      ${jsonResult}
-
-    Then finally Log the OrderNo ${orderNo}
 
     Then finally Log the OrderNo ${orderNo}
 
@@ -72,4 +67,37 @@ Setup Data Testing
 
 I have a whitelist account and have logined
     ${token}=   login.Login to Application using mobile     ${env_vars}[FUSE_ACCOUNT]    ${env_vars}[FUSE_PASSWORD]
-    Set Test Variable    ${token}
+    Set Test Variable    ${token}    ${token}
+
+
+#
+#
+#
+#I continue to pay the order and send request the paymentBilling/create API
+#    Sleep    3s
+#    ${response}    createPaymentBilling.Send Request And Get Response Data     token=${token}   orderNo=${orderNo}
+#
+#    Set Test Variable    ${jsonResult}    ${response.json()}
+#    Log    ${jsonResult}
+#
+#
+#the response of paymentBilling/create API should contain securityCode
+#    Should Contain    ${jsonResult}[data]   securityCode
+#    Set Test Variable    ${securityCode}    ${jsonResult}[data][securityCode]
+#
+#
+#I choose partner pay & Net payment & a payment method amd send request to /slip/process API
+#    ${response}    slip_process.Send Request And Get Response Data    token=${token}    orderId=${orderId}    securityCode=${securityCode}  paymentScheme=${paymentScheme}    payerType=${payerType}
+#    Set Test Variable    ${jsonResult}    ${response.json()}
+#    Log    ${jsonResult}
+#
+#
+#the response should contain lessAmount
+#    Should Contain    ${jsonResult}[data]   lessAmount
+#
+#
+#I click continue and send request to getChannelFee API
+#    ${response}    getChannelFee.Send Request And Get Response Data    token=${token}    securityCode=${securityCode}
+#
+#
+#

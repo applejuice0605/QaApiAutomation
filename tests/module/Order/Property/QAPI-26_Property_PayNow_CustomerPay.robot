@@ -7,11 +7,13 @@ Library    SeleniumLibrary
 Library    DateTime
 
 Resource    ../../../../resources/biz/Login/login.robot
+Resource    ../../../../resources/biz/order/property/property_order.robot
+Resource    ../../../../resources/biz/Payment/creatBilling_choosePayTypeAndPaymentScheme.robot
+
 Resource    ../../../../resources/util/assertUtil.robot
 Resource    ../../../../resources/resource.robot
 
 
-Resource    ../../../../resources/biz/order/property/property_order.robot
 
 #Setup Test
 Test Setup    Setup Env Variable
@@ -20,6 +22,9 @@ Test Teardown    Delete All Sessions
 *** Variables ***
 ${BODY_FILE_PATH}    Property_PlaceOrderData.json
 ${isAdvancePremium}     1
+${payerType}    1
+${paymentScheme}    1
+
 
 *** Test Cases ***
 Property PayNow
@@ -32,13 +37,26 @@ Property PayNow
     Then I send the place order request to createrfqorder API    ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}  ${isAdvancePremium}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value orderNo and orderId    ${jsonResult}
+
+    Then I continue to pay the order and send request the paymentBilling/create API     ${token}     ${orderNo}
+    Then The status code should be 200    ${jsonResult}[code]
+    And the response of paymentBilling/create API should contain securityCode    ${jsonResult}
+
+    Then I choose CutsomerPay and send request to generator/customer/payment/token API     ${token}     ${securityCode}
+    Then The status code should be 200    ${jsonResult}[code]
+    And the response should contain customerToken    ${jsonResult}
+
+    Then I confirm to complete the payment using "CustomerPay FullPayment" and send the request to /slip/process API    ${token}   ${orderId}    ${securityCode}
+    Then The status code should be 200    ${jsonResult}[code]
+    And the response should contain lessAmount      ${jsonResult}
+
     Then finally Log the OrderNo ${orderNo}
 
 
 
 *** Keywords ***
 Setup Data Testing
-    Log    ${env}
+
     Log    ${BODY_FILE_PATH}
     Log    ${env_vars}[DATA_BASEURL]
     ${BODY_FILE_PATH}    Set Variable    ${env_vars}[DATA_BASEURL]${BODY_FILE_PATH}

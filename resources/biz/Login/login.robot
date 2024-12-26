@@ -35,6 +35,7 @@ Login to Application using email
     RETURN    ${token}
 
 Login to Boss
+    [Arguments]    ${BossAccount}=ceo001    ${BossPassword}=Fuse!001
     ${resonse}  bylogin.Send Request And Get Response Data      ${BossAccount}     ${BossPassword}
     ${openId}   Set Variable     ${resonse.json()}[data][1][openId]
     ${tenantId}   Set Variable     ${resonse.json()}[data][1][tenantId]

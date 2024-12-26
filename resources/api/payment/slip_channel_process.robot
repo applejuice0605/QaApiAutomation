@@ -12,16 +12,30 @@ Library    JSONLibrary
 
 Resource    ../../util/httpCommon.robot
 
+
+*** Variables ***
+${extJson}
+
 *** Keywords ***
 Send Request And Get Response Data
-    [Arguments]    ${token}   ${securityCode}    ${amount}
+    [Arguments]    ${payerType}     ${token}   ${securityCode}    ${amount}    ${methodCode}  ${bank}=BCA    ${installmentNumber}=1
     # 1. 准备请求数据：请求路径、请求头、请求数据
     ${base_url}=   Set Variable     https://cashier-uat.fuse.co.id
-    ${path}=   Set Variable     /api/cashier/partner/payment/slip/channel/process
-    ${headers}=    Create Dictionary    Content-Type=application/json    clientType=ANDROID    appCode=IDP_FUSE_PRO    fusetoken=${token}
-    ${payload}=    Set Variable     {"amount": ${amount},"methodCode": "9203","securityCode": "${securityCode}","extJson": {"mobileNumber": "+628123268987"}}
+    ${headers}=    Get appHeader By PayerType    ${payerType}    ${token}
+
+    ${payerTypeStr}    httpCommon.Get String PayerType    ${payerType}
+    Log    ${payerTypeStr}
+    ${path}=   Set Variable     /api/cashier/${payerTypeStr}/payment/slip/channel/process
+
+    Log     ${methodCode}
+    Run Keyword If     ${methodCode} == 9203     Set Test Variable    ${extJson}    {"mobileNumber": "+628123268987"}
+    ...  ELSE IF    ${methodCode} == 9204   Set Test Variable    ${extJson}    {"bankCode": "${bank}"}
+    ...  ELSE IF    ${methodCode} == 9202   Set Test Variable    ${extJson}    {"installmentNumber":${installmentNumber},"bankCode":"BCA"}
+    ${payload}=    Set Variable     {"amount": ${amount},"methodCode": "${methodCode}","securityCode": "${securityCode}","extJson": ${extJson}}
+
 
     # 2. 发送请求
     ${response}=    httpCommon.Send Post Request And Get Response Data    ${base_url}    ${path}    ${headers}    ${payload}
 
     RETURN    ${response}
+

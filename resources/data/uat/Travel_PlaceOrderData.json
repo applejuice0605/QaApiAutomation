@@ -473,7 +473,8 @@
         "discountAmount": 0,
         "discountFromPartnerSpecialBonusAmount": 0
       }
-    ]
+    ],
+    "couponUseInfo": []
   },
   "couponBody": {
     "couponOrderQOList": [

@@ -21,13 +21,15 @@ Test Setup    Setup Env Variable
 Test Teardown    Delete All Sessions
 
 
+
 *** Variables ***
 ${BODY_FILE_PATH}    EQVET_Property_PlaceOrderData.json
 ${isAdvancePremium}     0
-${paymentScheme}    1
 ${payerType}    2
-${discountFormCommission_EQVET}     1740
+${paymentScheme}    1
+${discountFormCommission_EQVET}     200200
 ${discountFromPartnerSpecialBonusAmount_EQVET}      1000
+${paymentMethod}    VA
 
 
 
@@ -44,20 +46,19 @@ Property EQVET PayLater With Discount Commission And Special Bonus From EQVET
     And the response should contain the value orderNo and orderId    ${jsonResult}
 
 
-    Then I continue to pay the order and send request the create paymentBilling API     ${token}     ${orderNo}
+    Then I continue to pay the order and send request the paymentBilling/create API     ${token}     ${orderNo}
     Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain securityCode    ${jsonResult}
-    Then I choose partner pay & Net payment & a payment method amd send request to /slip/process API     ${token}     ${orderId}     ${securityCode}    ${paymentScheme}    ${payerType}
+    And the response of paymentBilling/create API should contain securityCode    ${jsonResult}
+
+    Then I choose Partner Pay & Using Payment Scheme=${Payment Scheme} & paymentMethod=${paymentMethod} and send request to /slip/process API     ${token}     ${orderId}     ${securityCode}    ${paymentScheme}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain lessAmount      ${jsonResult}
-    Then I click continue and send request to getChannelFee API     ${token}     ${securityCode}
-    Then The status code should be 200    ${jsonResult}[code]
+
     Then finally Log the OrderNo ${orderNo}
 
 
 *** Keywords ***
 Setup Data Testing
-    Log    ${env}
     Log    ${BODY_FILE_PATH}
     Log    ${env_vars}[DATA_BASEURL]
     ${BODY_FILE_PATH}    Set Variable    ${env_vars}[DATA_BASEURL]${BODY_FILE_PATH}
