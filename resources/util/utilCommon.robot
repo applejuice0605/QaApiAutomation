@@ -66,6 +66,11 @@ Generate Random identityNo
 #    ${type}    Evaluate    type(${identityNo})
     RETURN    ${identityNo}
 
+Generate Random chars
+    [Documentation]    生成一个6位数，包含数字+字符
+    ${random_string}=    Evaluate    ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(6))    random, string
+    RETURN  ${random_string}
+
 
 Get Installment Amount
     [Arguments]    ${installmentSchemaDTOList}    ${installmentNumber}

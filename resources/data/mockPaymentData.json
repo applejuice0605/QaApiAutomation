@@ -15,130 +15,145 @@
     "transactionAmount": "2759147",
     "transactionDate": "2024-03-19 04:17:01",
     "transactionFeature": {
-        "tag_id": "456e1fc961a83fe4524d9de2618cc3fa2aa13b6a",
-        "promo": {},
-        "bank_issuer": "BANK CENTRAL ASIA",
-        "bank_issuer_country": "ID",
-        "card_brand": "VISA",
-        "card_expiry": "203901",
-        "card_type": "CREDIT",
-        "card_level": "",
-        "card_is_corporate": "0",
-        "hashed_card_no": "F0A322D9CA956A80AEA81DB2302959E178C1C2EF2FA2553E86743DC4B638FFA9",
-        "acquirer_type": "BCA",
-        "adapter": "mpgs",
-        "adapter_data": {
-            "authentication": {
-                "3ds": {
-                    "acsEci": "05",
-                    "authenticationToken": "gIGCg4SFhoeIiYqLjI2Oj5CRkpM=",
-                    "transactionId": "yFcj116nAHmYpBbtNIcdUQapTIw="
-                },
-                "3ds1": {
-                    "paResStatus": "Y",
-                    "veResEnrolled": "Y"
-                },
-                "transactionId": "4161710822970857",
-                "version": "3DS1"
-            },
-            "authorizationResponse": {
-                "cardLevelIndicator": "88",
-                "cardSecurityCodeError": "M",
-                "commercialCard": "888",
-                "commercialCardIndicator": "3",
-                "marketSpecificData": "8",
-                "posData": "1025104006600",
-                "posEntryMode": "812",
-                "processingCode": "003000",
-                "responseCode": "00",
-                "returnAci": "8",
-                "stan": "254985",
-                "transactionIdentifier": "123456789012345",
-                "validationCode": "6789"
-            },
-            "customer": {
-                "email": "aaron@fuse.co.id"
-            },
-            "device": {
-                "browser": "AppleWebKit"
-            },
-            "gatewayEntryPoint": "WEB_SERVICES_API",
-            "merchant": "TEST000657213",
-            "order": {
-                "amount": "4231717",
-                "authenticationStatus": "AUTHENTICATION_SUCCESSFUL",
-                "certainty": "FINAL",
-                "chargeback": {
-                    "amount": "0",
-                    "currency": "IDR"
-                },
-                "creationTime": "2024-03-19T04:36:16.381Z",
-                "currency": "IDR",
-                "id": "456e1fc961a83fe4524d9de2618cc3fa2aa13b6a",
-                "lastUpdatedTime": "2024-03-19T04:36:21.917Z",
-                "merchantAmount": "4231717",
-                "merchantCategoryCode": "6300",
-                "merchantCurrency": "IDR",
-                "reference": "95A3FCACE9184455B3A3279C12B0328D",
-                "status": "AUTHORIZED",
-                "totalAuthorizedAmount": "4231717",
-                "totalCapturedAmount": "0",
-                "totalDisbursedAmount": "0",
-                "totalRefundedAmount": "0"
-            },
-            "response": {
-                "acquirerCode": "00",
-                "acquirerMessage": "Approved",
-                "cardSecurityCode": {
-                    "acquirerCode": "M",
-                    "gatewayCode": "MATCH"
-                },
-                "gatewayCode": "APPROVED"
-            },
-            "result": "SUCCESS",
-            "sourceOfFunds": {
-                "provided": {
-                    "card": {
-                        "brand": "VISA",
-                        "expiry": {
-                            "month": "1",
-                            "year": "39"
-                        },
-                        "fundingMethod": "DEBIT",
-                        "number": "450875xxxxxx1019",
-                        "scheme": "VISA",
-                        "storedOnFile": "NOT_STORED"
-                    }
-                },
-                "type": "CARD"
-            },
-            "timeOfLastUpdate": "2024-03-19T04:36:21.917Z",
-            "timeOfRecord": "2024-03-19T04:36:21.847Z",
-            "transaction": {
-                "acquirer": {
-                    "batch": "20240319",
-                    "date": "0319",
-                    "id": "PTBCA_S2I",
-                    "merchantId": "005000657213",
-                    "transactionId": "123456789012345"
-                },
-                "amount": "4231717",
-                "authenticationStatus": "AUTHENTICATION_SUCCESSFUL",
-                "authorizationCode": "254985",
-                "currency": "IDR",
-                "id": "456e1fc961a83fe4524d9de2618cc3fa2aa13b6a",
-                "receipt": "407904254985",
-                "reference": "95A3FCACE9184455B3A3279C12B0328D",
-                "source": "INTERNET",
-                "stan": "254985",
-                "terminal": "IBCA0081",
-                "type": "AUTHORIZATION"
-            },
-            "version": "62"
-        }
+      "tag_id": "456e1fc961a83fe4524d9de2618cc3fa2aa13b6a",
+      "promo": {},
+      "bank_issuer": "BANK CENTRAL ASIA",
+      "bank_issuer_country": "ID",
+      "card_brand": "VISA",
+      "card_expiry": "203901",
+      "card_type": "CREDIT",
+      "card_level": "",
+      "card_is_corporate": "0",
+      "hashed_card_no": "F0A322D9CA956A80AEA81DB2302959E178C1C2EF2FA2553E86743DC4B638FFA9",
+      "acquirer_type": "BCA",
+      "adapter": "mpgs",
+      "adapter_data": {
+        "authentication": {
+          "3ds": {
+            "acsEci": "05",
+            "authenticationToken": "gIGCg4SFhoeIiYqLjI2Oj5CRkpM=",
+            "transactionId": "yFcj116nAHmYpBbtNIcdUQapTIw="
+          },
+          "3ds1": {
+            "paResStatus": "Y",
+            "veResEnrolled": "Y"
+          },
+          "transactionId": "4161710822970857",
+          "version": "3DS1"
+        },
+        "authorizationResponse": {
+          "cardLevelIndicator": "88",
+          "cardSecurityCodeError": "M",
+          "commercialCard": "888",
+          "commercialCardIndicator": "3",
+          "marketSpecificData": "8",
+          "posData": "1025104006600",
+          "posEntryMode": "812",
+          "processingCode": "003000",
+          "responseCode": "00",
+          "returnAci": "8",
+          "stan": "254985",
+          "transactionIdentifier": "123456789012345",
+          "validationCode": "6789"
+        },
+        "customer": {
+          "email": "aaron@fuse.co.id"
+        },
+        "device": {
+          "browser": "AppleWebKit"
+        },
+        "gatewayEntryPoint": "WEB_SERVICES_API",
+        "merchant": "TEST000657213",
+        "order": {
+          "amount": "4231717",
+          "authenticationStatus": "AUTHENTICATION_SUCCESSFUL",
+          "certainty": "FINAL",
+          "chargeback": {
+            "amount": "0",
+            "currency": "IDR"
+          },
+          "creationTime": "2024-03-19T04:36:16.381Z",
+          "currency": "IDR",
+          "id": "456e1fc961a83fe4524d9de2618cc3fa2aa13b6a",
+          "lastUpdatedTime": "2024-03-19T04:36:21.917Z",
+          "merchantAmount": "4231717",
+          "merchantCategoryCode": "6300",
+          "merchantCurrency": "IDR",
+          "reference": "95A3FCACE9184455B3A3279C12B0328D",
+          "status": "AUTHORIZED",
+          "totalAuthorizedAmount": "4231717",
+          "totalCapturedAmount": "0",
+          "totalDisbursedAmount": "0",
+          "totalRefundedAmount": "0"
+        },
+        "response": {
+          "acquirerCode": "00",
+          "acquirerMessage": "Approved",
+          "cardSecurityCode": {
+            "acquirerCode": "M",
+            "gatewayCode": "MATCH"
+          },
+          "gatewayCode": "APPROVED"
+        },
+        "result": "SUCCESS",
+        "sourceOfFunds": {
+          "provided": {
+            "card": {
+              "brand": "VISA",
+              "expiry": {
+                "month": "1",
+                "year": "39"
+              },
+              "fundingMethod": "DEBIT",
+              "number": "450875xxxxxx1019",
+              "scheme": "VISA",
+              "storedOnFile": "NOT_STORED"
+            }
+          },
+          "type": "CARD"
+        },
+        "timeOfLastUpdate": "2024-03-19T04:36:21.917Z",
+        "timeOfRecord": "2024-03-19T04:36:21.847Z",
+        "transaction": {
+          "acquirer": {
+            "batch": "20240319",
+            "date": "0319",
+            "id": "PTBCA_S2I",
+            "merchantId": "005000657213",
+            "transactionId": "123456789012345"
+          },
+          "amount": "4231717",
+          "authenticationStatus": "AUTHENTICATION_SUCCESSFUL",
+          "authorizationCode": "254985",
+          "currency": "IDR",
+          "id": "456e1fc961a83fe4524d9de2618cc3fa2aa13b6a",
+          "receipt": "407904254985",
+          "reference": "95A3FCACE9184455B3A3279C12B0328D",
+          "source": "INTERNET",
+          "stan": "254985",
+          "terminal": "IBCA0081",
+          "type": "AUTHORIZATION"
+        },
+        "version": "62"
+      }
     },
     "transactionMessage": "Approved",
     "transactionNo": "C9C3FA10B6BD4543A9CDFCAAA76190F1",
     "transactionStatus": "00"
-}
+  },
+  "GoPay": {
+    "currency": "IDR",
+    "expiry_time": "2024-03-13 09:31:14",
+    "fraud_status": "accept",
+    "gross_amount": "3320600.00",
+    "merchant_id": "G990711321",
+    "order_id": "F79AD60298124C04A86B1307A08D9699",
+    "payment_type": "gopay",
+    "status_code": "201",
+    "status_message": "midtrans payment notification",
+    "transaction_id": "28a2d8da-ebd9-45e4-9378-d79602fc0ab1",
+    "transaction_status": "settlement",
+    "transaction_time": "2024-03-13 09:16:14",
+    "settlement_time": "2024-03-13 09:16:14"
+  }
 }

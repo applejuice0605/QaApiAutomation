@@ -25,3 +25,15 @@ the response should contain the available coupon list
     ${couponUseInfo}    Convert To String    ${couponUseInfo}
     ${couponUseInfo}    Replace String    ${couponUseInfo}    [    ${EMPTY}
     Set Test Variable    ${couponUseInfo}   ${couponDTO}
+
+#the response should contain the available coupon list
+#    [Arguments]     ${jsonResult}   ${rawProductCode}
+#    ${couponDTO}=    utilCommon.Get CouponId by ProductCode    ${jsonResult}[data]    ${rawProductCode}
+#    ${couponUseInfo}    Create List     ${couponDTO}
+#    ${couponUseInfo}    Convert To String    ${couponUseInfo}
+#    ${couponUseInfo}    Replace String    ${couponUseInfo}    [    ${EMPTY}
+#    Set Test Variable    ${couponUseInfo}   ${couponDTO}
+
+
+
+

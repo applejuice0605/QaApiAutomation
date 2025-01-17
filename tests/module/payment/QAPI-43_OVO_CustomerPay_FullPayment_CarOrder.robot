@@ -10,10 +10,10 @@ Library    JSONLibrary
 
 
 Resource    ../../../resources/biz/Login/login.robot
-Resource    ../../../resources/biz/order/property/property_order.robot
+Resource    ../../../resources/biz/order/vehicle_order.robot
 Resource    ../../../resources/biz/orderInfo/getPolicyInfo.robot
 Resource    ../../../resources/biz/Payment/creatBilling_choosePayTypeAndPaymentScheme.robot
-Resource    ../../../resources/biz/Payment/VA.robot
+Resource    ../../../resources/biz/Payment/OVO.robot
 
 
 Resource    ../../../resources/util/utilCommon.robot
@@ -26,16 +26,15 @@ Test Teardown    Delete All Sessions
 
 
 *** Variables ***
-${BODY_FILE_PATH}    Property_PlaceOrderData.json
+${BODY_FILE_PATH}    Car_PlaceOrderData.json
 ${isAdvancePremium}     0
 ${payerType}    1
 ${paymentScheme}    1
-${methodCode}   9204
-${bank}     BCA
+${methodCode}   9203
 
 *** Test Cases ***
-VA CustomerPay FullPayment Property Order
-    [Tags]    uat   VA
+OVO CustomerPay FullPayment Car Order
+    [Tags]    uat   OVO
     Given Setup Data Testing
     When I have an unpaid order and have logined
     Then Run keyword And Continue on Failure    I continue to pay the order and send request the paymentBilling/create API     ${token}     ${orderNo}
@@ -54,29 +53,23 @@ VA CustomerPay FullPayment Property Order
     And the response should contain lessAmount  ${jsonResult}
 
 
-    Then Customer Cashier use VA to pay using bank=${bank} and Send request to getChannelFee API    ${token}    ${securityCode}
+    Then Customer Cashier use OVO to pay and Send request to getChannelFee API  ${token}    ${securityCode}
     Then The status code should be 200  ${jsonResult}[code]
     And the response should contain channelFee and got totalInstallmentAmount   ${jsonResult}
 
-    Then Customer Cashier click Next and Send request to slip/channel/process API    token=${token}  amount=${amount}    securityCode=${securityCode}     bank=${bank}
+
+
+    Then Customer Cashier confirm complete to pay and Send request to slip/channel/process API    token=${token}  amount=${amount}    securityCode=${securityCode}
     Then The status code should be 200  ${jsonResult}[code]
     And the response should contain bizTransactionId    ${jsonResult}
-
-    Then Send request to boss/payment/slip/list API to get referenceNo  bossToken=${bossToken}  paymentBillNo=${paymentBillNo}
-    Then The status code should be 200  ${jsonResult}[code]
-    And the response should contain referenceNo    ${jsonResult}
-
-
-    Then I call the Mock VA Payment API to change the payment status to paid    token=${token}  amount=${totalInstallmentAmount}    referenceNo=${referenceNo}
-    And the response should contain msg "COMPLETED"    ${jsonResult}
 
     Then finally Log the OrderNo ${orderNo}
 
 
 
+
 *** Keywords ***
 Setup Data Testing
-
     Log    ${BODY_FILE_PATH}
     Log    ${env_vars}[DATA_BASEURL]
     ${BODY_FILE_PATH}    Set Variable    ${env_vars}[DATA_BASEURL]${BODY_FILE_PATH}
@@ -92,10 +85,10 @@ I have an unpaid order and have logined
     Set Test Variable    ${token}
     Set Test Variable    ${bossToken}
     # 调用询价业务
-    property_order.I send the quotation request to savebinderrfq API    ${AP_POSITIVE_DATA}    ${token}
+    vehicle_order.I send the quotation request to savebinderrfq API    ${AP_POSITIVE_DATA}    ${token}
     assertUtil.The response should contain the value quoteNo and rfqNo    ${jsonResult}
     # 调用下单业务
-    property_order.I send the place order request to createrfqorder API     ${AP_POSITIVE_DATA}    ${token}    ${rfqNo}    ${quoteNo}    ${isAdvancePremium}
+    vehicle_order.I send the place order request to createrfqorder API     ${AP_POSITIVE_DATA}    ${token}    ${rfqNo}    ${quoteNo}    ${isAdvancePremium}
     assertUtil.The response should contain the value orderNo and orderId    ${jsonResult}
     # 获取policy包含的slipUids
     getPolicyInfo.Send request to order/v2/slip/slipLs API to get slipUids    ${token}    ${orderId}

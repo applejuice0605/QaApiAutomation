@@ -9,7 +9,7 @@ Resource    ../../../resources/api/payment/generate_Customer_payment_token.robot
 *** Keywords ***
 I continue to pay the order and send request the paymentBilling/create API
     [Arguments]     ${token}     ${orderNo}
-    Sleep    5s
+    Sleep    3s
     ${response}    createPaymentBilling.Send Request And Get Response Data     token=${token}   orderNo=${orderNo}
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
@@ -50,13 +50,12 @@ the response should contain customerToken
 
 
 I choose Partner Pay & Using Payment Scheme=${Payment Scheme} & paymentMethod=${paymentMethod} and send request to /slip/process API
-    [Documentation]     Business operation: choose Partner and Payment Scheme and one payment method and click continue in cashier page
+    [Documentation]     Business operation: choose PartnerPay and Payment Scheme and one payment method and click continue in cashier page
     [Arguments]     ${token}     ${orderId}     ${securityCode}    ${paymentScheme}    ${bonusDeduction}=0     ${pointsDeduction}=0
     ${response}    slip_process.Send Request And Get Response Data    payerType=2    token=${token}    selectType=2    paymentScheme=${paymentScheme}      orderId=${orderId}    securityCode=${securityCode}       bonusDeduction=${bonusDeduction}     pointsDeduction=${pointsDeduction}
 
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
-
 
 
 I confirm to complete the payment using "CustomerPay FullPayment" and send the request to /slip/process API
@@ -70,3 +69,5 @@ I confirm to complete the payment using "CustomerPay FullPayment" and send the r
 the response should contain lessAmount
     [Arguments]     ${jsonResult}
     Should Contain    ${jsonResult}[data]   lessAmount
+    Set Test Variable    ${amount}    ${jsonResult}[data][lessAmount]
+    Log    ${amount}

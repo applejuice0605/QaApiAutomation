@@ -26,3 +26,17 @@ Send Request And Get Response Data
     ${response}=    httpCommon.Send Post Request And Get Response Data    ${base_url}    ${path}    ${headers}    ${payload}
 
     RETURN    ${response}
+
+Boos Send Request And Get Response Data
+    [Documentation]     获取安全码，slipIds的参数为一个字典，形如：["slipNo1","slipNo2"]
+    [Arguments]    ${bossToken}   ${orderNo}
+    # 1. 准备请求数据：请求路径、请求头、请求数据
+    ${base_url}=   Set Variable     https://boss-uat.fuse.co.id
+    ${path}=   Set Variable     /api/paymentBilling/list
+    ${headers}=    Create Dictionary    Content-Type=application/json;charset=UTF-8    appCode=IDP_BOSS  fusetoken=${bossToken}     Host=boss-uat.fuse.co.id
+    ${payload}=    Set Variable     {"pageNum":1,"pageSize":20,"multiFieldQuery":"${orderNo}"}
+
+    # 2. 发送请求
+    ${response}=    httpCommon.Send Post Request And Get Response Data    ${base_url}    ${path}    ${headers}    ${payload}
+
+    RETURN    ${response}

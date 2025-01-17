@@ -34,7 +34,7 @@ Travel Double Order
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value quoteNo and rfqNo     ${jsonResult}
 
-    Then I send the place order request to createrfqorder API   ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}
+    Then I send the place order request to createrfqorder API   ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}  identityNo=${identityNo}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value orderNo and orderId    ${jsonResult}
 

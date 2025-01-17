@@ -31,6 +31,7 @@ Send Request And Get Response Data
     Run Keyword If     ${methodCode} == 9203     Set Test Variable    ${extJson}    {"mobileNumber": "+628123268987"}
     ...  ELSE IF    ${methodCode} == 9204   Set Test Variable    ${extJson}    {"bankCode": "${bank}"}
     ...  ELSE IF    ${methodCode} == 9202   Set Test Variable    ${extJson}    {"installmentNumber":${installmentNumber},"bankCode":"BCA"}
+    ...  ELSE IF    ${methodCode} == 9201   Set Test Variable    ${extJson}    {}
     ${payload}=    Set Variable     {"amount": ${amount},"methodCode": "${methodCode}","securityCode": "${securityCode}","extJson": ${extJson}}
 
 

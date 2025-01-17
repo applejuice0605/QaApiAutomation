@@ -1,4 +1,3 @@
-
 *** Settings ***
 Library    RequestsLibrary
 Library    Collections
@@ -7,36 +6,36 @@ Library    XML
 Library    SeleniumLibrary
 Library    DateTime
 
+Resource    ../../../../resources/biz/Login/login.robot
+Resource    ../../../../resources/biz/order/vehicle_order.robot
+Resource    ../../../../resources/biz/Payment/creatBilling_choosePayTypeAndPaymentScheme.robot
 
-Resource    ../../../../resources/util/utilCommon.robot
 Resource    ../../../../resources/util/assertUtil.robot
 Resource    ../../../../resources/resource.robot
 
 
-Resource    ../../../../resources/biz/Login/login.robot
-Resource    ../../../../resources/biz/order/property/property_order.robot
-Resource    ../../../../resources/biz/Payment/creatBilling_choosePayTypeAndPaymentScheme.robot
 
 #Setup Test
 Test Setup    Setup Env Variable
 Test Teardown    Delete All Sessions
 
 *** Variables ***
-${BODY_FILE_PATH}    Property_PlaceOrderData.json
-${isAdvancePremium}     0
-${paymentScheme}    2
-${payerType}    2
+${BODY_FILE_PATH}    Car_PlaceOrderData.json
+${isAdvancePremium}     1
+${payerType}    1
+${paymentScheme}    1
 ${paymentMethod}    VA
 
 
 *** Test Cases ***
-Property PayLater PartnerPay
-    [Tags]    uat   prod    order-property
+Car PayNow PartnerPay Fullpayment
+    [Tags]    uat   prod    order-car
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value quoteNo and rfqNo     ${jsonResult}
+
     Then I send the place order request to createrfqorder API    ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}  ${isAdvancePremium}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value orderNo and orderId    ${jsonResult}
@@ -48,6 +47,8 @@ Property PayLater PartnerPay
     Then I choose Partner Pay & Using Payment Scheme=${Payment Scheme} & paymentMethod=${paymentMethod} and send request to /slip/process API     ${token}     ${orderId}     ${securityCode}    ${paymentScheme}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain lessAmount      ${jsonResult}
+
+
 
     Then finally Log the OrderNo ${orderNo}
 
@@ -62,16 +63,7 @@ Setup Data Testing
     Log    ${BODY_FILE_PATH}
     ${AP_POSITIVE_DATA}=    Load JSON From File    ${BODY_FILE_PATH}
     Set Test Variable    ${AP_POSITIVE_DATA}
-    Set Test Variable    ${env}     ${env_vars}[ENV]
 
 I have a whitelist account and have logined
     ${token}=   login.Login to Application using mobile     ${env_vars}[FUSE_ACCOUNT]    ${env_vars}[FUSE_PASSWORD]
     Set Test Variable    ${token}
-
-
-
-
-
-
-
-

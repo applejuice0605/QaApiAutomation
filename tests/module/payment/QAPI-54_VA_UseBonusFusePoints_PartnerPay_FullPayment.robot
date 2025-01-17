@@ -71,32 +71,6 @@ VA PartnerPay SupernetPayment Property Order
 
 
 
-#
-#
-#*** Test Cases ***
-#VA_UseBonusFusePoints_PartnerPay_FullPayment
-#    [Tags]    uat
-#    Given Setup Data Testing
-#    When I have an unpaid order and have logined
-#    Then I send request to createPaymentBilling API
-#    Then the status code should be 200
-#    Then Send request to paymentBillingList API
-#    Then the status code should be 200
-#    And the response of paymentBilling/create API should contain securityCode
-#    Then I choose Partner Pay & Full payment & VA payment method and send request to /slip/process API
-#    Then the status code should be 200
-#    And the response should contain lessAmount
-#    Then I choose bank BCA and send request to getChannelFee API
-#    Then the status code should be 200
-#    And the response should contain channelFee
-#    Then Choose to pay in installment=${installmentNumber} and Click Next and send request to slip/channel/process API
-#    Then the status code should be 200
-#    And the response should contain referenceNo
-#    Then I call the Mock VA Payment API to change the payment status
-#    And the response should contain msg "COMPLETED"
-#    Then finally Log the OrderNo
-
-
 
 *** Keywords ***
 Setup Data Testing

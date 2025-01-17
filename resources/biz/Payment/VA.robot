@@ -20,14 +20,14 @@ Resource    ../../../resources/api/payment/mock/mockVA.robot
 Customer Cashier use VA to pay using bank=${bank} and Send request to getChannelFee API
     [Documentation]     Business operation: choose bank in Customer Pay->Choose Bank Virtual Account Page
     [Arguments]    ${token}    ${securityCode}
-    ${response}    getChannelFee.Send Request And Get Response Data    payerType=1    token=${token}    securityCode=${securityCode}    bank=${bank}
+    ${response}    getChannelFee.Send Request And Get Response Data    payerType=1    token=${token}    securityCode=${securityCode}    bank=${bank}    methodCode=9204
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
 
 Partner Cashier use VA to pay using bank=${bank} and Send request to getChannelFee API
     [Documentation]     Business operation: choose bank in Partner Pay->Choose Bank Virtual Account Page
     [Arguments]    ${token}    ${securityCode}
-    ${response}    getChannelFee.Send Request And Get Response Data    payerType=2    token=${token}    securityCode=${securityCode}    bank=${bank}
+    ${response}    getChannelFee.Send Request And Get Response Data    payerType=2    token=${token}    securityCode=${securityCode}    bank=${bank}    methodCode=9204
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
 
