@@ -22,8 +22,8 @@ Test Teardown    Delete All Sessions
 *** Variables ***
 ${BODY_FILE_PATH}    EQVET_Property_PlaceOrderData.json
 ${isAdvancePremium}     0
-${paymentScheme}    2
 ${payerType}    2
+${paymentScheme}    2
 ${product_code_use_coupon}   R_00059
 ${paymentMethod}    VA
 
@@ -38,7 +38,7 @@ Net Payment With EQVET Coupon
 
     Then I send request to getAvailableCoupon API   ${AP_POSITIVE_DATA}     ${token}
     Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain the available coupon list    ${jsonResult}   ${product_code_use_coupon}
+    And the response should contain the available coupon list and get coupon info by productCode    ${jsonResult}   ${product_code_use_coupon}
 
     Then I send the place order request to createrfqorder API    ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}  ${isAdvancePremium}    couponUseInfo=${couponUseInfo}
     Then The status code should be 200    ${jsonResult}[code]

@@ -20,15 +20,15 @@ Test Teardown    Delete All Sessions
 
 *** Variables ***
 ${BODY_FILE_PATH}    Car_PlaceOrderData.json
-${isAdvancePremium}     1
+${isAdvancePremium}     0
 ${payerType}    2
 ${paymentScheme}    1
-${product_code_use_coupon}  R_00023
-
+${CouponCode}   PR00000728
+${paymentMethod}    OVO
 
 *** Test Cases ***
-Motor using coupon PayLater PartnerPay FullPayment
-    [Tags]    uat   prod    order-motor
+Car using coupon PayLater PartnerPay FullPayment
+    [Tags]    uat   prod    order-car    coupon
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}
@@ -37,7 +37,7 @@ Motor using coupon PayLater PartnerPay FullPayment
 
     Then I send request to getAvailableCoupon API   ${AP_POSITIVE_DATA}     ${token}
     Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain the available coupon list   ${jsonResult}    ${product_code_use_coupon}
+    And the response should contain the available coupon list and get coupon info by couponCode   ${jsonResult}    ${CouponCode}
 
     Then I send the place order request to createrfqorder API    ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}  ${isAdvancePremium}    couponUseInfo=${couponUseInfo}
     Then The status code should be 200    ${jsonResult}[code]
@@ -47,11 +47,7 @@ Motor using coupon PayLater PartnerPay FullPayment
     Then The status code should be 200    ${jsonResult}[code]
     And the response of paymentBilling/create API should contain securityCode    ${jsonResult}
 
-    Then I choose CutsomerPay and send request to generator/customer/payment/token API     ${token}     ${securityCode}
-    Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain customerToken    ${jsonResult}
-
-    Then I confirm to complete the payment using "CustomerPay FullPayment" and send the request to /slip/process API    ${token}   ${orderId}    ${securityCode}
+    Then I choose Partner Pay & Using Payment Scheme=${Payment Scheme} & paymentMethod=${paymentMethod} and send request to /slip/process API     ${token}     ${orderId}     ${securityCode}    ${paymentScheme}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain lessAmount      ${jsonResult}
 

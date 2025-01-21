@@ -22,8 +22,8 @@ Test Teardown    Delete All Sessions
 ${BODY_FILE_PATH}    Car_PlaceOrderData.json
 
 *** Test Cases ***
-Motor Get Quotation
-    [Tags]    uat   prod    quotation-motor
+Car Get Quotation
+    [Tags]    uat   prod    quotation-car
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}
@@ -37,7 +37,6 @@ Motor Get Quotation
 
 *** Keywords ***
 Setup Data Testing
-
     Log    ${BODY_FILE_PATH}
     Log    ${env_vars}[DATA_BASEURL]
     ${BODY_FILE_PATH}    Set Variable    ${env_vars}[DATA_BASEURL]${BODY_FILE_PATH}

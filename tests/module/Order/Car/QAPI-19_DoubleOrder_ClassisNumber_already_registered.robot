@@ -9,7 +9,6 @@ Library    JSONLibrary
 
 Resource    ../../../../resources/biz/Login/login.robot
 Resource    ../../../../resources/biz/order/vehicle_order.robot
-Resource    ../../../../resources/biz/Payment/creatBilling_choosePayTypeAndPaymentScheme.robot
 
 Resource    ../../../../resources/util/utilCommon.robot
 Resource    ../../../../resources/util/assertUtil.robot
@@ -23,12 +22,11 @@ Test Teardown    Delete All Sessions
 *** Variables ***
 ${BODY_FILE_PATH}    Car_PlaceOrderData.json
 ${isAdvancePremium}     0
-${paymentScheme}    2
-${payerType}    1
+
 
 *** Test Cases ***
-Motor DoubleOrder ClassisNumber already registered
-    [Tags]    uat   prod    order-car
+Car DoubleOrder ClassisNumber already registered
+    [Tags]    uat   prod    order-car   doubleOrder
     Given Setup Data Testing
     When I have a whitelist account and have logined
 
@@ -44,7 +42,6 @@ Motor DoubleOrder ClassisNumber already registered
 
 *** Keywords ***
 Setup Data Testing
-
     Log    ${BODY_FILE_PATH}
     Log    ${env_vars}[DATA_BASEURL]
     ${BODY_FILE_PATH}    Set Variable    ${env_vars}[DATA_BASEURL]${BODY_FILE_PATH}

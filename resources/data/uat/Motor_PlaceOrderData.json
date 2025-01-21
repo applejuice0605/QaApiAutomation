@@ -1522,604 +1522,605 @@
         "discountAmount": 0,
         "discountFromPartnerSpecialBonusAmount": 0
       }
-    ]
+    ],
+    "couponUseInfo": []
   },
   "couponBody": {
     "couponOrderQOList": [
-      {
-        "adminFee": 39000,
-        "auditFlag": true,
-        "discountFromPartnerSpecialBonusAmount": 0,
-        "filterRawProductCode": "R_00023",
-        "mainInsuranceCompanyCode": "6603000949",
-        "mainInsuranceCompanyName": "PT. Zurich General Takaful Indonesia",
-        "maxRebateAmount": 99082,
-        "maxRebateRate": 0,
-        "mpCode": "M_00016",
-        "mpName": "ZURICH SYARIAH BASIC MOTOR",
-        "mpNameLocal": "ZURICH SYARIAH BASIC MOTOR",
-        "mpPlanCode": "MP_00028",
-        "mpPlanName": "ZURICH SYARIAH TOTAL LOSS ONLY",
-        "mpPlanNameLocal": "ZURICH SYARIAH TOTAL LOSS ONLY",
-        "partnerCommissionRateDimensionType": 2,
-        "productHeaderPicture": "fuse-id-core-prod-rw_images/20231122/b62c9967ec964c768bddb62fdb35321a.jpg",
-        "productHeaderPictureLocal": "fuse-id-core-prod-rw_images/20231122/33da6bac34554d1bb11a06fe6a3464db.jpg",
-        "productListPicture": "fuse-id-core-prod-rw_images/20231122/6ad280fb95b145df95a213e0ec0488e5.jpg",
-        "productListPictureLocal": "fuse-id-core-prod-rw_images/20231122/8c7c92b328dd47339b70deba24719575.jpg",
-        "productLs": [
-          {
+        {
             "adminFee": 39000,
-            "coInsFlag": 1,
-            "commissionInfo": {
-              "mulitCommissionType": 0,
-              "partnerCommissionAmount": 99082,
-              "partnerCommissionIncomeTaxAmount": 2478,
-              "partnerCommissionRate": 0,
-              "partnerCommissionVatTaxAmount": 0,
-              "partnerSpecialBonusAmount": 39634,
-              "partnerSpecialBonusIncomeTaxAmount": 991,
-              "partnerSpecialBonusRate": 0,
-              "partnerSpecialBonusVatTaxAmount": 0,
-              "partnerSupportingFeeAmount": 0,
-              "partnerSupportingFeeIncomeTaxAmount": 0,
-              "partnerSupportingFeeRate": 0,
-              "partnerSupportingFeeVatTaxAmount": 0,
-              "partnerUplineReferralRate": 0
-            },
-            "coverageLs": [
-              {
-                "auditFlag": true,
-                "commissionInfo": {
-                  "mulitCommissionType": 0,
-                  "partnerCommissionAmount": 70470,
-                  "partnerCommissionRate": 0.25,
-                  "partnerMatchCommissionRule": [
-                    "Rule:2539"
-                  ],
-                  "partnerSpecialBonusAmount": 28188,
-                  "partnerSpecialBonusRate": 0.1,
-                  "partnerSupportingFeeAmount": 0,
-                  "partnerSupportingFeeRate": 0,
-                  "partnerUplineReferralRate": 0,
-                  "pdBreakupFeeRate": 0,
-                  "pmBreakupFeeRate": 0,
-                  "uplineReferralsRate": {
-                    "1": 0.1,
-                    "2": 0.05,
-                    "3": 0.025,
-                    "4": 0.0125,
-                    "5": 0.0063,
-                    "6": 0
-                  }
-                },
-                "coverageCode": "CM_00015",
-                "coverageName": "TOTAL LOSS ONLY",
-                "coverageNameLocal": "TOTAL LOSS ONLY",
-                "coverageRequired": 1,
-                "declineReason": [],
-                "declineReasonLocal": [],
-                "discountAmount": 0,
-                "discountRate": 0,
-                "dutyLs": [
-                  {
-                    "dutyCode": "D_00114",
-                    "dutyName": "TLO (Total Loss Only)",
-                    "dutyNameLocal": "TLO (Total Loss Only)",
-                    "dutyStandardCode": "PB_100002",
-                    "insuredAmount": 15660000,
-                    "insuredType": 0,
-                    "insuredUnit": 1,
-                    "matchPremiumRule": [],
-                    "netPremium": 0,
-                    "premium": 0,
-                    "stamp": 0,
-                    "vatAmount": 0
-                  }
-                ],
-                "installmentNetPremium": 0,
-                "installmentPremium": 0,
-                "installmentVatAmount": 0,
-                "insuredAmount": 15660000,
-                "netPremium": 281880,
-                "originalNetPremium": 281880,
-                "premium": 281880,
-                "riskRate": 0.018,
-                "vatAmount": 0,
-                "vatRate": 0
-              },
-              {
-                "auditFlag": true,
-                "commissionInfo": {
-                  "mulitCommissionType": 0,
-                  "partnerCommissionAmount": 2936,
-                  "partnerCommissionRate": 0.25,
-                  "partnerMatchCommissionRule": [
-                    "Rule:2539"
-                  ],
-                  "partnerSpecialBonusAmount": 1174,
-                  "partnerSpecialBonusRate": 0.1,
-                  "partnerSupportingFeeAmount": 0,
-                  "partnerSupportingFeeRate": 0,
-                  "partnerUplineReferralRate": 0,
-                  "pdBreakupFeeRate": 0,
-                  "pmBreakupFeeRate": 0,
-                  "uplineReferralsRate": {
-                    "1": 0.1,
-                    "2": 0.05,
-                    "3": 0.025,
-                    "4": 0.0125,
-                    "5": 0.0063,
-                    "6": 0
-                  }
-                },
-                "coverageCode": "CA_00101",
-                "coverageName": "Earthquake, Tsunami",
-                "coverageNameLocal": "Gempa Bumi, Tsunami",
-                "coverageRequired": 1,
-                "declineReason": [],
-                "declineReasonLocal": [],
-                "discountAmount": 0,
-                "discountRate": 0,
-                "dutyLs": [
-                  {
-                    "dutyCode": "D_00118",
-                    "dutyInsuredGroup": 1,
-                    "dutyName": "Earthquake, Tsunami",
-                    "dutyNameLocal": "GEMPA / EQVET",
-                    "dutyStandardCode": "PB_100006",
-                    "insuredAmount": 15660000,
-                    "insuredType": 0,
-                    "insuredUnit": 1,
-                    "matchPremiumRule": [],
-                    "netPremium": 0,
-                    "premium": 0,
-                    "stamp": 0,
-                    "vatAmount": 0
-                  }
-                ],
-                "installmentNetPremium": 0,
-                "installmentPremium": 0,
-                "installmentVatAmount": 0,
-                "insuredAmount": 15660000,
-                "netPremium": 11745,
-                "originalNetPremium": 11745,
-                "premium": 11745,
-                "riskRate": 0.00075,
-                "vatAmount": 0,
-                "vatRate": 0
-              },
-              {
-                "auditFlag": true,
-                "commissionInfo": {
-                  "mulitCommissionType": 0,
-                  "partnerCommissionAmount": 2936,
-                  "partnerCommissionRate": 0.25,
-                  "partnerMatchCommissionRule": [
-                    "Rule:2539"
-                  ],
-                  "partnerSpecialBonusAmount": 1174,
-                  "partnerSpecialBonusRate": 0.1,
-                  "partnerSupportingFeeAmount": 0,
-                  "partnerSupportingFeeRate": 0,
-                  "partnerUplineReferralRate": 0,
-                  "pdBreakupFeeRate": 0,
-                  "pmBreakupFeeRate": 0,
-                  "uplineReferralsRate": {
-                    "1": 0.1,
-                    "2": 0.05,
-                    "3": 0.025,
-                    "4": 0.0125,
-                    "5": 0.0063,
-                    "6": 0
-                  }
-                },
-                "coverageCode": "CA_00100",
-                "coverageName": "Flood, Windstorm",
-                "coverageNameLocal": "BANJIR / TSFWD",
-                "coverageRequired": 1,
-                "declineReason": [],
-                "declineReasonLocal": [],
-                "discountAmount": 0,
-                "discountRate": 0,
-                "dutyLs": [
-                  {
-                    "dutyCode": "D_00117",
-                    "dutyInsuredGroup": 1,
-                    "dutyName": "Floods, Windstorm",
-                    "dutyNameLocal": "BANJIR / TSFWD",
-                    "dutyStandardCode": "PB_100005",
-                    "insuredAmount": 15660000,
-                    "insuredType": 0,
-                    "insuredUnit": 1,
-                    "matchPremiumRule": [],
-                    "netPremium": 0,
-                    "premium": 0,
-                    "stamp": 0,
-                    "vatAmount": 0
-                  }
-                ],
-                "installmentNetPremium": 0,
-                "installmentPremium": 0,
-                "installmentVatAmount": 0,
-                "insuredAmount": 15660000,
-                "netPremium": 11745,
-                "originalNetPremium": 11745,
-                "premium": 11745,
-                "riskRate": 0.00075,
-                "vatAmount": 0,
-                "vatRate": 0
-              },
-              {
-                "auditFlag": true,
-                "commissionInfo": {
-                  "mulitCommissionType": 0,
-                  "partnerCommissionAmount": 1370,
-                  "partnerCommissionRate": 0.25,
-                  "partnerMatchCommissionRule": [
-                    "Rule:2539"
-                  ],
-                  "partnerSpecialBonusAmount": 548,
-                  "partnerSpecialBonusRate": 0.1,
-                  "partnerSupportingFeeAmount": 0,
-                  "partnerSupportingFeeRate": 0,
-                  "partnerUplineReferralRate": 0,
-                  "pdBreakupFeeRate": 0,
-                  "pmBreakupFeeRate": 0,
-                  "uplineReferralsRate": {
-                    "1": 0.1,
-                    "2": 0.05,
-                    "3": 0.025,
-                    "4": 0.0125,
-                    "5": 0.0063,
-                    "6": 0
-                  }
-                },
-                "coverageCode": "CA_00099",
-                "coverageName": "Terrorism and Sabotage",
-                "coverageNameLocal": "TERORISME & SABOTASE",
-                "coverageRequired": 1,
-                "declineReason": [],
-                "declineReasonLocal": [],
-                "discountAmount": 0,
-                "discountRate": 0,
-                "dutyLs": [
-                  {
-                    "dutyCode": "D_00116",
-                    "dutyInsuredGroup": 1,
-                    "dutyName": "Terrorism and Sabotage",
-                    "dutyNameLocal": "TERORISME / TS",
-                    "dutyStandardCode": "PB_100004",
-                    "insuredAmount": 15660000,
-                    "insuredType": 0,
-                    "insuredUnit": 1,
-                    "matchPremiumRule": [],
-                    "netPremium": 0,
-                    "premium": 0,
-                    "stamp": 0,
-                    "vatAmount": 0
-                  }
-                ],
-                "installmentNetPremium": 0,
-                "installmentPremium": 0,
-                "installmentVatAmount": 0,
-                "insuredAmount": 15660000,
-                "netPremium": 5481,
-                "originalNetPremium": 5481,
-                "premium": 5481,
-                "riskRate": 0.00035,
-                "vatAmount": 0,
-                "vatRate": 0
-              },
-              {
-                "auditFlag": true,
-                "commissionInfo": {
-                  "mulitCommissionType": 0,
-                  "partnerCommissionAmount": 1370,
-                  "partnerCommissionRate": 0.25,
-                  "partnerMatchCommissionRule": [
-                    "Rule:2539"
-                  ],
-                  "partnerSpecialBonusAmount": 548,
-                  "partnerSpecialBonusRate": 0.1,
-                  "partnerSupportingFeeAmount": 0,
-                  "partnerSupportingFeeRate": 0,
-                  "partnerUplineReferralRate": 0,
-                  "pdBreakupFeeRate": 0,
-                  "pmBreakupFeeRate": 0,
-                  "uplineReferralsRate": {
-                    "1": 0.1,
-                    "2": 0.05,
-                    "3": 0.025,
-                    "4": 0.0125,
-                    "5": 0.0063,
-                    "6": 0
-                  }
-                },
-                "coverageCode": "CA_00098",
-                "coverageName": "Strike, Riots, Civil Commotions",
-                "coverageNameLocal": "Kerusuhan, Huru-Hara",
-                "coverageRequired": 1,
-                "declineReason": [],
-                "declineReasonLocal": [],
-                "discountAmount": 0,
-                "discountRate": 0,
-                "dutyLs": [
-                  {
-                    "dutyCode": "D_00115",
-                    "dutyInsuredGroup": 1,
-                    "dutyName": "Strike, Riot, Civil Commotions",
-                    "dutyNameLocal": "KERUSUHAN / RSCC",
-                    "dutyStandardCode": "PB_100003",
-                    "insuredAmount": 15660000,
-                    "insuredType": 0,
-                    "insuredUnit": 1,
-                    "matchPremiumRule": [],
-                    "netPremium": 0,
-                    "premium": 0,
-                    "stamp": 0,
-                    "vatAmount": 0
-                  }
-                ],
-                "installmentNetPremium": 0,
-                "installmentPremium": 0,
-                "installmentVatAmount": 0,
-                "insuredAmount": 15660000,
-                "netPremium": 5481,
-                "originalNetPremium": 5481,
-                "premium": 5481,
-                "riskRate": 0.00035,
-                "vatAmount": 0,
-                "vatRate": 0
-              },
-              {
-                "auditFlag": true,
-                "commissionInfo": {
-                  "mulitCommissionType": 0,
-                  "partnerCommissionAmount": 1250,
-                  "partnerCommissionRate": 0.25,
-                  "partnerMatchCommissionRule": [
-                    "Rule:2539"
-                  ],
-                  "partnerSpecialBonusAmount": 500,
-                  "partnerSpecialBonusRate": 0.1,
-                  "partnerSupportingFeeAmount": 0,
-                  "partnerSupportingFeeRate": 0,
-                  "partnerUplineReferralRate": 0,
-                  "pdBreakupFeeRate": 0,
-                  "pmBreakupFeeRate": 0,
-                  "uplineReferralsRate": {
-                    "1": 0.1,
-                    "2": 0.05,
-                    "3": 0.025,
-                    "4": 0.0125,
-                    "5": 0.0063,
-                    "6": 0
-                  }
-                },
-                "coverageCode": "CA_00105",
-                "coverageName": "Personal Accident for Passenger (Moto)",
-                "coverageNameLocal": "PA PASSENGER (Moto)",
-                "coverageRequired": 1,
-                "declineReason": [],
-                "declineReasonLocal": [],
-                "discountAmount": 0,
-                "discountRate": 0,
-                "dutyLs": [
-                  {
-                    "dutyCode": "D_00122",
-                    "dutyInsuredGroup": 2,
-                    "dutyName": "Personal Accident for Passenger (Moto)",
-                    "dutyNameLocal": "PA PASSENGER (Moto)",
-                    "dutyStandardCode": "PB_100016",
-                    "insuredAmount": 5000000,
-                    "insuredAmountOption": [
-                      5000000,
-                      10000000
+            "auditFlag": true,
+            "discountFromPartnerSpecialBonusAmount": 0,
+            "filterRawProductCode": "R_00023",
+            "mainInsuranceCompanyCode": "6603000949",
+            "mainInsuranceCompanyName": "PT. Zurich General Takaful Indonesia",
+            "maxRebateAmount": 99082,
+            "maxRebateRate": 0,
+            "mpCode": "M_00016",
+            "mpName": "ZURICH SYARIAH BASIC MOTOR",
+            "mpNameLocal": "ZURICH SYARIAH BASIC MOTOR",
+            "mpPlanCode": "MP_00028",
+            "mpPlanName": "ZURICH SYARIAH TOTAL LOSS ONLY",
+            "mpPlanNameLocal": "ZURICH SYARIAH TOTAL LOSS ONLY",
+            "partnerCommissionRateDimensionType": 2,
+            "productHeaderPicture": "fuse-id-core-prod-rw_images/20231122/b62c9967ec964c768bddb62fdb35321a.jpg",
+            "productHeaderPictureLocal": "fuse-id-core-prod-rw_images/20231122/33da6bac34554d1bb11a06fe6a3464db.jpg",
+            "productListPicture": "fuse-id-core-prod-rw_images/20231122/6ad280fb95b145df95a213e0ec0488e5.jpg",
+            "productListPictureLocal": "fuse-id-core-prod-rw_images/20231122/8c7c92b328dd47339b70deba24719575.jpg",
+            "productLs": [
+                {
+                    "adminFee": 39000,
+                    "coInsFlag": 1,
+                    "commissionInfo": {
+                        "mulitCommissionType": 0,
+                        "partnerCommissionAmount": 99082,
+                        "partnerCommissionIncomeTaxAmount": 2478,
+                        "partnerCommissionRate": 0,
+                        "partnerCommissionVatTaxAmount": 0,
+                        "partnerSpecialBonusAmount": 39634,
+                        "partnerSpecialBonusIncomeTaxAmount": 991,
+                        "partnerSpecialBonusRate": 0,
+                        "partnerSpecialBonusVatTaxAmount": 0,
+                        "partnerSupportingFeeAmount": 0,
+                        "partnerSupportingFeeIncomeTaxAmount": 0,
+                        "partnerSupportingFeeRate": 0,
+                        "partnerSupportingFeeVatTaxAmount": 0,
+                        "partnerUplineReferralRate": 0
+                    },
+                    "coverageLs": [
+                        {
+                            "auditFlag": true,
+                            "commissionInfo": {
+                                "mulitCommissionType": 0,
+                                "partnerCommissionAmount": 70470,
+                                "partnerCommissionRate": 0.25,
+                                "partnerMatchCommissionRule": [
+                                    "Rule:2539"
+                                ],
+                                "partnerSpecialBonusAmount": 28188,
+                                "partnerSpecialBonusRate": 0.1,
+                                "partnerSupportingFeeAmount": 0,
+                                "partnerSupportingFeeRate": 0,
+                                "partnerUplineReferralRate": 0,
+                                "pdBreakupFeeRate": 0,
+                                "pmBreakupFeeRate": 0,
+                                "uplineReferralsRate": {
+                                    "1": 0.1,
+                                    "2": 0.05,
+                                    "3": 0.025,
+                                    "4": 0.0125,
+                                    "5": 0.0063,
+                                    "6": 0
+                                }
+                            },
+                            "coverageCode": "CM_00015",
+                            "coverageName": "TOTAL LOSS ONLY",
+                            "coverageNameLocal": "TOTAL LOSS ONLY",
+                            "coverageRequired": 1,
+                            "declineReason": [],
+                            "declineReasonLocal": [],
+                            "discountAmount": 0,
+                            "discountRate": 0,
+                            "dutyLs": [
+                                {
+                                    "dutyCode": "D_00114",
+                                    "dutyName": "TLO (Total Loss Only)",
+                                    "dutyNameLocal": "TLO (Total Loss Only)",
+                                    "dutyStandardCode": "PB_100002",
+                                    "insuredAmount": 15660000,
+                                    "insuredType": 0,
+                                    "insuredUnit": 1,
+                                    "matchPremiumRule": [],
+                                    "netPremium": 0,
+                                    "premium": 0,
+                                    "stamp": 0,
+                                    "vatAmount": 0
+                                }
+                            ],
+                            "installmentNetPremium": 0,
+                            "installmentPremium": 0,
+                            "installmentVatAmount": 0,
+                            "insuredAmount": 15660000,
+                            "netPremium": 281880,
+                            "originalNetPremium": 281880,
+                            "premium": 281880,
+                            "riskRate": 0.018,
+                            "vatAmount": 0,
+                            "vatRate": 0
+                        },
+                        {
+                            "auditFlag": true,
+                            "commissionInfo": {
+                                "mulitCommissionType": 0,
+                                "partnerCommissionAmount": 2936,
+                                "partnerCommissionRate": 0.25,
+                                "partnerMatchCommissionRule": [
+                                    "Rule:2539"
+                                ],
+                                "partnerSpecialBonusAmount": 1174,
+                                "partnerSpecialBonusRate": 0.1,
+                                "partnerSupportingFeeAmount": 0,
+                                "partnerSupportingFeeRate": 0,
+                                "partnerUplineReferralRate": 0,
+                                "pdBreakupFeeRate": 0,
+                                "pmBreakupFeeRate": 0,
+                                "uplineReferralsRate": {
+                                    "1": 0.1,
+                                    "2": 0.05,
+                                    "3": 0.025,
+                                    "4": 0.0125,
+                                    "5": 0.0063,
+                                    "6": 0
+                                }
+                            },
+                            "coverageCode": "CA_00101",
+                            "coverageName": "Earthquake, Tsunami",
+                            "coverageNameLocal": "Gempa Bumi, Tsunami",
+                            "coverageRequired": 1,
+                            "declineReason": [],
+                            "declineReasonLocal": [],
+                            "discountAmount": 0,
+                            "discountRate": 0,
+                            "dutyLs": [
+                                {
+                                    "dutyCode": "D_00118",
+                                    "dutyInsuredGroup": 1,
+                                    "dutyName": "Earthquake, Tsunami",
+                                    "dutyNameLocal": "GEMPA / EQVET",
+                                    "dutyStandardCode": "PB_100006",
+                                    "insuredAmount": 15660000,
+                                    "insuredType": 0,
+                                    "insuredUnit": 1,
+                                    "matchPremiumRule": [],
+                                    "netPremium": 0,
+                                    "premium": 0,
+                                    "stamp": 0,
+                                    "vatAmount": 0
+                                }
+                            ],
+                            "installmentNetPremium": 0,
+                            "installmentPremium": 0,
+                            "installmentVatAmount": 0,
+                            "insuredAmount": 15660000,
+                            "netPremium": 11745,
+                            "originalNetPremium": 11745,
+                            "premium": 11745,
+                            "riskRate": 0.00075,
+                            "vatAmount": 0,
+                            "vatRate": 0
+                        },
+                        {
+                            "auditFlag": true,
+                            "commissionInfo": {
+                                "mulitCommissionType": 0,
+                                "partnerCommissionAmount": 2936,
+                                "partnerCommissionRate": 0.25,
+                                "partnerMatchCommissionRule": [
+                                    "Rule:2539"
+                                ],
+                                "partnerSpecialBonusAmount": 1174,
+                                "partnerSpecialBonusRate": 0.1,
+                                "partnerSupportingFeeAmount": 0,
+                                "partnerSupportingFeeRate": 0,
+                                "partnerUplineReferralRate": 0,
+                                "pdBreakupFeeRate": 0,
+                                "pmBreakupFeeRate": 0,
+                                "uplineReferralsRate": {
+                                    "1": 0.1,
+                                    "2": 0.05,
+                                    "3": 0.025,
+                                    "4": 0.0125,
+                                    "5": 0.0063,
+                                    "6": 0
+                                }
+                            },
+                            "coverageCode": "CA_00100",
+                            "coverageName": "Flood, Windstorm",
+                            "coverageNameLocal": "BANJIR / TSFWD",
+                            "coverageRequired": 1,
+                            "declineReason": [],
+                            "declineReasonLocal": [],
+                            "discountAmount": 0,
+                            "discountRate": 0,
+                            "dutyLs": [
+                                {
+                                    "dutyCode": "D_00117",
+                                    "dutyInsuredGroup": 1,
+                                    "dutyName": "Floods, Windstorm",
+                                    "dutyNameLocal": "BANJIR / TSFWD",
+                                    "dutyStandardCode": "PB_100005",
+                                    "insuredAmount": 15660000,
+                                    "insuredType": 0,
+                                    "insuredUnit": 1,
+                                    "matchPremiumRule": [],
+                                    "netPremium": 0,
+                                    "premium": 0,
+                                    "stamp": 0,
+                                    "vatAmount": 0
+                                }
+                            ],
+                            "installmentNetPremium": 0,
+                            "installmentPremium": 0,
+                            "installmentVatAmount": 0,
+                            "insuredAmount": 15660000,
+                            "netPremium": 11745,
+                            "originalNetPremium": 11745,
+                            "premium": 11745,
+                            "riskRate": 0.00075,
+                            "vatAmount": 0,
+                            "vatRate": 0
+                        },
+                        {
+                            "auditFlag": true,
+                            "commissionInfo": {
+                                "mulitCommissionType": 0,
+                                "partnerCommissionAmount": 1370,
+                                "partnerCommissionRate": 0.25,
+                                "partnerMatchCommissionRule": [
+                                    "Rule:2539"
+                                ],
+                                "partnerSpecialBonusAmount": 548,
+                                "partnerSpecialBonusRate": 0.1,
+                                "partnerSupportingFeeAmount": 0,
+                                "partnerSupportingFeeRate": 0,
+                                "partnerUplineReferralRate": 0,
+                                "pdBreakupFeeRate": 0,
+                                "pmBreakupFeeRate": 0,
+                                "uplineReferralsRate": {
+                                    "1": 0.1,
+                                    "2": 0.05,
+                                    "3": 0.025,
+                                    "4": 0.0125,
+                                    "5": 0.0063,
+                                    "6": 0
+                                }
+                            },
+                            "coverageCode": "CA_00099",
+                            "coverageName": "Terrorism and Sabotage",
+                            "coverageNameLocal": "TERORISME & SABOTASE",
+                            "coverageRequired": 1,
+                            "declineReason": [],
+                            "declineReasonLocal": [],
+                            "discountAmount": 0,
+                            "discountRate": 0,
+                            "dutyLs": [
+                                {
+                                    "dutyCode": "D_00116",
+                                    "dutyInsuredGroup": 1,
+                                    "dutyName": "Terrorism and Sabotage",
+                                    "dutyNameLocal": "TERORISME / TS",
+                                    "dutyStandardCode": "PB_100004",
+                                    "insuredAmount": 15660000,
+                                    "insuredType": 0,
+                                    "insuredUnit": 1,
+                                    "matchPremiumRule": [],
+                                    "netPremium": 0,
+                                    "premium": 0,
+                                    "stamp": 0,
+                                    "vatAmount": 0
+                                }
+                            ],
+                            "installmentNetPremium": 0,
+                            "installmentPremium": 0,
+                            "installmentVatAmount": 0,
+                            "insuredAmount": 15660000,
+                            "netPremium": 5481,
+                            "originalNetPremium": 5481,
+                            "premium": 5481,
+                            "riskRate": 0.00035,
+                            "vatAmount": 0,
+                            "vatRate": 0
+                        },
+                        {
+                            "auditFlag": true,
+                            "commissionInfo": {
+                                "mulitCommissionType": 0,
+                                "partnerCommissionAmount": 1370,
+                                "partnerCommissionRate": 0.25,
+                                "partnerMatchCommissionRule": [
+                                    "Rule:2539"
+                                ],
+                                "partnerSpecialBonusAmount": 548,
+                                "partnerSpecialBonusRate": 0.1,
+                                "partnerSupportingFeeAmount": 0,
+                                "partnerSupportingFeeRate": 0,
+                                "partnerUplineReferralRate": 0,
+                                "pdBreakupFeeRate": 0,
+                                "pmBreakupFeeRate": 0,
+                                "uplineReferralsRate": {
+                                    "1": 0.1,
+                                    "2": 0.05,
+                                    "3": 0.025,
+                                    "4": 0.0125,
+                                    "5": 0.0063,
+                                    "6": 0
+                                }
+                            },
+                            "coverageCode": "CA_00098",
+                            "coverageName": "Strike, Riots, Civil Commotions",
+                            "coverageNameLocal": "Kerusuhan, Huru-Hara",
+                            "coverageRequired": 1,
+                            "declineReason": [],
+                            "declineReasonLocal": [],
+                            "discountAmount": 0,
+                            "discountRate": 0,
+                            "dutyLs": [
+                                {
+                                    "dutyCode": "D_00115",
+                                    "dutyInsuredGroup": 1,
+                                    "dutyName": "Strike, Riot, Civil Commotions",
+                                    "dutyNameLocal": "KERUSUHAN / RSCC",
+                                    "dutyStandardCode": "PB_100003",
+                                    "insuredAmount": 15660000,
+                                    "insuredType": 0,
+                                    "insuredUnit": 1,
+                                    "matchPremiumRule": [],
+                                    "netPremium": 0,
+                                    "premium": 0,
+                                    "stamp": 0,
+                                    "vatAmount": 0
+                                }
+                            ],
+                            "installmentNetPremium": 0,
+                            "installmentPremium": 0,
+                            "installmentVatAmount": 0,
+                            "insuredAmount": 15660000,
+                            "netPremium": 5481,
+                            "originalNetPremium": 5481,
+                            "premium": 5481,
+                            "riskRate": 0.00035,
+                            "vatAmount": 0,
+                            "vatRate": 0
+                        },
+                        {
+                            "auditFlag": true,
+                            "commissionInfo": {
+                                "mulitCommissionType": 0,
+                                "partnerCommissionAmount": 1250,
+                                "partnerCommissionRate": 0.25,
+                                "partnerMatchCommissionRule": [
+                                    "Rule:2539"
+                                ],
+                                "partnerSpecialBonusAmount": 500,
+                                "partnerSpecialBonusRate": 0.1,
+                                "partnerSupportingFeeAmount": 0,
+                                "partnerSupportingFeeRate": 0,
+                                "partnerUplineReferralRate": 0,
+                                "pdBreakupFeeRate": 0,
+                                "pmBreakupFeeRate": 0,
+                                "uplineReferralsRate": {
+                                    "1": 0.1,
+                                    "2": 0.05,
+                                    "3": 0.025,
+                                    "4": 0.0125,
+                                    "5": 0.0063,
+                                    "6": 0
+                                }
+                            },
+                            "coverageCode": "CA_00105",
+                            "coverageName": "Personal Accident for Passenger (Moto)",
+                            "coverageNameLocal": "PA PASSENGER (Moto)",
+                            "coverageRequired": 1,
+                            "declineReason": [],
+                            "declineReasonLocal": [],
+                            "discountAmount": 0,
+                            "discountRate": 0,
+                            "dutyLs": [
+                                {
+                                    "dutyCode": "D_00122",
+                                    "dutyInsuredGroup": 2,
+                                    "dutyName": "Personal Accident for Passenger (Moto)",
+                                    "dutyNameLocal": "PA PASSENGER (Moto)",
+                                    "dutyStandardCode": "PB_100016",
+                                    "insuredAmount": 5000000,
+                                    "insuredAmountOption": [
+                                        5000000,
+                                        10000000
+                                    ],
+                                    "insuredType": 3,
+                                    "insuredUnit": 8,
+                                    "matchPremiumRule": [],
+                                    "netPremium": 0,
+                                    "premium": 0,
+                                    "stamp": 0,
+                                    "vatAmount": 0
+                                }
+                            ],
+                            "installmentNetPremium": 0,
+                            "installmentPremium": 0,
+                            "installmentVatAmount": 0,
+                            "insuredAmount": 5000000,
+                            "netPremium": 5000,
+                            "originalNetPremium": 5000,
+                            "premium": 5000,
+                            "riskRate": 0.001,
+                            "vatAmount": 0,
+                            "vatRate": 0
+                        },
+                        {
+                            "auditFlag": true,
+                            "commissionInfo": {
+                                "mulitCommissionType": 0,
+                                "partnerCommissionAmount": 6250,
+                                "partnerCommissionRate": 0.25,
+                                "partnerMatchCommissionRule": [
+                                    "Rule:2539"
+                                ],
+                                "partnerSpecialBonusAmount": 2500,
+                                "partnerSpecialBonusRate": 0.1,
+                                "partnerSupportingFeeAmount": 0,
+                                "partnerSupportingFeeRate": 0,
+                                "partnerUplineReferralRate": 0,
+                                "pdBreakupFeeRate": 0,
+                                "pmBreakupFeeRate": 0,
+                                "uplineReferralsRate": {
+                                    "1": 0.1,
+                                    "2": 0.05,
+                                    "3": 0.025,
+                                    "4": 0.0125,
+                                    "5": 0.0063,
+                                    "6": 0
+                                }
+                            },
+                            "coverageCode": "CA_00103",
+                            "coverageName": "Personal Accident for Driver (Moto)",
+                            "coverageNameLocal": "PA DRIVER (Moto)",
+                            "coverageRequired": 1,
+                            "declineReason": [],
+                            "declineReasonLocal": [],
+                            "discountAmount": 0,
+                            "discountRate": 0,
+                            "dutyLs": [
+                                {
+                                    "dutyCode": "D_00120",
+                                    "dutyInsuredGroup": 2,
+                                    "dutyName": "Personal Accident for Driver (Moto)",
+                                    "dutyNameLocal": "PA DRIVER (Moto)",
+                                    "dutyStandardCode": "PB_100015",
+                                    "insuredAmount": 5000000,
+                                    "insuredAmountOption": [
+                                        5000000,
+                                        10000000
+                                    ],
+                                    "insuredType": 3,
+                                    "insuredUnit": 1,
+                                    "matchPremiumRule": [],
+                                    "netPremium": 0,
+                                    "premium": 0,
+                                    "stamp": 0,
+                                    "vatAmount": 0
+                                }
+                            ],
+                            "installmentNetPremium": 0,
+                            "installmentPremium": 0,
+                            "installmentVatAmount": 0,
+                            "insuredAmount": 5000000,
+                            "netPremium": 25000,
+                            "originalNetPremium": 25000,
+                            "premium": 25000,
+                            "riskRate": 0.005,
+                            "vatAmount": 0,
+                            "vatRate": 0
+                        },
+                        {
+                            "auditFlag": true,
+                            "commissionInfo": {
+                                "mulitCommissionType": 0,
+                                "partnerCommissionAmount": 12500,
+                                "partnerCommissionRate": 0.25,
+                                "partnerMatchCommissionRule": [
+                                    "Rule:2539"
+                                ],
+                                "partnerSpecialBonusAmount": 5000,
+                                "partnerSpecialBonusRate": 0.1,
+                                "partnerSupportingFeeAmount": 0,
+                                "partnerSupportingFeeRate": 0,
+                                "partnerUplineReferralRate": 0,
+                                "pdBreakupFeeRate": 0,
+                                "pmBreakupFeeRate": 0,
+                                "uplineReferralsRate": {
+                                    "1": 0.1,
+                                    "2": 0.05,
+                                    "3": 0.025,
+                                    "4": 0.0125,
+                                    "5": 0.0063,
+                                    "6": 0
+                                }
+                            },
+                            "coverageCode": "CA_00109",
+                            "coverageName": "Third Party Liability (Moto)",
+                            "coverageNameLocal": "TPL (Moto)",
+                            "coverageRequired": 1,
+                            "declineReason": [],
+                            "declineReasonLocal": [],
+                            "discountAmount": 0,
+                            "discountRate": 0,
+                            "dutyLs": [
+                                {
+                                    "dutyCode": "D_00126",
+                                    "dutyInsuredGroup": 2,
+                                    "dutyName": "Third Party Liability (for Motorcycle)",
+                                    "dutyNameLocal": "TPL (for Motorcycle)",
+                                    "dutyStandardCode": "PB_100010",
+                                    "insuredAmount": 5000000,
+                                    "insuredAmountOption": [
+                                        5000000,
+                                        10000000
+                                    ],
+                                    "insuredType": 3,
+                                    "insuredUnit": 1,
+                                    "matchPremiumRule": [],
+                                    "netPremium": 0,
+                                    "premium": 0,
+                                    "stamp": 0,
+                                    "vatAmount": 0
+                                }
+                            ],
+                            "installmentNetPremium": 0,
+                            "installmentPremium": 0,
+                            "installmentVatAmount": 0,
+                            "insuredAmount": 5000000,
+                            "netPremium": 50000,
+                            "originalNetPremium": 50000,
+                            "premium": 50000,
+                            "riskRate": 0.01,
+                            "vatAmount": 0,
+                            "vatRate": 0
+                        }
                     ],
-                    "insuredType": 3,
-                    "insuredUnit": 8,
-                    "matchPremiumRule": [],
-                    "netPremium": 0,
-                    "premium": 0,
-                    "stamp": 0,
-                    "vatAmount": 0
-                  }
-                ],
-                "installmentNetPremium": 0,
-                "installmentPremium": 0,
-                "installmentVatAmount": 0,
-                "insuredAmount": 5000000,
-                "netPremium": 5000,
-                "originalNetPremium": 5000,
-                "premium": 5000,
-                "riskRate": 0.001,
-                "vatAmount": 0,
-                "vatRate": 0
-              },
-              {
-                "auditFlag": true,
-                "commissionInfo": {
-                  "mulitCommissionType": 0,
-                  "partnerCommissionAmount": 6250,
-                  "partnerCommissionRate": 0.25,
-                  "partnerMatchCommissionRule": [
-                    "Rule:2539"
-                  ],
-                  "partnerSpecialBonusAmount": 2500,
-                  "partnerSpecialBonusRate": 0.1,
-                  "partnerSupportingFeeAmount": 0,
-                  "partnerSupportingFeeRate": 0,
-                  "partnerUplineReferralRate": 0,
-                  "pdBreakupFeeRate": 0,
-                  "pmBreakupFeeRate": 0,
-                  "uplineReferralsRate": {
-                    "1": 0.1,
-                    "2": 0.05,
-                    "3": 0.025,
-                    "4": 0.0125,
-                    "5": 0.0063,
-                    "6": 0
-                  }
-                },
-                "coverageCode": "CA_00103",
-                "coverageName": "Personal Accident for Driver (Moto)",
-                "coverageNameLocal": "PA DRIVER (Moto)",
-                "coverageRequired": 1,
-                "declineReason": [],
-                "declineReasonLocal": [],
-                "discountAmount": 0,
-                "discountRate": 0,
-                "dutyLs": [
-                  {
-                    "dutyCode": "D_00120",
-                    "dutyInsuredGroup": 2,
-                    "dutyName": "Personal Accident for Driver (Moto)",
-                    "dutyNameLocal": "PA DRIVER (Moto)",
-                    "dutyStandardCode": "PB_100015",
-                    "insuredAmount": 5000000,
-                    "insuredAmountOption": [
-                      5000000,
-                      10000000
+                    "declineReason": [],
+                    "declineReasonLocal": [],
+                    "discountCommissionType": 1,
+                    "inputType": 1,
+                    "inspectionFlag": false,
+                    "inspectionReason": [],
+                    "inspectionReasonLocal": [],
+                    "leaderBookAs": 1,
+                    "leaderGroup": true,
+                    "matchPremiumRule": [
+                        "Rule:167243|null",
+                        "Rule:167251|null",
+                        "Rule:167248|null",
+                        "Rule:167246|null",
+                        "Rule:167245|null",
+                        "Rule:167254|null",
+                        "Rule:167253|null",
+                        "Rule:167255|null"
                     ],
-                    "insuredType": 3,
-                    "insuredUnit": 1,
-                    "matchPremiumRule": [],
-                    "netPremium": 0,
-                    "premium": 0,
-                    "stamp": 0,
-                    "vatAmount": 0
-                  }
-                ],
-                "installmentNetPremium": 0,
-                "installmentPremium": 0,
-                "installmentVatAmount": 0,
-                "insuredAmount": 5000000,
-                "netPremium": 25000,
-                "originalNetPremium": 25000,
-                "premium": 25000,
-                "riskRate": 0.005,
-                "vatAmount": 0,
-                "vatRate": 0
-              },
-              {
-                "auditFlag": true,
-                "commissionInfo": {
-                  "mulitCommissionType": 0,
-                  "partnerCommissionAmount": 12500,
-                  "partnerCommissionRate": 0.25,
-                  "partnerMatchCommissionRule": [
-                    "Rule:2539"
-                  ],
-                  "partnerSpecialBonusAmount": 5000,
-                  "partnerSpecialBonusRate": 0.1,
-                  "partnerSupportingFeeAmount": 0,
-                  "partnerSupportingFeeRate": 0,
-                  "partnerUplineReferralRate": 0,
-                  "pdBreakupFeeRate": 0,
-                  "pmBreakupFeeRate": 0,
-                  "uplineReferralsRate": {
-                    "1": 0.1,
-                    "2": 0.05,
-                    "3": 0.025,
-                    "4": 0.0125,
-                    "5": 0.0063,
-                    "6": 0
-                  }
-                },
-                "coverageCode": "CA_00109",
-                "coverageName": "Third Party Liability (Moto)",
-                "coverageNameLocal": "TPL (Moto)",
-                "coverageRequired": 1,
-                "declineReason": [],
-                "declineReasonLocal": [],
-                "discountAmount": 0,
-                "discountRate": 0,
-                "dutyLs": [
-                  {
-                    "dutyCode": "D_00126",
-                    "dutyInsuredGroup": 2,
-                    "dutyName": "Third Party Liability (for Motorcycle)",
-                    "dutyNameLocal": "TPL (for Motorcycle)",
-                    "dutyStandardCode": "PB_100010",
-                    "insuredAmount": 5000000,
-                    "insuredAmountOption": [
-                      5000000,
-                      10000000
-                    ],
-                    "insuredType": 3,
-                    "insuredUnit": 1,
-                    "matchPremiumRule": [],
-                    "netPremium": 0,
-                    "premium": 0,
-                    "stamp": 0,
-                    "vatAmount": 0
-                  }
-                ],
-                "installmentNetPremium": 0,
-                "installmentPremium": 0,
-                "installmentVatAmount": 0,
-                "insuredAmount": 5000000,
-                "netPremium": 50000,
-                "originalNetPremium": 50000,
-                "premium": 50000,
-                "riskRate": 0.01,
-                "vatAmount": 0,
-                "vatRate": 0
-              }
+                    "maxDiscountFromPartnerSpecialBonusAmount": 36661,
+                    "planCode": "RP_00037",
+                    "planName": "ZURICH SYARIAH BASIC TOTAL LOSS ONLY",
+                    "planNameLocal": "ZURICH SYARIAH BASIC TOTAL LOSS ONLY",
+                    "policyFee": 29000,
+                    "productCode": "R_00023",
+                    "productName": "ZURICH SYARIAH BASIC (MOTO)",
+                    "productNameLocal": "ZURICH SYARIAH BASIC (MOTO)",
+                    "quoteDimension": 4,
+                    "serviceFee": 0,
+                    "shareRate": 1,
+                    "subPlanCode": "null|RP_00037",
+                    "totalInstallmentNetPremium": 0,
+                    "totalInstallmentPremium": 0,
+                    "totalInstallmentVatAmount": 0,
+                    "totalNetPremium": 396332,
+                    "totalNoCalculateCommissionPremium": 0,
+                    "totalOriginalNetPremium": 396332,
+                    "totalPolicyDiscountAmount": 0,
+                    "totalPolicyDiscountRate": 0,
+                    "totalPremium": 406332,
+                    "totalRiderNetPremium": 114452,
+                    "totalRiderPremium": 114452,
+                    "totalStamp": 10000,
+                    "totalVATAmount": 0
+                }
             ],
-            "declineReason": [],
-            "declineReasonLocal": [],
-            "discountCommissionType": 1,
-            "inputType": 1,
-            "inspectionFlag": false,
-            "inspectionReason": [],
-            "inspectionReasonLocal": [],
-            "leaderBookAs": 1,
-            "leaderGroup": true,
-            "matchPremiumRule": [
-              "Rule:167243|null",
-              "Rule:167251|null",
-              "Rule:167248|null",
-              "Rule:167246|null",
-              "Rule:167245|null",
-              "Rule:167254|null",
-              "Rule:167253|null",
-              "Rule:167255|null"
-            ],
-            "maxDiscountFromPartnerSpecialBonusAmount": 36661,
-            "planCode": "RP_00037",
-            "planName": "ZURICH SYARIAH BASIC TOTAL LOSS ONLY",
-            "planNameLocal": "ZURICH SYARIAH BASIC TOTAL LOSS ONLY",
-            "policyFee": 29000,
-            "productCode": "R_00023",
-            "productName": "ZURICH SYARIAH BASIC (MOTO)",
-            "productNameLocal": "ZURICH SYARIAH BASIC (MOTO)",
-            "quoteDimension": 4,
+            "rebateAmount": 0,
             "serviceFee": 0,
-            "shareRate": 1,
-            "subPlanCode": "null|RP_00037",
-            "totalInstallmentNetPremium": 0,
-            "totalInstallmentPremium": 0,
-            "totalInstallmentVatAmount": 0,
             "totalNetPremium": 396332,
-            "totalNoCalculateCommissionPremium": 0,
-            "totalOriginalNetPremium": 396332,
             "totalPolicyDiscountAmount": 0,
-            "totalPolicyDiscountRate": 0,
             "totalPremium": 406332,
-            "totalRiderNetPremium": 114452,
-            "totalRiderPremium": 114452,
-            "totalStamp": 10000,
             "totalVATAmount": 0
-          }
-        ],
-        "rebateAmount": 0,
-        "serviceFee": 0,
-        "totalNetPremium": 396332,
-        "totalPolicyDiscountAmount": 0,
-        "totalPremium": 406332,
-        "totalVATAmount": 0
-      }
+        }
     ]
-  }
+}
 }

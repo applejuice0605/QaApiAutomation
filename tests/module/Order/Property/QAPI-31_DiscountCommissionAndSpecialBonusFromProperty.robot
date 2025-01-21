@@ -19,7 +19,6 @@ Resource    ../../../../resources/resource.robot
 Test Setup    Setup Env Variable
 Test Teardown    Delete All Sessions
 
-
 *** Variables ***
 ${BODY_FILE_PATH}    EQVET_Property_PlaceOrderData.json
 ${isAdvancePremium}     0
@@ -31,7 +30,7 @@ ${paymentMethod}    VA
 
 
 *** Test Cases ***
-Property EQVET PayLater With Discount Commission And Special Bonus From Property
+Order Property and EQVET using discountCommission and specialBonus from Property PayLater PartnerPay Fullpayment
     [Tags]    uat   prod    order-property    discount
     Given Setup Data Testing
     When I have a whitelist account and have logined

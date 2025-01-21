@@ -1,100 +1,25 @@
 *** Settings ***
-Library    RequestsLibrary
-Library    Collections
-Library    String
-Library    XML
-Library    SeleniumLibrary
-Library    DateTime
-Library    JSONLibrary
-
-Resource    ../../../resources/biz/Login/login.robot
-Resource    ../../../resources/biz/order/property/property_order.robot
-
 Resource    ../../../resources/api/underwriting/underwritingV2_list_manager.robot
 Resource    ../../../resources/api/underwriting/assignToMe.robot
 Resource    ../../../resources/api/underwriting/underwritingV2_list_todo.robot
 Resource    ../../../resources/api/underwriting/approval.robot
 
 Resource    ../../../resources/util/utilCommon.robot
-Resource    ../../../resources/util/assertUtil.robot
-Resource    ../../../resources/resource.robot
-
-#Setup Test
-Test Setup    Setup Env Variable
-Test Teardown    Delete All Sessions
-
-
-*** Variables ***
-${BODY_FILE_PATH}    resources/data/ApprovalDTO_workflow.json
-${taskName}     Order Review Task
-
-*** Test Cases ***
-API_policyUnderwritingWorkflow_Decline
-    [Tags]    uat
-    Given Setup Data Testing
-    When I have an underwriting order and have logined to Boss
-    Then [Order Review Task] I send request to underwritingV2/list/manager API
-    Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain taskId
-    Then I send request to assigneToMe API
-    Then The status code should be 200    ${jsonResult}[code]
-    Then I send request to underwritingV2/list/todo API
-    Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain taskId
-    Then [Order Review Task] I send request to approve API
-
-
-    Then [toOffline Task] I send request to underwritingV2/list/manager API
-    Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain taskId
-    Then I send request to assigneToMe API
-    Then The status code should be 200    ${jsonResult}[code]
-    Then I send request to underwritingV2/list/todo API
-    Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain taskId
-    Then [toOffline Task] I send request to approve API
-
-    Then finally Log the OrderNo ${orderNo}
-
-
-
-
-
 
 *** Keywords ***
-Setup Data Testing
-    ${AP_POSITIVE_DATA}=    Load JSON From File    ${BODY_FILE_PATH}    encoding=UTF-8
-    Set Test Variable    ${AP_POSITIVE_DATA}
-
-I have an underwriting order and have logined to Boss
-    # 调用登录接口
-    ${token}  login.Login to Application using mobile
-    # 调用下单业务
-    ${orderInfo}    property_order.Property Order Pay Now without discount    ${token}
-    Log     ${orderInfo}
-    Set Test Variable    ${orderNo}    ${orderInfo[0]}
-    Set Test Variable    ${orderId}    ${orderInfo[1]}
-    Set Test Variable    ${token}
-
-    # 调用登录Boss业务
-    ${bossToken}    login.Login to Boss
-    Set Test Variable    ${bossToken}
-
-    Sleep    10s
-
-
 
 [Order Review Task] I send request to underwritingV2/list/manager API
-    ${response}    underwritingV2_list_manager.Send Request And Get Response Data    ${bossToken}    ${orderNo}     existsAssignee=${env_vars}[UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE]
+    [Arguments]    ${bossToken}    ${orderNo}   ${existsAssignee}
+    ${response}    underwritingV2_list_manager.Send Request And Get Response Data    ${bossToken}    ${orderNo}     existsAssignee=${existsAssignee}
 
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
 
 
 [toOffline Task] I send request to underwritingV2/list/manager API
+    [Arguments]    ${bossToken}    ${orderNo}   ${existsAssignee}
     Sleep    10s
-
-    ${response}    underwritingV2_list_manager.Send Request And Get Response Data    ${bossToken}    ${orderNo}     existsAssignee=${env_vars}[UNDERWRITING_OFFLINE_EXISTSASSIGNEE]
+    ${response}    underwritingV2_list_manager.Send Request And Get Response Data    ${bossToken}    ${orderNo}     existsAssignee=${existsAssignee}
 
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
@@ -103,6 +28,7 @@ I have an underwriting order and have logined to Boss
 
 
 I send request to underwritingV2/list/todo API
+    [Arguments]    ${bossToken}    ${orderNo}
     Sleep    10s
     ${response}    underwritingV2_list_todo.Send Request And Get Response Data    ${bossToken}    ${orderNo}
     Set Test Variable    ${jsonResult}    ${response.json()}
@@ -112,6 +38,7 @@ I send request to underwritingV2/list/todo API
 
 
 [Order Review Task] I send request to approve API
+    [Arguments]    ${bossToken}    ${orderNo}   ${AP_POSITIVE_DATA}
     #1. 获取当前任务对应的jsonBody
     ${jsonBody}    Set Variable   ${AP_POSITIVE_DATA["underwriting_OrderReviewTask_Approve_toOffline"]}
 
@@ -136,7 +63,42 @@ I send request to underwritingV2/list/todo API
         Should Be True    ${response.json()}[code] == 200
     END
 
-[toOffline Task] I send request to approve API
+[toOffline Task] I send request to approve API to approve toOffline task
+    [Arguments]    ${bossToken}    ${orderNo}   ${AP_POSITIVE_DATA}
+    #1. 获取当前任务对应的jsonBody
+    ${jsonBody}    Set Variable   ${AP_POSITIVE_DATA["underwriting_toOfflineTask_Approve"]}
+
+    #2. 依次处理每个任务
+    ${total}  Set Variable    ${jsonResult}[data][total]
+    FOR    ${counter}    IN RANGE    0    ${total}
+        Log    ${counter}
+        ${taskId}    Get From Dictionary    ${jsonResult}[data][data][${counter}]    id
+        ${startTime}     Get From Dictionary    ${jsonResult}[data][data][${counter}]    startTime
+        ${endTime}     Get From Dictionary    ${jsonResult}[data][data][${counter}]    endTime
+        ${underwritingInsuranceTime}=    Get Effective Time
+        ${policyNumber}    Get From Dictionary    ${jsonResult}[data][data][${counter}]    slipId
+
+        #2.1. update jsonBody
+        ${jsonBody}=    Update Value To Json    ${jsonBody}    $.data.orderId    ${orderId}
+        ${jsonBody}=    Update Value To Json    ${jsonBody}    $.taskId    ${taskId}
+        ${jsonBody}=    Update Value To Json    ${jsonBody}    $.data.startTime    ${startTime}000
+        ${jsonBody}=    Update Value To Json    ${jsonBody}    $.data.endTime    ${endTime}000
+        ${jsonBody}=    Update Value To Json    ${jsonBody}    $.data.underwritingInsuranceTime    ${underwritingInsuranceTime}
+        ${jsonBody}=    Update Value To Json    ${jsonBody}    $.data.policyNumber    ${policyNumber}
+
+        #3. convert jsonBody to string
+        ${strBody}  Convert Json To String    ${jsonBody}
+
+        #4. send request and get response data
+        ${response}    approval.Send Request And Get Response Data    ${bossToken}    ${strBody}
+
+        #5. check response
+        Should Be True    ${response.json()}[code] == 200
+    END
+
+
+[toOffline Task] I send request to approve API to decline toOffline task
+    [Arguments]    ${bossToken}    ${orderNo}   ${AP_POSITIVE_DATA}
     #1. 获取当前任务对应的jsonBody
     ${jsonBody}    Set Variable   ${AP_POSITIVE_DATA["decline"]}
 
@@ -158,7 +120,10 @@ I send request to underwritingV2/list/todo API
 
 
 
+
+
 the response should contain taskId
+    [Arguments]     ${jsonResult}
     ${total}  Set Variable    ${jsonResult}[data][total]
     Should Be True    ${total} > 0
     Log     ${jsonResult}[data][data][0][id]
@@ -166,8 +131,8 @@ the response should contain taskId
 
 
 
-
 I send request to assigneToMe API
+    [Arguments]     ${jsonResult}   ${bossToken}
     Log    ${jsonResult}
     ${total}    Set Variable    ${jsonResult}[data][total]
     ${taskIds}  Create List
@@ -180,4 +145,9 @@ I send request to assigneToMe API
 
     ${response}    assignToMe.Send Request And Get Response Data    ${bossToken}    ${taskIds}
     Set Test Variable    ${jsonResult}    ${response.json()}
+
+
+
+
+
 

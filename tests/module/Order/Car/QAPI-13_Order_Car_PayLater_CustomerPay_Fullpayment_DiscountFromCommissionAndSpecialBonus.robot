@@ -21,11 +21,10 @@ Test Teardown    Delete All Sessions
 
 *** Variables ***
 ${BODY_FILE_PATH}    Car_PlaceOrderData.json
-${isAdvancePremium}     1
+${isAdvancePremium}     0
 ${payerType}    2
 ${paymentScheme}    1
-${paymentMethod}    VA
-${discountFormCommission}   2613350
+${discountFormCommission}   736987
 ${discountFromPartnerSpecialBonusAmount}      1000
 
 
@@ -46,19 +45,19 @@ Car PayNow CustomerPay Fullpayment using discount from Commission and SpecialBon
     Then The status code should be 200    ${jsonResult}[code]
     And the response of paymentBilling/create API should contain securityCode    ${jsonResult}
 
-    Then I choose Partner Pay & Using Payment Scheme=${Payment Scheme} & paymentMethod=${paymentMethod} and send request to /slip/process API     ${token}     ${orderId}     ${securityCode}    ${paymentScheme}
+    Then I choose CutsomerPay and send request to generator/customer/payment/token API     ${token}     ${securityCode}
+    Then The status code should be 200    ${jsonResult}[code]
+    And the response should contain customerToken    ${jsonResult}
+
+    Then I confirm to complete the payment using "CustomerPay FullPayment" and send the request to /slip/process API    ${token}   ${orderId}    ${securityCode}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain lessAmount      ${jsonResult}
-
-
 
     Then finally Log the OrderNo ${orderNo}
 
 
-
 *** Keywords ***
 Setup Data Testing
-
     Log    ${BODY_FILE_PATH}
     Log    ${env_vars}[DATA_BASEURL]
     ${BODY_FILE_PATH}    Set Variable    ${env_vars}[DATA_BASEURL]${BODY_FILE_PATH}

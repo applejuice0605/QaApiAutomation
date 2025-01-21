@@ -18,21 +18,20 @@ I send request to getAvailableCoupon API
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
 
-the response should contain the available coupon list
+the response should contain the available coupon list and get coupon info by couponCode
+    [Arguments]     ${jsonResult}   ${CouponCode}
+    ${couponUseInfo}=    utilCommon.Get CouponId by CouponCode    ${jsonResult}[data]    ${CouponCode}
+    Log    ${couponUseInfo}
+    Set Test Variable    ${couponUseInfo}   ${couponUseInfo}
+
+
+the response should contain the available coupon list and get coupon info by productCode
     [Arguments]     ${jsonResult}   ${rawProductCode}
     ${couponDTO}=    utilCommon.Get CouponId by ProductCode    ${jsonResult}[data]    ${rawProductCode}
     ${couponUseInfo}    Create List     ${couponDTO}
     ${couponUseInfo}    Convert To String    ${couponUseInfo}
     ${couponUseInfo}    Replace String    ${couponUseInfo}    [    ${EMPTY}
     Set Test Variable    ${couponUseInfo}   ${couponDTO}
-
-#the response should contain the available coupon list
-#    [Arguments]     ${jsonResult}   ${rawProductCode}
-#    ${couponDTO}=    utilCommon.Get CouponId by ProductCode    ${jsonResult}[data]    ${rawProductCode}
-#    ${couponUseInfo}    Create List     ${couponDTO}
-#    ${couponUseInfo}    Convert To String    ${couponUseInfo}
-#    ${couponUseInfo}    Replace String    ${couponUseInfo}    [    ${EMPTY}
-#    Set Test Variable    ${couponUseInfo}   ${couponDTO}
 
 
 

@@ -22,8 +22,8 @@ Test Teardown    Delete All Sessions
 *** Variables ***
 ${BODY_FILE_PATH}    EQVET_Property_PlaceOrderData.json
 ${isAdvancePremium}     0
-${paymentScheme}    3
 ${payerType}    2
+${paymentScheme}    3
 ${paymentMethod}    VA
 
 
@@ -38,7 +38,7 @@ Supernet Payment With Eqvet and Property Coupon
 
     Then I send request to getAvailableCoupon API    ${AP_POSITIVE_DATA}     ${token}
     Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain the available coupon list and got the coupon for two product
+    And the response should contain the available coupon list and get coupon info by couponCode and got the coupon for two product
 
     Then I send the place order request to createrfqorder API    ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}  ${isAdvancePremium}    couponUseInfo=${couponUseInfo}
     Then The status code should be 200    ${jsonResult}[code]
@@ -72,7 +72,7 @@ I have a whitelist account and have logined
     Set Test Variable    ${token}
 
 
-the response should contain the available coupon list and got the coupon for two product
+the response should contain the available coupon list and get coupon info by couponCode and got the coupon for two product
     ${couponDTO}=    utilCommon.Get CouponId by ProductCode    ${jsonResult}[data]    R_00045
     ${couponUseInfo}    Create List     ${couponDTO}
 

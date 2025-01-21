@@ -1,0 +1,42 @@
+{
+  "uploadPaymentProof_NoOverpayment": {
+    "paymentBillNo": "1881126806620438530",
+    "uploadProofLs": [
+      {
+        "amount": 2683152,
+        "attachmentLs": [
+          {
+            "fileKey": "fuse-id-core-prod-rw_images/20250120/3e17f063bc8f403caa0139b1aa33795f.jpg",
+            "fileName": "小鸟玫瑰.jpg",
+            "fileType": "jpg",
+            "fileUrl": "https://oss-pre.fuse.co.id/images/20250120/3e17f063bc8f403caa0139b1aa33795f.jpg?Expires=1737417599&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=0FgUvzDXEfP33qfYuslRC3wpQac%3D",
+            "uploadUrl": "https://fuse-id-core-prod-rw.oss-ap-southeast-5.aliyuncs.com/images/20250120/3e17f063bc8f403caa0139b1aa33795f.jpg?Expires=1737333287&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=wutaBxFF2XUrzJMb4%2B0ZSAA76ng%3D",
+            "name": "小鸟玫瑰.jpg",
+            "url": "https://oss-pre.fuse.co.id/images/20250120/3e17f063bc8f403caa0139b1aa33795f.jpg?Expires=1737417599&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=0FgUvzDXEfP33qfYuslRC3wpQac%3D",
+            "uid": 1737333003927,
+            "status": "success",
+            "attachmentId": "fuse-id-core-prod-rw_images/20250120/3e17f063bc8f403caa0139b1aa33795f.jpg",
+            "attachKey": 1
+          }
+        ],
+        "index": 0,
+        "finishTime": 1737332984000,
+        "beneficiaryBankAccount": "124000410571511",
+        "beneficiaryId": "6603000931",
+        "beneficiaryName": "PT. Asuransi Intra Asia",
+        "beneficiaryRole": 1
+      }
+    ],
+    "transferAmount": 2683152,
+    "finalPayableAmount": 2683152,
+    "payerType": 2,
+    "paymentScheme": 1,
+    "beneficiaryId": "6603000931",
+    "beneficiaryBankAccount": "124000410571511",
+    "finishTime": 1737332984000,
+    "bonus": 0,
+    "point": 0,
+    "beneficiaryName": "PT. Asuransi Intra Asia",
+    "beneficiaryRole": 1
+  }
+}

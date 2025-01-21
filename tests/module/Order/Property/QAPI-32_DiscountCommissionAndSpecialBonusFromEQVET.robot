@@ -34,7 +34,7 @@ ${paymentMethod}    VA
 
 
 *** Test Cases ***
-Property EQVET PayLater With Discount Commission And Special Bonus From EQVET
+Order Property and EQVET using discountCommission and specialBonus from EQVET PayLater PartnerPay Fullpayment
     [Tags]    uat   prod    order-property    discount
     Given Setup Data Testing
     When I have a whitelist account and have logined

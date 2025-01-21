@@ -25,7 +25,7 @@ Test Teardown    Delete All Sessions
 ${BODY_FILE_PATH}    Travel_PlaceOrderData.json
 ${payerType}    2
 ${paymentScheme}    2
-${rawProductCode}   R_00067
+${CouponCode}   PR00000682
 ${paymentMethod}    VA
 
 
@@ -40,7 +40,7 @@ Travel NetPayment With Coupon
 
     Then I send request to getAvailableCoupon API    ${AP_POSITIVE_DATA}     ${token}
     Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain the available coupon list   ${jsonResult}   ${rawProductCode}
+    And the response should contain the available coupon list and get coupon info by couponCode   ${jsonResult}   ${CouponCode}
 
     Then I send the place order request to createrfqorder API   ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}     couponUseInfo=${couponUseInfo}
     Then The status code should be 200    ${jsonResult}[code]
@@ -111,7 +111,7 @@ I have a whitelist account and have logined
 #    Log    ${jsonResult}
 #
 #
-#the response should contain the available coupon list
+#the response should contain the available coupon list and get coupon info by couponCode
 #    ${couponDTO}=    utilCommon.Get CouponId by ProductCode    ${jsonResult}[data]    ${rawProductCode}
 #    ${couponUseInfo}    Create List     ${couponDTO}
 #    ${couponUseInfo}    Convert To String    ${couponUseInfo}

@@ -37,7 +37,6 @@ Motor Get Quotation
 
 *** Keywords ***
 Setup Data Testing
-
     Log    ${BODY_FILE_PATH}
     Log    ${env_vars}[DATA_BASEURL]
     ${BODY_FILE_PATH}    Set Variable    ${env_vars}[DATA_BASEURL]${BODY_FILE_PATH}

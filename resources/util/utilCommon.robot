@@ -54,6 +54,32 @@ Get CouponId by ProductCode
     Log     ${couponDTO}
     RETURN    ${couponDTO}
 
+Get CouponId by CouponCode
+    [Arguments]    ${couponDTO}     ${couponCode}
+    Log    ${couponDTO}
+    Log    ${couponCode}
+    ${couponId}    Set Variable    ${None}
+    ${couponAvailableList}   Set Variable    ${couponDTO}[0][couponAvailableList]
+    ${length}      Get Length    ${couponAvailableList}
+    Log    ${length}
+    FOR    ${counter}    IN RANGE    0    ${length}
+        Log    ${counter}
+        ${item}     Set Variable    ${couponAvailableList}[${counter}]
+        Log    ${item}
+        ${item_couponCode}     Get From Dictionary    ${item}    couponCode
+        Log    ${item_couponCode}
+        IF    '${item_couponCode}' == '${couponCode}'
+            ${couponId}    Set Variable   ${item}[couponId]
+            Log    ${couponId}
+        END
+        Exit For Loop If    '${item_couponCode}' == '${couponCode}'
+    END
+    ${couponUseInfo}     Create Dictionary    couponId=${couponId}   productCode=${couponDTO}[0][productCode]
+    Log     ${couponUseInfo}
+    RETURN    ${couponUseInfo}
+
+
+
 Generate Random identityNo
     [Documentation]    生成随机十位数字
     ${counter}  Set Variable    0

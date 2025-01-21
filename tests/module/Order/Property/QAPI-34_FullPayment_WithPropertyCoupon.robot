@@ -40,7 +40,7 @@ Full Payment With Property Coupon
 
     Then I send request to getAvailableCoupon API   ${AP_POSITIVE_DATA}     ${token}
     Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain the available coupon list   ${jsonResult}    ${product_code_use_coupon}
+    And the response should contain the available coupon list and get coupon info by productCode   ${jsonResult}    ${product_code_use_coupon}
 
     Then I send the place order request to createrfqorder API    ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}  ${isAdvancePremium}    couponUseInfo=${couponUseInfo}
     Then The status code should be 200    ${jsonResult}[code]

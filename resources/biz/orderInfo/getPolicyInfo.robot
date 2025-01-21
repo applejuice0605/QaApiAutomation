@@ -19,3 +19,21 @@ The response should contain slipUids
     END
     Set Test Variable    ${slipUids}
 
+
+Send request to Boss:/api/oms/slip/v2/list API to get slipStatus
+    [Arguments]     ${token}     ${orderNo}
+    Sleep    5s
+    ${response}    policyDetail.POST Boss:/api/oms/slip/v2/list     token=${token}   orderNo=${orderNo}
+    Set Test Variable    ${jsonResult}    ${response.json()}
+    Log    ${jsonResult}
+
+The response's slipStatus should be ${slipStatus}
+    [Arguments]     ${jsonResult}
+    Log    ${jsonResult}
+    ${total}    Set Variable    ${jsonResult}[data][total]
+    FOR    ${counter}    IN RANGE    0    ${total}
+        Log    ${counter}
+        ${item_slipStatus}    Get From Dictionary    ${jsonResult}[data][data][${counter}]    slipStatus
+        Should Be True    ${item_slipStatus} == ${slipStatus}
+    END
+

@@ -21,7 +21,7 @@ Test Teardown    Delete All Sessions
 
 *** Variables ***
 ${BODY_FILE_PATH}    Car_PlaceOrderData.json
-${isAdvancePremium}     1
+${isAdvancePremium}     0
 ${payerType}    2
 ${paymentScheme}    1
 ${paymentMethod}    VA
@@ -49,15 +49,11 @@ Car PayNow PartnerPay Fullpayment using discount from Commission
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain lessAmount      ${jsonResult}
 
-
-
     Then finally Log the OrderNo ${orderNo}
-
 
 
 *** Keywords ***
 Setup Data Testing
-
     Log    ${BODY_FILE_PATH}
     Log    ${env_vars}[DATA_BASEURL]
     ${BODY_FILE_PATH}    Set Variable    ${env_vars}[DATA_BASEURL]${BODY_FILE_PATH}
