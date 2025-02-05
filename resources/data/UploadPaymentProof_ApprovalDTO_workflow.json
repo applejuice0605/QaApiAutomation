@@ -1,5 +1,5 @@
 {
-  "uploadPaymentProof_NoOverpayment": {
+  "uploadPaymentProof": {
     "paymentBillNo": "1881126806620438530",
     "uploadProofLs": [
       {
@@ -38,5 +38,109 @@
     "point": 0,
     "beneficiaryName": "PT. Asuransi Intra Asia",
     "beneficiaryRole": 1
+  },
+  "uploadPaymentProof_Approve": {
+    "action": "Approval",
+    "workflow": "BillingFlow",
+    "comment": {
+      "classify1": ""
+    },
+    "data": {
+      "paymentBillingNo": "1883744047807434754",
+      "confirmSlipLs": [
+        {
+          "amount": 1584000,
+          "beneficiaryBankAccount": "0013334545",
+          "beneficiaryId": "6603000949",
+          "beneficiaryName": "PT. Zurich General Takaful Indonesia",
+          "beneficiaryRole": 1,
+          "bizId": "1883742960001474562",
+          "bizTransactionId": "62178F8CF265491AA3ADD45CC371F4D1",
+          "bizType": 1,
+          "body": "ZURICH SYARIAH BASIC CAR",
+          "channelAccountId": 302,
+          "channelCode": "offline",
+          "channelId": 9,
+          "currency": "IDR",
+          "expirationTime": 1741021200000,
+          "extra": "{\"mpCode\": \"M_00015\", \"source\": 0, \"groupId\": \"1883742960001474562\", \"orderId\": \"1883742960001474562\", \"orderNo\": \"FUSE-20250127-120454580\", \"version\": 2, \"realName\": \"Wei\", \"bizSource\": 1, \"orderType\": 1, \"payerType\": 2, \"businessId\": \"FUSE-20250127-120454580\", \"partnerUid\": 1800007807690, \"insuredName\": \"2025-01-27 13:04:51:307 later\", \"orderSlipId\": \"1883742962392227842\", \"partnerCode\": \"99485f35\", \"partnerName\": \"Wei\", \"customerCity\": \"Kab. Tanjung Jabung Barat\", \"customerName\": \"later 2025-01-27 13:04:51:307\", \"partnerEmail\": \"cece@fuseinsurtech.com\", \"customerEmail\": \"kiko2@163.com\", \"partnerMobile\": \"8123268989\", \"customerMobile\": \"8188123500\", \"partnerAddress\": \"place\", \"installmentFlag\": 0, \"productCategory\": \"car\", \"customerDistrict\": \"Muara Papalik\", \"customerProvince\": \"Jambi\", \"insuranceCompanyAbbr\": \"ZURICH SYARIAH\", \"commissionBrokerPermission\": false, \"specialBonusBrokerPermission\": false}",
+          "finishTime": 1738615668000,
+          "initTime": 1737954554000,
+          "methodChannelId": 110,
+          "methodCode": "1101",
+          "methodId": 10048,
+          "paymentBillingId": 16942,
+          "paymentBillingNo": "1883744047807434754",
+          "paymentSlipNo": "CA317324E7B0454CBF37C29428599167",
+          "referenceNo": "7E2613A7B8C641A58EE2880A7A3EACC1",
+          "status": 2,
+          "subject": "paying[FUSE-20250127-120454580]",
+          "tenantId": 1000662,
+          "userId": "1800007807690",
+          "voucherSchema": [
+            {
+              "attachKey": "1",
+              "attachmentId": "fuse-id-core-prod-rw_images/20250203/6270acbae3244c1b89a4faa9c0c0c7f2.png",
+              "code": "DBEF01F551294000A41E2F0D42AC323C",
+              "tradingId": "CA317324E7B0454CBF37C29428599167",
+              "tradingType": 1,
+              "uid": 7399
+            }
+          ],
+          "index": 0,
+          "actualAmount": 1584000,
+          "attachmentLs": [
+            {
+              "fileKey": "fuse-id-core-prod-rw_images/20250203/4636728a68ea4f11ad095da384c0c664.png",
+              "fileName": "cry.png",
+              "fileType": "png",
+              "fileUrl": "https://oss-pre.fuse.co.id/images/20250203/4636728a68ea4f11ad095da384c0c664.png?Expires=1738627199&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=KBxr606uwOIV1btLg0YAc22jCMw%3D",
+              "uploadUrl": "https://fuse-id-core-prod-rw.oss-ap-southeast-5.aliyuncs.com/images/20250203/4636728a68ea4f11ad095da384c0c664.png?Expires=1738617745&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=kVQGZFHD8iLiQ28ne0AoGKLmHGI%3D",
+              "name": "cry.png",
+              "url": "https://oss-pre.fuse.co.id/images/20250203/4636728a68ea4f11ad095da384c0c664.png?Expires=1738627199&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=KBxr606uwOIV1btLg0YAc22jCMw%3D",
+              "uid": 1738617448082,
+              "status": "success",
+              "attachmentId": "fuse-id-core-prod-rw_images/20250203/4636728a68ea4f11ad095da384c0c664.png",
+              "attachKey": 1
+            }
+          ]
+        }
+      ],
+      "finalPayableAmount": 1584000,
+      "overpaymentAmount": 0,
+      "paymentBillNo": "1883744047807434754",
+      "paymentBizType": 1,
+      "paymentBizId": "1883742960001474562",
+      "businessId": "FUSE-20250127-120454580",
+      "methodCode": "1101",
+      "balanceDeductionLs": [],
+      "bonus": 0,
+      "point": 0,
+      "payerType": 2,
+      "paymentScheme": 1,
+      "bizAmount": 1754000,
+      "finishTime": 1738615668000,
+      "beneficiaryBankAccount": "0013334545",
+      "actualPaymentAmount": 1584000,
+      "beneficiaryId": "6603000949",
+      "beneficiaryName": "PT. Zurich General Takaful Indonesia",
+      "beneficiaryRole": 1,
+      "beneficiaryOptions": [
+        {
+          "beneficiaryId": "6603000949",
+          "beneficiaryName": "PT. Zurich General Takaful Indonesia",
+          "beneficiaryRole": 1
+        },
+        {
+          "beneficiaryId": "6604000375",
+          "beneficiaryName": "PT Pialang Asuransi Indotekno",
+          "beneficiaryRole": 2
+        }
+      ],
+      "transactionId": "",
+      "bizTransactionId": "",
+      "orderId": ""
+    },
+    "taskId": "3183cb39-e270-11ef-ab74-8a5f18731cd9"
   }
 }

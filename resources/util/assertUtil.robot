@@ -19,9 +19,9 @@ The response data total should be greater than 0
     [Arguments]     ${jsonResult}
     Should Be True    ${jsonResult}[data][total] > 0
 
-The response data should contain the keyword ${keyword}
-    [Arguments]     ${jsonResult}    ${keyword}
-    Should Contain    ${jsonResult}[data][list]    ${keyword}
+#The response data should contain the keyword ${keyword}
+#    [Arguments]     ${jsonResult}    ${keyword}
+#    Should Contain    ${jsonResult}[data][list]    ${keyword}
 
 
 Finally Log the orderNo

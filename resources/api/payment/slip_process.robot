@@ -19,7 +19,7 @@ Resource    ../../util/httpCommon.robot
 
 *** Keywords ***
 Send Request And Get Response Data
-    [Arguments]    ${payerType}     ${token}   ${selectType}     ${paymentScheme}    ${orderId}    ${securityCode}     ${bonusDeduction}=0    ${pointsDeduction}=0     ${methodCode}=9204
+    [Arguments]    ${payerType}     ${token}   ${selectType}     ${paymentScheme}    ${orderId}    ${securityCode}     ${bonusDeduction}=0    ${pointsDeduction}=0     ${methodCode}=""
     # 1. 准备请求数据：请求路径、请求头、请求数据
     ${base_url}=   Set Variable     https://cashier-uat.fuse.co.id
     ${headers}=    Get appHeader By PayerType    ${payerType}    ${token}

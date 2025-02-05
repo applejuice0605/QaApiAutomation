@@ -18,12 +18,12 @@ Variables   ../../varfile_defvar.py
 # 发送请求
 Send Request And Get Response Data
     #payload的existsAssignee参数需要根据实际boss的指派规则来设置
-    [Arguments]    ${bossToken}     ${taskId}
+    [Arguments]    ${bossToken}     ${taskIds}
     # 1. 准备请求数据：请求路径、请求头、请求数据
     ${base_url}=   Set Variable     https://boss-uat.fuse.co.id
     ${path}=   Set Variable     /api/bpm/runtime/self/assign
     ${headers}=    Create Dictionary    Content-Type=application/json    clientType=application/json;charset=UTF-8    appCode=IDP_BOSS  fusetoken=${bossToken}
-    ${payload}=    Set Variable     {"assignee": "${BossAccount}","businessCode": [null],"taskIds": ${taskId}}
+    ${payload}=    Set Variable     {"assignee": "${BossAccount}","businessCode": [null],"taskIds": ${taskIds}}
     # 2. 发送请求
     ${response}=    httpCommon.Send Post Request And Get Response Data    ${base_url}    ${path}    ${headers}    ${payload}
 

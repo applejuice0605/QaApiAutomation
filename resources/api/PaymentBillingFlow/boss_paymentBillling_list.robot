@@ -6,12 +6,12 @@ Variables   ../../varfile_defvar.py
 *** Keywords ***
 # 发送请求
 Send Request And Get Response Data
-    [Arguments]    ${bossToken}     ${orderNo}      ${pageNo}=0     ${pageSize}=20
+    [Arguments]    ${bossToken}     ${multiFieldQuery}      ${pageNo}=0     ${pageSize}=20
     # 1. 准备请求数据：请求路径、请求头、请求数据
     ${base_url}=   Set Variable     https://boss-${env}.fuse.co.id
     ${path}=   Set Variable     /api/paymentBilling/list
     ${headers}=    Create Dictionary    Content-Type=application/json    clientType=application/json;charset=UTF-8    appCode=IDP_BOSS  fusetoken=${bossToken}
-    ${payload}=    Set Variable     {"pageNo": ${pageNo},"pageSize": ${pageSize},"multiFieldQuery": "${orderNo}"}
+    ${payload}=    Set Variable     {"pageNum":1,"pageSize":20,"multiFieldQuery":"${multiFieldQuery}","billingStatus":""}
 
 
     # 2. 发送请求

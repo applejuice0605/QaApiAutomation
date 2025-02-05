@@ -48,7 +48,7 @@ Motor using coupon PayLater PartnerPay SupernetPayment
     Then The status code should be 200    ${jsonResult}[code]
     And the response of paymentBilling/create API should contain securityCode    ${jsonResult}
 
-    Then I choose Partner Pay & Using Payment Scheme=${Payment Scheme} & paymentMethod=${paymentMethod} and send request to /slip/process API     ${token}     ${orderId}     ${securityCode}    ${paymentScheme}
+    Then  I choose PartnerPay & PaymentScheme & PaymentMethod and send request to /slip/process API     ${token}     ${orderId}     ${securityCode}    ${paymentScheme}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain lessAmount      ${jsonResult}
 

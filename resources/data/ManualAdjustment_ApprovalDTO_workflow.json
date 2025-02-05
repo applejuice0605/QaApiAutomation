@@ -1,0 +1,27 @@
+{
+  "add_ManualAdjustment": {
+    "partnerCode": "99485f35",
+    "partnerName": "TestNora",
+    "partnerFullName": "Wei",
+    "partnerMobile": "81****89",
+    "reasonType": "other",
+    "transactionType": "policyBonus",
+    "walletAccount": "partnerCommission",
+    "policyNo": null,
+    "flowType": "add",
+    "transactionAmount": 100000,
+    "calculateTaxType": "1",
+    "distributorCompanyUid": 6604000375,
+    "distributorCompany": "PT Pialang Asuransi Indotekno",
+    "growthModelCode": "Ge8Ad4nyAQ",
+    "rmName": "RM Testing_Adolf",
+    "rmCode": "LG46D7NKDDDZ",
+    "uplineRmCode": "LG46D7NKDDDZ",
+    "incomeTax": "2500.000000",
+    "totalAmount": "97500.000000",
+    "vatTaxAmount": "0",
+    "requestId": "b97ccb41-7fa5-4808-8e54-c9de27333752"
+},
+  "Manual_Injection_ReviewTask_existsAssignee": "true",
+  "decline": {}
+}

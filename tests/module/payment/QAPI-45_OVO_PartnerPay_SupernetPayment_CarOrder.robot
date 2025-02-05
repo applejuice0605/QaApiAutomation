@@ -47,7 +47,7 @@ OVO PartnerPay NetPayment CarOrder
 
 
 
-    Then I choose Partner Pay & Using Payment Scheme=${Payment Scheme} & paymentMethod=${paymentMethod} and send request to /slip/process API   token=${token}     paymentScheme=${paymentScheme}  orderId=${orderId}    securityCode=${securityCode}
+    Then I choose PartnerPay & PaymentScheme & PaymentMethod and send request to /slip/process API   token=${token}     orderId=${orderId}     securityCode=${securityCode}    paymentScheme=${paymentScheme}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain lessAmount      ${jsonResult}
 

@@ -16,12 +16,12 @@ Resource    ../../util/httpCommon.robot
 # 发送请求
 Send Request And Get Response Data
     #payload的existsAssignee参数需要根据实际boss的指派规则来设置
-    [Arguments]    ${bossToken}     ${orderNo}
+    [Arguments]    ${bossToken}     ${multiFieldQuery}
     # 1. 准备请求数据：请求路径、请求头、请求数据
-    ${base_url}=   Set Variable     https://tmp-uat.fuse.co.id
+    ${base_url}=   Set Variable     https://boss-uat.fuse.co.id
     ${path}=   Set Variable     /api/paymentBilling/flow/list/todo
     ${headers}=    Create Dictionary    Content-Type=application/json    clientType=application/json;charset=UTF-8    appCode=IDP_BOSS  fusetoken=${bossToken}
-    ${payload}=    Set Variable     {"pageNo": 0,"pageSize": 20,"taskNameList": [],"multiFieldQuery": "${orderNo}"}
+    ${payload}=    Set Variable     {"pageNo": 0,"pageSize": 20,"taskNameList": [],"multiFieldQuery": "${multiFieldQuery}"}
     # 2. 发送请求
     ${response}=    httpCommon.Send Post Request And Get Response Data    ${base_url}    ${path}    ${headers}    ${payload}
 

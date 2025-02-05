@@ -49,10 +49,11 @@ the response should contain customerToken
 
 
 
-I choose Partner Pay & Using Payment Scheme=${Payment Scheme} & paymentMethod=${paymentMethod} and send request to /slip/process API
+#I choose PartnerPay & PaymentScheme & PaymentMethod and send request to /slip/process API
+I choose PartnerPay & PaymentScheme & PaymentMethod and send request to /slip/process API
     [Documentation]     Business operation: choose PartnerPay and Payment Scheme and one payment method and click continue in cashier page
-    [Arguments]     ${token}     ${orderId}     ${securityCode}    ${paymentScheme}    ${bonusDeduction}=0     ${pointsDeduction}=0
-    ${response}    slip_process.Send Request And Get Response Data    payerType=2    token=${token}    selectType=2    paymentScheme=${paymentScheme}      orderId=${orderId}    securityCode=${securityCode}       bonusDeduction=${bonusDeduction}     pointsDeduction=${pointsDeduction}
+    [Arguments]     ${token}     ${orderId}     ${securityCode}    ${paymentScheme}    ${bonusDeduction}=0     ${pointsDeduction}=0     ${selectType}=2
+    ${response}    slip_process.Send Request And Get Response Data    payerType=2    token=${token}    selectType=${selectType}    paymentScheme=${paymentScheme}      orderId=${orderId}    securityCode=${securityCode}       bonusDeduction=${bonusDeduction}     pointsDeduction=${pointsDeduction}
 
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
@@ -70,4 +71,38 @@ the response should contain lessAmount
     [Arguments]     ${jsonResult}
     Should Contain    ${jsonResult}[data]   lessAmount
     Set Test Variable    ${amount}    ${jsonResult}[data][lessAmount]
+    Log    ${amount}
+
+
+Use Full Bonus and send the request to /slip/process API
+    [Arguments]     ${token}     ${orderId}     ${securityCode}     ${PaymentScheme}
+    ${response}  I choose PartnerPay & PaymentScheme & PaymentMethod and send request to /slip/process API     token=${token}     orderId=${orderId}     securityCode=${securityCode}     paymentScheme=${PaymentScheme}    selectType=1
+    the response should contain lessAmount  ${jsonResult}
+    ${response}  I choose PartnerPay & PaymentScheme & PaymentMethod and send request to /slip/process API     token=${token}     orderId=${orderId}     securityCode=${securityCode}     paymentScheme=${PaymentScheme}    bonusDeduction=${amount}
+
+
+
+Use Full FusePoints and send the request to /slip/process API
+    [Arguments]     ${token}     ${orderId}     ${securityCode}     ${PaymentScheme}
+    ${response}  I choose PartnerPay & PaymentScheme & PaymentMethod and send request to /slip/process API     token=${token}     orderId=${orderId}     securityCode=${securityCode}     paymentScheme=${PaymentScheme}    selectType=1
+    the response should contain lessAmount  ${jsonResult}
+    ${response}  I choose PartnerPay & PaymentScheme & PaymentMethod and send request to /slip/process API     token=${token}     orderId=${orderId}     securityCode=${securityCode}     paymentScheme=${PaymentScheme}    pointsDeduction=${amount}
+
+
+
+Use Full Bonus And FusePoints and send the request to /slip/process API
+    [Arguments]     ${token}     ${orderId}     ${securityCode}     ${PaymentScheme}
+    ${response}  I choose PartnerPay & PaymentScheme & PaymentMethod and send request to /slip/process API     token=${token}     orderId=${orderId}     securityCode=${securityCode}     paymentScheme=${PaymentScheme}    selectType=1
+    the response should contain lessAmount  ${jsonResult}
+    ${bonusDeduction}   Set Variable    1000
+    ${pointsDeduction}  Evaluate    ${amount}-${bonusDeduction}
+    ${response}  I choose PartnerPay & PaymentScheme & PaymentMethod and send request to /slip/process API     token=${token}     orderId=${orderId}     securityCode=${securityCode}     paymentScheme=${PaymentScheme}    bonusDeduction=${bonusDeduction}    pointsDeduction=${pointsDeduction}
+
+
+
+
+the response should contain lessAmount and lessAmount should be 0
+    [Arguments]     ${jsonResult}
+    ${amount}    Get From Dictionary    ${jsonResult}[data]    lessAmount
+    Should Be Equal As Numbers    ${amount}    0.0
     Log    ${amount}

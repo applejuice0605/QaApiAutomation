@@ -5,9 +5,10 @@ Library    OperatingSystem
 
 Resource    ../../../resources/biz/Login/login.robot
 Resource    ../../../resources/biz/order/vehicle_order.robot
+Resource    ../../../resources/biz/Payment/uploadPaymentProof_workflow.robot
+Resource    ../../../resources/biz/Underwriting/underwriting.robot
 
-Resource    ../../../resources/biz/underwriting/underwriting.robot
-Resource    ../../../resources/biz/orderInfo/getPolicyInfo.robot
+
 
 
 Resource    ../../../resources/util/utilCommon.robot
@@ -22,18 +23,44 @@ Test Teardown    Delete All Sessions
 
 *** Variables ***
 ${ORDER_MSG_BODY_FILE_PATH}     Car_PlaceOrderData.json
-${BODY_FILE_PATH}    UploadPaymentProof_ApprovalDTO_workflow
+${BODY_FILE_PATH}    resources/data/UploadPaymentProof_ApprovalDTO_workflow.json
 ${isAdvancePremium}    0
 ${slipStatus}   3
 
 
 
 
+
+
 *** Test Cases ***
 Upload payment proof no overpayment,Policy in payment billing workflow approved success
-    [Tags]    uat   Upload-payment-proof
+    [Tags]    uat   upload-payment-proof
     Given Setup Data Testing
     When I have an unpaid order and have logined to Boss
+    Then Send Request To paymentBilling/list API to get paymentBillingNo    ${bossToken}    ${orderNo}
+    Then The status code should be 200    ${jsonResult}[code]
+    And the response should contain paymentBillingNo    ${jsonResult}
+
+    Then Send Request To uploadProof API to upload payment proof with no overpayment     ${AP_POSITIVE_DATA}     ${bossToken}    ${paymentBillNo}
+    Then The status code should be 200    ${jsonResult}[code]
+
+
+
+    Then Send Request To paymentBilling_list_manager API to get payment billing taskId in Payment Billing Mgt List    ${bossToken}    ${orderNo}    ${ORDER_MSG_AP_POSITIVE_DATA["paymentBilling_manager_existsAssignee"]}
+    Then The status code should be 200    ${jsonResult}[code]
+    And uploadPaymentProof_workflow.the response should contain taskId    ${jsonResult}
+
+    Then Assigne Task to me    ${bossToken}    ${taskId}
+    And The status code should be 200    ${jsonResult}[code]
+
+    Then Send Request To paymentBilling_list_todo API to get payment billing taskId in Payment Billing Flow List    ${bossToken}    ${orderNo}
+    Then The status code should be 200    ${jsonResult}[code]
+    And uploadPaymentProof_workflow.the response should contain taskId    ${jsonResult}
+
+    Then Approve Payment Billing Task     ${AP_POSITIVE_DATA}     ${bossToken}    ${paymentBillNo}    ${taskId}    ${actualPayableAmount}  ${actualPaymentAmount}
+    Then The status code should be 200    ${jsonResult}[code]
+
+    Then finally Log the OrderNo ${orderNo}
 
 
 
@@ -67,8 +94,9 @@ I have an unpaid order and have logined to Boss
     vehicle_order.I send the place order request to createrfqorder API     ${ORDER_MSG_AP_POSITIVE_DATA}    ${token}    ${rfqNo}    ${quoteNo}    ${isAdvancePremium}
     assertUtil.The response should contain the value orderNo and orderId    ${jsonResult}
 
+#    Set Test Variable    ${orderNo}    FUSE-20250204-055558600
     Log     ${orderNo}
-    Log     ${orderId}
+#    Log     ${orderId}
     Set Test Variable    ${bossToken}
 
     Sleep    10s

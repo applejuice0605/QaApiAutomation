@@ -23,7 +23,12 @@ Send Request And Get Response Data
     ${path}=   Set Variable     /api/paymentBilling/list/manager
     ${headers}=    Create Dictionary    Content-Type=application/json    clientType=application/json;charset=UTF-8    appCode=IDP_BOSS  fusetoken=${bossToken}
 
-    ${payload}=    Set Variable     {"pageNo": 0,"pageSize": 20,"taskNameList": [],"multiFieldQuery": "${orderNo}","endProcess": 0,"endTask": 0,"existsAssignee": ${existsAssignee}}
+    IF    '${existsAssignee}' == 'true'
+        ${payload}=    Set Variable     {"pageNo": 0,"pageSize": 20,"taskNameList": [],"multiFieldQuery": "${orderNo}","endProcess": 0,"endTask": 0}
+    ELSE
+        ${payload}=    Set Variable     {"pageNo": 0,"pageSize": 20,"taskNameList": [],"multiFieldQuery": "${orderNo}","endProcess": 0,"endTask": 0, "existsAssignee": false}
+    END
+
     # 2. 发送请求
     ${response}=    httpCommon.Send Post Request And Get Response Data    ${base_url}    ${path}    ${headers}    ${payload}
 
