@@ -6,7 +6,7 @@ Resource    assertUtil.robot
 Send Post Request And Get Response Data
     [Documentation]    发送请求，获取response 返回 Data数据
     [Arguments]    ${url}   ${path}     ${headers}     ${body}
-    Create Session    session  ${url}  headers=&{headers}  verify=false
+    Create Session    session  ${url}  headers=&{headers}  verify=true
     ${response}=  POST On Session    session  ${path}   ${body}
 
     RETURN    ${response}

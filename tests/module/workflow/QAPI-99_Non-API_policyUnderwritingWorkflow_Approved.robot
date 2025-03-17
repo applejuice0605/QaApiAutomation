@@ -56,7 +56,7 @@ Non-API_policyUnderwritingWorkflow_Approved
     Then [toOffline Task] I send request to approve API to approve toOffline task   ${bossToken}    ${orderNo}   ${AP_POSITIVE_DATA}
 
     Then Send request to Boss:/api/oms/slip/v2/list API to get slipStatus    ${bossToken}    ${orderNo}
-    Then The response's slipStatus should be ${slipStatus}   ${jsonResult}
+    Then The response's=${jsonResult} slipStatus should be ${slipStatus}
 
     Then finally Log the OrderNo ${orderNo}
 

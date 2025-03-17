@@ -31,7 +31,7 @@ ${paymentMethod}    VA
 
 *** Test Cases ***
 Order Property and EQVET using DiscountCommission from EQVET PayLater PartnerPay FullPayment
-    [Tags]    uat   prod    order-property    discount
+    [Tags]    uat   prod    order-property    discount  ww
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}
@@ -46,7 +46,7 @@ Order Property and EQVET using DiscountCommission from EQVET PayLater PartnerPay
     Then The status code should be 200    ${jsonResult}[code]
     And the response of paymentBilling/create API should contain securityCode    ${jsonResult}
 
-    Then  I choose PartnerPay & PaymentScheme & PaymentMethod and send request to /slip/process API     ${token}     ${orderId}     ${securityCode}    ${paymentScheme}
+    Then I choose PartnerPay & PaymentScheme & PaymentMethod and send request to /slip/process API     ${token}     ${orderId}     ${securityCode}    ${paymentScheme}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain lessAmount      ${jsonResult}
 

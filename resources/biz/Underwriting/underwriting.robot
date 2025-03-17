@@ -10,6 +10,7 @@ Resource    ../../../resources/util/utilCommon.robot
 
 [Order Review Task] I send request to underwritingV2/list/manager API
     [Arguments]    ${bossToken}    ${orderNo}   ${existsAssignee}
+    Sleep    5s
     ${response}    underwritingV2_list_manager.Send Request And Get Response Data    ${bossToken}    ${orderNo}     existsAssignee=${existsAssignee}
 
     Set Test Variable    ${jsonResult}    ${response.json()}

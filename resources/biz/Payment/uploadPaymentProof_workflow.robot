@@ -70,7 +70,7 @@ Send Request To uploadProof API to upload payment proof
     [Arguments]     ${AP_POSITIVE_DATA}     ${bossToken}    ${paymentBillNo}    ${actualPayableAmount}  ${actualPaymentAmount}
 
     # 1. 获取上传支付凭证的jsonBody
-    ${jsonBody}     Set Variable    ${AP_POSITIVE_DATA["add_ManualAdjustment"]}
+    ${jsonBody}     Set Variable    ${AP_POSITIVE_DATA["uploadPaymentProof"]}
     # 2. updateJsonBody
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.paymentBillNo    ${paymentBillNo}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.transactionAmount    ${actualPaymentAmount}

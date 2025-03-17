@@ -46,7 +46,7 @@ the response should contain installmentSchemaDTOList
 
 
 
-Customer Cashier Choose to pay in installment=${installmentNumber} and Click Next and send request to slip/channel/process API
+Customer Cashier Choose to pay in a nstallment and Click Next and send request to slip/channel/process API
     [Arguments]     ${token}    ${securityCode}    ${methodCode}    ${installmentNumber}
     Log     ${amount}
     ${response}    slip_channel_process.Send Request And Get Response Data    payerType=1     token=${token}    securityCode=${securityCode}    methodCode=${methodCode}     amount=${amount}     installmentNumber=${installmentNumber}
@@ -55,7 +55,7 @@ Customer Cashier Choose to pay in installment=${installmentNumber} and Click Nex
     Log    ${jsonResult}
 
 
-Partner Cashier Choose to pay in installment=${installmentNumber} and Click Next and send request to slip/channel/process API
+Partner Cashier Choose to pay in a installment and Click Next and send request to slip/channel/process API
     [Arguments]     ${token}    ${securityCode}    ${methodCode}    ${installmentNumber}
     Log     ${amount}
     ${response}    slip_channel_process.Send Request And Get Response Data    payerType=2     token=${token}    securityCode=${securityCode}    methodCode=${methodCode}     amount=${amount}     installmentNumber=${installmentNumber}

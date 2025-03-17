@@ -56,7 +56,7 @@ CC UseBonusFusePoints_PartnerPay_FullPayment Travel Order
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain installmentSchemaDTOList     ${jsonResult}   ${installmentNumber}
 
-    Then Partner Cashier Choose to pay in installment=${installmentNumber} and Click Next and send request to slip/channel/process API     ${token}    ${securityCode}    ${methodCode}    ${installmentNumber}
+    Then Partner Cashier Choose to pay in a installment and Click Next and send request to slip/channel/process API     ${token}    ${securityCode}    ${methodCode}    ${installmentNumber}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain referenceNo     ${jsonResult}
 

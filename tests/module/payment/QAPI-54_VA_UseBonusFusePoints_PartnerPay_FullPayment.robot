@@ -51,7 +51,7 @@ VA PartnerPay SupernetPayment Property Order
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain lessAmount      ${jsonResult}
 
-    Then Partner Cashier use VA to pay using bank=${bank} and Send request to getChannelFee API    ${token}    ${securityCode}
+    Then Partner Cashier use VA to pay using bank and Send request to getChannelFee API    token=${token}    securityCode=${securityCode}    bank=${bank}
     Then The status code should be 200  ${jsonResult}[code]
     And the response should contain channelFee and got totalInstallmentAmount   ${jsonResult}
 

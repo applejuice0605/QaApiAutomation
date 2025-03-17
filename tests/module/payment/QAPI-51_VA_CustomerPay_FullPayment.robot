@@ -54,7 +54,7 @@ VA CustomerPay FullPayment Property Order
     And the response should contain lessAmount  ${jsonResult}
 
 
-    Then Customer Cashier use VA to pay using bank=${bank} and Send request to getChannelFee API    ${token}    ${securityCode}
+    Then Customer Cashier use VA to pay using bank and Send request to getChannelFee API    token=${token}    securityCode=${securityCode}    bank=${bank}
     Then The status code should be 200  ${jsonResult}[code]
     And the response should contain channelFee and got totalInstallmentAmount   ${jsonResult}
 

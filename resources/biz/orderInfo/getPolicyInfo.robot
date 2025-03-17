@@ -27,8 +27,7 @@ Send request to Boss:/api/oms/slip/v2/list API to get slipStatus
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
 
-The response's slipStatus should be ${slipStatus}
-    [Arguments]     ${jsonResult}
+The response's=${jsonResult} slipStatus should be ${slipStatus}
     Log    ${jsonResult}
     ${total}    Set Variable    ${jsonResult}[data][total]
     FOR    ${counter}    IN RANGE    0    ${total}
