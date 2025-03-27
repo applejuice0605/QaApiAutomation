@@ -26,15 +26,17 @@ I send the quotation request to savebinderrfq API
 
 
 I send the place order request to createrfqorder API
-    [Arguments]     ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}  ${isAdvancePremium}     ${discountFormCommission}=0     ${discountFromPartnerSpecialBonusAmount}=0    ${couponUseInfo}=[]
+    [Arguments]     ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}  ${isAdvancePremium}    ${vehicleVinNo}=     ${platNo}=tba    ${discountFormCommission}=0     ${discountFromPartnerSpecialBonusAmount}=0    ${couponUseInfo}=[]
     #1. getJsonBody
     ${jsonBody}     Set Variable    ${AP_POSITIVE_DATA["placeOrderBody"]}
     #2. updateJsonBody
     ${effectiveTime}=    utilCommon.Get Effective Time
     ${expireTime}=    utilCommon.Get Expire Time    365
 
-
-    ${vehicleVinNo}     utilCommon.Generate Random chars
+    Log     ${vehicleVinNo}
+    IF  '${vehicleVinNo}' == ''
+        ${vehicleVinNo}     utilCommon.Generate Random chars
+    END
     ${vehicleEngineNo}     utilCommon.Generate Random chars
     Log     ${vehicleVinNo}
     Log     ${vehicleEngineNo}
@@ -52,6 +54,10 @@ I send the place order request to createrfqorder API
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.isAdvancePremium    ${isAdvancePremium}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.partnerToCustomerDiscountAmountProducts[0].discountAmount    ${discountFormCommission}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.partnerToCustomerDiscountAmountProducts[0].discountFromPartnerSpecialBonusAmount    ${discountFromPartnerSpecialBonusAmount}
+
+
+    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.riskGroupInfo.vehicle.plateNo    ${platNo}
+
 
     Log    ${couponUseInfo}
     IF    ${couponUseInfo} != []
@@ -71,93 +77,13 @@ I send the place order request to createrfqorder API
 
 
 I send the place order request to createrfqorder API using register classisNumber
-    [Arguments]     ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}  ${isAdvancePremium}     ${discountFormCommission}=0     ${discountFromPartnerSpecialBonusAmount}=0    ${couponUseInfo}=[]
-    #1. getJsonBody
-    ${jsonBody}     Set Variable    ${AP_POSITIVE_DATA["placeOrderBody"]}
-    #2. updateJsonBody
-    ${effectiveTime}=    utilCommon.Get Effective Time
-    ${expireTime}=    utilCommon.Get Expire Time    365
-
-
-    ${vehicleVinNo}     Set Variable    io9fo
-    ${vehicleEngineNo}     utilCommon.Generate Random chars
-    Log     ${vehicleVinNo}
-    Log     ${vehicleEngineNo}
-#    ${vehicleVinNo}     Set Variable    io9fo
-#    ${vehicleEngineNo}     Set Variable    io9fo
-
-
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.rfqNo    ${rfqNo}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quoteNo    ${quoteNo}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.riskGroupInfo.vehicle.vehicleVinNo    ${vehicleVinNo}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.riskGroupInfo.vehicle.vehicleEngineNo    ${vehicleEngineNo}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.insuranceInfo.effectiveDate    ${effectiveTime}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.insuranceInfo.expiredDate    ${expireTime}
-
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.isAdvancePremium    ${isAdvancePremium}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.partnerToCustomerDiscountAmountProducts[0].discountAmount    ${discountFormCommission}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.partnerToCustomerDiscountAmountProducts[0].discountFromPartnerSpecialBonusAmount    ${discountFromPartnerSpecialBonusAmount}
-
-    Log    ${couponUseInfo}
-    IF    ${couponUseInfo} != []
-        ${jsonBody}=    Update Value To Json    ${jsonBody}    $.couponUseInfo    ${couponUseInfo}
-    END
-    Log     ${jsonBody}
-
-    #3. convert jsonBody to string
-    ${strBody}  Convert Json To String    ${jsonBody}
-
-    #4. send request
-    ${response}    createBinderOrder.Send Request And Get Response Data    ${token}    ${strBody}
-
-    Log    ${response}
-
-    Set Test Variable    ${jsonResult}    ${response.json()}
+    [Arguments]     ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}  ${isAdvancePremium}    ${vehicleVinNo}=     ${platNo}=tba    ${discountFormCommission}=0     ${discountFromPartnerSpecialBonusAmount}=0    ${couponUseInfo}=[]
+    I send the place order request to createrfqorder API       ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}  ${isAdvancePremium}    vehicleVinNo=${vehicleVinNo}
 
 
 I send the place order request to createrfqorder API using register plateNumber
-    [Arguments]     ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}  ${isAdvancePremium}     ${discountFormCommission}=0     ${discountFromPartnerSpecialBonusAmount}=0    ${couponUseInfo}=[]
-    #1. getJsonBody
-    ${jsonBody}     Set Variable    ${AP_POSITIVE_DATA["placeOrderBody"]}
-    #2. updateJsonBody
-    ${effectiveTime}=    utilCommon.Get Effective Time
-    ${expireTime}=    utilCommon.Get Expire Time    365
-
-
-    ${vehicleVinNo}     utilCommon.Generate Random chars
-    ${vehicleEngineNo}     Set Variable    io9fo
-    Log     ${vehicleVinNo}
-    Log     ${vehicleEngineNo}
-#    ${vehicleVinNo}     Set Variable    io9fo
-#    ${vehicleEngineNo}     Set Variable    io9fo
-
-
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.rfqNo    ${rfqNo}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quoteNo    ${quoteNo}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.riskGroupInfo.vehicle.vehicleVinNo    ${vehicleVinNo}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.riskGroupInfo.vehicle.vehicleEngineNo    ${vehicleEngineNo}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.insuranceInfo.effectiveDate    ${effectiveTime}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.dataFormJson.insuranceInfo.expiredDate    ${expireTime}
-
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.isAdvancePremium    ${isAdvancePremium}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.partnerToCustomerDiscountAmountProducts[0].discountAmount    ${discountFormCommission}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.partnerToCustomerDiscountAmountProducts[0].discountFromPartnerSpecialBonusAmount    ${discountFromPartnerSpecialBonusAmount}
-
-    Log    ${couponUseInfo}
-    IF    ${couponUseInfo} != []
-        ${jsonBody}=    Update Value To Json    ${jsonBody}    $.couponUseInfo    ${couponUseInfo}
-    END
-    Log     ${jsonBody}
-
-    #3. convert jsonBody to string
-    ${strBody}  Convert Json To String    ${jsonBody}
-
-    #4. send request
-    ${response}    createBinderOrder.Send Request And Get Response Data    ${token}    ${strBody}
-
-    Log    ${response}
-
-    Set Test Variable    ${jsonResult}    ${response.json()}
+    [Arguments]     ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}  ${isAdvancePremium}    ${vehicleVinNo}=     ${platNo}=tba    ${discountFormCommission}=0     ${discountFromPartnerSpecialBonusAmount}=0    ${couponUseInfo}=[]
+    I send the place order request to createrfqorder API       ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}  ${isAdvancePremium}    platNo=${platNo}
 
 
 the status code should be 200107001

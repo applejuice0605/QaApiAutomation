@@ -88,3 +88,12 @@ I send the place order request to createrfqorder API
 
     Set Test Variable    ${jsonResult}    ${response.json()}
 
+
+
+the status code should be 200107002
+    Log    ${jsonResult}
+    Log    ${jsonResult}[code]
+    Should Be Equal As Numbers    ${jsonResult}[code]    200107002
+
+the response should contain the msg "You have already input this order."
+    Should Contain    ${jsonResult}[message]    You have already input this order.
