@@ -34,9 +34,9 @@ Manual Adjustment Partner Commission Increase Without Tax Dismiss
     Given Setup Data Testing
     When Login Boss Success
     Then manualAdjustment.Submit Manual Adjustment Requeqst without Tax    ${AP_POSITIVE_DATA}    ${bossToken}    ${transactionAmount}      ${flowType}     transactionType=${transactionType}
-    Then the response should contain transactionId  ${jsonResult}
+    Then manualAdjustment.the response of Submit Request API should contain transactionId  ${jsonResult}
     
-    Then manualAdjustment.Send Request To ticketItem_bpm_manager API to get taskId in Mgt>>Manual Injection Review List    ${bossToken}    ${transactionId}    ${AP_POSITIVE_DATA["Manual_Injection_ReviewTask_existsAssignee"]}
+    Then manualAdjustment.Send Request To adjustment_review_list_manager API to get taskId in Mgt>>Manual Injection Review List    ${bossToken}    ${transactionId}    ${AP_POSITIVE_DATA["Manual_Injection_ReviewTask_existsAssignee"]}
     Then The status code should be 200    ${jsonResult}[code]
     And manualAdjustment.the response should contain taskId    ${jsonResult}
 

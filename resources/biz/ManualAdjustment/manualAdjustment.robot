@@ -2,9 +2,11 @@
 Resource    ../../../resources/api/ManualAdjustment/trading_manager_add.robot
 Resource    ../../../resources/api/ManualAdjustment/trading_manager_preAdd.robot
 Resource    ../../../resources/api/ManualAdjustment/trading_manager_list.robot
-Resource    ../../../resources/api/ManualAdjustment/ticketItem_bpm_manager.robot
-Resource    ../../../resources/api/ManualAdjustment/adjustment_review_list_todo.robot
 Resource    ../../../resources/api/ManualAdjustment/adjustment_approval.robot
+
+
+Resource    ../../../resources/api/ManualAdjustment/adjustment_review_list_manager.robot
+Resource    ../../../resources/api/ManualAdjustment/adjustment_review_list_todo.robot
 
 Resource    ../../../resources/api/underwriting/assignToMe.robot
 Resource    ../../../resources/api/underwriting/approval.robot
@@ -13,6 +15,7 @@ Resource    ../../../resources/util/utilCommon.robot
 
 *** Keywords ***
 Deal with json body for add manual adjustment
+    [Documentation]
     [Arguments]    ${AP_POSITIVE_DATA}  ${bossToken}     ${transactionAmount}   ${totalAmount}  ${calculateTaxType}    ${flowType}     ${transactionType}   ${incomeTax}=0
     # 1. 获取add manual adjustment request的jsonBody
     ${jsonBody}     Set Variable    ${AP_POSITIVE_DATA["add_ManualAdjustment"]}
@@ -37,6 +40,7 @@ Deal with json body for add manual adjustment
 
 
 Submit Manual Adjustment Requeqst without Tax
+    [Documentation]     1.提交调账请求，调账不计税
     [Arguments]     ${AP_POSITIVE_DATA}    ${bossToken}     ${transactionAmount}    ${flowType}     ${transactionType}
     ${strBody}=    Deal with json body for add manual adjustment   ${AP_POSITIVE_DATA}  ${bossToken}     ${transactionAmount}   ${transactionAmount}  flowType=${flowType}  calculateTaxType=0  transactionType=${transactionType}
     # send request
@@ -46,6 +50,7 @@ Submit Manual Adjustment Requeqst without Tax
 
 
 Submit Manual Adjustment Requeqst with Tax
+    [Documentation]     1.提交调账请求，调账计税
     [Arguments]     ${AP_POSITIVE_DATA}    ${bossToken}     ${transactionAmount}    ${flowType}     ${transactionType}
     ${strBody}=    Deal with json body for add manual adjustment    ${AP_POSITIVE_DATA}  ${bossToken}     ${transactionAmount}   totalAmount=0    flowType=${flowType}  calculateTaxType=1  transactionType=${transactionType}
     # send request to preAdd
@@ -58,7 +63,10 @@ Submit Manual Adjustment Requeqst with Tax
     Set Test Variable    ${jsonResult}     ${response.json()}
     Log    ${jsonResult}
 
-the response should contain transactionId
+
+
+the response of Submit Request API should contain transactionId
+    [Documentation]     2.获取调账请求的transactionId
     [Arguments]     ${jsonResult}
     Should Not Be Empty    ${jsonResult}[data][transactionId]
     Set Test Variable    ${transactionId}    ${jsonResult}[data][transactionId]
@@ -67,22 +75,24 @@ the response should contain transactionId
 
 
 
-Send Request To ticketItem_bpm_manager API to get taskId in Mgt>>Manual Injection Review List
-    [Documentation]     Business operation: search transactionId in TaskMgt>>Manual Injection Review List
+Send Request To adjustment_review_list_manager API to get taskId in Mgt>>Manual Injection Review List
+    [Documentation]     3. Business operation: search transactionId in TaskMgt>>Manual Injection Review List
     [Arguments]     ${bossToken}    ${transactionId}    ${existsAssignee}
-    Sleep    3s
-    ${response}    ticketItem_bpm_manager.Send Request And Get Response Data    ${bossToken}    ${transactionId}     ${existsAssignee}
+    Sleep    10s
+    ${response}    adjustment_review_list_manager.Send Request And Get Response Data    ${bossToken}    ${transactionId}     ${existsAssignee}
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
 
+
 the response should contain taskId
+    [Documentation]     4. 获取调账请求review task的taskId
     [Arguments]     ${jsonResult}
     Should Not Be Empty    ${jsonResult}[data][data][0][id]
     Set Test Variable    ${taskId}    ${jsonResult}[data][data][0][id]
 
 
 Assigne Task to me
-    [Documentation]     Business operation: assign task to me
+    [Documentation]     5. Business operation: assign task to me
     [Arguments]     ${bossToken}    ${taskId}
     ${taskIds}  Create List
     Append To List    ${taskIds}    ${taskId}
@@ -95,16 +105,16 @@ Assigne Task to me
 
 
 Send Request To adjustment_review_list_todo API to get taskId in Flow>>Manual Injection Review Todo List
-    [Documentation]     Business operation: search transactionId in Task>>Manual Injection Review List
+    [Documentation]     6. Business operation: search transactionId in Task>>Manual Injection Review List
     [Arguments]     ${bossToken}    ${transactionId}
-    Sleep    5s
+    Sleep    15s
     ${response}    adjustment_review_list_todo.Send Request And Get Response Data    ${bossToken}    ${transactionId}
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
 
 
 Approve Manual Injection Review Task
-    [Documentation]     Business operation: approve Manual Injection Review Task
+    [Documentation]     7. Business operation: approve Manual Injection Review Task
     [Arguments]     ${bossToken}    ${taskId}
     ${response}    adjustment_approval.Send Request And Get Response Data    ${bossToken}    ${taskId}  action=Approval
     Set Test Variable    ${jsonResult}    ${response.json()}
@@ -112,7 +122,7 @@ Approve Manual Injection Review Task
 
 
 Reject Manual Injection Review Task
-    [Documentation]     Business operation: approve Manual Injection Review Task
+    [Documentation]     7. Business operation: approve Manual Injection Review Task
     [Arguments]     ${bossToken}    ${taskId}
     ${response}    adjustment_approval.Send Request And Get Response Data    ${bossToken}    ${taskId}  action=Decline
     Set Test Variable    ${jsonResult}    ${response.json()}
