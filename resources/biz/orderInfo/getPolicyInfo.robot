@@ -22,7 +22,7 @@ The response should contain slipUids
 
 Send request to Boss:/api/oms/slip/v2/list API to get slipStatus
     [Arguments]     ${token}     ${orderNo}
-    Sleep    5s
+    Sleep    8s
     ${response}    policyDetail.POST Boss:/api/oms/slip/v2/list     token=${token}   orderNo=${orderNo}
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}

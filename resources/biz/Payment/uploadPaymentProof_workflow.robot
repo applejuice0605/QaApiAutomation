@@ -69,12 +69,15 @@ Send Request To uploadProof API to upload payment proof
     [Documentation]     Business operation: upload payment proof from Boss
     [Arguments]     ${AP_POSITIVE_DATA}     ${bossToken}    ${paymentBillNo}    ${actualPayableAmount}  ${actualPaymentAmount}
 
+    Log    ${actualPayableAmount}
+    Log    ${actualPaymentAmount}
     # 1. 获取上传支付凭证的jsonBody
     ${jsonBody}     Set Variable    ${AP_POSITIVE_DATA["uploadPaymentProof"]}
     # 2. updateJsonBody
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.paymentBillNo    ${paymentBillNo}
+    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.uploadProofLs[0].amount    ${actualPaymentAmount}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.transactionAmount    ${actualPaymentAmount}
-    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.transferAmount    ${actualPaymentAmount}
+    ${jsonBody}=    Update Value To Json    ${jsonBody}    $.transferAmount    ${actualPayableAmount}
     Log     ${jsonBody}
     # 3. convert jsonBody to string
     ${strBody}  Convert Json To String    ${jsonBody}
