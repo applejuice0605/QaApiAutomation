@@ -44,8 +44,8 @@ I choose CutsomerPay and send request to generator/customer/payment/token API
 the response should contain customerToken
     [Arguments]     ${jsonResult}
     Should Contain    ${jsonResult}[data]    token
-    Set Test Variable    ${token}    ${jsonResult}[data][token]
-    Log    ${token}
+    Set Test Variable    ${customerToken}    ${jsonResult}[data][token]
+    Log    ${customerToken}
 
 
 

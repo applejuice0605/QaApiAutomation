@@ -8,7 +8,7 @@ Resource    ../../../resources/api/Setting/UserLogout.robot
 
 *** Variables ***
 ${loginAccount}=  628123268989
-${password}=  268989
+${password}=  268989a
 
 *** Test Cases ***
 Logout by phone number

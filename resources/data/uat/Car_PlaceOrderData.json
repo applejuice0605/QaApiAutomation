@@ -2492,5 +2492,7 @@
       }
     ]
   },
-  "paymentBilling_manager_existsAssignee": "true"
+  "paymentBilling_manager_existsAssignee": "true",
+  "UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE": "true",
+  "UNDERWRITING_OFFLINE_EXISTSASSIGNEE": "true"
 }

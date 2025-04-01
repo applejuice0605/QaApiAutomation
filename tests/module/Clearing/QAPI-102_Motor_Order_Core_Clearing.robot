@@ -30,11 +30,11 @@ Test Teardown    Delete All Sessions
 
 
 *** Variables ***
-${ORDER_MSG_BODY_FILE_PATH}     Car_PlaceOrderData.json
+${ORDER_MSG_BODY_FILE_PATH}     Motor_PlaceOrderData.json
 ${BODY_FILE_PATH}    resources/data/Underwriting_ApprovalDTO_workflow.json
 ${isAdvancePremium}    1
 
-${payerType}    2
+${payerType}    1
 ${paymentScheme}    1
 ${methodCode}   9203
 ${paymentMethod}    OVO
@@ -48,7 +48,7 @@ Non-API_policyUnderwritingWorkflow_Approved
     Given Setup Data Testing
     When I have logined to FusePro and Boss
     Then Create Pay Now Order     ${ORDER_MSG_DATA}    ${token}
-    Then Use Partner Pay and Full Payment to complete the payment
+    Then Use Customer Pay and Full Payment to complete the payment
     Then Done the underwriting workflow
     Then Check Commission Disbursed    ${token}     ${slipUids}   ${expected_data_count}
     Then finally Log the OrderNo ${orderNo}
@@ -97,22 +97,23 @@ Create Pay Now Order
     Log     ${slipUids}
     Sleep    10s
 
-Use Partner Pay and Full Payment to complete the payment
+Use Customer Pay and Full Payment to complete the payment
     Run keyword And Continue on Failure    I continue to pay the order and send request the paymentBilling/create API     ${token}     ${orderNo}
 
     Send request to paymentBillingList API     ${token}     ${orderId}
     the response of paymentBilling/List API should contain securityCode and paymentBillNo     ${jsonResult}
 
-    I choose PartnerPay & PaymentScheme & PaymentMethod and send request to /slip/process API   token=${token}     orderId=${orderId}     securityCode=${securityCode}    paymentScheme=${paymentScheme}
-    the response should contain lessAmount      ${jsonResult}
+    I choose CutsomerPay and send request to generator/customer/payment/token API     ${token}     ${securityCode}
+    the response should contain customerToken    ${jsonResult}
 
+    I confirm to complete the payment using "CustomerPay FullPayment" and send the request to /slip/process API     ${customerToken}     ${orderId}     ${securityCode}
+    the response should contain lessAmount  ${jsonResult}
 
-    Partner Cashier use OVO to pay and Send request to getChannelFee API   ${token}    ${securityCode}
+    Customer Cashier use OVO to pay and Send request to getChannelFee API  ${customerToken}    ${securityCode}
     the response should contain channelFee and got totalInstallmentAmount   ${jsonResult}
 
-
-    Partner Cashier confirm complete to pay and Send request to slip/channel/process API    token=${token}  amount=${amount}    securityCode=${securityCode}
-    And the response should contain bizTransactionId    ${jsonResult}
+    Customer Cashier confirm complete to pay and Send request to slip/channel/process API    token=${customerToken}  amount=${amount}    securityCode=${securityCode}
+    the response should contain bizTransactionId    ${jsonResult}
 
 
 Done the underwriting workflow

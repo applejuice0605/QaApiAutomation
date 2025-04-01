@@ -49,7 +49,7 @@ Car PayNow CustomerPay Fullpayment using discount from Commission and SpecialBon
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain customerToken    ${jsonResult}
 
-    Then I confirm to complete the payment using "CustomerPay FullPayment" and send the request to /slip/process API    ${token}   ${orderId}    ${securityCode}
+    Then I confirm to complete the payment using "CustomerPay FullPayment" and send the request to /slip/process API    ${customerToken}   ${orderId}    ${securityCode}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain lessAmount      ${jsonResult}
 

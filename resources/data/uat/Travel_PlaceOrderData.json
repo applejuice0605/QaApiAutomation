@@ -626,5 +626,7 @@
             "totalVATAmount": 0
         }
     ]
-}
+},
+  "UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE": "true",
+  "UNDERWRITING_OFFLINE_EXISTSASSIGNEE": "true"
 }

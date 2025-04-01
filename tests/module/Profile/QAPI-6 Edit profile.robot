@@ -4,20 +4,30 @@ Library    BuiltIn
 Library    OperatingSystem
 Library     ../../../resources/api/Profile/EditProfile.py
 
-*** Variables ***
-${loginAccount}=  628123268989
-${password}=  268989
+
+Resource    ../../../resources/biz/Login/login.robot
+Resource    ../../../resources/util/utilCommon.robot
+Resource    ../../../resources/util/assertUtil.robot
+Resource    ../../../resources/resource.robot
+
 
 *** Test Cases ***
 Edit Profile Success
-    Given Login FusePro By Phone Number
+    Given Setup Data Testing
+    When I have logined
     Then Update Nickname And Address Fields In Edit Profile
 
 *** Keywords ***
-Login FusePro By Phone Number
-    ${usertoken}=  fms_login_app  ${loginAccount}  ${password}
-    Set Test Variable    ${usertoken}  ${usertoken}
+Setup Data Testing
+    Log    ${env_vars}[DATA_BASEURL]
+
+
+I have logined
+    # 调用登录接口
+    ${token}=   login.Login to Application using mobile     ${env_vars}[FUSE_ACCOUNT]    ${env_vars}[FUSE_PASSWORD]
+    Set Test Variable    ${token}
+
 
 Update Nickname And Address Fields In Edit Profile
-    editProfie  ${loginAccount}  ${usertoken}
+    editProfie  ${loginAccount}  ${token}
 

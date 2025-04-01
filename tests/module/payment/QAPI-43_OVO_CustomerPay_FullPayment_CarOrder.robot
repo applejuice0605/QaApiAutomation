@@ -53,13 +53,13 @@ OVO CustomerPay FullPayment Car Order
     And the response should contain lessAmount  ${jsonResult}
 
 
-    Then Customer Cashier use OVO to pay and Send request to getChannelFee API  ${token}    ${securityCode}
+    Then Customer Cashier use OVO to pay and Send request to getChannelFee API  ${customerToken}    ${securityCode}
     Then The status code should be 200  ${jsonResult}[code]
     And the response should contain channelFee and got totalInstallmentAmount   ${jsonResult}
 
 
 
-    Then Customer Cashier confirm complete to pay and Send request to slip/channel/process API    token=${token}  amount=${amount}    securityCode=${securityCode}
+    Then Customer Cashier confirm complete to pay and Send request to slip/channel/process API    token=${customerToken}  amount=${amount}    securityCode=${securityCode}
     Then The status code should be 200  ${jsonResult}[code]
     And the response should contain bizTransactionId    ${jsonResult}
 
