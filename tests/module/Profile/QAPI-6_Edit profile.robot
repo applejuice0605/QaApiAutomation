@@ -11,6 +11,11 @@ Resource    ../../../resources/util/assertUtil.robot
 Resource    ../../../resources/resource.robot
 
 
+#Setup Test
+Test Setup    Setup Env Variable
+Test Teardown    Delete All Sessions
+
+
 *** Test Cases ***
 Edit Profile Success
     Given Setup Data Testing

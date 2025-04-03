@@ -74,10 +74,10 @@ Get CouponId by CouponCode
         END
         Exit For Loop If    '${item_couponCode}' == '${couponCode}'
     END
+    Set Variable If    '${couponId}' == '${None}'    ${couponAvailableList}[0][couponId]    ${couponId}
     ${couponUseInfo}     Create Dictionary    couponId=${couponId}   productCode=${couponDTO}[0][productCode]
     Log     ${couponUseInfo}
     RETURN    ${couponUseInfo}
-
 
 
 Generate Random identityNo

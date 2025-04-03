@@ -43,7 +43,7 @@ ${expected_data_count}  4
 
 
 *** Test Cases ***
-Non-API_policyUnderwritingWorkflow_Approved
+Car Order Core Clearing
     [Tags]    uat   car    clearing
     Given Setup Data Testing
     When I have logined to FusePro and Boss

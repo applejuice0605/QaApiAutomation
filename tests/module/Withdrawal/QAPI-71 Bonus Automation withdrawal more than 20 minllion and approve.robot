@@ -4,8 +4,8 @@ Resource    ../../../resources/Boss/LoginBoss/LoginBoss.robot
 Test Teardown    Delete All Sessions
 
 *** Variables ***
-${loginAccount}=    628123268987
-${password}=  268987
+${loginAccount}=    628123268989
+${password}=  268989
 ${withdrawalAmount}=  20000002
 ${CheckAccamount}=  8123268987
 

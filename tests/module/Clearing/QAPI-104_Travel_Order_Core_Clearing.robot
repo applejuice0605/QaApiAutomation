@@ -43,7 +43,7 @@ ${expected_data_count}  4
 
 *** Test Cases ***
 Travel Order Core Clearing
-    [Tags]    uat   car    clearing
+    [Tags]    uat   travel    clearing
     Given Setup Data Testing
     When I have logined to FusePro and Boss
     Then Create Pay Now Order     ${ORDER_MSG_DATA}    ${token}

@@ -3,8 +3,8 @@ Resource    ../../../resources/api/Withdrawal/withdrawal.robot
 
 
 *** Variables ***
-${loginAccount}=    628123268989
-${password}=  268989
+${loginAccount}=    628123268987
+${password}=  268987
 ${withdrawalAmount}=  100000
 
 *** Test Cases ***

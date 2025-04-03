@@ -42,8 +42,8 @@ ${expected_data_count}  4
 
 
 *** Test Cases ***
-Non-API_policyUnderwritingWorkflow_Approved
-    [Tags]    uat   car    clearing
+Property Order Core Clearing
+    [Tags]    uat   property    clearing
     Given Setup Data Testing
     When I have logined to FusePro and Boss
     Then Create Pay Now Order     ${ORDER_MSG_DATA}    ${token}

@@ -44,7 +44,7 @@ Check Commission Disbursed
 #    END
 #    FOR    ${slipId}    IN   ${slipIds}
         Log    ${slipId}
-        ${data}     Evaluate    list(filter(lambda item: item['slipId'] == '${slipId}', ${resultdata}))
+        ${data}     Evaluate    list(filter(lambda item: item['bizId'] == '${slipId}', ${resultdata}))
         Log    ${data}
         ${len}      Evaluate     len(${data})
         Log    ${len}
