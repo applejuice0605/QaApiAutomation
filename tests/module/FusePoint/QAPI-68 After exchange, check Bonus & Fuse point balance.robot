@@ -8,6 +8,7 @@ ${password}=  268989
 
 *** Test Cases ***
 Trigger Point Exchange
+    [Tags]  notUsed
     By Phone Number Login FusePro Success
     Input Exchange Amount 10 And Click Submit Button
 

@@ -8,6 +8,7 @@ ${password}=  268989
 
 *** Test Cases ***
 Exchange All Fuse Point To Bonus Success
+    [Tags]  notUsed
     By Phone Number Login FusePro Success
     Check All Point Amount
     Input Exchange All Point Amount And Click Submit Button

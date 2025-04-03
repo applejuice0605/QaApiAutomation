@@ -24,7 +24,7 @@ Get Invite Link SMS Code
     # 1. 准备请求数据：请求路径、请求头、请求数据
     ${base_url}=   Set Variable    https://rd-dms.fuseinsurtech.com
     ${path}=   Set Variable     /query/
-    ${headers}=    Create Dictionary    cookie=csrftoken=hZIUazTWWHXwNr7lUBWKwuE8U50G1BYC71By6id1rwjKqQFMD2Efvz4IbUdPsUtT; sessionid=95pahr5qsab4ya7z8mkfcr5axonwfx5m   x-csrftoken=hZIUazTWWHXwNr7lUBWKwuE8U50G1BYC71By6id1rwjKqQFMD2Efvz4IbUdPsUtT
+    ${headers}=    Create Dictionary    cookie=csrftoken=dWr8nGJ3Ml9Hm3NqHeEjxYZJJIuyTnwb3FExSLHx1wese4lgPQpm2PBkB6HaxS1B; sessionid=xt5g35999lq7bmcdy5fs3651ujrmnqir   x-csrftoken=dWr8nGJ3Ml9Hm3NqHeEjxYZJJIuyTnwb3FExSLHx1wese4lgPQpm2PBkB6HaxS1B
     ${payload}=    Create Dictionary    instance_name=ID_UAT_CORE_MYSQL8.0      db_name=message     schema_name=null   tb_name=sms_record  sql_content=select data->'$.verificationCade' from message.sms_record where mobile='62${${mobile}}' order by id desc limit 1   limit_num=100
 
     # 2. 发送请求

@@ -33,7 +33,7 @@ ${paymentMethod}    VA
 ${methodCode}   9204
 ${bank}     BCA
 ${bonusDeduction}   100
-${pointsDeduction}  100000
+${pointsDeduction}  200
 
 *** Test Cases ***
 VA PartnerPay SupernetPayment Property Order
