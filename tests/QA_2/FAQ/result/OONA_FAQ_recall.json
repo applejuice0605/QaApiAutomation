@@ -1,0 +1,362 @@
+[
+    {
+        "question": "- Question 1: What are the premium rates for property and motor vehicle insurance according to OJK regulations?",
+        "right": true,
+        "mun": 1,
+        "score": 0.7175781264950878
+    },
+    {
+        "question": "- Question 2: Which regulatory document specifies the premium rates for insurance in Indonesia?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5584266255495789
+    },
+    {
+        "question": "- Question 3: What is the role of the Financial Services Authority (OJK) in determining insurance premium rates?",
+        "right": true,
+        "mun": 2,
+        "score": 0.655639631432462
+    },
+    {
+        "question": "- Question 4: How are contribution rates for property and motor vehicle insurance established under OJK Circular Letter No. 6/SEOJK.05/2017?",
+        "right": true,
+        "mun": 1,
+        "score": 0.7743282944695127
+    },
+    {
+        "question": "- Question 5: What is the significance of Attachment VI in OJK Circular Letter No. 6/SEOJK.05/2017?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6178752066679573
+    },
+    {
+        "question": "- Question 1: Is car insurance mandatory in all countries?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5459569260675471
+    },
+    {
+        "question": "- Question 2: What are the benefits of purchasing car insurance even if it's not legally required?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5513151622080379
+    },
+    {
+        "question": "- Question 3: Why is car insurance important for drivers and passengers?",
+        "right": true,
+        "mun": 2,
+        "score": 0.4370219363506871
+    },
+    {
+        "question": "- Question 4: Are there any legal requirements for car insurance in Indonesia?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5313566257366223
+    },
+    {
+        "question": "- Question 5: How can I find the best online car insurance options and promotions?",
+        "right": true,
+        "mun": 1,
+        "score": 0.42686553248720305
+    },
+    {
+        "question": "- Question 1: What types of damage does Mobil All Risk Insurance cover?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6741996790240118
+    },
+    {
+        "question": "- Question 2: How is Mobil Total Loss (TLO) Insurance different from Mobil All Risk Insurance?",
+        "right": true,
+        "mun": 1,
+        "score": 0.7295024760205976
+    },
+    {
+        "question": "- Question 3: What qualifies as a total loss under Mobil TLO Insurance?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6852042735917621
+    },
+    {
+        "question": "- Question 4: Does Mobil All Risk Insurance cover minor damages like scratches and dents?",
+        "right": true,
+        "mun": 1,
+        "score": 0.667776114088952
+    },
+    {
+        "question": "- Question 5: Which insurance product is more suitable for comprehensive vehicle protection?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 1: How does the type of car insurance coverage affect the cost in Indonesia?",
+        "right": true,
+        "mun": 1,
+        "score": 0.648056999718234
+    },
+    {
+        "question": "- Question 2: What role does the Financial Services Authority (OJK) play in determining car insurance rates?",
+        "right": true,
+        "mun": 5,
+        "score": 0.5507315203925585
+    },
+    {
+        "question": "- Question 3: Why might car insurance costs increase as a vehicle ages?",
+        "right": true,
+        "mun": 1,
+        "score": 0.4563803039976983
+    },
+    {
+        "question": "- Question 4: Are there specific regions in Indonesia where car insurance is more expensive?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5431281216685886
+    },
+    {
+        "question": "- Question 5: Which car insurance companies in Indonesia typically offer TLO coverage only for older vehicles?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6080594840024571
+    },
+    {
+        "question": "- Question 1: What factors should be considered when choosing the best car insurance policy?",
+        "right": true,
+        "mun": 1,
+        "score": 0.4522531957600151
+    },
+    {
+        "question": "- Question 2: How does car insurance help in covering unexpected expenses after an accident?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5458994224718171
+    },
+    {
+        "question": "- Question 3: What additional services might be included in some car insurance policies?",
+        "right": true,
+        "mun": 3,
+        "score": 0.44821716689001145
+    },
+    {
+        "question": "- Question 4: Why is it important to have suitable car insurance for financial protection?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5543942673740194
+    },
+    {
+        "question": "- Question 5: What types of events are typically covered by car insurance policies?",
+        "right": true,
+        "mun": 2,
+        "score": 0.4212728965729617
+    },
+    {
+        "question": "- Question 1: What are the typical steps involved in filing a car insurance claim?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5702352190994875
+    },
+    {
+        "question": "- Question 2: How does the claim notification process work with different insurance companies?",
+        "right": true,
+        "mun": 2,
+        "score": 0.46638658678075534
+    },
+    {
+        "question": "- Question 3: Why is submitting a police report important in the car insurance claim process?",
+        "right": true,
+        "mun": 3,
+        "score": 0.5024069961512576
+    },
+    {
+        "question": "- Question 4: What role does a damage assessment play in car insurance claims?",
+        "right": true,
+        "mun": 1,
+        "score": 0.47935290067365516
+    },
+    {
+        "question": "- Question 5: How can policyholders ensure a smooth and quick car insurance claim process?",
+        "right": true,
+        "mun": 1,
+        "score": 0.4729602378450996
+    },
+    {
+        "question": "- Question 1: What additional coverage options does insurance provide?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5161982418156252
+    },
+    {
+        "question": "- Question 2: How does insurance cover repairs at authorized workshops?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5750836430724281
+    },
+    {
+        "question": "- Question 3: What is included in third-party liability coverage?",
+        "right": true,
+        "mun": 3,
+        "score": 0.5220753866795858
+    },
+    {
+        "question": "- Question 4: Can personal accident insurance for drivers and passengers be customized?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5248306869958109
+    },
+    {
+        "question": "- Question 5: Which company or product offers these insurance coverage options?",
+        "right": true,
+        "mun": 4,
+        "score": 0.4328957860182642
+    },
+    {
+        "question": "- Question 1: Can multiple drivers be added to a car insurance policy?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6867916590237542
+    },
+    {
+        "question": "- Question 2: Is there a restriction on who can drive the vehicle under the policy?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5547954564192072
+    },
+    {
+        "question": "- Question 3: Does the policy require each driver to have a valid driver's license (SIM)?",
+        "right": true,
+        "mun": 1,
+        "score": 0.614614492368712
+    },
+    {
+        "question": "- Question 4: What types of driver's licenses (SIM) are acceptable for different vehicle types (A, B, or C)?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5605686910289319
+    },
+    {
+        "question": "- Question 5: Are there any specific requirements for drivers listed on the insurance policy?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5018185605004141
+    },
+    {
+        "question": "- Question 1: What types of damages does All Risk Car Insurance cover?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5768260254072314
+    },
+    {
+        "question": "- Question 2: How does Total Loss Only (TLO) Insurance differ from All Risk Car Insurance?",
+        "right": true,
+        "mun": 1,
+        "score": 0.7085662464068785
+    },
+    {
+        "question": "- Question 3: Under what conditions does TLO Insurance provide coverage?",
+        "right": true,
+        "mun": 2,
+        "score": 0.48987361053352846
+    },
+    {
+        "question": "- Question 4: Is theft covered under All Risk Car Insurance?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5377174878809875
+    },
+    {
+        "question": "- Question 5: What is the threshold for repair costs in Total Loss Only (TLO) Insurance?",
+        "right": true,
+        "mun": 3,
+        "score": 0.5928078111401178
+    },
+    {
+        "question": "- Question 1: How can customers renew their vehicle insurance policy?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5470877849988569
+    },
+    {
+        "question": "- Question 2: Through which channels will customers receive a notification about their car insurance policy expiration?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6066541157171225
+    },
+    {
+        "question": "- Question 3: What is the contact number for the insurance company's customer service?",
+        "right": true,
+        "mun": 1,
+        "score": 0.4889569518598012
+    },
+    {
+        "question": "- Question 4: What are the operating hours for the insurance company's customer service?",
+        "right": true,
+        "mun": 1,
+        "score": 0.4615093169627146
+    },
+    {
+        "question": "- Question 5: How much time before the policy expires do customers receive a notification?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5449024585561586
+    },
+    {
+        "question": "- Question 1: Can car insurance policies be cancelled at any time?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6198529409945309
+    },
+    {
+        "question": "- Question 2: What factors determine whether a car insurance policy can be cancelled?",
+        "right": true,
+        "mun": 1,
+        "score": 0.589495512700245
+    },
+    {
+        "question": "- Question 3: Are there fees associated with cancelling a car insurance policy?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6043022943629275
+    },
+    {
+        "question": "- Question 4: How does the refund process work for unused premiums when cancelling car insurance?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5697067746490969
+    },
+    {
+        "question": "- Question 5: What steps should be taken before cancelling a car insurance policy with an insurer?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5288091151468137
+    },
+    {
+        "question": "- Question 1: What types of coverage does Insurance offer for electric vehicles?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6477334941173514
+    },
+    {
+        "question": "- Question 2: How does Insurance ensure comprehensive protection for all electric cars?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6989005077590924
+    },
+    {
+        "question": "- Question 3: Is Insurance a specialized provider for electric vehicle insurance?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6214360713463394
+    },
+    {
+        "question": "- Question 4: What are the key features of Insurance's electric vehicle insurance policy?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5729329675412368
+    },
+    {
+        "question": "- Question 5: Which company provides electric vehicle insurance, and what is its reputation in the industry?",
+        "right": true,
+        "mun": 1,
+        "score": 0.574220347045127
+    }
+]
