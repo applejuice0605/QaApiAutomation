@@ -27,7 +27,7 @@ ${paymentScheme}    1
 
 *** Test Cases ***
 Motor PayNow CustomerPay
-    [Tags]    uat   prod    order-motor
+    [Tags]    uat    order-motor
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}

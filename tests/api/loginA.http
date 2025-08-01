@@ -1,0 +1,5 @@
+### GET request to example server
+POST https://rd-dms.fuseinsurtech.com/authenticate/
+    ?generated-in=PyCharm
+
+###

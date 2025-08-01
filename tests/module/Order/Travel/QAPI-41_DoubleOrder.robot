@@ -26,7 +26,7 @@ ${BODY_FILE_PATH}    Travel_PlaceOrderData.json
 
 *** Test Cases ***
 Travel Double Order
-    [Tags]    uat   prod    order-travel
+    [Tags]    uat    order-travel
     Given Setup Data Testing
     When I have a whitelist account and have logined and have a used identityNo
 

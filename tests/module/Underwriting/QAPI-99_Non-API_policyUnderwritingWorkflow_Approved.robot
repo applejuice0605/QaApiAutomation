@@ -34,11 +34,23 @@ Non-API_policyUnderwritingWorkflow_Approved
     [Tags]    uat
     Given Setup Data Testing
     When I have an underwriting order and have logined to Boss
+
+
+
+
+    Then [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
+    Then [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
+    Then [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
     Then [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain taskId    ${jsonResult}
+
+
     Then I send request to assigneToMe API     ${jsonResult}   ${bossToken}
     Then The status code should be 200    ${jsonResult}[code]
+    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
+    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
+    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
     Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain taskId    ${jsonResult}
@@ -46,10 +58,16 @@ Non-API_policyUnderwritingWorkflow_Approved
 
 
     Then [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
+    Then [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
+    Then [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
+    Then [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain taskId    ${jsonResult}
     Then I send request to assigneToMe API     ${jsonResult}   ${bossToken}
     Then The status code should be 200    ${jsonResult}[code]
+    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
+    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
+    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
     Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain taskId    ${jsonResult}
@@ -95,3 +113,19 @@ I have an underwriting order and have logined to Boss
     Set Test Variable    ${bossToken}
 
     Sleep    10s
+
+
+
+[Order Review Task] Get the order review task in Underwriting Flow List
+
+    FOR    ${counter}    IN RANGE    1    5
+        Log    ${counter}
+    # 调用查询任务列表接口
+        [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
+        The status code should be 200    ${jsonResult}[code]
+        BREAK If
+        Break If    the response should contain taskId    ${jsonResult}
+
+
+    END
+

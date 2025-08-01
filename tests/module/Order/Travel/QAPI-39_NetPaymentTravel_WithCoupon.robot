@@ -31,7 +31,7 @@ ${paymentMethod}    VA
 
 *** Test Cases ***
 Travel NetPayment With Coupon
-    [Tags]    uat   prod    order-travel    coupon
+    [Tags]    uat    order-travel    coupon
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}

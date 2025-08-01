@@ -34,10 +34,16 @@ API_policyUnderwritingWorkflow_Declined
     Given Setup Data Testing
     When I have an underwriting order and have logined to Boss
     Then [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
+    Then [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
+    Then [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
+    Then [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain taskId    ${jsonResult}
     Then I send request to assigneToMe API     ${jsonResult}   ${bossToken}
     Then The status code should be 200    ${jsonResult}[code]
+    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
+    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
+    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
     Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain taskId    ${jsonResult}
@@ -45,10 +51,16 @@ API_policyUnderwritingWorkflow_Declined
 
 
     Then [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
+    Then [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
+    Then [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
+    Then [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain taskId    ${jsonResult}
     Then I send request to assigneToMe API     ${jsonResult}   ${bossToken}
     Then The status code should be 200    ${jsonResult}[code]
+    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
+    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
+    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
     Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain taskId    ${jsonResult}

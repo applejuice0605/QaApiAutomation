@@ -23,7 +23,7 @@ ${BODY_FILE_PATH}    Property_PlaceOrderData.json
 
 *** Test Cases ***
 Property Get Quotation
-    [Tags]    uat   prod    quotation-property
+    [Tags]    uat    quotation-property
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}

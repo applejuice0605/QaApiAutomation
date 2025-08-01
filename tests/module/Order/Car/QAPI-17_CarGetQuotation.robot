@@ -23,7 +23,7 @@ ${BODY_FILE_PATH}    Car_PlaceOrderData.json
 
 *** Test Cases ***
 Car Get Quotation
-    [Tags]    uat   prod    quotation-car
+    [Tags]    uat    quotation-car
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}

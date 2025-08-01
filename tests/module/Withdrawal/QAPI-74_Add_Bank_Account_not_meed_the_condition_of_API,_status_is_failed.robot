@@ -1,35 +1,39 @@
 *** Settings ***
 Resource    ../../../resources/api/Withdrawal/withdrawal.robot
-#Resource    ../../../resources/Boss/LoginBoss/LoginBoss.robot
+Resource    ../../../resources/biz/Login/login.robot
+Resource    ../../../resources/resource.robot
+
+
+#Setup Test
+Test Setup    Setup Env Variable
 Test Teardown    Delete All Sessions
 
 *** Variables ***
-${loginAccount}=    628123261286
-${password}=  268988
 ${withdrawalAmount}=  10000000
 ${CheckAccamount}=  8123268988
 
 *** Test Cases ***
 Add Bank Account not meed the condition of API, status is failed
-    Given By Phone Number Login FusePro Success
+    [Tags]  notUsed
+    Given Have logined fusepro and boss
     Then Add Bank Account
     Then Check Bank Account Is Failed
 
 
 
 *** Keywords ***
-By Phone Number Login FusePro Success
-    ${data}=  Get Token And TenantId And OpenId  ${loginAccount}  ${password}
-    ${tenantId}=  Get From Dictionary    ${data}  tenantId
-    ${token}=  Get From Dictionary    ${data}  token
-    Set Test Variable    ${tenantId}   ${tenantId}
-    Set Test Variable    ${token}   ${token}
+Have logined fusepro and boss
+    ${fuseToken}=   login.Login to Application using mobile     ${env_vars}[FUSE_ACCOUNT]    ${env_vars}[FUSE_PASSWORD]
+    Set Test Variable    ${fuseToken}
+    Set Test Variable    ${tenantId}   1000662
+    ${bossToken}=   login.Login to Boss     ${env_vars}[BOSS_ACCOUNT]    ${env_vars}[BOSS_PASSWORD]
+    Set Test Variable    ${bossToken}
 
 Add Bank Account
-    Add Bank Account Not Meed The Condition Of Api Failed  ${token}
+    Add Bank Account Not Meed The Condition Of Api Failed  ${fuseToken}
 
 Check Bank Account Is Failed
-    Send Check Bank Account Status Post Request  ${token}  ${tenantId}  ${loginAccount}  ${withdrawalAmount}  ${password}
+    Send Check Bank Account Status Post Request  ${fuseToken}  ${tenantId}  ${loginAccount}  ${withdrawalAmount}  ${password}
 
 
 

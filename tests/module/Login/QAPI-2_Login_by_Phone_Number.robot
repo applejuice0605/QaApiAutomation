@@ -9,17 +9,19 @@ Resource    ../../../resources/api/Login/api_login.robot
 
 Resource    ../../../resources/resource.robot
 
-
-
 #Setup Test
 #优化：Suite Setup    Suite启动应改为获取前置操作里面的数据
 Test Setup    Setup Env Variable
 Test Teardown    Delete All Sessions
 
 
+
+*** Variables ***
+${loginMethod}    mobile
+
 *** Test Cases ***
 Login Success by Phone Number
-    [Tags]    uatAndprod
+    [Tags]    uatAndprod    prod
     Given I have a valid login account and password
     When I send a POST request to the byLogin API
     Then The response should contain the user's openid and tenantId
@@ -33,7 +35,7 @@ I have a valid login account and password
     Set Test Variable    ${password}    ${env_vars}[FUSE_PASSWORD]
 
 I send a POST request to the byLogin API
-    ${response}    api_bylogin.Send Request And Get Response Data    ${loginAccount}    ${password}
+    ${response}    api_bylogin.Send Request And Get Response Data    ${loginAccount}    ${password}     ${loginMethod}
 
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
@@ -46,7 +48,7 @@ The response should contain the user's openId and tenantId
 
 
 I send a POST request to the Login API
-    ${response}    api_login.Send Request And Get Response Data    ${loginAccount}    ${password}    ${openId}    ${tenantId}
+    ${response}    api_login.Send Request And Get Response Data    ${loginAccount}    ${password}    ${openId}    ${tenantId}   ${loginMethod}
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
 

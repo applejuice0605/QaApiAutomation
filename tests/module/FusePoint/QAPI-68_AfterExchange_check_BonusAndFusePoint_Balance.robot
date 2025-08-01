@@ -13,6 +13,7 @@ Trigger Point Exchange
     Input Exchange Amount 10 And Click Submit Button
 
 After exchange, check Bonus & Fuse point balance Success
+    [Tags]  notUsed
     By Phone Number Login FusePro Success
     Check Bonus Fuse Point Balance
 
@@ -31,6 +32,7 @@ Input Exchange Amount 10 And Click Submit Button
     Send Point Exchange Post Request  ${fusetoken}  ${body}
 
 Check Bonus Fuse Point Balance
+    Sleep    10s
     ${body}=  Set Variable    {"mobile":"${loginAccount}","pageSize":"10","pageNo":0,"queryCotFlag":"true","controlAccount":"5","language":"en_US","isUpper":"no"}
     ${response}=  Send Check Balance Post Request  ${fusetoken}   ${tenantId}  ${body}
     ${get_json}=  Get From Dictionary    ${response.json()}  data

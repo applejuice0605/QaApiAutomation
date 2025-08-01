@@ -38,6 +38,9 @@ Upload payment proof with underpayment failed
     Given Setup Data Testing
     When I have an unpaid order and have logined to Boss
     Then Send Request To paymentBilling/list API to get paymentBillingNo    ${bossToken}    ${orderNo}
+    Then Send Request To paymentBilling/list API to get paymentBillingNo    ${bossToken}    ${orderNo}
+    Then Send Request To paymentBilling/list API to get paymentBillingNo    ${bossToken}    ${orderNo}
+    Then Send Request To paymentBilling/list API to get paymentBillingNo    ${bossToken}    ${orderNo}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain paymentBillingNo    ${jsonResult}
 

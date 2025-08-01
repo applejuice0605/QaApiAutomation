@@ -29,7 +29,7 @@ ${paymentMethod}    VA
 
 *** Test Cases ***
 Car PayNow PartnerPay Fullpayment
-    [Tags]    uat   prod    order-car
+    [Tags]    uat   order-car
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}

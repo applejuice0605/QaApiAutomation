@@ -31,7 +31,7 @@ Check Partner Pay Full Payment Order's Commission Disbursed
 Check Commission Disbursed
     [Arguments]    ${token}     ${slipIds}   ${expected_data_count}
     Log    ${token}
-    Sleep    15s
+    Sleep    50s
     ${response}    account_flow_list_v2.Send Request And Get Response Data    ${token}
     ${resultdata}     Set Variable    ${response.json()}[data][data]
 

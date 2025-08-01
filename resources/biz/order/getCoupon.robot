@@ -24,6 +24,13 @@ the response should contain the available coupon list and get coupon info by cou
     Log    ${couponUseInfo}
     Set Test Variable    ${couponUseInfo}   ${couponUseInfo}
 
+the response should contain the available coupon list and get first available coupon
+    [Arguments]     ${jsonResult}
+    ${couponUseInfo}=    utilCommon.Get First Available Coupon    ${jsonResult}[data]
+    Log    ${couponUseInfo}
+    Set Test Variable    ${couponUseInfo}   ${couponUseInfo}
+
+
 
 the response should contain the available coupon list and get coupon info by productCode
     [Arguments]     ${jsonResult}   ${rawProductCode}

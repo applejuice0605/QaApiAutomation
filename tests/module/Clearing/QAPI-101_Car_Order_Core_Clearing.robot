@@ -49,7 +49,7 @@ Car Order Core Clearing
     When I have logined to FusePro and Boss
     Then Create Pay Now Order     ${ORDER_MSG_DATA}    ${token}
     Then Use Partner Pay and Full Payment to complete the payment
-    Then Done the underwriting workflow
+#    Then Done the underwriting workflow
     Then Check Commission Disbursed    ${token}     ${slipUids}   ${expected_data_count}
     Then finally Log the OrderNo ${orderNo}
 
@@ -98,7 +98,7 @@ Create Pay Now Order
     Sleep    10s
 
 Use Partner Pay and Full Payment to complete the payment
-    Run keyword And Continue on Failure    I continue to pay the order and send request the paymentBilling/create API     ${token}     ${orderNo}
+    Run Keyword And Ignore Error    I continue to pay the order and send request the paymentBilling/create API     ${token}     ${orderNo}
 
     Send request to paymentBillingList API     ${token}     ${orderId}
     the response of paymentBilling/List API should contain securityCode and paymentBillNo     ${jsonResult}

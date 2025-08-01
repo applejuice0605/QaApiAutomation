@@ -14,16 +14,16 @@ Test Setup    Setup Env Variable
 Test Teardown    Delete All Sessions
 
 *** Variables ***
-${loginWay}    4
+${loginMethod}    nationId
 
 
 
 *** Test Cases ***
 Login Success by KTP
-    [Tags]    uatAndprod
+    [Tags]    uatAndprod    prod
     Given I have a valid KTP and password
-    When I send a POST request to the fuse_user_login API
-    Then the response should contain the user's loginAccount
+#    When I send a POST request to the fuse_user_login API
+#    Then the response should contain the user's loginAccount
     Then I send a POST request to the byLogin API
     And the status code should be 200
     And the response should contain the user's openid and tenantId
@@ -34,23 +34,12 @@ Login Success by KTP
 
 *** Keywords ***
 I have a valid KTP and password
-    Set Test Variable    ${ktpNo}    ${env_vars}[KTP_NO]
+    Set Test Variable    ${loginAccount}    ${env_vars}[KTP_NO]
     Set Test Variable    ${password}    ${env_vars}[FUSE_PASSWORD]
 
-I send a POST request to the fuse_user_login API
-    ${response}    fuse_user_login.Send Request And Get Response Data    ${password}    ${loginWay}    ktpNo=${ktpNo}
-    Set Test Variable    ${jsonResult}    ${response.json()}
-    Log    ${jsonResult}
-
-
-the response should contain the user's loginAccount
-    Log    ${jsonResult}
-    Log    ${jsonResult}[resultObj][accountId]
-    Dictionary Should Contain Key    ${jsonResult}[resultObj]   accountId
-    Set Test Variable    ${loginAccount}    ${jsonResult}[resultObj][accountId]
 
 I send a POST request to the byLogin API
-    ${response}    api_bylogin.Send Request And Get Response Data    ${loginAccount}    ${password}
+    ${response}    api_bylogin.Send Request And Get Response Data    ${loginAccount}    ${password}     ${loginMethod}
 
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
@@ -66,7 +55,7 @@ The response should contain the user's openid and tenantId
 
 
 I send a POST request to the Login API
-    ${response}    api_login.Send Request And Get Response Data    ${loginAccount}    ${password}    ${openId}    ${tenantId}
+    ${response}    api_login.Send Request And Get Response Data    ${loginAccount}    ${password}    ${openId}    ${tenantId}   ${loginMethod}
 
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}

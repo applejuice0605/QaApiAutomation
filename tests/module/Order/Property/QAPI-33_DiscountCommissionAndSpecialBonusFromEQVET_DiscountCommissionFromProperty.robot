@@ -26,15 +26,15 @@ ${BODY_FILE_PATH}    EQVET_Property_PlaceOrderData.json
 ${isAdvancePremium}     0
 ${payerType}    2
 ${paymentScheme}    1
-${discountFormCommission_property}      1000
-${discountFormCommission_EQVET}     200200
-${discountFromPartnerSpecialBonusAmount_EQVET}      1000
+${discountFormCommission_property}      100
+${discountFormCommission_EQVET}     2077
+${discountFromPartnerSpecialBonusAmount_EQVET}      150
 ${paymentMethod}    VA
 
 
 *** Test Cases ***
 Property EQVET PayLater With Discount Commission And Special Bonus From EQVET Plus Discount Commission From Property
-    [Tags]    uat   prod    order-property    discount
+    [Tags]    uat    order-property    discount
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}

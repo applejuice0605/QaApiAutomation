@@ -29,7 +29,7 @@ ${paymentMethod}    VA
 
 *** Test Cases ***
 Supernet Payment With Eqvet and Property Coupon
-    [Tags]    uat   prod    order-property    coupon
+    [Tags]    uat    order-property    coupon
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}

@@ -29,7 +29,7 @@ ${paymentScheme}    1
 
 *** Test Cases ***
 Travel PayNow CustomerPay
-    [Tags]    uat   prod    order-travel
+    [Tags]    uat    order-travel
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}

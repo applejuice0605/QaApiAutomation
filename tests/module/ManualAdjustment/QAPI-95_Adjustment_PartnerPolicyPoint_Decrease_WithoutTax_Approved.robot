@@ -38,12 +38,18 @@ Manual Adjustment Partner Policy Point Decrease Without Tax Approved
     Then manualAdjustment.the response of Submit Request API should contain transactionId  ${jsonResult}
     
     Then manualAdjustment.Send Request To adjustment_review_list_manager API to get taskId in Mgt>>Manual Injection Review List    ${bossToken}    ${transactionId}    ${AP_POSITIVE_DATA["Manual_Injection_ReviewTask_existsAssignee"]}
+    Then manualAdjustment.Send Request To adjustment_review_list_manager API to get taskId in Mgt>>Manual Injection Review List    ${bossToken}    ${transactionId}    ${AP_POSITIVE_DATA["Manual_Injection_ReviewTask_existsAssignee"]}
+    Then manualAdjustment.Send Request To adjustment_review_list_manager API to get taskId in Mgt>>Manual Injection Review List    ${bossToken}    ${transactionId}    ${AP_POSITIVE_DATA["Manual_Injection_ReviewTask_existsAssignee"]}
+    Then manualAdjustment.Send Request To adjustment_review_list_manager API to get taskId in Mgt>>Manual Injection Review List    ${bossToken}    ${transactionId}    ${AP_POSITIVE_DATA["Manual_Injection_ReviewTask_existsAssignee"]}
     Then The status code should be 200    ${jsonResult}[code]
     And manualAdjustment.the response should contain taskId    ${jsonResult}
 
     Then Assigne Task to me    ${bossToken}    ${taskId}
     And The status code should be 200    ${jsonResult}[code]
 
+    Then manualAdjustment.Send Request To adjustment_review_list_todo API to get taskId in Flow>>Manual Injection Review Todo List    ${bossToken}    ${transactionId}
+    Then manualAdjustment.Send Request To adjustment_review_list_todo API to get taskId in Flow>>Manual Injection Review Todo List    ${bossToken}    ${transactionId}
+    Then manualAdjustment.Send Request To adjustment_review_list_todo API to get taskId in Flow>>Manual Injection Review Todo List    ${bossToken}    ${transactionId}
     Then manualAdjustment.Send Request To adjustment_review_list_todo API to get taskId in Flow>>Manual Injection Review Todo List    ${bossToken}    ${transactionId}
     Then The status code should be 200    ${jsonResult}[code]
     And manualAdjustment.the response should contain taskId    ${jsonResult}

@@ -23,7 +23,7 @@ ${BODY_FILE_PATH}    Travel_PlaceOrderData.json
 
 *** Test Cases ***
 Travel Get Quotation
-    [Tags]    uat   prod    quotation-travel
+    [Tags]    uat    quotation-travel
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}

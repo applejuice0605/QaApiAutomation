@@ -31,7 +31,7 @@ ${paymentMethod}    VA
 
 *** Test Cases ***
 Property PayLater PartnerPay
-    [Tags]    uat   prod    order-property
+    [Tags]    uat    order-property
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}

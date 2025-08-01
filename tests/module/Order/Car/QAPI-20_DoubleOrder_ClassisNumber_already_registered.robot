@@ -26,7 +26,7 @@ ${isAdvancePremium}     0
 
 *** Test Cases ***
 Car DoubleOrder ClassisNumber already registered
-    [Tags]    uat   prod    order-car   doubleOrder
+    [Tags]    uat    order-car   doubleOrder
     Given Setup Data Testing
     When I have a whitelist account and have logined and have a active order
 

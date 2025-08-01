@@ -10,7 +10,7 @@ Resource    ../../../resources/util/utilCommon.robot
 
 [Order Review Task] I send request to underwritingV2/list/manager API
     [Arguments]    ${bossToken}    ${orderNo}   ${existsAssignee}
-    Sleep    5s
+    Sleep    10s
     ${response}    underwritingV2_list_manager.Send Request And Get Response Data    ${bossToken}    ${orderNo}     existsAssignee=${existsAssignee}
 
     Set Test Variable    ${jsonResult}    ${response.json()}
@@ -51,6 +51,7 @@ I send request to underwritingV2/list/todo API
         ${taskId}    Get From Dictionary    ${jsonResult}[data][data][${counter}]    id
 
         #2.2. update jsonBody
+
         ${jsonBody}=    Update Value To Json    ${jsonBody}    $.data.orderId    ${orderId}
         ${jsonBody}=    Update Value To Json    ${jsonBody}    $.taskId    ${taskId}
 

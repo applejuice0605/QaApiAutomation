@@ -38,6 +38,9 @@ Upload payment proof with overpayment,Policy in payment billing workflow approve
     Given Setup Data Testing
     When I have an unpaid order and have logined to Boss
     Then Send Request To paymentBilling/list API to get paymentBillingNo    ${bossToken}    ${orderNo}
+    Then Send Request To paymentBilling/list API to get paymentBillingNo    ${bossToken}    ${orderNo}
+    Then Send Request To paymentBilling/list API to get paymentBillingNo    ${bossToken}    ${orderNo}
+    Then Send Request To paymentBilling/list API to get paymentBillingNo    ${bossToken}    ${orderNo}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain paymentBillingNo    ${jsonResult}
 
@@ -47,12 +50,18 @@ Upload payment proof with overpayment,Policy in payment billing workflow approve
 
 
     Then Send Request To paymentBilling_list_manager API to get payment billing taskId in Payment Billing Mgt List    ${bossToken}    ${orderNo}    ${ORDER_MSG_AP_POSITIVE_DATA["paymentBilling_manager_existsAssignee"]}
+    Then Send Request To paymentBilling_list_manager API to get payment billing taskId in Payment Billing Mgt List    ${bossToken}    ${orderNo}    ${ORDER_MSG_AP_POSITIVE_DATA["paymentBilling_manager_existsAssignee"]}
+    Then Send Request To paymentBilling_list_manager API to get payment billing taskId in Payment Billing Mgt List    ${bossToken}    ${orderNo}    ${ORDER_MSG_AP_POSITIVE_DATA["paymentBilling_manager_existsAssignee"]}
+    Then Send Request To paymentBilling_list_manager API to get payment billing taskId in Payment Billing Mgt List    ${bossToken}    ${orderNo}    ${ORDER_MSG_AP_POSITIVE_DATA["paymentBilling_manager_existsAssignee"]}
     Then The status code should be 200    ${jsonResult}[code]
     And uploadPaymentProof_workflow.the response should contain taskId    ${jsonResult}
 
     Then Assigne Task to me    ${bossToken}    ${taskId}
     And The status code should be 200    ${jsonResult}[code]
 
+    Then Send Request To paymentBilling_list_todo API to get payment billing taskId in Payment Billing Flow List    ${bossToken}    ${orderNo}
+    Then Send Request To paymentBilling_list_todo API to get payment billing taskId in Payment Billing Flow List    ${bossToken}    ${orderNo}
+    Then Send Request To paymentBilling_list_todo API to get payment billing taskId in Payment Billing Flow List    ${bossToken}    ${orderNo}
     Then Send Request To paymentBilling_list_todo API to get payment billing taskId in Payment Billing Flow List    ${bossToken}    ${orderNo}
     Then The status code should be 200    ${jsonResult}[code]
     And uploadPaymentProof_workflow.the response should contain taskId    ${jsonResult}

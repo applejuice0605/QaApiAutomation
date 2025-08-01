@@ -1,24 +1,29 @@
 *** Settings ***
 Resource    ../../../resources/api/Withdrawal/withdrawal.robot
 
+Resource    ../../../resources/biz/Login/login.robot
+Resource    ../../../resources/resource.robot
+
+
+#Setup Test
+Test Setup    Setup Env Variable
+Test Teardown    Delete All Sessions
+
 
 *** Variables ***
-${loginAccount}=    628123268989
-${password}=  268989
 ${withdrawalAmount}=  100000
 
 *** Test Cases ***
 Withdrawal Amount Less Than 20000000 Success
-    By Phone Number Login FusePro Success
+    Have logined
     Input Withdrawal Amount Less Than 20000000 And Send Withdrawal Application
 
 *** Keywords ***
-By Phone Number Login FusePro Success
-    ${data}=  Get Token And TenantId And OpenId  ${loginAccount}  ${password}
-    ${tenantId}=  Get From Dictionary    ${data}  tenantId
-    ${token}=  Get From Dictionary    ${data}  token
-    Set Test Variable    ${tenantId}   ${tenantId}
-    Set Test Variable    ${fusetoken}   ${token}
+Have logined
+    ${fuseToken}=   login.Login to Application using mobile     ${env_vars}[FUSE_ACCOUNT]    ${env_vars}[FUSE_PASSWORD]
+    Set Test Variable    ${fuseToken}
+    Set Test Variable    ${tenantId}   1000662
+
 
 Input Withdrawal Amount Less Than 20000000 And Send Withdrawal Application
     Send Withdrawal Post Request  ${fusetoken}   ${tenantId}  ${loginAccount}  ${withdrawalAmount}  ${password}

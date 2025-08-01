@@ -5,6 +5,7 @@ Library    JSONLibrary
 Library    String
 Library    os
 
+Resource    ../api/Login/loginA.robot
 
 *** Keywords ***
 Get Effective Time
@@ -78,6 +79,18 @@ Get CouponId by CouponCode
     ${couponUseInfo}     Create Dictionary    couponId=${couponId}   productCode=${couponDTO}[0][productCode]
     Log     ${couponUseInfo}
     RETURN    ${couponUseInfo}
+
+Get First Available Coupon
+    [Arguments]    ${couponDTO}
+    Log    ${couponDTO}
+    ${couponAvailableList}   Set Variable    ${couponDTO}[0][couponAvailableList]
+    ${couponId}    Set Variable    ${couponAvailableList}[0][couponId]
+
+    ${couponUseInfo}     Create Dictionary    couponId=${couponId}   productCode=${couponDTO}[0][productCode]
+    Log     ${couponUseInfo}
+    RETURN    ${couponUseInfo}
+
+
 
 
 Generate Random identityNo
@@ -155,3 +168,57 @@ Check JSON Data List Not Empty
     ${is_not_empty}    Evaluate    len(${parsed_json['data']}) > 0
 #    Should Be True    ${is_not_empty}    Data list should not be empty
     RETURN    ${is_not_empty}
+
+#BREAK IF
+#    [Documentation]    Break the loop if the condition is met.
+#    [Arguments]    ${condition}
+#    Run Keyword If     ${condition}    BREAK
+
+Convert to Json
+    [Documentation]    Convert the given data to JSON format.
+    [Arguments]     ${data}
+#    Log    ${data}
+#    Log    ${data.__class__}
+    ${response_data}    Create List
+    ${result_dict}  Create Dictionary
+    #1. 遍历字典，获取column_list字段值
+    ${column_list} =    Get From Dictionary    ${data}    column_list
+    #2. 获取总记录数
+    ${count}=   Set Variable    ${data}[affected_rows]
+    Log    ${column_list} # 列表
+    ${column_values} =    Get From Dictionary    ${data}    rows
+
+    FOR    ${counter}    IN RANGE    0    ${count}
+        Log    ${counter}
+        ${column_value} =     Get From List    ${column_values}    ${counter}
+        Log    ${column_value}
+        FOR    ${key}    IN    @{column_list}
+            Log    ${key}
+            #2. 获得列表的index
+            ${index} =    Get Index From List    ${column_list}    ${key}
+            Log    ${index}
+            #3. 获得列表的值
+            ${value} =    Get From List    ${column_value}    ${index}
+    #        Log    ${column_value}[index]
+            #4. 将key和value写入字典
+            ${result_dict} =    Set To Dictionary    ${result_dict}    ${key}    ${value}
+        END
+        Log    ${result_dict}
+#        ${text}     Get From Dictionary    ${result_dict}   conversation_metadata
+
+        Append To List    ${response_data}    ${result_dict}
+    END
+    Log    ${response_data}
+
+#    ${expected_key} =    Set Variable    "whatapp_id"
+#    ${index} =    Evaluate    ${column_list}.index(${expected_key})
+
+
+#    ${actual_key} =    Get From List    ${column_list}    ${expected_key}
+
+
+#    Log    ${actual_key}
+#    ${index} =    Get Index From List    ${column_list}    ${actual_key}
+#    ${index} =    Get Index From List    ${column_list}    whatapp_id
+
+    RETURN  ${response_data}
