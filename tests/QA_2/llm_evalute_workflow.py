@@ -9,11 +9,11 @@ from openpyxl.utils import get_column_letter
 from config import *
 
 
-base_url = sit_base_url
-email = sit_email
-password =sit_password
-workflow_app_id =sit_workflow_app_id
-llm_app_id = sit_llm_app_id
+base_url = uat_base_url
+email = uat_email
+password =uat_password
+workflow_app_id =uat_workflow_app_id
+llm_app_id = uat_llm_app_id
 
 # 登录函数获取token
 def login() -> str:
@@ -311,10 +311,10 @@ def process_excel(input_file, output_file):
         df['评估结果'] = ""
 
     # 处理每个问题
-    index_start = 4
+    index_start = 218
 
     round = 15
-    for index, row in df.iloc[index_start:6].iterrows():
+    for index, row in df.iloc[index_start:].iterrows():
         # if index % 16 == 0:
         #     token = login()
         # 每16轮重新获取token
@@ -399,6 +399,6 @@ if __name__ == "__main__":
     # input_excel = "output-orginalRM.xlsx"  # 输入文件名
     # output_excel = "output-orginalRM-0731.xlsx"  # 输出文件名
     input_excel = "question.xlsx"  # 输入文件名
-    output_excel = "output-0801.xlsx"  # 输出文件名
+    output_excel = "output_0804.xlsx"  # 输出文件名
     process_excel(input_excel, output_excel)
 

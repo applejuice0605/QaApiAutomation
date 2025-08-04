@@ -49,7 +49,7 @@ Car Order Core Clearing
     When I have logined to FusePro and Boss
     Then Create Pay Now Order     ${ORDER_MSG_DATA}    ${token}
     Then Use Partner Pay and Full Payment to complete the payment
-#    Then Done the underwriting workflow
+    Then Done the underwriting workflow
     Then Check Commission Disbursed    ${token}     ${slipUids}   ${expected_data_count}
     Then finally Log the OrderNo ${orderNo}
 
@@ -118,6 +118,8 @@ Use Partner Pay and Full Payment to complete the payment
 Done the underwriting workflow
     Sleep    10s
     [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
+    [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
+    [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
     the response should contain taskId    ${jsonResult}
     I send request to assigneToMe API     ${jsonResult}   ${bossToken}
     I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
@@ -125,6 +127,9 @@ Done the underwriting workflow
     [Order Review Task] I send request to approve API      ${bossToken}    ${orderNo}   ${Underwriting_DATA}
 
 
+    [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
+    [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
+    [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
     [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
     the response should contain taskId    ${jsonResult}
     I send request to assigneToMe API     ${jsonResult}   ${bossToken}
