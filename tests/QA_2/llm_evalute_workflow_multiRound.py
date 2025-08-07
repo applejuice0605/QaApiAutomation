@@ -1,4 +1,5 @@
 import os
+from time import sleep
 from typing import Dict, Any, Optional, Tuple
 import pandas as pd
 import requests
@@ -8,12 +9,15 @@ from openpyxl.styles import Alignment
 from openpyxl.utils import get_column_letter
 from config import *
 
-env = 'sit'
+
 base_url = sit_base_url
 email = sit_email
 password =sit_password
 workflow_app_id =sit_workflow_app_id
 llm_app_id = sit_llm_app_id
+webhook_url = sit_webhook_url
+wa_id = whatsapp_id
+
 
 # 登录函数获取token
 def login() -> str:
@@ -97,6 +101,7 @@ def chat_workflow(query: str, access_token:str) -> tuple[Any | None, Any | None,
     retrieval_model 留空时使用默认 hybrid_search 配置。
     """
     # https://rd-dify-sit.fuse.co.id/console/api/apps/a1936725-1498-452c-8310-b81e94936703/workflows/draft/run
+
     url = f"{base_url.rstrip('/')}/api/apps/{workflow_app_id}/workflows/draft/run"
     # access_token = login()
     headers = {
@@ -111,7 +116,7 @@ def chat_workflow(query: str, access_token:str) -> tuple[Any | None, Any | None,
         query=str(query)
     # query="Do you have car product?"
 
-    payload = {"inputs": {"question": query}, "files": []}
+    payload = {"object":"whatsapp_business_account","entry":[{"id":"1851481102271082","changes":[{"value":{"messaging_product":"whatsapp","metadata":{"display_phone_number":"6285283239812","phone_number_id":"539655932572544"},"contacts":[{"profile":{"name":"nora 2号"},"wa_id":"8619830441461"}],"messages":[{"from":"8619830441461","id":"wamid.HBgNODYxOTgzMDQ0MTQ2MRUCABIYIDdFM0M5QUM4NzAxQ0ZCM0I1QkZFRkYyODNGOEEwNkU5AA==","timestamp":"1751018237","text":{"body": query},"type":"text"}]},"field":"messages"}]}]}
 
     try:
         resp = requests.post(url, headers=headers, json=payload, stream=True)
@@ -133,21 +138,13 @@ def chat_workflow(query: str, access_token:str) -> tuple[Any | None, Any | None,
                             if event_json.get("data", {}).get("node_type") == 'knowledge-retrieval':
                                 knowledge_retrieval = event_json.get("data", {}).get("outputs", {}).get("result", [])
                                 print(knowledge_retrieval)
-                            # elif env == 'uat' and event_json.get("data", {}).get("node_type") == 'question-classifier':
-                            #     question_classifier = event_json.get("data", {}).get("outputs", {}).get("class_name")
-                            #     print("question_classifier", question_classifier)
-                            # sit，意图分类是用LLM,node_id = 1752731767860
-                            elif env == 'sit' and event_json.get("data", {}).get("node_id") == '1752731767860':
-                                question_classifier = event_json.get("data", {}).get("outputs", {}).get("text")
-                                print("question_classifier", question_classifier)
+                            elif event_json.get("data", {}).get("node_type") == 'question-classifier':
+                                question_classifier = event_json.get("data", {}).get("outputs", {}).get("class_name")
                         elif event_json.get("event") == "message_end":
                             final_answer = event_json.get("metadata", {}).get("answer", final_answer)
                     except json.JSONDecodeError:
                         continue
-
-        print("final_answer", final_answer)
-        print("question_classifier", question_classifier)
-        print("knowledge_retrieval", knowledge_retrieval)
+        print(knowledge_retrieval)
 
         # 使用 json.dumps() 将字典转换为 JSON 格式的字符
         knowledge_retrieval = json.dumps(knowledge_retrieval)
@@ -168,14 +165,16 @@ def chat_workflow(query: str, access_token:str) -> tuple[Any | None, Any | None,
 
 # 评估答案函数
 def evaluate_answer(question: str, answer: str,token:str) -> str:
+            # 负责严格评估AI客服系统的多轮/单轮对话的每个问题对应的回答质量。
             user_prompt = f"""
-                你是一个专业的保险行业专家，负责严格评估AI客服系统的回答质量。请根据以下标准对模型回答进行1-10分的评分：
+                你是一个专业的印尼保险行业专家，并对多轮对话中的答案进行评分。请根据以下标准对模型回答进行1-10分的评分
 
                 评分标准及权重：
                 1. 相关性（40%）：回答与用户问题和你的认识关联程度（首要评分项）
-                2. 准确性（30%）：回答内容是否准确无误和语言一致性
+                2. 准确性（30%）：答案内容是否与印尼保险行业知识一致，有无事实性错误
                 3. 完整性（20%）：是否涵盖标你的认识的关键信息点
-                4. 清晰性（10%）：表达是否清晰易懂
+                4. 清晰性（10%）：答案的表达是否清晰易懂，逻辑是否连贯，有无歧义
+
 
                 相关性分级标准（细化版）：
                 - 完全相关(9-10分)：100%覆盖问题核心，与你的认识完全一致，且语言一致
@@ -194,7 +193,8 @@ def evaluate_answer(question: str, answer: str,token:str) -> str:
                 - 5-6分：部分相关或有少量错误，缺失重要信息
                 - 3-4分：小部分相关或有多处错误，信息严重不全
                 - 1-2分：完全不相关或完全错误
-
+                
+                
                 用户问题：
                 {question}
 
@@ -297,6 +297,7 @@ def format_excel(file_path):
     except Exception as e:
         print(f"格式化Excel文件时出错: {e}")
         return False
+
 # 主处理流程
 def process_excel(input_file, output_file):
     # 读取Excel文件
@@ -322,7 +323,10 @@ def process_excel(input_file, output_file):
     index_start = 0
 
     round = 15
-    for index, row in df.iloc[index_start:].iterrows():
+    for index, row in df.iloc[index_start:1].iterrows():
+        # 1. 重置Session
+        resetSession()
+
         # if index % 16 == 0:
         #     token = login()
         # 每16轮重新获取token
@@ -336,32 +340,86 @@ def process_excel(input_file, output_file):
 
         print(f"\n处理问题 {index + 1}/{len(df)}: {question}")
 
-        # 获取答案和知识库召回结果
-        result = chat_workflow( question, token)
-        if result is not None:
-            answer, question_classifier, knowledge_retrieval = result
-        else:
-            # 处理 None 的情况，例如抛出异常或返回默认值
-            raise ValueError("chat_workflow 返回了 None")
+        # 2. 调用webhook处理问题
+        # 2.1 分解这个问题的每个步骤
+        steps = question.split('- ')
+        print("全部步骤：", steps)
 
-        if not answer:
-            print(f"获取答案失败，跳过问题: {question}")
-            continue
+        output_answer = ''
+        output_knowledge_retrieval = ''
+        output_question_classifier = ''
+        output_evaluation = ''
+
+        # 2.2 逐个步骤调用webhook
+        for step_index in range(1, len(steps)):
+            print(f"处理步骤{step_index}/{steps.__len__()-1}: {steps[step_index]}")
+            trace_id = None
+            step = steps[step_index]
+
+            # 2.3 调用webhook
+            if step == '{send GPS}':
+                msg_body = {
+                                "from": "8619830441461",
+                                "id": "wamid.HBgNODYxOTgzMDQ0MTQ2MRUCABIYIDkyNkFBMDg4MzcyRDI2QjNCNTkzQTRCMjE3RjgxODFBAA==",
+                                "timestamp": "1754601252",
+                                "location": {
+                                    "latitude": 22.5250867,
+                                    "longitude": 113.9215657
+                                },
+                                "type": "location"
+                            }
+            else:
+                msg_body = {
+                                "from": "8619830441461",
+                                "id": "wamid.HBgNODYxOTgzMDQ0MTQ2MRUCABIYFjNFQjA4RTgwNEMwQkRGNDlFMkZEQTAA",
+                                "timestamp": "1754530501",
+                                "text": {
+                                    "body": step
+                                },
+                                "type": "text"
+                            }
+
+            trace_id = request_webhook(msg_body)
+
+            print("trace_id:", trace_id)
+            # 2.4 请求数据库，查询聊天记录
+            if trace_id is not None:
+                answer = '- ' + getAnswerFromDB_bytraceId(trace_id) + '\n'
+            else:
+                # 处理 None 的情况，例如抛出异常或返回默认值
+                answer = '- ' + trace_id + '\n'
+                # raise ValueError("webhook 返回了 None")
+
+            print(f"工作流的回答:\n {answer}")
+            # print(f"评测结果: {evaluation}")
+            print("=" * 200)
+
+            # 保存答案
+            if answer is None:
+                raise ValueError("数据库没有找到答案")
+
+            output_answer += answer
+            # output_knowledge_retrieval = '- ' + knowledge_retrieval + '\n'
+            # output_question_classifier = '- ' + question_classifier + '\n'
+            # output_evaluation = '- ' + evaluation + '\n'
 
         # 评估答案
-        evaluation = evaluate_answer(question, answer, token)
+        # TODO：重写机器人评分的标准和机制:
+        #     看意图分类对不对
+        #     看是否有用知识库的内容回答问题
+        #     是的话，给出引用的文件和内容
+        #     再用通用标准评分
+        evaluation = evaluate_answer(question, output_answer, token)
         if not evaluation:
             print(f"评估答案失败，跳过问题: {question}")
             continue
-
-        # 更新DataFrame
-        df.at[index, '答案'] = answer
-        df.at[index, 'question_classifier'] = question_classifier
-        df.at[index, 'knowledge_retrieval'] = knowledge_retrieval
-        df.at[index, '评估结果'] = evaluation
-        print(f"工作流的回答: {answer}")
         print(f"评测结果: {evaluation}")
-        print("="*200)
+        # 更新DataFrame
+        df.at[index, '答案'] = output_answer
+        # df.at[index, 'question_classifier'] = output_knowledge_retrieval
+        # df.at[index, 'knowledge_retrieval'] = output_question_classifier
+        df.at[index, '评估结果'] = evaluation
+
 
         # 每处理3条保存一次进度
         if (index + 1) % 3 == 0:
@@ -402,13 +460,137 @@ def process_excel(input_file, output_file):
     except Exception as e:
         print(f"保存结果失败: {e}")
 
+
+def resetSession():
+    # 调用webhook发送“resetSession”指令
+    request_webhook("resetSession")
+
+
+def request_webhook(msg_body):
+    print("start request_webhook")
+    """
+    调用webhook发送文本消息
+    """
+    # https://pchat-uat.fuse.co.id/api/ai/chatbot/whatsapp/webhook
+
+    url = f"{webhook_url.rstrip('/')}/api/ai/chatbot/whatsapp/webhook"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                      "AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/137.0.0.0 Safari/537.36",
+        "content-type": "application/json",
+    }
+    # if type(msg_body) != str:
+    #     query = str(msg_body)
+    # user_input="reset session"
+
+    # TODO：动态获取messgae from的wa_id, wa_token，business_account_id
+    payload = {
+            "object": "whatsapp_business_account",
+            "entry": [
+                {
+                    "id": "1851481102271082",
+                    "changes": [
+                        {
+                            "value": {
+                                "messaging_product": "whatsapp",
+                                "metadata": {
+                                    "display_phone_number": "6285283239812",
+                                    "phone_number_id": "539655932572544"
+                                },
+                                "contacts": [
+                                    {
+                                        "profile": {
+                                            "name": "nora 2号"
+                                        },
+                                        "wa_id": "8619830441461"
+                                    }
+                                ],
+                                "messages": [
+                                    msg_body
+                                ]
+                            },
+                            "field": "messages"
+                        }
+                    ]
+                }
+            ]
+        }
+
+    try:
+        resp = requests.post(url, headers=headers, json=payload, stream=True)
+        # print(resp)
+        # resp.raise_for_status()
+        # print(resp.text)
+
+    except requests.RequestException as e:
+        print(f"Error calling webhook: {e}")
+        if hasattr(e, 'response') and e.response:
+            print(f"Response status: {e.response.status_code}")
+            print(f"Response body: {e.response.text}")
+        return None
+
+    return resp.text
+
+
+def getAnswerFromDB_bytraceId(trace_id):
+    print("start queryDB_bytraceId")
+    # 休眠5s
+    sleep(10)
+    """
+    调用webhook发送文本消息
+    """
+    # https://pchat-uat.fuse.co.id/api/ai/chatbot/whatsapp/webhook
+
+    url = f"https://rd-dms.fuseinsurtech.com/query/"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                      "AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/137.0.0.0 Safari/537.36",
+        "content-type": "application/x-www-form-urlencoded",
+        "cookie": "csrftoken=on5LKsz55a2bQmmBL2AC5X8u160Np4v0koKmCziXNVsnMVwyKoEEeXEAO12QTcru; sessionid=3xotp0x46z77gkc5if7t3ra1yrv0tql4",
+        "x-csrftoken": "on5LKsz55a2bQmmBL2AC5X8u160Np4v0koKmCziXNVsnMVwyKoEEeXEAO12QTcru"
+    }
+    if type(trace_id) != str:
+        trace_id = str(trace_id)
+
+    # trace_id = '8c6f64a18338a8da'
+
+    sql_content = f"select reply from message.whatsapp_chat_record where 1=1 and trace_id = '{trace_id}' order by uid desc limit 1"
+
+    # TODO：动态获取messgae from的wa_id, wa_token，business_account_id
+    payload = {
+        "instance_name" : "SG_SIT_MYSQL8_RW",
+        "db_name" : "message",
+        "schema_name" : None,
+        "tb_name": None,
+        "sql_content" : sql_content,
+        "limit_num" : "100"
+    }
+    try:
+        resp = requests.post(url, headers=headers, data=payload)
+        print(resp.json())
+
+    except requests.RequestException as e:
+        print(f"Error calling db: {e}")
+        if hasattr(e, 'response') and e.response:
+            print(f"Response status: {e.response.status_code}")
+            print(f"Response body: {e.response.text}")
+        return None
+
+    if resp.json()['data']['affected_rows'] == 0:
+        answer = trace_id + "在数据库中没有找到数据"
+    else:
+        answer = resp.json()['data']['rows'][0][0]
+
+    print(answer)
+    return answer
+
 # 使用示例
 if __name__ == "__main__":
-    # input_excel = "question-workshop.xlsx"  # 输入文件名
-    # output_excel = "output-workshop-0805.xlsx"  # 输出文件名
-    # input_excel = "question-orginalRM.xlsx"  # 输入文件名
-    # output_excel = "output_orginalRM_0806.xlsx"  # 输出文件名
-    input_excel = "question.xlsx"  # 输入文件名
-    output_excel = "output-0807.xlsx"  # 输出文件名
+    input_excel = "question_workshop_multiround.xlsx"  # 输入文件名
+    output_excel = "output_workshop_multiround-0805.xlsx"  # 输出文件名
+    # input_excel = "question_EN.xlsx"  # 输入文件名
+    # output_excel = "output_EN.xlsx"  # 输出文件名
     process_excel(input_excel, output_excel)
 
