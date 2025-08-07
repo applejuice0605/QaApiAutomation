@@ -195,13 +195,10 @@ def evaluate_answer(question: str, answer: str,token:str) -> str:
                 - 1-2分：完全不相关或完全错误
                 
                 
-                用户问题：
-                {question}
-
-                待评估的模型回答：
+                用户User和模型Bot的对话：
                 {answer}
 
-                评估流程：
+                针对每个问题的评估流程：
                 1. 首先严格评估相关性等级
                 2. 对比你的认识检查准确性和完整性
                 3. 根据权重计算总分
@@ -349,10 +346,12 @@ def process_excel(input_file, output_file):
         output_knowledge_retrieval = ''
         output_question_classifier = ''
         output_evaluation = ''
+        output_chatlog = ''
 
         # 2.2 逐个步骤调用webhook
         for step_index in range(1, len(steps)):
             print(f"处理步骤{step_index}/{steps.__len__()-1}: {steps[step_index]}")
+            output_chatlog += f"user: {step_index}"
             trace_id = None
             step = steps[step_index]
 
@@ -391,6 +390,7 @@ def process_excel(input_file, output_file):
                 # raise ValueError("webhook 返回了 None")
 
             print(f"工作流的回答:\n {answer}")
+            output_chatlog += f"Bot: {answer}\n"
             # print(f"评测结果: {evaluation}")
             print("=" * 200)
 
@@ -409,7 +409,7 @@ def process_excel(input_file, output_file):
         #     看是否有用知识库的内容回答问题
         #     是的话，给出引用的文件和内容
         #     再用通用标准评分
-        evaluation = evaluate_answer(question, output_answer, token)
+        evaluation = evaluate_answer(question, output_chatlog, token)
         if not evaluation:
             print(f"评估答案失败，跳过问题: {question}")
             continue
