@@ -339,7 +339,7 @@ def process_excel(input_file, output_file):
 
         # 2. 调用webhook处理问题
         # 2.1 分解这个问题的每个步骤
-        steps = question.split('- ')
+        steps = question.split('-')
         print("全部步骤：", steps)
 
         output_answer = ''
@@ -353,7 +353,7 @@ def process_excel(input_file, output_file):
             print(f"处理步骤{step_index}/{steps.__len__()-1}: {steps[step_index]}")
             output_chatlog += f"user: {step_index}"
             trace_id = None
-            step = steps[step_index]
+            step = steps[step_index].strip().
 
             # 2.3 调用webhook
             if step == '{send GPS}':
@@ -383,10 +383,10 @@ def process_excel(input_file, output_file):
             print("trace_id:", trace_id)
             # 2.4 请求数据库，查询聊天记录
             if trace_id is not None:
-                answer = '- ' + getAnswerFromDB_bytraceId(trace_id) + '\n'
+                answer = index + '. ' + getAnswerFromDB_bytraceId(trace_id) + '\n'
             else:
                 # 处理 None 的情况，例如抛出异常或返回默认值
-                answer = '- ' + trace_id + '\n'
+                answer = index + '. ' + trace_id + '\n'
                 # raise ValueError("webhook 返回了 None")
 
             print(f"工作流的回答:\n {answer}")
