@@ -353,7 +353,7 @@ def process_excel(input_file, output_file):
             print(f"处理步骤{step_index}/{steps.__len__()-1}: {steps[step_index]}")
             output_chatlog += f"user: {step_index}"
             trace_id = None
-            step = steps[step_index].strip().
+            step = steps[step_index].strip()
 
             # 2.3 调用webhook
             if step == '{send GPS}':
