@@ -317,10 +317,10 @@ def process_excel(input_file, output_file):
         df['评估结果'] = ""
 
     # 处理每个问题
-    index_start = 0
+    index_start = 7
 
     round = 15
-    for index, row in df.iloc[index_start:1].iterrows():
+    for index, row in df.iloc[index_start:].iterrows():
         # 1. 重置Session
         resetSession()
 
@@ -339,7 +339,7 @@ def process_excel(input_file, output_file):
 
         # 2. 调用webhook处理问题
         # 2.1 分解这个问题的每个步骤
-        steps = question.split('-')
+        steps = question.split('- ')
         print("全部步骤：", steps)
 
         output_answer = ''
@@ -353,6 +353,7 @@ def process_excel(input_file, output_file):
             print(f"处理步骤{step_index}/{steps.__len__()-1}: {steps[step_index]}")
             output_chatlog += f"user: {step_index}"
             trace_id = None
+            answer = None
             step = steps[step_index].strip()
 
             # 2.3 调用webhook
@@ -383,10 +384,10 @@ def process_excel(input_file, output_file):
             print("trace_id:", trace_id)
             # 2.4 请求数据库，查询聊天记录
             if trace_id is not None:
-                answer = index + '. ' + getAnswerFromDB_bytraceId(trace_id) + '\n'
+                answer = str(step_index) + '. ' + getAnswerFromDB_bytraceId(trace_id) + '\n'
             else:
                 # 处理 None 的情况，例如抛出异常或返回默认值
-                answer = index + '. ' + trace_id + '\n'
+                answer = str(step_index) + '. ' + trace_id + '\n'
                 # raise ValueError("webhook 返回了 None")
 
             print(f"工作流的回答:\n {answer}")
@@ -548,8 +549,8 @@ def getAnswerFromDB_bytraceId(trace_id):
                       "AppleWebKit/537.36 (KHTML, like Gecko) "
                       "Chrome/137.0.0.0 Safari/537.36",
         "content-type": "application/x-www-form-urlencoded",
-        "cookie": "csrftoken=on5LKsz55a2bQmmBL2AC5X8u160Np4v0koKmCziXNVsnMVwyKoEEeXEAO12QTcru; sessionid=3xotp0x46z77gkc5if7t3ra1yrv0tql4",
-        "x-csrftoken": "on5LKsz55a2bQmmBL2AC5X8u160Np4v0koKmCziXNVsnMVwyKoEEeXEAO12QTcru"
+        "cookie": "csrftoken=PVbSL3lxBK6fj6APFze7qkOOJ8PsQKzH3GC4O8GyWX1w6IGz88c4y57Fth8wfV94; sessionid=mmpqqm0ofcm3pl7p3ta795bksljgo0pv",
+        "x-csrftoken": "PVbSL3lxBK6fj6APFze7qkOOJ8PsQKzH3GC4O8GyWX1w6IGz88c4y57Fth8wfV94"
     }
     if type(trace_id) != str:
         trace_id = str(trace_id)
@@ -568,6 +569,7 @@ def getAnswerFromDB_bytraceId(trace_id):
         "limit_num" : "100"
     }
     try:
+        resp = requests.post(url, headers=headers, data=payload)
         resp = requests.post(url, headers=headers, data=payload)
         print(resp.json())
 
@@ -588,8 +590,12 @@ def getAnswerFromDB_bytraceId(trace_id):
 
 # 使用示例
 if __name__ == "__main__":
-    input_excel = "question_workshop_multiround.xlsx"  # 输入文件名
-    output_excel = "output_workshop_multiround-0805.xlsx"  # 输出文件名
+    # input_excel = "question_workshop_multiround.xlsx"  # 输入文件名
+    # output_excel = "output_workshop_multiround-0805.xlsx"  # 输出文件名
+
+
+    input_excel = "question_FQA_multi-round.xlsx"  # 输入文件名
+    output_excel = "output_FQA_multi-round.xlsx"  # 输出文件名
     # input_excel = "question_EN.xlsx"  # 输入文件名
     # output_excel = "output_EN.xlsx"  # 输出文件名
     process_excel(input_excel, output_excel)
