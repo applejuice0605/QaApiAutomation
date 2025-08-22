@@ -111,7 +111,16 @@ def chat_workflow(query: str, access_token:str) -> tuple[Any | None, Any | None,
         query=str(query)
     # query="Do you have car product?"
 
-    payload = {"inputs": {"question": query}, "files": []}
+    payload = {
+        "inputs": {
+            "question": query,
+            "session_id": "SN00NNRC924000000000M",
+            "biz_code": "INFORMATIONAL_1957627951275225090\t",
+            "domain": "https://pchat-sit.fuse.co.id/api",
+            "lan": "ID"
+        },
+        "files": []
+    }
 
     try:
         resp = requests.post(url, headers=headers, json=payload, stream=True)
@@ -167,15 +176,17 @@ def chat_workflow(query: str, access_token:str) -> tuple[Any | None, Any | None,
         return None
 
 # 评估答案函数
-def evaluate_answer(question: str, answer: str,token:str) -> str:
-            user_prompt = f"""
+def evaluate_answer(question: str, answer: str,token:str, knowledge:str) -> str:
+    user_prompt = f"""
                 你是一个专业的保险行业专家，负责严格评估AI客服系统的回答质量。请根据以下标准对模型回答进行1-10分的评分：
 
                 评分标准及权重：
-                1. 相关性（40%）：回答与用户问题和你的认识关联程度（首要评分项）
-                2. 准确性（30%）：回答内容是否准确无误和语言一致性
-                3. 完整性（20%）：是否涵盖标你的认识的关键信息点
-                4. 清晰性（10%）：表达是否清晰易懂
+                1. 是否引用知识库 (40%)：回答是否引用了知识库数据
+                2. 相关性（20%）：回答与用户问题和你的认识关联程度（首要评分项）
+                3. 准确性（20%）：回答内容是否准确无误和语言一致性
+                4. 完整性（10%）：是否涵盖标你的认识的关键信息点
+                5. 清晰性（10%）：表达是否清晰易懂
+                
 
                 相关性分级标准（细化版）：
                 - 完全相关(9-10分)：100%覆盖问题核心，与你的认识完全一致，且语言一致
@@ -187,13 +198,16 @@ def evaluate_answer(question: str, answer: str,token:str) -> str:
                 强制规则：
                 1. 如判定为不相关(is_relevant=false)，overall_score不得超过2分
                 2. 相关性评分必须严格参照分级标准执行
+                3. 是否引用知识库评分评分必须严格参照分及标准执行
 
                 评分说明：
-                - 9-10分：完全相关且专业准确，信息完整清晰，且语言一致
-                - 7-8分：大部分相关且基本准确，主要信息完整，且语言一致
-                - 5-6分：部分相关或有少量错误，缺失重要信息
-                - 3-4分：小部分相关或有多处错误，信息严重不全
-                - 1-2分：完全不相关或完全错误
+                - 9-10分：完全相关且专业准确，且完全引用了知识库，信息完整清晰，且语言一致
+                - 7-8分：大部分相关且基本准确，答部分引用知识库，主要信息完整，且语言一致
+                - 5-6分：部分相关或有少量错误，部分引用知识库，缺失重要信息
+                - 3-4分：小部分相关或有多处错误，部分引用知识库，信息严重不全
+                - 1-2分：完全不相关或完全错误，完全不引用知识库
+
+
 
                 用户问题：
                 {question}
@@ -201,14 +215,19 @@ def evaluate_answer(question: str, answer: str,token:str) -> str:
                 待评估的模型回答：
                 {answer}
 
+                知识库数据：
+                {knowledge}
+
                 评估流程：
-                1. 首先严格评估相关性等级
-                2. 对比你的认识检查准确性和完整性
-                3. 根据权重计算总分
-                4. 应用强制规则调整
+                1. 首先对比检索到的知识，判断答案是否引用了知识库
+                2. 严格评估相关性等级
+                3. 对比你的认识检查准确性和完整性
+                4. 根据权重计算总分
+                5. 应用强制规则调整
 
                 请输出严格JSON格式结果：
                 {{
+                    "reference_knowledge_base_score": "完全不引用", // [完全不引用|大部分引用|部分引用|小部分引用|完全引用]
                     "overall_score": 6,
                     "relevance_level": "部分相关",  // [完全相关|大部分相关|部分相关|小部分相关|不相关]
                     "relevance_score": 5,
@@ -225,14 +244,17 @@ def evaluate_answer(question: str, answer: str,token:str) -> str:
                 }}
 
                 特别注意：
-                1. 必须首先明确relevance_level和is_relevant
+                1. 必须首先明确回答是否引用了知识库的知识
+                2. 必须首先明确relevance_level和is_relevant
                 2. 不相关时总分强制≤2分
                 3. 所有评分项必须与relevance_level逻辑一致
                 4. 不得包含非JSON内容
                 5. 输出的value是中文
                 """
-            system_message = "你是语意判断专家"
-            return chat_dify_llm(system_message, user_prompt, token)
+
+
+    system_message = "你是语意判断专家"
+    return chat_dify_llm(system_message, user_prompt, token)
 
 
 # 格式化Excel文件
@@ -322,7 +344,7 @@ def process_excel(input_file, output_file):
     index_start = 0
 
     round = 15
-    for index, row in df.iloc[index_start:].iterrows():
+    for index, row in df.iloc[index_start:2].iterrows():
         # if index % 16 == 0:
         #     token = login()
         # 每16轮重新获取token
@@ -342,14 +364,15 @@ def process_excel(input_file, output_file):
             answer, question_classifier, knowledge_retrieval = result
         else:
             # 处理 None 的情况，例如抛出异常或返回默认值
-            raise ValueError("chat_workflow 返回了 None")
+            print("chat_workflow 返回了 None")
+            continue
 
         if not answer:
             print(f"获取答案失败，跳过问题: {question}")
             continue
 
         # 评估答案
-        evaluation = evaluate_answer(question, answer, token)
+        evaluation = evaluate_answer(question, answer, token,knowledge_retrieval)
         if not evaluation:
             print(f"评估答案失败，跳过问题: {question}")
             continue
@@ -409,6 +432,10 @@ if __name__ == "__main__":
     # input_excel = "question-orginalRM.xlsx"  # 输入文件名
     # output_excel = "output_orginalRM_0806.xlsx"  # 输出文件名
     input_excel = "question.xlsx"  # 输入文件名
-    output_excel = "output-0807.xlsx"  # 输出文件名
+    output_excel = "output-0819_sit.xlsx"  # 输出文件名
+    # input_excel = "Q_policy_T&C.xlsx"  # 输入文件名
+    # output_excel = "A_policy_T&C.xlsx"  # 输出文件名
+    # input_excel = "Q_Claim_condition.xlsx"  # 输入文件名
+    # output_excel = "A_Claim_condition.xlsx"  # 输出文件名
     process_excel(input_excel, output_excel)
 

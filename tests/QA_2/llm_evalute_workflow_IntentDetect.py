@@ -265,7 +265,9 @@ if __name__ == "__main__":
     # output_excel = "output-workshop-0805.xlsx"  # 输出文件名
     # input_excel = "question-orginalRM.xlsx"  # 输入文件名
     # output_excel = "output_orginalRM_0806.xlsx"  # 输出文件名
-    input_excel = "Q_意图识别样本.xlsx"  # 输入文件名
-    output_excel = "A_意图识别样本.xlsx"  # 输出文件名
+    input_excel = "question.xlsx"  # 输入文件名
+    output_excel = "output-0818_uat.xlsx"  # 输出文件名
+    # input_excel = "Q_意图识别样本.xlsx"  # 输入文件名
+    # output_excel = "A_意图识别样本.xlsx"  # 输出文件名
     process_excel(input_excel, output_excel)
 

@@ -167,14 +167,13 @@ def chat_workflow(query: str, access_token:str) -> tuple[Any | None, Any | None,
 def evaluate_answer(question: str, answer: str,token:str) -> str:
             # 负责严格评估AI客服系统的多轮/单轮对话的每个问题对应的回答质量。
             user_prompt = f"""
-                你是一个专业的印尼保险行业专家，并对多轮对话中的答案进行评分。请根据以下标准对模型回答进行1-10分的评分
+                你是一个专业的保险行业专家，负责严格评估AI客服系统的回答质量。请根据以下标准对模型回答进行1-10分的评分：
 
                 评分标准及权重：
                 1. 相关性（40%）：回答与用户问题和你的认识关联程度（首要评分项）
-                2. 准确性（30%）：答案内容是否与印尼保险行业知识一致，有无事实性错误
+                2. 准确性（30%）：回答内容是否准确无误和语言一致性
                 3. 完整性（20%）：是否涵盖标你的认识的关键信息点
-                4. 清晰性（10%）：答案的表达是否清晰易懂，逻辑是否连贯，有无歧义
-
+                4. 清晰性（10%）：表达是否清晰易懂
 
                 相关性分级标准（细化版）：
                 - 完全相关(9-10分)：100%覆盖问题核心，与你的认识完全一致，且语言一致
@@ -193,12 +192,14 @@ def evaluate_answer(question: str, answer: str,token:str) -> str:
                 - 5-6分：部分相关或有少量错误，缺失重要信息
                 - 3-4分：小部分相关或有多处错误，信息严重不全
                 - 1-2分：完全不相关或完全错误
-                
-                
-                用户User和模型Bot的对话：
+
+                用户问题：
+                {question}
+
+                待评估的模型回答：
                 {answer}
 
-                针对每个问题的评估流程：
+                评估流程：
                 1. 首先严格评估相关性等级
                 2. 对比你的认识检查准确性和完整性
                 3. 根据权重计算总分
@@ -317,7 +318,7 @@ def process_excel(input_file, output_file):
         df['评估结果'] = ""
 
     # 处理每个问题
-    index_start = 7
+    index_start = 0
 
     round = 15
     for index, row in df.iloc[index_start:].iterrows():
@@ -349,7 +350,8 @@ def process_excel(input_file, output_file):
         output_chatlog = ''
 
         # 2.2 逐个步骤调用webhook
-        for step_index in range(1, len(steps)):
+        # for step_index in range(1, len(steps)):
+        for step_index in range(0, len(steps)):
             print(f"处理步骤{step_index}/{steps.__len__()-1}: {steps[step_index]}")
             output_chatlog += f"user: {step_index}"
             trace_id = None
@@ -384,6 +386,7 @@ def process_excel(input_file, output_file):
             print("trace_id:", trace_id)
             # 2.4 请求数据库，查询聊天记录
             if trace_id is not None:
+                print(step_index)
                 answer = str(step_index) + '. ' + getAnswerFromDB_bytraceId(trace_id) + '\n'
             else:
                 # 处理 None 的情况，例如抛出异常或返回默认值
@@ -549,8 +552,8 @@ def getAnswerFromDB_bytraceId(trace_id):
                       "AppleWebKit/537.36 (KHTML, like Gecko) "
                       "Chrome/137.0.0.0 Safari/537.36",
         "content-type": "application/x-www-form-urlencoded",
-        "cookie": "csrftoken=PVbSL3lxBK6fj6APFze7qkOOJ8PsQKzH3GC4O8GyWX1w6IGz88c4y57Fth8wfV94; sessionid=mmpqqm0ofcm3pl7p3ta795bksljgo0pv",
-        "x-csrftoken": "PVbSL3lxBK6fj6APFze7qkOOJ8PsQKzH3GC4O8GyWX1w6IGz88c4y57Fth8wfV94"
+        "cookie": "csrftoken=d8rCJJ84dBvOQhUgMpN5hf0QUDwXmCLVNba0nwCkMnlgitmSxPdSNETbvjZqziO1; sessionid=li6k2md92xccgu7hjcsunw3myoglqb6g",
+        "x-csrftoken": "d8rCJJ84dBvOQhUgMpN5hf0QUDwXmCLVNba0nwCkMnlgitmSxPdSNETbvjZqziO1"
     }
     if type(trace_id) != str:
         trace_id = str(trace_id)
@@ -594,9 +597,11 @@ if __name__ == "__main__":
     # output_excel = "output_workshop_multiround-0805.xlsx"  # 输出文件名
 
 
-    input_excel = "question_FQA_multi-round.xlsx"  # 输入文件名
-    output_excel = "output_FQA_multi-round.xlsx"  # 输出文件名
+    # input_excel = "question_FQA_multi-round.xlsx"  # 输入文件名
+    # output_excel = "output_FQA_multi-round.xlsx"  # 输出文件名
     # input_excel = "question_EN.xlsx"  # 输入文件名
     # output_excel = "output_EN.xlsx"  # 输出文件名
+    input_excel = "question.xlsx"  # 输入文件名
+    output_excel = "output-0818_uat.xlsx"  # 输出文件名
     process_excel(input_excel, output_excel)
 
