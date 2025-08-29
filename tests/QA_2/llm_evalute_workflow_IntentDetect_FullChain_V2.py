@@ -1,3 +1,8 @@
+'''
+    调用dify chatflow获取一级意图识别结果和inforamtion侧二级意图识别结果
+    只拿意图分类的知识识别结果， 不拿知识库召回情况
+'''
+
 import os
 from typing import Dict, Any, Optional, Tuple
 import pandas as pd
@@ -14,6 +19,8 @@ email = sit_email
 password =sit_password
 workflow_app_id =sit_workflow_app_id
 llm_app_id = sit_llm_app_id
+chat_flow_id = sit_sf_chatflow_id
+session_id = 'SN00O13GT8N000000002H'
 
 # 登录函数获取token
 def login() -> str:
@@ -114,7 +121,7 @@ def chat_workflow(query: str, access_token:str) -> tuple[Any | None, Any | None,
     payload = {
         "inputs": {
             "question": query,
-            "session_id": "SN00NNRC924000000000M",
+            "session_id": session_id,
             "biz_code": "INFORMATIONAL_1957627951275225090\t",
             "domain": "https://pchat-sit.fuse.co.id/api",
             "lan": "ID"
@@ -161,12 +168,12 @@ def chat_workflow(query: str, access_token:str) -> tuple[Any | None, Any | None,
         # 使用 json.dumps() 将字典转换为 JSON 格式的字符
         knowledge_retrieval = json.dumps(knowledge_retrieval)
 
-        if final_answer is not None and question_classifier is not None and knowledge_retrieval is not None:
-            print("knowledge_retrieval："+knowledge_retrieval)
-            return final_answer, question_classifier, knowledge_retrieval
-        else:
-            print("No valid answer found in SSE stream.")
-            return None
+        # if final_answer is not None and question_classifier is not None and knowledge_retrieval is not None:
+        #     print("knowledge_retrieval："+knowledge_retrieval)
+        #     return final_answer, question_classifier, knowledge_retrieval
+        # else:
+        #     print("No valid answer found in SSE stream.")
+        #     return None
 
     except requests.RequestException as e:
         print(f"Error calling chat: {e}")
@@ -174,6 +181,94 @@ def chat_workflow(query: str, access_token:str) -> tuple[Any | None, Any | None,
             print(f"Response status: {e.response.status_code}")
             print(f"Response body: {e.response.text}")
         return None
+
+def chat_chatlow(query: str, access_token:str) -> tuple[Any | None] | None:
+    print("enter chat_workflow")
+    """
+    对指定数据集做 hit-testing，返回接口完整 JSON。
+    retrieval_model 留空时使用默认 hybrid_search 配置。
+    """
+
+    # https://rd-dify-sit.fuse.co.id/console/api/apps/f71f507b-da44-4d92-828b-6a37bf4d96a7/advanced-chat/workflows/draft/run
+    # https://rd-dify-sit.fuse.co.id/console/api/apps/a1936725-1498-452c-8310-b81e94936703/workflows/draft/run
+    url = f"{base_url.rstrip('/')}/api/apps/{chat_flow_id}/advanced-chat/workflows/draft/run"
+    # access_token = login()
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                      "AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/137.0.0.0 Safari/537.36",
+        "authorization": f"Bearer {access_token}",
+        # "authorization": f"Bearer logineyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNTUyYmRiODktNTlkOC00NDExLWJiZmYtMjM3MGQwOWQ4MTljIiwiZXhwIjoxNzUzNzEwNDI0LCJpc3MiOiJTRUxGX0hPU1RFRCIsInN1YiI6IkNvbnNvbGUgQVBJIFBhc3Nwb3J0In0.uZAtxK0YEYiPyymg_g6ZDp7ckeRPRCbIw00TTj7rSD8",
+        "content-type": "application/json",
+    }
+    if type(query) != str:
+        query=str(query)
+    # query="Do you have car product?"
+
+    payload = {
+            "files": [],
+            "inputs": {
+                "chat_temp_token": "eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eNpEjEkOwjAMRe-SdSvZmZpwAYQAUQQsukzBEmVIow4Cgbg7phu88OK9__9b9GMtZuJ4DsOe7mnfXimKTKTQDZG6TaK4OLFflWpeLrdrV1WVmXOACzHS7dBTNwWcRe8UaI3aIvu6ee3asTsSuweP9yGl_-6h4Q4CgLUSplO-yAQ9E-PCuAIMgs1EE4YJWEQ1gcvQ8GCNxqMtMJfay1ybIHNHCnPwsrbq98CJzxcAAP__.vrjXaRKk9X-STyatLhcmged2Bowkyb9G0SPtZGmA5E8",
+                "partner_uid": "1000662000000397",
+                "tenant_id": "1000662",
+                "channel_user_id": "8619830441461",
+                "channel_type": "whatsapp",
+                "session_id": session_id,
+                "lan": "ID"
+            },
+            "query": query,
+            # "conversation_id": "d0c0b359-f6d6-4308-bab9-4559aa35f29a",
+            # "parent_message_id": "c66fc8ff-1453-4b55-80ac-2b1802324cc4"
+        }
+
+    try:
+        resp = requests.post(url, headers=headers, json=payload, stream=True)
+        resp.raise_for_status()
+
+        final_answer = None
+        knowledge_retrieval = None
+        question_classifier = None
+        for line in resp.iter_lines():
+            if line:
+                decoded_line = line.decode('utf-8').strip()
+                if decoded_line.startswith("data: "):
+                    event_data = decoded_line[6:]  # 去掉 "data: "
+                    print(event_data)
+                    try:
+                        event_json = json.loads(event_data)
+                        if event_json.get("event") == 'workflow_finished':
+                            question_classifier = event_json.get("data", {}).get("outputs", {}).get("answer")
+                            # 截取question_classifier的内容，只取第一个\n之前的内容,然后去掉首尾的[]
+
+                            if question_classifier is not None:
+                                question_classifier = question_classifier.split('\n')[0].replace('[', '').replace(']', '')
+                    except json.JSONDecodeError:
+                        continue
+
+
+        # if question_classifier == '[INFORMATIONAL]':
+        #     #调用RAG workflow
+        #     result = chat_workflow(query, access_token)
+        #     if result is not None:
+        #         final_answer, question_classifier, knowledge_retrieval = result
+        #     else:
+        #         question_classifier = None
+
+        # print("final_answer", final_answer)
+        print("question_classifier", question_classifier)
+        # print("knowledge_retrieval", knowledge_retrieval)
+
+        return question_classifier
+
+
+    except requests.RequestException as e:
+        print(f"Error calling chat: {e}")
+        if hasattr(e, 'response') and e.response:
+            print(f"Response status: {e.response.status_code}")
+            print(f"Response body: {e.response.text}")
+        return None
+
+
 
 # 评估答案函数
 def evaluate_answer(question: str, answer: str,token:str, knowledge:str) -> str:
@@ -186,6 +281,7 @@ def evaluate_answer(question: str, answer: str,token:str, knowledge:str) -> str:
                 3. 准确性（20%）：回答内容是否准确无误和语言一致性
                 4. 完整性（10%）：是否涵盖标你的认识的关键信息点
                 5. 清晰性（10%）：表达是否清晰易懂
+                
 
                 相关性分级标准（细化版）：
                 - 完全相关(9-10分)：100%覆盖问题核心，与你的认识完全一致，且语言一致
@@ -194,23 +290,17 @@ def evaluate_answer(question: str, answer: str,token:str, knowledge:str) -> str:
                 - 小部分相关(3-4分)：仅涉及边缘问题点(<30%)，与你的认识明显偏离
                 - 不相关(1-2分)：完全偏离问题和你认识主题
 
-                是否引用知识库分级标准（细化版）：
-                - 9-10分：完全引用知识库
-                - 7-8分：大部分引用知识库
-                - 5-6分：部分引用知识库
-                - 1-4分：小部分引用知识库
-                - 0分：未引用知识库
-
                 强制规则：
                 1. 如判定为不相关(is_relevant=false)，overall_score不得超过2分
                 2. 相关性评分必须严格参照分级标准执行
+                3. 是否引用知识库评分评分必须严格参照分及标准执行
 
                 评分说明：
-                - 9-10分：完全相关且专业准确，信息完整清晰，且语言一致
-                - 7-8分：大部分相关且基本准确，主要信息完整，且语言一致
-                - 5-6分：部分相关或有少量错误，缺失重要信息
-                - 3-4分：小部分相关或有多处错误，信息严重不全
-                - 1-2分：完全不相关或完全错误
+                - 9-10分：完全相关且专业准确，且完全引用了知识库，信息完整清晰，且语言一致
+                - 7-8分：大部分相关且基本准确，答部分引用知识库，主要信息完整，且语言一致
+                - 5-6分：部分相关或有少量错误，部分引用知识库，缺失重要信息
+                - 3-4分：小部分相关或有多处错误，部分引用知识库，信息严重不全
+                - 1-2分：完全不相关或完全错误，完全不引用知识库
 
 
 
@@ -232,13 +322,13 @@ def evaluate_answer(question: str, answer: str,token:str, knowledge:str) -> str:
 
                 请输出严格JSON格式结果：
                 {{
+                    "reference_knowledge_base_score": "完全不引用", // [完全不引用|大部分引用|部分引用|小部分引用|完全引用]
                     "overall_score": 6,
                     "relevance_level": "部分相关",  // [完全相关|大部分相关|部分相关|小部分相关|不相关]
                     "relevance_score": 5,
                     "accuracy_score": 6,
                     "completeness_score": 5,
                     "clarity_score": 7,
-                    "reference_knowledge_base_sc": 5,
                     "question": "用户的问题",
                     "detailed_feedback": "具体指出相关性和质量问题",
                     "is_relevant": false,
@@ -249,7 +339,8 @@ def evaluate_answer(question: str, answer: str,token:str, knowledge:str) -> str:
                 }}
 
                 特别注意：
-                1. 必须首先明确relevance_level和is_relevant
+                1. 必须首先明确回答是否引用了知识库的知识
+                2. 必须首先明确relevance_level和is_relevant
                 2. 不相关时总分强制≤2分
                 3. 所有评分项必须与relevance_level逻辑一致
                 4. 不得包含非JSON内容
@@ -339,16 +430,14 @@ def process_excel(input_file, output_file):
         return
 
     # 创建新列（如果不存在）
-    if '答案' not in df.columns:
-        df['答案'] = ""
-    if '评估结果' not in df.columns:
-        df['评估结果'] = ""
+    if 'question_classifier' not in df.columns:
+        df['question_classifier'] = ""
 
     # 处理每个问题
     index_start = 0
 
     round = 15
-    for index, row in df.iloc[index_start:2].iterrows():
+    for index, row in df.iloc[index_start:].iterrows():
         # if index % 16 == 0:
         #     token = login()
         # 每16轮重新获取token
@@ -363,31 +452,31 @@ def process_excel(input_file, output_file):
         print(f"\n处理问题 {index + 1}/{len(df)}: {question}")
 
         # 获取答案和知识库召回结果
-        result = chat_workflow( question, token)
+        result = chat_chatlow(question, token)
         if result is not None:
-            answer, question_classifier, knowledge_retrieval = result
+            question_classifier = result
         else:
             # 处理 None 的情况，例如抛出异常或返回默认值
             print("chat_workflow 返回了 None")
             continue
 
-        if not answer:
-            print(f"获取答案失败，跳过问题: {question}")
-            continue
+        # if not answer:
+        #     print(f"获取答案失败，跳过问题: {question}")
+        #     continue
 
         # 评估答案
-        evaluation = evaluate_answer(question, answer, token,knowledge_retrieval)
-        if not evaluation:
-            print(f"评估答案失败，跳过问题: {question}")
-            continue
+        # evaluation = evaluate_answer(question, answer, token,knowledge_retrieval)
+        # if not evaluation:
+        #     print(f"评估答案失败，跳过问题: {question}")
+        #     continue
 
         # 更新DataFrame
-        df.at[index, '答案'] = answer
+        # df.at[index, '答案'] = answer
         df.at[index, 'question_classifier'] = question_classifier
-        df.at[index, 'knowledge_retrieval'] = knowledge_retrieval
-        df.at[index, '评估结果'] = evaluation
-        print(f"工作流的回答: {answer}")
-        print(f"评测结果: {evaluation}")
+        # df.at[index, 'knowledge_retrieval'] = knowledge_retrieval
+        # df.at[index, '评估结果'] = evaluation
+        # print(f"工作流的回答: {answer}")
+        # print(f"评测结果: {evaluation}")
         print("="*200)
 
         # 每处理3条保存一次进度
@@ -435,10 +524,10 @@ if __name__ == "__main__":
     # output_excel = "output-workshop-0805.xlsx"  # 输出文件名
     # input_excel = "question-orginalRM.xlsx"  # 输入文件名
     # output_excel = "output_orginalRM_0806.xlsx"  # 输出文件名
-    input_excel = "question.xlsx"  # 输入文件名
-    output_excel = "output-0819_sit.xlsx"  # 输出文件名
-    # input_excel = "Q_policy_T&C.xlsx"  # 输入文件名
-    # output_excel = "A_policy_T&C.xlsx"  # 输出文件名
+    input_excel = "Jess_SIT_IntentDetect.xlsx"  # 输入文件名
+    output_excel = "A_Jess_SIT_IntentDetect.xlsx"  # 输出文件名
+    # input_excel = "Q_IntentDetect_Sample.xlsx"  # 输入文件名
+    # output_excel = "A_IntentDetect_Sample.xlsx"  # 输出文件名
     # input_excel = "Q_Claim_condition.xlsx"  # 输入文件名
     # output_excel = "A_Claim_condition.xlsx"  # 输出文件名
     process_excel(input_excel, output_excel)

@@ -387,7 +387,15 @@ def process_excel(input_file, output_file):
             # 2.4 请求数据库，查询聊天记录
             if trace_id is not None:
                 print(step_index)
-                answer = str(step_index) + '. ' + getAnswerFromDB_bytraceId(trace_id) + '\n'
+                # 休眠5s
+                sleep(10)
+                for i in range(1,5):
+                    answer = getAnswerFromDB_bytraceId(trace_id)
+                    # 如果answer 不以"在数据库中没有找到数据"结尾，跳出循环
+                    if answer.find('在数据库中没有找到数据') == -1:
+                        break
+                    else:
+                        i += 1
             else:
                 # 处理 None 的情况，例如抛出异常或返回默认值
                 answer = str(step_index) + '. ' + trace_id + '\n'
@@ -467,7 +475,9 @@ def process_excel(input_file, output_file):
 
 def resetSession():
     # 调用webhook发送“resetSession”指令
-    request_webhook("resetSession")
+    request_webhook("restart")
+
+    # request_webhook("1234")
 
 
 def request_webhook(msg_body):
@@ -539,8 +549,7 @@ def request_webhook(msg_body):
 
 def getAnswerFromDB_bytraceId(trace_id):
     print("start queryDB_bytraceId")
-    # 休眠5s
-    sleep(10)
+
     """
     调用webhook发送文本消息
     """
@@ -552,8 +561,8 @@ def getAnswerFromDB_bytraceId(trace_id):
                       "AppleWebKit/537.36 (KHTML, like Gecko) "
                       "Chrome/137.0.0.0 Safari/537.36",
         "content-type": "application/x-www-form-urlencoded",
-        "cookie": "csrftoken=d8rCJJ84dBvOQhUgMpN5hf0QUDwXmCLVNba0nwCkMnlgitmSxPdSNETbvjZqziO1; sessionid=li6k2md92xccgu7hjcsunw3myoglqb6g",
-        "x-csrftoken": "d8rCJJ84dBvOQhUgMpN5hf0QUDwXmCLVNba0nwCkMnlgitmSxPdSNETbvjZqziO1"
+        "cookie": "csrftoken=a2Ex5cOlJSNVUItSrl4xIhHX4CWmQtXIXLhEiyilOMR2liIMzE42NDoQqpQqolnz; sessionid=gu6r7g035hz6mf4g5a0ho4taufwa79gu",
+        "x-csrftoken": "a2Ex5cOlJSNVUItSrl4xIhHX4CWmQtXIXLhEiyilOMR2liIMzE42NDoQqpQqolnz"
     }
     if type(trace_id) != str:
         trace_id = str(trace_id)
@@ -581,7 +590,7 @@ def getAnswerFromDB_bytraceId(trace_id):
         if hasattr(e, 'response') and e.response:
             print(f"Response status: {e.response.status_code}")
             print(f"Response body: {e.response.text}")
-        return None
+        return "Error calling db"
 
     if resp.json()['data']['affected_rows'] == 0:
         answer = trace_id + "在数据库中没有找到数据"
@@ -601,7 +610,7 @@ if __name__ == "__main__":
     # output_excel = "output_FQA_multi-round.xlsx"  # 输出文件名
     # input_excel = "question_EN.xlsx"  # 输入文件名
     # output_excel = "output_EN.xlsx"  # 输出文件名
-    input_excel = "question.xlsx"  # 输入文件名
-    output_excel = "output-0818_uat.xlsx"  # 输出文件名
+    input_excel = "Fina_Day_ToQA.xlsx"  # 输入文件名
+    output_excel = "A_Fina_Day_ToQA.xlsx"  # 输出文件名
     process_excel(input_excel, output_excel)
 

@@ -25,7 +25,7 @@ Get Invite Link SMS Code
     # 1. 准备请求数据：请求路径、请求头、请求数据
     ${base_url}=   Set Variable    https://rd-dms.fuseinsurtech.com
     ${path}=   Set Variable     /query/
-    ${headers}=    Create Dictionary    cookie=csrftoken=cLd9hGQGEOi3fWS2F9DKRDy99QibsBIEasjO6nw3DEkNpFQ0KvQr7WWj42J3hj1x; sessionid=p0j75gx9sti8utub8f5d31iu416nijba   x-csrftoken=cLd9hGQGEOi3fWS2F9DKRDy99QibsBIEasjO6nw3DEkNpFQ0KvQr7WWj42J3hj1x
+    ${headers}=    Create Dictionary    cookie=csrftoken=tOdBqqEbWmuPOS80zNC0ljXumRMy7tqzs3tZ5ljKR0GUIhTfrfuyEnIsIIiKzq5F; sessionid=8ktcgcthasn39dwndeahzzjgo7u6giql   x-csrftoken=tOdBqqEbWmuPOS80zNC0ljXumRMy7tqzs3tZ5ljKR0GUIhTfrfuyEnIsIIiKzq5F
     ${payload}=    Create Dictionary    instance_name=ID_UAT_CORE_MYSQL8.0      db_name=message     schema_name=null   tb_name=sms_record  sql_content=select data->'$.verificationCade' from message.sms_record where mobile='62${${mobile}}' order by id desc limit 1   limit_num=100
 
     # 2. 发送请求
@@ -43,7 +43,7 @@ Query
     # 1. 准备请求数据：请求路径、请求头、请求数据
     ${base_url}=   Set Variable    https://rd-dms.fuseinsurtech.com
     ${path}=   Set Variable     /query/
-    ${headers}=    Create Dictionary    cookie=csrftoken=cLd9hGQGEOi3fWS2F9DKRDy99QibsBIEasjO6nw3DEkNpFQ0KvQr7WWj42J3hj1x; sessionid=p0j75gx9sti8utub8f5d31iu416nijba   x-csrftoken=cLd9hGQGEOi3fWS2F9DKRDy99QibsBIEasjO6nw3DEkNpFQ0KvQr7WWj42J3hj1x
+    ${headers}=    Create Dictionary    cookie=csrftoken=tOdBqqEbWmuPOS80zNC0ljXumRMy7tqzs3tZ5ljKR0GUIhTfrfuyEnIsIIiKzq5F; sessionid=8ktcgcthasn39dwndeahzzjgo7u6giql   x-csrftoken=csrftoken=tOdBqqEbWmuPOS80zNC0ljXumRMy7tqzs3tZ5ljKR0GUIhTfrfuyEnIsIIiKzq5F; sessionid=8ktcgcthasn39dwndeahzzjgo7u6giql
     ${payload}=    Create Dictionary    instance_name=ID_UAT_CORE_MYSQL8.0      db_name=message     schema_name=null   tb_name=sms_record  sql_content=${sql_content}
 
     # 2. 发送请求
@@ -61,7 +61,7 @@ Query by Trace_id
     # 1. 准备请求数据：请求路径、请求头、请求数据
     ${base_url}=   Set Variable    https://rd-dms.fuseinsurtech.com
     ${path}=   Set Variable     /query/
-    ${headers}=    Create Dictionary    cookie=csrftoken=cLd9hGQGEOi3fWS2F9DKRDy99QibsBIEasjO6nw3DEkNpFQ0KvQr7WWj42J3hj1x; sessionid=p0j75gx9sti8utub8f5d31iu416nijba   x-csrftoken=cLd9hGQGEOi3fWS2F9DKRDy99QibsBIEasjO6nw3DEkNpFQ0KvQr7WWj42J3hj1x
+    ${headers}=    Create Dictionary    cookie=csrftoken=tOdBqqEbWmuPOS80zNC0ljXumRMy7tqzs3tZ5ljKR0GUIhTfrfuyEnIsIIiKzq5F; sessionid=8ktcgcthasn39dwndeahzzjgo7u6giql   x-csrftoken=tOdBqqEbWmuPOS80zNC0ljXumRMy7tqzs3tZ5ljKR0GUIhTfrfuyEnIsIIiKzq5F
 
     ${payload}=    Create Dictionary    instance_name=ID_UAT_CORE_MYSQL8.0      db_name=message     schema_name=null   tb_name=sms_record  sql_content=select * from message.whatsapp_chat_record where trace_id = '${trace_id}' and reply_id is not null order by uid limit 10
 
