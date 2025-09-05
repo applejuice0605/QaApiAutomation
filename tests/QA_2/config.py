@@ -10,10 +10,10 @@ sit_sf_chatflow_id = "f71f507b-da44-4d92-828b-6a37bf4d96a7"
 uat_base_url = "https://rd-dify-pre.fuse.co.id/console"
 uat_email = "nora.cai@fuse.co.id"
 uat_password = "Csb2337763269."
-uat_workflow_app_id = "9ccd26c1-4ff7-451c-a21e-95dd3a87faa4"
+uat_workflow_app_id = "ddb9a73f-379c-46da-94ce-b305fc369c89"
 uat_llm_app_id = "2dd06e89-cbee-4f63-9737-64a786dadd36"
 uat_webhook_url = "https://pchat-uat.fuse.co.id"
-uat_sf_chatflow_intentDetect_app_id = "f71f507b-da44-4d92-828b-6a37bf4d96a7"
+uat_sf_chatflow_id = "c7e4acff-24eb-4c03-9cd4-e3dc2f1a6990"
 
 
 whatsapp_id = "8619830441461"
