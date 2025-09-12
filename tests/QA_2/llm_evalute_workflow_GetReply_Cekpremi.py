@@ -7,6 +7,7 @@
 '''
 
 import os
+from time import sleep
 from typing import Dict, Any, Optional, Tuple
 import pandas as pd
 import requests
@@ -102,107 +103,7 @@ def chat_dify_llm(system: str, query: str, token):
             print(f"Response body: {e.response.text}")
         return None
 
-def chat_workflow(query: str, access_token:str) -> tuple[Any | None, Any | None, Any | None] | None:
-    print("enter chat_workflow")
-    """
-    对指定数据集做 hit-testing，返回接口完整 JSON。
-    retrieval_model 留空时使用默认 hybrid_search 配置。
-    """
-    # https://rd-dify-sit.fuse.co.id/console/api/apps/a1936725-1498-452c-8310-b81e94936703/workflows/draft/run
-    url = f"{base_url.rstrip('/')}/api/apps/{workflow_app_id}/workflows/draft/run"
-    print(url)
-    # access_token = login()
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                      "AppleWebKit/537.36 (KHTML, like Gecko) "
-                      "Chrome/137.0.0.0 Safari/537.36",
-        "authorization": f"Bearer {access_token}",
-        # "authorization": f"Bearer logineyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNTUyYmRiODktNTlkOC00NDExLWJiZmYtMjM3MGQwOWQ4MTljIiwiZXhwIjoxNzUzNzEwNDI0LCJpc3MiOiJTRUxGX0hPU1RFRCIsInN1YiI6IkNvbnNvbGUgQVBJIFBhc3Nwb3J0In0.uZAtxK0YEYiPyymg_g6ZDp7ckeRPRCbIw00TTj7rSD8",
-        "content-type": "application/json",
-        "sec-fetch-site": "same-origin",
-        "sec-fetch-mode": "cors"
-    }
-    if type(query) != str:
-        query=str(query)
-    # query="Do you have car product?"
-
-
-    print("workflow_question: ", query)
-    payload = {
-        "inputs": {
-            "question": query,
-            # "session_id": session_id,
-            "domain": domain,
-            "lan": "ID",
-            # "sec-fetch-site": "same-origin",
-            # "sec-fetch-mode": "cors",
-            # "chat_temp_token": "eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eNpEjMsOgjAQRf-la0ha6LTgWkOMxkeEhcu2jBEfpeERjcZ_d2TjrCbn3HvfrB8tmzF3NkOJ91C2V_QsYsF0g8duG9Ava_Jr2MFG71eLopgfNQWo4D3eqh67KZApkWcpl1JIJcjb5nVox84huQeN9yaE_27VUEdwzpVK-O_ozyKGz0BYg9ZagpYRa8wwARBZMoHL0NCgce7kRAKxMtbEUqQitoAuljJFa3JMawD2-QIAAP__.v9KsrJFHoaT-aIZPDQJHxB9iOlJey1icQvVKMGC6FVs"
-        },
-        "files": []
-    }
-
-    try:
-        resp = requests.post(url, headers=headers, json=payload, stream=True)
-        resp.raise_for_status()
-
-        final_answer = None
-        knowledge_retrieval = None
-        question_classifier = None
-        for line in resp.iter_lines():
-            if line:
-                decoded_line = line.decode('utf-8').strip()
-                if decoded_line.startswith("data: "):
-                    event_data = decoded_line[6:]  # 去掉 "data: "
-                    print(event_data)
-                    try:
-                        event_json = json.loads(event_data)
-                        if event_json.get("event") == 'node_finished':
-                            final_answer = event_json.get("data", {}).get("outputs", {}).get("text")
-                            # 获取检索到的知识库，process_guidance和general Qa知识库节点是知识库结果聚合：1753256233555；修车店是1753844464410
-                            if event_json.get("data", {}).get("node_id") == '1753256233555':
-                                knowledge_retrieval = event_json.get("data", {}).get("outputs", {}).get("output")
-                                print("knowledge_retrieval in workflow: ", knowledge_retrieval)
-                            elif event_json.get("data", {}).get("node_id") == '1753666462887':
-                                knowledge_retrieval = event_json.get("data", {}).get("outputs", {}).get("result")
-                                print("knowledge_retrieval in workflow: ", knowledge_retrieval)
-                            # 获取意图分类结果，有两个节点
-                            # 第一次意图识别，不带上下文，node id = 17553530659570
-                            elif event_json.get("data", {}).get("node_id") == '17553530659570':
-                                question_classifier = event_json.get("data", {}).get("outputs", {}).get("text")
-                                print("RAG第一次意图识别结果: ", question_classifier)
-                            # 第二次意图识别，带上下文，node id = 17553530659570
-                            elif event_json.get("data", {}).get("node_id") == '1752731767860':
-                                question_classifier = event_json.get("data", {}).get("outputs", {}).get("text")
-                                print("RAG第二次意图识别结果: ", question_classifier)
-                        elif event_json.get("event") == "message_end":
-                            final_answer = event_json.get("metadata", {}).get("answer", final_answer)
-                    except json.JSONDecodeError:
-                        continue
-
-        print("final_answer", final_answer)
-        print("question_classifier", question_classifier)
-        print("knowledge_retrieval", knowledge_retrieval)
-
-        # 使用 json.dumps() 将字典转换为 JSON 格式的字符
-        knowledge_retrieval = json.dumps(knowledge_retrieval)
-
-        # if final_answer is not None and question_classifier is not None and knowledge_retrieval is not None:
-        #     print("knowledge_retrieval："+knowledge_retrieval)
-        #     return final_answer, question_classifier, knowledge_retrieval
-        # else:
-        #     print("No valid answer found in SSE stream.")
-        #     return None
-
-    except requests.RequestException as e:
-        print(f"Error calling chat: {e}")
-        if hasattr(e, 'response') and e.response:
-            print(f"Response status: {e.response.status_code}")
-            print(f"Response body: {e.response.text}")
-        return None
-
-    return final_answer, question_classifier, knowledge_retrieval
-
-def chat_chatlow(query: str, access_token:str) -> tuple[Any | None, Any | None, Any | None, Any | None, Any | None] | None:
+def chat_chatlow(query: str, access_token:str) -> tuple[Any | None, Any | None] | None:
     print("enter chat_workflow")
     """
     对指定数据集做 hit-testing，返回接口完整 JSON。
@@ -227,35 +128,16 @@ def chat_chatlow(query: str, access_token:str) -> tuple[Any | None, Any | None, 
 
     payload = {
             "files": [],
-            "inputs": {
-                "chat_temp_token": "eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eNpEjMsOgjAQRf-la0ha6LTgWkOMxkeEhcu2jBEfpeERjcZ_d2TjrCbn3HvfrB8tmzF3NkOJ91C2V_QsYsF0g8duG9Ava_Jr2MFG71eLopgfNQWo4D3eqh67KZApkWcpl1JIJcjb5nVox84huQeN9yaE_27VUEdwzpVK-O_ozyKGz0BYg9ZagpYRa8wwARBZMoHL0NCgce7kRAKxMtbEUqQitoAuljJFa3JMawD2-QIAAP__.v9KsrJFHoaT-aIZPDQJHxB9iOlJey1icQvVKMGC6FVs",
-                "partner_uid": "1000662000001008",
-                "tenant_id": "1000662",
-                "channel_user_id": "8619830441461",
-                "channel_type": "whatsapp",
-                "session_id": session_id,
-                "lan": "ID"
-            },
+            "inputs": {},
             "query": query,
-            # "conversation_id": "d0c0b359-f6d6-4308-bab9-4559aa35f29a",
-            # "parent_message_id": "c66fc8ff-1453-4b55-80ac-2b1802324cc4"
+            "conversation_id": ""
         }
-
-    # 定义transation意图的枚举值列
-    transation = ['INTENT_QUICK_ORDER', 'INTENT_QUOTE_COMPARISON', 'INTENT_ORDER', 'INTENT_PAYMENT', 'INTENT_INVITE', 'INTENT_WITHDRAWAL', 'INTENT_COMPARISON_LIST']
-
-
-
 
     try:
         resp = requests.post(url, headers=headers, json=payload, stream=True)
         resp.raise_for_status()
 
-        final_answer = None
-        knowledge_retrieval = None
-        Level1_question_classifier = None
-        question_classifier = None
-        question_rephase = None
+
         for line in resp.iter_lines():
             if line:
                 decoded_line = line.decode('utf-8').strip()
@@ -265,47 +147,22 @@ def chat_chatlow(query: str, access_token:str) -> tuple[Any | None, Any | None, 
                     try:
                         event_json = json.loads(event_data)
                         if event_json.get("event") == 'node_finished':
-                            if event_json.get("data", {}).get("node_id") == '1753082979250':    # "代码执行：意图识别结果ETL
-                                Level1_question_classifier = event_json.get("data", {}).get("outputs", {}).get("inent_result")
-                            elif event_json.get("data", {}).get("node_id") == '17552427857160':    # LLM：意图识别与拆分重写
-                                question_rephase = event_json.get("data", {}).get("outputs", {}).get("text")
+                            if event_json.get("data", {}).get("node_id") == '1757493791510':    # "知识库检索结果
+                                knowledge_retrieval = event_json.get("data", {}).get("outputs", {}).get("result")
+                            elif event_json.get("data", {}).get("node_id") == '1749786692138':    # Answer7
+                                answer = event_json.get("data", {}).get("outputs", {}).get("answer")
+
                     except json.JSONDecodeError:
                         continue
 
-        print("一级意图分类: ", Level1_question_classifier)
-        if Level1_question_classifier not in transation:
-            #调用RAG workflow
-            result = chat_workflow(query, access_token)
-            if result is not None:
-                final_answer, question_classifier, knowledge_retrieval = result
-                print("一级意图分类: ", question_classifier)
-            else:
-                question_classifier = None
 
         print("最后结果————————————————————————")
-        print("final_answer", final_answer)
-        print("Level1_question_classifier", Level1_question_classifier)
-        print("question_classifier", question_classifier)
+        print("final_answer", answer)
         print("knowledge_retrieval", knowledge_retrieval)
-        if final_answer == None:
-            final_answer = " "
-        if question_rephase == None:
-            question_rephase = " "
-        if Level1_question_classifier == None:
-            Level1_question_classifier = " "
-        if question_classifier == None:
-            question_classifier = " "
-        if knowledge_retrieval == None:
-            knowledge_retrieval = " "
 
 
 
-        return final_answer, question_rephase, Level1_question_classifier, question_classifier, knowledge_retrieval
-
-
-
-        # 使用 json.dumps() 将字典转换为 JSON 格式的字符
-        knowledge_retrieval = json.dumps(knowledge_retrieval)
+        return answer, knowledge_retrieval
 
 
     except requests.RequestException as e:
@@ -492,7 +349,7 @@ def process_excel(input_file, output_file):
     index_start = 0
 
     round = 15
-    for index, row in df.iloc[index_start:50].iterrows():
+    for index, row in df.iloc[index_start:].iterrows():
         # if index % 16 == 0:
         #     token = login()
         # 每16轮重新获取token
@@ -524,6 +381,7 @@ def process_excel(input_file, output_file):
 
         # 2.2 逐个步骤调用webhook
         for step_index in range(0, len(steps)):
+            sleep(10)
             answer, question_rephase, Level1_question_classifier, question_classifier, knowledge_retrieval = None, None, None, None, None
             print(f"处理步骤{step_index+1}/{steps.__len__()}: {steps[step_index]}")
             # output_chatlog += f"user: {step_index}"
@@ -534,15 +392,17 @@ def process_excel(input_file, output_file):
 
             # if result is not No
             if result is not None:
-                answer, question_rephase, Level1_question_classifier, question_classifier, knowledge_retrieval = result
+                answer, knowledge_retrieval = result
             else:
                 # 处理 None 的情况，例如抛出异常或返回默认值
                 print("chat_workflow 返回了 None")
                 continue
 
             print("check knowledge_retrieval before json.loads: ", knowledge_retrieval)
+            print(type(knowledge_retrieval))
+            print(len(knowledge_retrieval))
             # 如果knowledge_retrieval 不等于Null, 将knowledge_retrieval转换成列表
-            if knowledge_retrieval is None:
+            if knowledge_retrieval is None or len(knowledge_retrieval) == 0:
                 knowledge_highestScore = "None"
             elif knowledge_retrieval is not None:
                 knowledge_retrieval_temp = json.loads(knowledge_retrieval)
@@ -557,28 +417,23 @@ def process_excel(input_file, output_file):
                     knowledge_highestScore = "None"
 
             # 评估答案
-            evalsition = evalsite_answer(steps[step_index], answer, token, standard_answer)
-            if not evalsition:
-                print(f"评估答案失败，跳过问题: {question}")
-                continue
-            print(f"评测结果: {evalsition}")
+            # evalsition = evalsite_answer(steps[step_index], answer, token, standard_answer)
+            # if not evalsition:
+            #     print(f"评估答案失败，跳过问题: {question}")
+            #     continue
+            # print(f"评测结果: {evalsition}")
             print("=" * 200)
 
             # 保存答案
             # 答案
             output_answer += '-' + answer + '\n'
             # 问题拆分重写结果和意图识别优先级结果
-            output_question_rephase += '-' + question_rephase + '\n'
-            # chatflow意图分类结果
-            output_level1_question_classifier += '-' + Level1_question_classifier + '\n'
-            # 最终问题分类结果
-            output_question_classifier += '-' + question_classifier + '\n'
             # 知识库检索结果
-            output_knowledge_retrieval += '-' + knowledge_retrieval + '\n'
+            output_knowledge_retrieval += '-' + str(knowledge_retrieval) + '\n'
             # 知识库最高分
             output_knowledge_highestScore += '-' + knowledge_highestScore + '\n'
             # 评测结果
-            output_evalsition += '-' + evalsition + '\n'
+            # output_evalsition += '-' + evalsition + '\n'
 
 
         # 更新DataFrame
@@ -640,7 +495,7 @@ if __name__ == "__main__":
     # input_excel = "Jess_SIT_IntentDetect.xlsx"  # 输入文件名
     # output_excel = "A_Jess_SIT_IntentDetect.xlsx"  # 输出文件名
     input_excel = "Q_related-FUSE_FINA.xlsx"  # 输入文件名
-    output_excel = "A_related-FUSE_FINA_0909_prod.xlsx"  # 输出文件名
+    output_excel = "A_related-FUSE_FINA_0912_sit_cekpremi.xlsx"  # 输出文件名
     # input_excel = "Q_Unsupported_producat_category.xlsx"  # 输入文件名
     # output_excel = "A_Unsupported_producat_category.xlsx"  # 输出文件名
     # input_excel = "Q_0901Fina Day Feedback.xlsx"  # 输入文件名
@@ -650,7 +505,7 @@ if __name__ == "__main__":
     # input_excel = "fina day 意图识别case.xlsx"  # 输入文件名
     # output_excel = "A_fina day 意图识别case.xlsx"  # 输出文件名
     # input_excel = "sample意图测试.xlsx"  # 输入文件名
-    # output_excel = "A_sample意图测试_0911_uat.xlsx"  # 输出文件名
+    # output_excel = "A_sample意图测试_0911_sit.xlsx"  # 输出文件名
     # input_excel = "Q_Claim_condition.xlsx"  # 输入文件名
     # output_excel = "A_Claim_condition.xlsx"  # 输出文件名
     process_excel(input_excel, output_excel)
