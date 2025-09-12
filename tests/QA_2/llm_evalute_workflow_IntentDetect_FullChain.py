@@ -1,5 +1,9 @@
 '''
     调用dify chatflow获取一级意图识别结果和inforamtion侧二级意图识别结果
+    1. 建议：
+     运行前reset, 然后获取到新的session_id，填写到下面的字段
+
+    
 '''
 
 import os
@@ -16,10 +20,11 @@ env = 'sit'
 base_url = uat_base_url
 email = uat_email
 password =uat_password
-workflow_app_id =uat_workflow_app_id
+workflow_app_id = uat_workflow_app_id
 llm_app_id = uat_llm_app_id
 chat_flow_id = uat_sf_chatflow_id
-session_id = 'SN00O9OA0HC000000002S'
+session_id = 'SN00OL1WWIK000000003U'
+domain = prod_domain
 
 # 登录函数获取token
 def login() -> str:
@@ -105,6 +110,7 @@ def chat_workflow(query: str, access_token:str) -> tuple[Any | None, Any | None,
     """
     # https://rd-dify-sit.fuse.co.id/console/api/apps/a1936725-1498-452c-8310-b81e94936703/workflows/draft/run
     url = f"{base_url.rstrip('/')}/api/apps/{workflow_app_id}/workflows/draft/run"
+    print(url)
     # access_token = login()
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -113,6 +119,8 @@ def chat_workflow(query: str, access_token:str) -> tuple[Any | None, Any | None,
         "authorization": f"Bearer {access_token}",
         # "authorization": f"Bearer logineyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNTUyYmRiODktNTlkOC00NDExLWJiZmYtMjM3MGQwOWQ4MTljIiwiZXhwIjoxNzUzNzEwNDI0LCJpc3MiOiJTRUxGX0hPU1RFRCIsInN1YiI6IkNvbnNvbGUgQVBJIFBhc3Nwb3J0In0.uZAtxK0YEYiPyymg_g6ZDp7ckeRPRCbIw00TTj7rSD8",
         "content-type": "application/json",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "cors"
     }
     if type(query) != str:
         query=str(query)
@@ -123,9 +131,12 @@ def chat_workflow(query: str, access_token:str) -> tuple[Any | None, Any | None,
     payload = {
         "inputs": {
             "question": query,
-            "session_id": session_id,
-            "domain": "https://pchat-sit.fuse.co.id/api",
-            "lan": "ID"
+            # "session_id": session_id,
+            "domain": domain,
+            "lan": "ID",
+            # "sec-fetch-site": "same-origin",
+            # "sec-fetch-mode": "cors",
+            # "chat_temp_token": "eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eNpEjMsOgjAQRf-la0ha6LTgWkOMxkeEhcu2jBEfpeERjcZ_d2TjrCbn3HvfrB8tmzF3NkOJ91C2V_QsYsF0g8duG9Ava_Jr2MFG71eLopgfNQWo4D3eqh67KZApkWcpl1JIJcjb5nVox84huQeN9yaE_27VUEdwzpVK-O_ozyKGz0BYg9ZagpYRa8wwARBZMoHL0NCgce7kRAKxMtbEUqQitoAuljJFa3JMawD2-QIAAP__.v9KsrJFHoaT-aIZPDQJHxB9iOlJey1icQvVKMGC6FVs"
         },
         "files": []
     }
@@ -217,8 +228,8 @@ def chat_chatlow(query: str, access_token:str) -> tuple[Any | None, Any | None, 
     payload = {
             "files": [],
             "inputs": {
-                "chat_temp_token": "eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eNpEjMsKwjAQRf8l6xaSOpkkrpUiig9sPyBpB6yPGNqKovjvDt14l-feez5ieAQxF83JjxXdUnW_UBSZSL4fI_W7RHHVcr_Re701h_WyLBdoeMCHGOlaD9RPA4vK2ZkEUICK-9C9j_dH3xB3T5YPPqW_t-74o6SUiIWc4qTNBL0SY6OtdMrOTCY6P05Ag3MTOI8dC9GBBySTtwGKHIxWedABc6MK1wQPFlsjvj8AAAD__w.Uo5iz_bGdizMfzs3PhVxihe3LKzV_sNUTdXK6wESeaM",
-                "partner_uid": "1000662000000397",
+                "chat_temp_token": "eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eNpEjMsOgjAQRf-la0ha6LTgWkOMxkeEhcu2jBEfpeERjcZ_d2TjrCbn3HvfrB8tmzF3NkOJ91C2V_QsYsF0g8duG9Ava_Jr2MFG71eLopgfNQWo4D3eqh67KZApkWcpl1JIJcjb5nVox84huQeN9yaE_27VUEdwzpVK-O_ozyKGz0BYg9ZagpYRa8wwARBZMoHL0NCgce7kRAKxMtbEUqQitoAuljJFa3JMawD2-QIAAP__.v9KsrJFHoaT-aIZPDQJHxB9iOlJey1icQvVKMGC6FVs",
+                "partner_uid": "1000662000001008",
                 "tenant_id": "1000662",
                 "channel_user_id": "8619830441461",
                 "channel_type": "whatsapp",
@@ -254,8 +265,8 @@ def chat_chatlow(query: str, access_token:str) -> tuple[Any | None, Any | None, 
                     try:
                         event_json = json.loads(event_data)
                         if event_json.get("event") == 'node_finished':
-                            if event_json.get("data", {}).get("node_id") == 'answer':    # "代码执行：意图识别结果ETL
-                                Level1_question_classifier = event_json.get("data", {}).get("outputs", {}).get("answer")
+                            if event_json.get("data", {}).get("node_id") == '1753082979250':    # "代码执行：意图识别结果ETL
+                                Level1_question_classifier = event_json.get("data", {}).get("outputs", {}).get("inent_result")
                             elif event_json.get("data", {}).get("node_id") == '17552427857160':    # LLM：意图识别与拆分重写
                                 question_rephase = event_json.get("data", {}).get("outputs", {}).get("text")
                     except json.JSONDecodeError:
@@ -307,7 +318,7 @@ def chat_chatlow(query: str, access_token:str) -> tuple[Any | None, Any | None, 
 
 
 # 评估答案函数
-def evaluate_answer(question: str, llm_answer: str,token:str, right_answer:str) -> str:
+def evalsite_answer(question: str, llm_answer: str,token:str, right_answer:str) -> str:
     user_prompt = f"""
                 你是一个专业的保险行业专家，负责严格评估AI客服系统的回答质量。请根据以下标准对模型回答进行1-10分的评分：
 
@@ -458,7 +469,7 @@ def process_excel(input_file, output_file):
         print("Excel文件中缺少'问题'列")
         return
     if '标准答案' not in df.columns:
-        print("Excel文件中缺少'问题'列")
+        print("Excel文件中缺少'标准答案'列")
         return
     # 创建新列（如果不存在）
     if '答案' not in df.columns:
@@ -481,7 +492,7 @@ def process_excel(input_file, output_file):
     index_start = 0
 
     round = 15
-    for index, row in df.iloc[index_start:].iterrows():
+    for index, row in df.iloc[index_start:50].iterrows():
         # if index % 16 == 0:
         #     token = login()
         # 每16轮重新获取token
@@ -508,7 +519,7 @@ def process_excel(input_file, output_file):
         output_level1_question_classifier = ''
         output_knowledge_retrieval = ''
         output_question_classifier = ''
-        output_evaluation = ''
+        output_evalsition = ''
         output_knowledge_highestScore = ''
 
         # 2.2 逐个步骤调用webhook
@@ -516,10 +527,10 @@ def process_excel(input_file, output_file):
             answer, question_rephase, Level1_question_classifier, question_classifier, knowledge_retrieval = None, None, None, None, None
             print(f"处理步骤{step_index+1}/{steps.__len__()}: {steps[step_index]}")
             # output_chatlog += f"user: {step_index}"
+            answer, question_rephase, Level1_question_classifier, question_classifier, knowledge_retrieval = None, None, None, None, None
 
             # 获取答案和知识库召回结果
             result = chat_chatlow(steps[step_index], token)
-
 
             # if result is not No
             if result is not None:
@@ -529,21 +540,28 @@ def process_excel(input_file, output_file):
                 print("chat_workflow 返回了 None")
                 continue
 
-            if knowledge_retrieval is not None:
+            print("check knowledge_retrieval before json.loads: ", knowledge_retrieval)
+            # 如果knowledge_retrieval 不等于Null, 将knowledge_retrieval转换成列表
+            if knowledge_retrieval is None:
+                knowledge_highestScore = "None"
+            elif knowledge_retrieval is not None:
                 knowledge_retrieval_temp = json.loads(knowledge_retrieval)
-                if len(knowledge_retrieval) > 0:
+                print("knowledge_retrieval_temp: ", knowledge_retrieval_temp)
+                if knowledge_retrieval_temp and len(knowledge_retrieval_temp) > 0:
                     #  获取列表第一条，最高分的知识
                     knowledge_highestScore = knowledge_retrieval_temp[0]
                     # 转换成字符串
                     knowledge_highestScore = json.dumps(knowledge_highestScore)
                     print("知识库最高分: ", knowledge_highestScore)
+                else:
+                    knowledge_highestScore = "None"
 
             # 评估答案
-            evaluation = evaluate_answer(steps[step_index], answer, token, standard_answer)
-            if not evaluation:
+            evalsition = evalsite_answer(steps[step_index], answer, token, standard_answer)
+            if not evalsition:
                 print(f"评估答案失败，跳过问题: {question}")
                 continue
-            print(f"评测结果: {evaluation}")
+            print(f"评测结果: {evalsition}")
             print("=" * 200)
 
             # 保存答案
@@ -560,7 +578,7 @@ def process_excel(input_file, output_file):
             # 知识库最高分
             output_knowledge_highestScore += '-' + knowledge_highestScore + '\n'
             # 评测结果
-            output_evaluation += '-' + evaluation + '\n'
+            output_evalsition += '-' + evalsition + '\n'
 
 
         # 更新DataFrame
@@ -570,8 +588,8 @@ def process_excel(input_file, output_file):
         df.at[index, 'question_classifier'] = output_question_classifier
         df.at[index, 'knowledge_retrieval'] = output_knowledge_retrieval
         df.at[index, '最高分知识'] = output_knowledge_highestScore
-        df.at[index, '评估结果'] = output_evaluation
-        # print(f"评测结果: {evaluation}")
+        df.at[index, '评估结果'] = output_evalsition
+        # print(f"评测结果: {evalsition}")
         print("="*200)
 
         # 每处理3条保存一次进度
@@ -622,17 +640,17 @@ if __name__ == "__main__":
     # input_excel = "Jess_SIT_IntentDetect.xlsx"  # 输入文件名
     # output_excel = "A_Jess_SIT_IntentDetect.xlsx"  # 输出文件名
     # input_excel = "Q_related-FUSE_FINA.xlsx"  # 输入文件名
-    # output_excel = "A_related-FUSE_FINA_0903.xlsx"  # 输出文件名
-    input_excel = "Q_Unsupported_producat_category.xlsx"  # 输入文件名
-    output_excel = "A_Unsupported_producat_category.xlsx"  # 输出文件名
+    # output_excel = "A_related-FUSE_FINA_0909_prod.xlsx"  # 输出文件名
+    # input_excel = "Q_Unsupported_producat_category.xlsx"  # 输入文件名
+    # output_excel = "A_Unsupported_producat_category.xlsx"  # 输出文件名
     # input_excel = "Q_0901Fina Day Feedback.xlsx"  # 输入文件名
     # output_excel = "A_0901Fina Day Feedback_0903_2.xlsx"  # 输出文件名
     # input_excel = "Q_FinamustA_Failcase.xlsx"  # 输入文件名
     # output_excel = "A_FinamustA_Failcase_0829.xlsx"  # 输出文件名
     # input_excel = "fina day 意图识别case.xlsx"  # 输入文件名
     # output_excel = "A_fina day 意图识别case.xlsx"  # 输出文件名
-    # input_excel = "sample意图测试.xlsx"  # 输入文件名
-    # output_excel = "A_sample意图测试.xlsx"  # 输出文件名
+    input_excel = "sample意图测试.xlsx"  # 输入文件名
+    output_excel = "A_sample意图测试_0911_uat.xlsx"  # 输出文件名
     # input_excel = "Q_Claim_condition.xlsx"  # 输入文件名
     # output_excel = "A_Claim_condition.xlsx"  # 输出文件名
     process_excel(input_excel, output_excel)
