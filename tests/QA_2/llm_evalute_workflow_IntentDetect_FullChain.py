@@ -5,8 +5,10 @@
 
     
 '''
-
+import datetime
 import os
+import re
+import time
 from typing import Dict, Any, Optional, Tuple
 import pandas as pd
 import requests
@@ -15,15 +17,16 @@ from openpyxl import load_workbook
 from openpyxl.styles import Alignment
 from openpyxl.utils import get_column_letter
 from config import *
+from fileProcess import  FileProcess
 
 env = 'sit'
-base_url = sit_base_url
-email = sit_email
-password =sit_password
-workflow_app_id = sit_workflow_app_id
-llm_app_id = sit_llm_app_id
-chat_flow_id = sit_chatflow_cekpremi
-session_id = 'SN00OL1WWIK000000003U'
+base_url = uat_base_url
+email = uat_email
+password =uat_password
+workflow_app_id = uat_workflow_app_id
+llm_app_id = uat_llm_app_id
+chat_flow_id = uat_sf_chatflow_id
+session_id = 'SN00OQUB02Z0000000041'
 domain = prod_domain
 
 # 登录函数获取token
@@ -228,7 +231,7 @@ def chat_chatlow(query: str, access_token:str) -> tuple[Any | None, Any | None, 
     payload = {
             "files": [],
             "inputs": {
-                "chat_temp_token": "eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eNpEjMsOgjAQRf-la0ha6LTgWkOMxkeEhcu2jBEfpeERjcZ_d2TjrCbn3HvfrB8tmzF3NkOJ91C2V_QsYsF0g8duG9Ava_Jr2MFG71eLopgfNQWo4D3eqh67KZApkWcpl1JIJcjb5nVox84huQeN9yaE_27VUEdwzpVK-O_ozyKGz0BYg9ZagpYRa8wwARBZMoHL0NCgce7kRAKxMtbEUqQitoAuljJFa3JMawD2-QIAAP__.v9KsrJFHoaT-aIZPDQJHxB9iOlJey1icQvVKMGC6FVs",
+                "chat_temp_token": "eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eNpEjE0LwjAQRP9Lzi3sJmmSehZEUaSoB49p3GL9iKGtKIr_3bUX5_hm5r1Ff6_FRISjH7Z0TdvbmaLIRPLdEKlbJ4rzA_dLVaycXUxnVVWZPQ_4ECNddj1148AZLJ0CrVEb5L5uX5vbvQvE3YPlvU_p7921_EEAMEbCGMQyE_RMjK0BKDUqzETrhx8obAFyBKehZaE8BAjGqrxRUua6aVzunQ55rVSwFin44MTnCwAA__8.PDNsggUKTeDZQjGXhqmOH2Eod30u2A43SYsLtm2oBW0",
                 "partner_uid": "1000662000001008",
                 "tenant_id": "1000662",
                 "channel_user_id": "8619830441461",
@@ -236,13 +239,11 @@ def chat_chatlow(query: str, access_token:str) -> tuple[Any | None, Any | None, 
                 "session_id": session_id,
                 "lan": "ID"
             },
-            "query": query,
-            # "conversation_id": "d0c0b359-f6d6-4308-bab9-4559aa35f29a",
-            # "parent_message_id": "c66fc8ff-1453-4b55-80ac-2b1802324cc4"
+            "query": query
         }
 
     # 定义transation意图的枚举值列
-    transation = ['INTENT_QUICK_ORDER', 'INTENT_QUOTE_COMPARISON', 'INTENT_ORDER', 'INTENT_PAYMENT', 'INTENT_INVITE', 'INTENT_WITHDRAWAL', 'INTENT_COMPARISON_LIST']
+    transation = ['INTENT_QUICK_ORDER', 'INTENT_QUOTE_COMPARISON', 'INTENT_ORDER', 'INTENT_PAYMENT', 'INTENT_INVITE', 'INTENT_WITHDRAWAL', 'INTENT_COMPARISON_LIST', 'INTENT_QUOTATION']
 
 
 
@@ -275,10 +276,11 @@ def chat_chatlow(query: str, access_token:str) -> tuple[Any | None, Any | None, 
         print("一级意图分类: ", Level1_question_classifier)
         if Level1_question_classifier not in transation:
             #调用RAG workflow
+            print("一级意图识别到是Information意图，调用RAG Flow")
             result = chat_workflow(query, access_token)
             if result is not None:
                 final_answer, question_classifier, knowledge_retrieval = result
-                print("一级意图分类: ", question_classifier)
+                print("RAG最终意图分类: ", question_classifier)
             else:
                 question_classifier = None
 
@@ -288,24 +290,20 @@ def chat_chatlow(query: str, access_token:str) -> tuple[Any | None, Any | None, 
         print("question_classifier", question_classifier)
         print("knowledge_retrieval", knowledge_retrieval)
         if final_answer == None:
-            final_answer = " "
+            final_answer = ""
         if question_rephase == None:
-            question_rephase = " "
+            question_rephase = ""
         if Level1_question_classifier == None:
-            Level1_question_classifier = " "
+            Level1_question_classifier = ""
         if question_classifier == None:
-            question_classifier = " "
+            question_classifier = ""
         if knowledge_retrieval == None:
-            knowledge_retrieval = " "
+            knowledge_retrieval = ""
 
 
 
         return final_answer, question_rephase, Level1_question_classifier, question_classifier, knowledge_retrieval
 
-
-
-        # 使用 json.dumps() 将字典转换为 JSON 格式的字符
-        knowledge_retrieval = json.dumps(knowledge_retrieval)
 
 
     except requests.RequestException as e:
@@ -456,43 +454,15 @@ def format_excel(file_path):
         return False
 # 主处理流程
 def process_excel(input_file, output_file):
-    # 读取Excel文件
-    try:
-        df = pd.read_excel(input_file)
-        print(f"成功读取Excel文件，共{len(df)}条记录")
-    except Exception as e:
-        print(f"读取Excel文件失败: {e}")
-        return
-
-    # 确保存在问题列
-    if '问题' not in df.columns:
-        print("Excel文件中缺少'问题'列")
-        return
-    if '标准答案' not in df.columns:
-        print("Excel文件中缺少'标准答案'列")
-        return
-    # 创建新列（如果不存在）
-    if '答案' not in df.columns:
-        df['答案'] = ""
-    if '意图识别与拆分重写结果' not in df.columns:
-        df['意图识别与拆分重写结果'] = ""
-    if 'Level1_question_classifier' not in df.columns:
-        df['Level1_question_classifier'] = ""
-    if 'question_classifier' not in df.columns:
-        df['question_classifier'] = ""
-    if 'knowledge_retrieval' not in df.columns:
-        df['knowledge_retrieval'] = ""
-    if '最高分知识' not in df.columns:
-        df['最高分知识'] = ""
-    if '评估结果' not in df.columns:
-        df['评估结果'] = ""
+    # 读取文件
+    df = FileProcess.real_excel(input_file)
 
 
     # 处理每个问题
     index_start = 0
 
     round = 15
-    for index, row in df.iloc[index_start:50].iterrows():
+    for index, row in df.iloc[index_start:3].iterrows():
         # if index % 16 == 0:
         #     token = login()
         # 每16轮重新获取token
@@ -511,7 +481,7 @@ def process_excel(input_file, output_file):
 
         # 2. 调用chatflow处理问题
         # 2.1 分解这个问题的每个步骤
-        steps = question.split('-')
+        steps = [q for q in re.split(r'\d+\.', question) if q]
         print("全部步骤：", steps)
 
         output_answer = ''
@@ -522,14 +492,13 @@ def process_excel(input_file, output_file):
         output_evalsition = ''
         output_knowledge_highestScore = ''
 
-        # 2.2 逐个步骤调用webhook
+        # 2.2 逐个步骤调用chatFlow / workflow
         for step_index in range(0, len(steps)):
             answer, question_rephase, Level1_question_classifier, question_classifier, knowledge_retrieval = None, None, None, None, None
             print(f"处理步骤{step_index+1}/{steps.__len__()}: {steps[step_index]}")
-            # output_chatlog += f"user: {step_index}"
-            answer, question_rephase, Level1_question_classifier, question_classifier, knowledge_retrieval = None, None, None, None, None
 
-            # 获取答案和知识库召回结果
+
+            # 调用chatFlow
             result = chat_chatlow(steps[step_index], token)
 
             # if result is not No
@@ -537,14 +506,13 @@ def process_excel(input_file, output_file):
                 answer, question_rephase, Level1_question_classifier, question_classifier, knowledge_retrieval = result
             else:
                 # 处理 None 的情况，例如抛出异常或返回默认值
-                print("chat_workflow 返回了 None")
+                print("chat_chatlow 返回了 None")
                 continue
 
+            # 截取最高分的知识
             print("check knowledge_retrieval before json.loads: ", knowledge_retrieval)
             # 如果knowledge_retrieval 不等于Null, 将knowledge_retrieval转换成列表
-            if knowledge_retrieval is None:
-                knowledge_highestScore = "None"
-            elif knowledge_retrieval is not None:
+            if knowledge_retrieval is not None and knowledge_retrieval != '':
                 knowledge_retrieval_temp = json.loads(knowledge_retrieval)
                 print("knowledge_retrieval_temp: ", knowledge_retrieval_temp)
                 if knowledge_retrieval_temp and len(knowledge_retrieval_temp) > 0:
@@ -555,6 +523,8 @@ def process_excel(input_file, output_file):
                     print("知识库最高分: ", knowledge_highestScore)
                 else:
                     knowledge_highestScore = "None"
+            else:
+                knowledge_highestScore = "None"
 
             # 评估答案
             evalsition = evalsite_answer(steps[step_index], answer, token, standard_answer)
@@ -566,19 +536,19 @@ def process_excel(input_file, output_file):
 
             # 保存答案
             # 答案
-            output_answer += '-' + answer + '\n'
+            output_answer += f"{step_index+1}. " + answer + '\n'
             # 问题拆分重写结果和意图识别优先级结果
-            output_question_rephase += '-' + question_rephase + '\n'
+            output_question_rephase += f"{step_index+1}. " + question_rephase + '\n'
             # chatflow意图分类结果
-            output_level1_question_classifier += '-' + Level1_question_classifier + '\n'
+            output_level1_question_classifier += f"{step_index+1}. " + Level1_question_classifier + '\n'
             # 最终问题分类结果
-            output_question_classifier += '-' + question_classifier + '\n'
+            output_question_classifier += f"{step_index+1}. " + question_classifier + '\n'
             # 知识库检索结果
-            output_knowledge_retrieval += '-' + knowledge_retrieval + '\n'
+            output_knowledge_retrieval += f"{step_index+1}. " + knowledge_retrieval + '\n'
             # 知识库最高分
-            output_knowledge_highestScore += '-' + knowledge_highestScore + '\n'
+            output_knowledge_highestScore += f"{step_index+1}. " + knowledge_highestScore + '\n'
             # 评测结果
-            output_evalsition += '-' + evalsition + '\n'
+            output_evalsition += f"{step_index+1}. " + evalsition + '\n'
 
 
         # 更新DataFrame
@@ -593,54 +563,23 @@ def process_excel(input_file, output_file):
         print("="*200)
 
         # 每处理3条保存一次进度
-        if (index + 1) % 3 == 0:
-            # 保存到临时文件
-            temp_file = f"temp_{output_file}"
-            df.to_excel(temp_file, index=False)
+        FileProcess.save_result_temp(index=index, df=df, output_file=output_file)
 
-            # 格式化临时文件
-            if format_excel(temp_file):
-                # 重命名为最终文件
-                if os.path.exists(output_file):
-                    os.remove(output_file)
-                os.rename(temp_file, output_file)
-                print(f"已保存格式化进度到 {output_file}")
-            else:
-                print("格式化失败，保留未格式化文件")
-
-    # 最终保存结果
-    try:
-        # 保存到临时文件
-        temp_file = f"temp_{output_file}"
-        df.to_excel(temp_file, index=False)
-
-        # 格式化并重命名
-        if format_excel(temp_file):
-            if os.path.exists(output_file):
-                os.remove(output_file)
-            os.rename(temp_file, output_file)
-            print(f"\n处理完成！格式化结果已保存到 {output_file}")
-        else:
-            # 如果格式化失败，保留未格式化文件
-            if os.path.exists(output_file):
-                os.remove(output_file)
-            os.rename(temp_file, output_file)
-            print(f"\n处理完成！未格式化结果已保存到 {output_file}")
-
-        print(f"共处理 {len(df)} 条问题，成功 {df['答案'].notnull().sum()} 条")
-    except Exception as e:
-        print(f"保存结果失败: {e}")
+        # 最终保存结果
+    FileProcess.write_to_excel(df, output_file)
 
 # 使用示例
 if __name__ == "__main__":
+    # 打印开始执行的时间
+    start_time = time.time()
     # input_excel = "question-workshop.xlsx"  # 输入文件名
     # output_excel = "output-workshop-0805.xlsx"  # 输出文件名
     # input_excel = "question-orginalRM.xlsx"  # 输入文件名
     # output_excel = "output_orginalRM_0806.xlsx"  # 输出文件名
     # input_excel = "Jess_SIT_IntentDetect.xlsx"  # 输入文件名
     # output_excel = "A_Jess_SIT_IntentDetect.xlsx"  # 输出文件名
-    input_excel = "Q_related-FUSE_FINA.xlsx"  # 输入文件名
-    output_excel = "A_related-FUSE_FINA_0909_prod.xlsx"  # 输出文件名
+    # input_excel = "Q_related-FUSE_FINA.xlsx"  # 输入文件名
+    # output_excel = "A_related-FUSE_FINA_0909_prod.xlsx"  # 输出文件名
     # input_excel = "Q_Unsupported_producat_category.xlsx"  # 输入文件名
     # output_excel = "A_Unsupported_producat_category.xlsx"  # 输出文件名
     # input_excel = "Q_0901Fina Day Feedback.xlsx"  # 输入文件名
@@ -649,9 +588,15 @@ if __name__ == "__main__":
     # output_excel = "A_FinamustA_Failcase_0829.xlsx"  # 输出文件名
     # input_excel = "fina day 意图识别case.xlsx"  # 输入文件名
     # output_excel = "A_fina day 意图识别case.xlsx"  # 输出文件名
-    # input_excel = "sample意图测试.xlsx"  # 输入文件名
-    # output_excel = "A_sample意图测试_0911_uat.xlsx"  # 输出文件名
+    input_excel = "sample意图测试.xlsx"  # 输入文件名
+    output_excel = "A_sample意图测试_0915_uat.xlsx"  # 输出文件名
     # input_excel = "Q_Claim_condition.xlsx"  # 输入文件名
     # output_excel = "A_Claim_condition.xlsx"  # 输出文件名
+
     process_excel(input_excel, output_excel)
+    # 打印结束时间
+    end_time = time.time()
+    print("开始执行时间：", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(start_time)))
+    print("结束执行时间：", time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(end_time)))
+    print(f"总耗时: {end_time - start_time:.2f} 秒")
 
