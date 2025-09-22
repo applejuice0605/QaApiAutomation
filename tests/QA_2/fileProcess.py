@@ -107,18 +107,18 @@ class FileProcess:
         # 创建新列（如果不存在）
         if '答案' not in df.columns:
             df['答案'] = ""
-        if '意图识别与拆分重写结果' not in df.columns:
-            df['意图识别与拆分重写结果'] = ""
-        if 'Level1_question_classifier' not in df.columns:
-            df['Level1_question_classifier'] = ""
-        if 'question_classifier' not in df.columns:
-            df['question_classifier'] = ""
-        if 'knowledge_retrieval' not in df.columns:
-            df['knowledge_retrieval'] = ""
-        if '最高分知识' not in df.columns:
-            df['最高分知识'] = ""
-        if '评估结果' not in df.columns:
-            df['评估结果'] = ""
+        # if '意图识别与拆分重写结果' not in df.columns:
+        #     df['意图识别与拆分重写结果'] = ""
+        # if 'Level1_question_classifier' not in df.columns:
+        #     df['Level1_question_classifier'] = ""
+        # if 'question_classifier' not in df.columns:
+        #     df['question_classifier'] = ""
+        # if 'knowledge_retrieval' not in df.columns:
+        #     df['knowledge_retrieval'] = ""
+        # if '最高分知识' not in df.columns:
+        #     df['最高分知识'] = ""
+        # if '评估结果' not in df.columns:
+        #     df['评估结果'] = ""
 
         return df
 
