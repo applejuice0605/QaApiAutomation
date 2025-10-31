@@ -43,6 +43,9 @@ I send the place order request to createrfqorder API
 #    ${vehicleVinNo}     Set Variable    io9fo
 #    ${vehicleEngineNo}     Set Variable    io9fo
 
+    ${type}    Evaluate    type(${jsonBody})
+    Log    ${type}
+    Log    ${jsonBody}
 
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.rfqNo    ${rfqNo}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.quoteNo    ${quoteNo}

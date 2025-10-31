@@ -29,7 +29,10 @@ def load_environment():
         "BOSS_PASSWORD": os.getenv("BOSS_PASSWORD"),
         "UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE": os.getenv("UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"),
         "UNDERWRITING_OFFLINE_EXISTSASSIGNEE": os.getenv("UNDERWRITING_OFFLINE_EXISTSASSIGNEE"),
-        "DATA_BASEURL": 'resources/data/' + env + '/'
+        "DATA_BASEURL": 'resources/data/' + env + '/',
+
+        "FINA_USERINFO": os.getenv("FINA_USERINFO")
+
     }
 
 

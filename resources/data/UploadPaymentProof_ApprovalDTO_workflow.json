@@ -21,9 +21,9 @@
         ],
         "index": 0,
         "finishTime": 1737332984000,
-        "beneficiaryBankAccount": "124000410571511",
-        "beneficiaryId": "6603000931",
-        "beneficiaryName": "PT. Asuransi Intra Asia",
+        "beneficiaryBankAccount": "1005002122",
+        "beneficiaryId": "6603001124",
+        "beneficiaryName": "PT Asuransi Multi Artha Guna Tbk",
         "beneficiaryRole": 1
       }
     ],
@@ -31,12 +31,12 @@
     "finalPayableAmount": 2683152,
     "payerType": 2,
     "paymentScheme": 1,
-    "beneficiaryId": "6603000931",
-    "beneficiaryBankAccount": "124000410571511",
+    "beneficiaryId": "6603001124",
+    "beneficiaryBankAccount": "1005002122",
     "finishTime": 1737332984000,
     "bonus": 0,
     "point": 0,
-    "beneficiaryName": "PT. Asuransi Intra Asia",
+    "beneficiaryName": "PT Asuransi Multi Artha Guna Tbk",
     "beneficiaryRole": 1
   },
   "uploadPaymentProof_Approve": {

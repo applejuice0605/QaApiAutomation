@@ -14,12 +14,6 @@ Resource    ../../util/httpCommon.robot
 Variables   ../../varfile_defvar.py
 
 
-*** Test Cases ***
-Tes
-    Send Request And Get Response Data
-    Excute SQL
-
-
 *** Keywords ***
 
 # 发送请求

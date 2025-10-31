@@ -25,7 +25,7 @@ Test Teardown    Delete All Sessions
 ${BODY_FILE_PATH}    Travel_PlaceOrderData.json
 ${payerType}    2
 ${paymentScheme}    3
-${CouponCode}   PR00000682
+${CouponCode}   PR00000902
 ${paymentMethod}    VA
 
 

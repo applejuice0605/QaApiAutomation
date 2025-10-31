@@ -9,9 +9,6 @@ Library    JSONLibrary
 
 Resource    ../../../resources/biz/Login/login.robot
 Resource    ../../../resources/biz/ManualAdjustment/manualAdjustment.robot
-
-
-
 Resource    ../../../resources/util/utilCommon.robot
 Resource    ../../../resources/util/assertUtil.robot
 Resource    ../../../resources/resource.robot

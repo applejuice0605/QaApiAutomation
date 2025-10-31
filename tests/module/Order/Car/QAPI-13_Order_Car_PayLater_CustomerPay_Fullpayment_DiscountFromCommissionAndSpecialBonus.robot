@@ -24,7 +24,7 @@ ${BODY_FILE_PATH}    Car_PlaceOrderData.json
 ${isAdvancePremium}     0
 ${payerType}    2
 ${paymentScheme}    1
-${discountFormCommission}   736987
+${discountFormCommission}   381375
 ${discountFromPartnerSpecialBonusAmount}      1000
 
 

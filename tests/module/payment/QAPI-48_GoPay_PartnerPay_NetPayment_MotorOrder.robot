@@ -45,7 +45,7 @@ GoPay CustomerPay FullPayment Motor Order
     Then The status code should be 200    ${jsonResult}[code]
     And the response of paymentBilling/List API should contain securityCode and paymentBillNo     ${jsonResult}
 
-    Then Then I choose PartnerPay & PaymentScheme & PaymentMethod and send request to /slip/process API   token=${token}     orderId=${orderId}     securityCode=${securityCode}    paymentScheme=${paymentScheme}
+    Then I choose PartnerPay & PaymentScheme & PaymentMethod and send request to /slip/process API   token=${token}     orderId=${orderId}     securityCode=${securityCode}    paymentScheme=${paymentScheme}
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain lessAmount      ${jsonResult}
 

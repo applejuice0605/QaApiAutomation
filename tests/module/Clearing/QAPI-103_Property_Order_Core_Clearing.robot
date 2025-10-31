@@ -133,6 +133,8 @@ Done the underwriting workflow
     [toOffline Task] I send request to approve API to approve toOffline task   ${bossToken}    ${orderNo}   ${Underwriting_DATA}
 
     Send request to Boss:/api/oms/slip/v2/list API to get slipStatus    ${bossToken}    ${orderNo}
+    Send request to Boss:/api/oms/slip/v2/list API to get slipStatus    ${bossToken}    ${orderNo}
+    Send request to Boss:/api/oms/slip/v2/list API to get slipStatus    ${bossToken}    ${orderNo}
     The response's=${jsonResult} slipStatus should be ${slipStatus}
 
 #Check Commission Disbursed
