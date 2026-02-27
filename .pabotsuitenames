@@ -1,0 +1,95 @@
+datasources:5c71427f77e27c751227197c2ff4898a657d7baa
+commandlineoptions:017324f62c751c33388fc359a7dbfba50051db78
+suitesfrom:no-suites-from-option
+file:3f2da2925e81bc4c19b2bbebe352fa573f1f3946
+--test Module.Clearing.QAPI-101 Car Order Core Clearing.Car Order Core Clearing
+--test Module.Clearing.QAPI-101-1 Car Order Core Clearing.Non-API_policyUnderwritingWorkflow_Approved
+--test Module.Clearing.QAPI-102 Motor Order Core Clearing.Motor Order Core Clearing
+--test Module.Clearing.QAPI-103 Property Order Core Clearing.Property Order Core Clearing
+--test Module.Clearing.QAPI-104 Travel Order Core Clearing.Travel Order Core Clearing
+--test Module.FusePoint.QAPI-65 Exchange partial fuse point to Bonus.Exchange Partial Fuse Point To Bonus Success
+--test Module.FusePoint.QAPI-66 Exchange all fuse point to Bonus.Exchange All Fuse Point To Bonus Success
+--test Module.FusePoint.QAPI-67 Exchange more than all fuse point to Bonus.Exchange More Than Fuse Point To Bonus Success
+--test Module.FusePoint.QAPI-68 AfterExchange check BonusAndFusePoint Balance.Trigger Point Exchange
+--test Module.FusePoint.QAPI-68 AfterExchange check BonusAndFusePoint Balance.After exchange, check Bonus & Fuse point balance Success
+--test Module.Login.QAPI-2 Login by Phone Number.Login Success by Phone Number
+--test Module.Login.QAPI-3 Login by KTP.Login Success by KTP
+--test Module.Login.QAPI-4 Login by Email.Login Success by Email
+--test Module.ManualAdjustment.QAPI-89 Adjustment PartnerCommission Increase WithoutTax Approved.Manual Adjustment Partner Commission Increase Without Tax Approved
+--test Module.ManualAdjustment.QAPI-90 Adjustment PartnerCommission Decrease WithoutTax Approved.Manual Adjustment Partner Commission Decrease Without Tax Approved
+--test Module.ManualAdjustment.QAPI-91 Adjustment PartnerCommission Increase WithTax Approved.Manual Adjustment Partner Commission Increase With Tax Approved
+--test Module.ManualAdjustment.QAPI-92 Adjustment PartnerCommission Decrease WithTax Approved.Manual Adjustment Partner Commission Decrease With Tax Approved
+--test Module.ManualAdjustment.QAPI-93 Adjustment PartnerCommission Increase WithoutTax Dismiss.Manual Adjustment Partner Commission Increase Without Tax Dismiss
+--test Module.ManualAdjustment.QAPI-94 Adjustment PartnerPolicyPoint Increase WithoutTax Approved.Manual Adjustment Partner Policy Point Increase Without Tax Approved
+--test Module.ManualAdjustment.QAPI-95 Adjustment PartnerPolicyPoint Decrease WithoutTax Approved.Manual Adjustment Partner Policy Point Decrease Without Tax Approved
+--test Module.ManualAdjustment.QAPI-96 Adjustment PartnerPolicyPoint Increase WithTax Approved.Manual Adjustment Partner Policy Point Increase With Tax Approved
+--test Module.ManualAdjustment.QAPI-97 Adjustment PartnerPolicyPoint Decrease WithTax Approved.Manual Adjustment Partner Policy Point Decrease With Tax Approved
+--test Module.ManualAdjustment.QAPI-99 Adjustment PartnerPolicyPoint Increase WithoutTax Dismiss.Manual Adjustment Partner Policy Point Increase Without Tax Approved
+--test Module.Order.Car.QAPI-11 Order Car PayNow PartnerPay Fullpayment.Car PayNow PartnerPay Fullpayment
+--test Module.Order.Car.QAPI-12 Order Car PayLater PartnerPay Fullpayment DiscountCommission.Car PayNow PartnerPay Fullpayment using discount from Commission
+--test Module.Order.Car.QAPI-13 Order Car PayLater CustomerPay Fullpayment DiscountFromCommissionAndSpecialBonus.Car PayNow CustomerPay Fullpayment using discount from Commission and SpecialBonus
+--test Module.Order.Car.QAPI-14 Order Car New Coupon PayLater PartnerPay FullPayment.Car using coupon PayLater PartnerPay FullPayment
+--test Module.Order.Car.QAPI-15 Order Car Coupon PayLater PartnerPay NetPayment.Car using coupon PayLater PartnerPay NetPayment
+--test Module.Order.Car.QAPI-16 Order Car Coupon PayLater PartnerPay SupernetPayment.Car using coupon PayLater PartnerPay SupernetPayment
+--test Module.Order.Car.QAPI-17 CarGetQuotation.Car Get Quotation
+--test Module.Order.Car.QAPI-19 DoubleOrder PlateNumber already registered.Car DoubleOrder PlateNumber already registered
+--test Module.Order.Car.QAPI-20 DoubleOrder ClassisNumber already registered.Car DoubleOrder ClassisNumber already registered
+--test Module.Order.Motor.QAPI-21 Order Moto New PayNow CustomerPay.Motor PayNow CustomerPay
+--test Module.Order.Motor.QAPI-22 Order Moto New PayLater CustomerPay.Motor PayLater CustomerPay
+--test Module.Order.Motor.QAPI-23 Order Moto New Coupon PayLater PartnerPay NetPayment.Motor using coupon PayLater PartnerPay NetPayment
+--test Module.Order.Motor.QAPI-24 Order Moto New Coupon PayLater PartnerPay SuperNetPayment.Motor using coupon PayLater PartnerPay SupernetPayment
+--test Module.Order.Motor.QAPI-25 MotorGetQuotation.Motor Get Quotation
+--test Module.Order.Property.QAPI-26 Property PayNow CustomerPay.Property PayNow CustomerPay
+--test Module.Order.Property.QAPI-27 Property PayLater PartnerPay.Property PayLater PartnerPay
+--test Module.Order.Property.QAPI-28 Order Property and EQVET PayLater PartnerPay.Order Property and EQVET PayLater PartnerPay
+--test Module.Order.Property.QAPI-29 DiscountCommissionFromProperty.Order Property and EQVET using DiscountCommission from Property PayLater PartnerPay FullPayment
+--test Module.Order.Property.QAPI-30 DiscountCommissionFromEQVET.Order Property and EQVET using DiscountCommission from EQVET PayLater PartnerPay FullPayment
+--test Module.Order.Property.QAPI-31 DiscountCommissionAndSpecialBonusFromProperty.Order Property and EQVET using discountCommission and specialBonus from Property PayLater PartnerPay Fullpayment
+--test Module.Order.Property.QAPI-32 DiscountCommissionAndSpecialBonusFromEQVET.Order Property and EQVET using discountCommission and specialBonus from EQVET PayLater PartnerPay Fullpayment
+--test Module.Order.Property.QAPI-33 DiscountCommissionAndSpecialBonusFromEQVET DiscountCommissionFromProperty.Property EQVET PayLater With Discount Commission And Special Bonus From EQVET Plus Discount Commission From Property
+--test Module.Order.Property.QAPI-34 FullPayment WithPropertyCoupon.Full Payment With Property Coupon
+--test Module.Order.Property.QAPI-35 NetPayment WithEQVETCoupon.Net Payment With EQVET Coupon
+--test Module.Order.Property.QAPI-36 SupernetPay WithEqvetPropertyCoupon.Supernet Payment With Eqvet and Property Coupon
+--test Module.Order.Property.QAPI-37 PropertyGetQuotation.Property Get Quotation
+--test Module.Order.Travel.QAPI-38 Travel PayNow CustomerPay.Travel PayNow CustomerPay
+--test Module.Order.Travel.QAPI-39 NetPaymentTravel WithCoupon.Travel NetPayment With Coupon
+--test Module.Order.Travel.QAPI-40 SupernetPaymentTravel WithCoupon.Travel Supernet Payment With Coupon
+--test Module.Order.Travel.QAPI-41 DoubleOrder.Travel Double Order
+--test Module.Order.Travel.QAPI-42 TravelGetQuotation.Travel Get Quotation
+--test Module.Payment.QAPI-43 OVO CustomerPay FullPayment CarOrder.OVO CustomerPay FullPayment Car Order
+--test Module.Payment.QAPI-44 OVO PartnerPay NetPayment CarOrder.OVO PartnerPay NetPayment CarOrder
+--test Module.Payment.QAPI-45 OVO PartnerPay SupernetPayment CarOrder.OVO PartnerPay NetPayment CarOrder
+--test Module.Payment.QAPI-46 OVO PartnerPay UseBonusAndPoints FullPayment CarOrder.OVO PartnerPay NetPayment CarOrder
+--test Module.Payment.QAPI-47 GoPay CustomerPay FullPayment MotorOrder.GoPay CustomerPay FullPayment Motor Order
+--test Module.Payment.QAPI-48 GoPay PartnerPay NetPayment MotorOrder.GoPay CustomerPay FullPayment Motor Order
+--test Module.Payment.QAPI-49 GoPay PartnerPay SupernetPayment MotorOrder.GoPay CustomerPay FullPayment Motor Order
+--test Module.Payment.QAPI-50 GoPay PartnerPay UseBonusAndPoints FullPayment MotorOrder.GoPay CustomerPay FullPayment Motor Order
+--test Module.Payment.QAPI-51 VA CustomerPay FullPayment.VA CustomerPay FullPayment Property Order
+--test Module.Payment.QAPI-52 VA PartnerPay NetPayment.VA PartnerPay NetPayment Property Order
+--test Module.Payment.QAPI-53 VA PartnerPay SupernetPayment.VA PartnerPay SupernetPayment Property Order
+--test Module.Payment.QAPI-54 VA UseBonusFusePoints PartnerPay FullPayment.VA PartnerPay SupernetPayment Property Order
+--test Module.Payment.QAPI-55 CC CustomerPay FullPayment.CC CustomerPay FullPayment Travel Order
+--test Module.Payment.QAPI-56 CC PartnerPay NetPayment.CC PartnerPay NetPayment Travel Order
+--test Module.Payment.QAPI-57 CC PartnerPay SupernetPayment.CC PartnerPay SupernetPayment Travel Order
+--test Module.Payment.QAPI-58 CC UseBonusFusePoints PartnerPay FullPayment.CC UseBonusFusePoints_PartnerPay_FullPayment Travel Order
+--test Module.Payment.QAPI-59 UseFullBonus Car Order.Use Full Bonus PartnerPay FullPayment Car Order
+--test Module.Payment.QAPI-60 UseFullFusePoints Car Order.Use Full FusePoints PartnerPay FullPayment Car Order
+--test Module.Payment.QAPI-61 UseFulBonusAndFusePoints Car Order.Use Full Bonus And FusePoints PartnerPay FullPayment Car Order
+--test Module.Profile.QAPI-6 Edit profile.Edit Profile Success
+--test Module.Profile.QAPI-7 Change password.Edit Profile Success
+--test Module.Register.QAPI-1 Core Register by share link.Core - Register by share link
+--test Module.Setting.QAPI-10 Logout by email.Logout by phone number
+--test Module.Setting.QAPI-8 Logout by phone number.Logout by phone number
+--test Module.Setting.QAPI-9 Logout by KTP.Logout by phone number
+--test Module.Underwriting.QAPI-100 Non-API policyUnderwritingWorkflow Declined.API_policyUnderwritingWorkflow_Declined
+--test Module.Underwriting.QAPI-99 Non-API policyUnderwritingWorkflow Approved.Non-API_policyUnderwritingWorkflow_Approved
+--test Module.UploadProof.QAPI-62 UploadPaymentPproof NoOverpayment Approved.Upload payment proof no overpayment,Policy in payment billing workflow approved success
+--test Module.UploadProof.QAPI-63 UploadPaymentPproof WithOverpayment Approved.Upload payment proof with overpayment,Policy in payment billing workflow approved success
+--test Module.UploadProof.QAPI-64 UploadPaymentPproof WithUnderPayment.Upload payment proof with underpayment failed
+--test Module.Withdrawal.QAPI-69 Bonus Automation withdrawal less than 20 minllion.Withdrawal Amount Less Than 20000000 Success
+--test Module.Withdrawal.QAPI-70 Bonus Automation withdrawal  Equal 20 minllion.Withdrawal Amount Equal 20000000 Success
+--test Module.Withdrawal.QAPI-71 Bonus Automation withdrawal more than 20 minllion and approve.Withdrawal Amount More Than 20000000 Success
+--test Module.Withdrawal.QAPI-72  Bonus Automation withdrawal more than 20 minllion and decline.Withdrawal Amount More Than 20000000 And Decline Success
+--test Module.Withdrawal.QAPI-73 AfterWithdrawal checkBonus FusePointBalance.trigger withdrawal bonus 10000000 success
+--test Module.Withdrawal.QAPI-73 AfterWithdrawal checkBonus FusePointBalance.After Withdrawal, check Bonus Decrease 10000000 Success
+--test Module.Withdrawal.QAPI-74 Add Bank Account not meed the condition of API, status is failed.Add Bank Account not meed the condition of API, status is failed

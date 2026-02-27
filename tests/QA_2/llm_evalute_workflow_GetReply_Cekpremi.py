@@ -69,7 +69,24 @@ def chat_dify_llm(system: str, query: str, token):
         "content-type": "application/json",
     }
 
-    payload = {"inputs":{"user":query,"system":system},"files":[]}
+    payload = {
+    "source_type": "slot",
+    "trace_id": "883792bb732d54cb",
+    "slot_result": "{\"slotFinish\": \"true\", \"slotFailReason\": \"\", \"slotFailReasonData\": \"{}\", \"completedSlots\": \"[]\", \"unfilledSlots\": \"[]\", \"completionCondition\": \"\"}",
+    "intent_result": "{\"result\": \"{\\\"intent_recognition\\\": {\\\"intent_queue\\\": [{\\\"confidence\\\": 0.65, \\\"intent\\\": \\\"INTENT_CHITCHAT\\\", \\\"intent_type\\\": \\\"System\\\", \\\"priority\\\": 1, \\\"question\\\": \\\"Can you be held legally responsible for your answers?\\\"}], \\\"intent_type\\\": \\\"System\\\", \\\"need_clarification\\\": false, \\\"clarify_reason\\\": null, \\\"clarify_question\\\": \\\"\\\", \\\"action\\\": \\\"\\\", \\\"pendingTaskListOfReplace\\\": [], \\\"top_question\\\": \\\"Can you be held legally responsible for your answers?\\\", \\\"first_intent\\\": \\\"INTENT_CHITCHAT\\\"}, \\\"intent_admission\\\": {\\\"is_pass\\\": \\\"true\\\", \\\"biz_code\\\": \\\"INTENT_CHITCHAT_1983470980127633410\\\", \\\"intent_code\\\": \\\"INTENT_CHITCHAT\\\", \\\"intent_type\\\": \\\"INFORMATIONAL\\\", \\\"msg_id\\\": \\\"\\\", \\\"recognition_handler\\\": \\\"LLM\\\", \\\"render_map\\\": {}, \\\"error_type\\\": \\\"\\\", \\\"message_type\\\": \\\"\\\", \\\"message_content\\\": \\\"\\\", \\\"highestPriorityIntent\\\": \\\"INTENT_CHITCHAT\\\", \\\"highestPriorityQuestion\\\": \\\"Can you be held legally responsible for your answers?\\\", \\\"cmd\\\": null}}\"}",
+    "api_domain": "https://pchat-sit.fuse.co.id/api",
+    "api_token": "eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eNpEjEsOgkAQRO8ya0jmR0_rBYxRI0ZdsJyBNuJnmABGo_HudthYy1dV7yOGRxBzUZ_9eKB7OnRXiiITyfdjpH6bKC4b7telWZSr3QarqioWPOBDjHQ7DtRPAwQ1QyOtVRYU96F977tHXxN3T5YPPqW_99jyR0kpAbScYmYuE_RKjB1YXWChIBOtHyegAGACl7FloURvGwMh18phbpva5OFkQx4CanK1pgZRfH8AAAD__w.7bpkGzyENIoMATN8QCPeIvy398yeBSg5iRJ1RSYM3nE",
+    "channel_type": "whatsapp",
+    "channel_user_id": "8619830441461",
+    "intent_type": "INFORMATIONAL",
+    "biz_code": "INTENT_CHITCHAT_1983470980127633410",
+    "input_json": null,
+    "sys.files": [],
+    "sys.user_id": "LP3GPKQM8YYY5G",
+    "sys.app_id": "cec5e67c-fcdd-472b-81bb-e8bb4b1db5fa",
+    "sys.workflow_id": "24841e01-31e6-4588-94cb-48bb32505716",
+    "sys.workflow_run_id": "b465f4b1-0c32-4740-bcda-76372c81c03a"
+}
 
     try:
         resp = requests.post(url, headers=headers, json=payload, stream=True)

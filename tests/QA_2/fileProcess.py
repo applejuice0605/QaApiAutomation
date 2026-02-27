@@ -124,21 +124,40 @@ class FileProcess:
 
     @staticmethod
     def save_result_temp(index, df, output_file):
-        # 每处理3条保存一次进度
-        if (index + 1) % 3 == 0:
-            # 保存到临时文件
-            temp_file = f"temp_{output_file}"
-            df.to_excel(temp_file, index=False)
+        try:
+            # 每处理3条保存一次进度
+            if (index + 1) % 3 == 0:
+                # 使用不同的临时文件名
+                temp_file = os.path.splitext(output_file)[0] + "_temp" + os.path.splitext(output_file)[1]
 
-            # 格式化临时文件
-            if FileProcess.format_excel(temp_file):
-                # 重命名为最终文件
-                if os.path.exists(output_file):
-                    os.remove(output_file)
-                os.rename(temp_file, output_file)
-                print(f"已保存格式化进度到 {output_file}")
-            else:
-                print("格式化失败，保留未格式化文件")
+                # 确保临时文件不存在
+                if os.path.exists(temp_file):
+                    os.remove(temp_file)
+
+                # 保存到临时文件
+                df.to_excel(temp_file, index=False)
+                print(f"已保存临时文件到: {temp_file}")
+
+                # 格式化临时文件
+                if FileProcess.format_excel(temp_file):
+                    # 确保最终文件不存在
+                    if os.path.exists(output_file):
+                        os.remove(output_file)
+
+                    # 重命名为最终文件
+                    os.rename(temp_file, output_file)
+                    print(f"已保存格式化进度到 {output_file}")
+                else:
+                    print("格式化失败，保留未格式化文件")
+                    # 如果格式化失败，删除临时文件
+                    if os.path.exists(temp_file):
+                        os.remove(temp_file)
+        except Exception as e:
+            print(f"保存进度时发生错误: {str(e)}")
+            # 确保清理临时文件
+            if os.path.exists(temp_file):
+                os.remove(temp_file)
+            raise
 
     @staticmethod
     def write_to_excel(df, output_file):

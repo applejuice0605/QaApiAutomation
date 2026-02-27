@@ -20,8 +20,8 @@ def getAnswerFromDB_bytraceId(trace_id):
                       "AppleWebKit/537.36 (KHTML, like Gecko) "
                       "Chrome/137.0.0.0 Safari/537.36",
         "content-type": "application/x-www-form-urlencoded",
-        "cookie": "csrftoken=a2Ex5cOlJSNVUItSrl4xIhHX4CWmQtXIXLhEiyilOMR2liIMzE42NDoQqpQqolnz; sessionid=gu6r7g035hz6mf4g5a0ho4taufwa79gu",
-        "x-csrftoken": "a2Ex5cOlJSNVUItSrl4xIhHX4CWmQtXIXLhEiyilOMR2liIMzE42NDoQqpQqolnz"
+        "cookie": "csrftoken=EEAEDHm55KfMrKshPvHsHskULEiH3hQOOdXHKan4vpTgOtyyai0R0xmIEN36xyik; sessionid=fnpwm2s5h3qo99l38e1blq6vg57pz5su",
+        "x-csrftoken": "EEAEDHm55KfMrKshPvHsHskULEiH3hQOOdXHKan4vpTgOtyyai0R0xmIEN36xyik"
     }
     if type(trace_id) != str:
         trace_id = str(trace_id)
@@ -78,6 +78,7 @@ def chat_dify_llm(base_url: str, app_id: str, system: str, query: str, token):
 
     payload = {"inputs": {"user": query, "system": system}, "files": []}
 
+    print(url)
     try:
         resp = requests.post(url, headers=headers, json=payload, stream=True)
         resp.raise_for_status()
@@ -86,6 +87,7 @@ def chat_dify_llm(base_url: str, app_id: str, system: str, query: str, token):
         for line in resp.iter_lines():
             if line:
                 decoded_line = line.decode('utf-8').strip()
+                print(decoded_line)
                 if decoded_line.startswith("data: "):
                     event_data = decoded_line[6:]  # 去掉 "data: "
                     try:
@@ -101,6 +103,7 @@ def chat_dify_llm(base_url: str, app_id: str, system: str, query: str, token):
             return final_answer
         else:
             print("No valid answer found in SSE stream.")
+            print(resp)
             return None
 
     except requests.RequestException as e:
@@ -296,6 +299,14 @@ def chat_chatlow(base_url: str, app_id: str, userInfo: Dict[str, Any], query: st
                             elif event_json.get("data", {}).get("node_id") == '1758099536484':  # 问题重写
                                 question_rewrite_before_llm_reply = event_json.get("data", {}).get("outputs", {}).get("text")
                             # 6. 输出LLM回复结果（进入LLM回复后）
+                            elif event_json.get("data", {}).get("node_id") == '1758094431616':    # LLM闲聊
+                                llm_reply = event_json.get("data", {}).get("outputs", {}).get("text")
+                            elif event_json.get("data", {}).get("node_id") == '1758276073214':    # 非Workshop
+                                llm_reply = event_json.get("data", {}).get("outputs", {}).get("text")
+                            elif event_json.get("data", {}).get("node_id") == '1758277040755':    # workshop
+                                llm_reply = event_json.get("data", {}).get("outputs", {}).get("text")
+
+
                             elif event_json.get("data", {}).get("node_id") == '1758187502116':    # (LLM回复) SMARTFINA RAG - WORKFLOW - V2
                                 llm_reply = event_json.get("data", {}).get("outputs", {}).get("text")
 

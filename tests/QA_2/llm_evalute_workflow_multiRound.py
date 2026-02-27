@@ -8,6 +8,7 @@ from openpyxl import load_workbook
 from openpyxl.styles import Alignment
 from openpyxl.utils import get_column_letter
 from config import *
+from tests.QA_2.util.llmEvaHandler import evalsite_answer_withStandAns
 
 
 base_url = sit_base_url
@@ -15,8 +16,19 @@ email = sit_email
 password =sit_password
 workflow_app_id =sit_workflow_app_id
 llm_app_id = sit_llm_app_id
-webhook_url = sit_webhook_url
+webhook_url = uat_webhook_url
 wa_id = whatsapp_id
+
+env = 'sit'
+base_url = sit_base_url
+email = sit_email
+password =sit_password
+workflow_app_id = sit_workflow_app_id
+llm_app_id = sit_llm_app_id
+chat_flow_id = sit_sf_v2
+session_id = 'SN00OQUB02Z0000000041'
+domain = prod_domain
+user_info = sit_user_info
 
 
 # 登录函数获取token
@@ -164,70 +176,74 @@ def chat_workflow(query: str, access_token:str) -> tuple[Any | None, Any | None,
         return None
 
 # 评估答案函数
-def evaluate_answer(question: str, answer: str,token:str) -> str:
+def evaluate_answer(question: str, llm_answer: str, right_answer: str, token:str) -> str:
             # 负责严格评估AI客服系统的多轮/单轮对话的每个问题对应的回答质量。
             user_prompt = f"""
-                你是一个专业的保险行业专家，负责严格评估AI客服系统的回答质量。请根据以下标准对模型回答进行1-10分的评分：
-
-                评分标准及权重：
-                1. 相关性（40%）：回答与用户问题和你的认识关联程度（首要评分项）
-                2. 准确性（30%）：回答内容是否准确无误和语言一致性
-                3. 完整性（20%）：是否涵盖标你的认识的关键信息点
-                4. 清晰性（10%）：表达是否清晰易懂
-
-                相关性分级标准（细化版）：
-                - 完全相关(9-10分)：100%覆盖问题核心，与你的认识完全一致，且语言一致
-                - 大部分相关(7-8分)：覆盖主要问题点(≥70%)，与你的认识基本一致，且语言一致
-                - 部分相关(5-6分)：涉及部分问题点(30%-69%)，与你的认识有部分偏离，且语言一致
-                - 小部分相关(3-4分)：仅涉及边缘问题点(<30%)，与你的认识明显偏离
-                - 不相关(1-2分)：完全偏离问题和你认识主题
-
-                强制规则：
-                1. 如判定为不相关(is_relevant=false)，overall_score不得超过2分
-                2. 相关性评分必须严格参照分级标准执行
-
-                评分说明：
-                - 9-10分：完全相关且专业准确，信息完整清晰，且语言一致
-                - 7-8分：大部分相关且基本准确，主要信息完整，且语言一致
-                - 5-6分：部分相关或有少量错误，缺失重要信息
-                - 3-4分：小部分相关或有多处错误，信息严重不全
-                - 1-2分：完全不相关或完全错误
-
-                用户问题：
-                {question}
-
-                待评估的模型回答：
-                {answer}
-
-                评估流程：
-                1. 首先严格评估相关性等级
-                2. 对比你的认识检查准确性和完整性
-                3. 根据权重计算总分
-                4. 应用强制规则调整
-
-                请输出严格JSON格式结果：
-                {{
-                    "overall_score": 6,
-                    "relevance_level": "部分相关",  // [完全相关|大部分相关|部分相关|小部分相关|不相关]
-                    "relevance_score": 5,
-                    "accuracy_score": 6,
-                    "completeness_score": 5,
-                    "clarity_score": 7,
-                    "question": "用户的问题",
-                    "detailed_feedback": "具体指出相关性和质量问题",
-                    "is_relevant": false,
-                    "missing_key_elements": ["标准答案关键点1", "关键点2"],
-                    "incorrect_elements": ["错误描述1", "错误描述2"],
-                    "irrelevant_content": ["无关内容1", "无关内容2"],
-                    "relevance_analysis": "详细说明相关性判定依据"
-                }}
-
-                特别注意：
-                1. 必须首先明确relevance_level和is_relevant
-                2. 不相关时总分强制≤2分
-                3. 所有评分项必须与relevance_level逻辑一致
-                4. 不得包含非JSON内容
-                5. 输出的value是中文
+                # Role
+                你是一名资深的保险专家，你的任务是对另一个AI模型（Gemini Flash）生成的答案进行严格、公正的质量评估。
+                
+                ## 评估背景
+                - **待评估的问题：** “{question}”
+                - **待评估的答案（来自被测试模型如Gemini Flash）：** “{llm_answer}”
+                - **标准答案（如有，请提供）：** “{right_answer}”
+                
+                ## 核心指令
+                请根据是否提供了“标准答案”来决定评估模式：
+                - **【模式一：客观比对模式】**：如果提供了明确的标准答案，请严格比对待评估答案与标准答案的一致性。
+                - **【模式二：主观评估模式】**：如果未提供标准答案（标注为‘无’），请基于通用高质量回答标准进行评估。
+                
+                ## 评估流程与标准
+                               
+                ### 【模式一：客观比对模式】（当有标准答案时）
+                请从以下三个维度评估待评估答案与标准答案的吻合度（总分100分）：
+                - **相关性 (30分)**：答案是否直接针对问题，是否答非所问？
+                - **准确性 (50分)**：答案中的事实、数据、概念是否与标准答案完全一致？是否存在错误？
+                - **完整性 (20分)**：是否涵盖了标准答案中的所有关键要点？是否有重大遗漏？
+                
+                ### 【模式二：主观评估模式】（当无标准答案时）
+                从以下五个核心维度对上述答案进行逐一分析和评分（每个维度满分20分，总分100分）。
+                - **a. 事实准确性与专业性 (20分)**
+                  - 答案中的保险术语（如免赔额、现金价值、受益人、责任免除等）使用是否准确？
+                  - 所述保险知识、原理、法律法规（如《保险法》相关原则）是否正确？
+                  - 是否存在事实性错误或过时信息？
+                - **b. 逻辑严谨性与完整性 (20分)**
+                  - 推理过程是否清晰、有逻辑？能否清晰地解释“为什么”？
+                  - 是否涵盖了问题中所有关键点？是否考虑了不同的情景或例外情况（如免责条款）？
+                  - 答案结构是否完整（如：先解释概念，再分析案例，最后总结）？
+                - **c. 清晰度与可读性 (20分)**
+                  - 答案是否组织良好、易于理解？是否使用了分点、分段等格式？
+                  - 能否用通俗的语言向非专业人士解释复杂概念？
+                  - 语言是否流畅、简洁，没有不必要的赘述？
+                - **d. 谨慎性与负责任程度 (20分)**
+                  - 答案是否包含了必要的免责声明（如“具体请以保险合同条款为准”、“建议咨询专业的保险顾问或保险公司”）？
+                  - 是否避免了给出绝对的、可能构成医疗或法律建议的结论？
+                  - 态度是否中立、客观，不会误导用户？
+                - **e. 相关性与实用性 (20分)**
+                  - 答案是否直接回答了核心问题，没有答非所问或避重就轻？
+                  - 对于用户提出的问题，给出的信息是否具有实际操作价值？能否真正帮助用户解决疑惑或做出下一步决策？
+                                  
+                ## 输出格式要求
+                请严格按照以下格式组织你的最终评估报告：
+                
+                **【评估模式】**
+                [在此声明采用的评估模式：模式一（客观比对）或 模式二（主观评估）]
+                
+                **【总体评分】**
+                [总分] / 100
+                
+                **【分维度评分】**
+                - [维度1名称]: [得分] / [满分]
+                - [维度2名称]: [得分] / [满分]
+                - [维度3名称]: [得分] / [满分]
+                - [维度4名称（如有）]: [得分] / [满分]
+                
+                **【详细分析】**
+                - **优点：** 列出待评估答案中表现突出的部分。
+                - **缺点与错误：** 列出待评估答案中存在的具体问题、错误或遗漏。在模式一下，必须明确指出与标准答案不符之处。
+                - **改进建议：** 提供1-2句具体的优化建议。
+                
+                # 特别注意：
+                # 1. 用中文输出评估结果
                 """
             system_message = "你是语意判断专家"
             return chat_dify_llm(system_message, user_prompt, token)
@@ -298,8 +314,10 @@ def format_excel(file_path):
 
 # 主处理流程
 def process_excel(input_file, output_file):
+
+    resetSession()
     # 读取Excel文件
-    try:
+    try
         df = pd.read_excel(input_file)
         print(f"成功读取Excel文件，共{len(df)}条记录")
     except Exception as e:
@@ -323,7 +341,7 @@ def process_excel(input_file, output_file):
     round = 15
     for index, row in df.iloc[index_start:].iterrows():
         # 1. 重置Session
-        resetSession()
+        # resetSession()
 
         # if index % 16 == 0:
         #     token = login()
@@ -333,6 +351,8 @@ def process_excel(input_file, output_file):
 
         round += 1
         question = str(row['问题']).strip()
+        standard = str(row['标准答案']).strip()
+        # standard = ''
         if not question or question.lower() == 'nan' or question == '' or question == '-':
             continue
 
@@ -385,21 +405,31 @@ def process_excel(input_file, output_file):
 
             print("trace_id:", trace_id)
             # 2.4 请求数据库，查询聊天记录
-            if trace_id is not None:
-                print(step_index)
-                # 休眠5s
-                sleep(10)
-                for i in range(1,5):
-                    answer = getAnswerFromDB_bytraceId(trace_id)
-                    # 如果answer 不以"在数据库中没有找到数据"结尾，跳出循环
-                    if answer.find('在数据库中没有找到数据') == -1:
-                        break
-                    else:
-                        i += 1
-            else:
-                # 处理 None 的情况，例如抛出异常或返回默认值
-                answer = str(step_index) + '. ' + trace_id + '\n'
-                # raise ValueError("webhook 返回了 None")
+            answer = '在数据库中没有找到数据'
+            print(answer.find('在数据库中没有找到数据') != -1)
+            while answer.find('在数据库中没有找到数据') != -1:
+                answer = getAnswerFromDB_bytraceId(trace_id)
+                print("answer:", answer)
+                if answer is not None:
+                    print(answer.find('在数据库中没有找到数据') != -1)
+                    sleep(2)
+                else:
+                    answer = '在数据库中没有找到数据'
+            # if trace_id is not None:
+            #     print(step_index)
+            #     # 休眠5s
+            #     sleep(20)
+            #     for i in range(1,5):
+            #         answer = getAnswerFromDB_bytraceId(trace_id)
+            #         # 如果answer 不以"在数据库中没有找到数据"结尾，跳出循环
+            #         if answer.find('在数据库中没有找到数据') == -1:
+            #             break
+            #         else:
+            #             i += 1
+            # else:
+            #     # 处理 None 的情况，例如抛出异常或返回默认值
+            #     answer = str(step_index) + '. ' + trace_id + '\n'
+            #     # raise ValueError("webhook 返回了 None")
 
             print(f"工作流的回答:\n {answer}")
             output_chatlog += f"Bot: {answer}\n"
@@ -421,16 +451,19 @@ def process_excel(input_file, output_file):
         #     看是否有用知识库的内容回答问题
         #     是的话，给出引用的文件和内容
         #     再用通用标准评分
-        evaluation = evaluate_answer(question, output_chatlog, token)
-        if not evaluation:
-            print(f"评估答案失败，跳过问题: {question}")
-            continue
-        print(f"评测结果: {evaluation}")
+        # evaluation = evalsite_answer_withStandAns(base_url=base_url, app_id=llm_app_id, token=token, question=step, llm_answer=answer, right_answer=standard)
+        # if not evaluation:
+        #     print(f"评估答案失败，跳过问题: {question}")
+        #     continue
+        # print(f"评测结果: {evaluation}")
         # 更新DataFrame
+        print("更新dataframe")
+        print("output_answer:{output_answer}", output_answer)
+        # print("evaluation:{evaluation}", evaluation)
         df.at[index, '答案'] = output_answer
         # df.at[index, 'question_classifier'] = output_knowledge_retrieval
         # df.at[index, 'knowledge_retrieval'] = output_question_classifier
-        df.at[index, '评估结果'] = evaluation
+        # df.at[index, '评估结果'] = evaluation
 
 
         # 每处理3条保存一次进度
@@ -517,7 +550,7 @@ def request_webhook(msg_body):
                                         "profile": {
                                             "name": "nora 2号"
                                         },
-                                        "wa_id": "8619830441461"
+                                        "wa_id": "8613434915136"
                                     }
                                 ],
                                 "messages": [
@@ -561,8 +594,8 @@ def getAnswerFromDB_bytraceId(trace_id):
                       "AppleWebKit/537.36 (KHTML, like Gecko) "
                       "Chrome/137.0.0.0 Safari/537.36",
         "content-type": "application/x-www-form-urlencoded",
-        "cookie": "csrftoken=a2Ex5cOlJSNVUItSrl4xIhHX4CWmQtXIXLhEiyilOMR2liIMzE42NDoQqpQqolnz; sessionid=gu6r7g035hz6mf4g5a0ho4taufwa79gu",
-        "x-csrftoken": "a2Ex5cOlJSNVUItSrl4xIhHX4CWmQtXIXLhEiyilOMR2liIMzE42NDoQqpQqolnz"
+        "cookie": "__adroll_fpc=6be6a387174f9054dd65546054f7611d-1760584004092; _fbp=fb.1.1760584006506.534717559103612633; csrftoken=VoKNJytm76En0OquInL7zBqtvZIHjKhv7uRgSwMEDuuZs9EJRhpY5CxsvIrSwXAL; sessionid=759b25ydip8mntf00xn0bc0loi9lty12",
+        "x-csrftoken": "VoKNJytm76En0OquInL7zBqtvZIHjKhv7uRgSwMEDuuZs9EJRhpY5CxsvIrSwXAL"
     }
     if type(trace_id) != str:
         trace_id = str(trace_id)
@@ -573,7 +606,7 @@ def getAnswerFromDB_bytraceId(trace_id):
 
     # TODO：动态获取messgae from的wa_id, wa_token，business_account_id
     payload = {
-        "instance_name" : "SG_SIT_MYSQL8_RW",
+        "instance_name" : "ID_UAT_CORE_MYSQL8.0",
         "db_name" : "message",
         "schema_name" : None,
         "tb_name": None,
@@ -594,6 +627,8 @@ def getAnswerFromDB_bytraceId(trace_id):
 
     if resp.json()['data']['affected_rows'] == 0:
         answer = trace_id + "在数据库中没有找到数据"
+    elif len(resp.json()['data']['rows'][0]) == 0:
+        answer = trace_id + "在数据库中没有找到数据"
     else:
         answer = resp.json()['data']['rows'][0][0]
 
@@ -610,7 +645,9 @@ if __name__ == "__main__":
     # output_excel = "output_FQA_multi-round.xlsx"  # 输出文件名
     # input_excel = "question_EN.xlsx"  # 输入文件名
     # output_excel = "output_EN.xlsx"  # 输出文件名
-    input_excel = "Fina_Day_ToQA.xlsx"  # 输入文件名
-    output_excel = "A_Fina_Day_ToQA.xlsx"  # 输出文件名
+    input_excel = "ID_SF_BatchTest_webhook_1105.xlsx"  # 输入文件名
+    output_excel = "A_ID_SF_BatchTest_webhook_1107_01.xlsx.xlsx"  # 输出文件名
+    # input_excel = "Q_温度.xlsx"  # 输入文件名
+    # output_excel = "A_温度_0921_3.xlsx"  # 输出文件名
     process_excel(input_excel, output_excel)
 

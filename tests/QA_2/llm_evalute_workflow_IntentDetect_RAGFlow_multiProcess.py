@@ -63,7 +63,7 @@ def login() -> str:
     return resp.json()["data"]["access_token"]
 
 
-def multi_process(boot_dir: str, question_dir: str, answer_dir: str, num_processes: int = 2):
+def multi_process(boot_dir: str, question_dir: str, answer_dir: str, num_processes: int = 3):
     print("开始多线程")
     input_dir = os.path.join(boot_dir, question_dir)
     print(input_dir)
@@ -96,6 +96,9 @@ def process_single_file(args):
 
     input_file = os.path.join(input_dir, fileName)
     output_file = os.path.join(output_dir, fileName)
+    temp_output_file = os.path.join(output_dir, "temp_" + fileName)
+    print(input_file)
+    print(output_file)
 
     # 读取文件
     df = FileProcess.real_excel(input_file)
@@ -195,7 +198,7 @@ def process_single_file(args):
         print("="*200)
 
         # 每处理3条保存一次进度
-        FileProcess.save_result_temp(index=index, df=df, output_file=output_file)
+        FileProcess.save_result_temp(index=index, df=df, output_file=temp_output_file)
 
         # 最终保存结果
     FileProcess.write_to_excel(df, output_file)

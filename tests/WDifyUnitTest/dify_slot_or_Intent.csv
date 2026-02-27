@@ -1,0 +1,141 @@
+维度,Question
+Dimension: 提供本意图槽位数据,"Saya mau langsung pesan, mobil, upload STNK dan KTP, coverage: Comprehensive."
+Dimension: 提供本意图槽位数据,Quick order: Car. Saya upload BSTK (baru) dan KTP. Coverage TLO.
+Dimension: 提供本意图槽位数据,"I want to order directly — product: Motor, upload KTP and bike photo, coverage: TLO."
+Dimension: 提供本意图槽位数据,"Quiero order langsung: Car, saya sudah siap upload STNK, KTP, foto dashboard."
+Dimension: 提供非本意图的槽位数据,"I want to order directly, vehicle_brand: Toyota, vehicle_model: Avanza."
+Dimension: 提供非本意图的槽位数据,"Saya mau quick order, quote_id RFQ123456."
+Dimension: 提供非本意图的槽位数据,Quick order car — location: Surabaya.
+Dimension: 提供不常见的槽位数据,"Order cepat mobil, geo_location: {latitude:-6.2,longitude:106.8}, upload STNK."
+Dimension: 提供不常见的槽位数据,"I want to quick order, workshop_authorized: true, upload KTP."
+Dimension: 携带描述提供本意图槽位数据,"Mobil saya bekas, nomor polisi tertera di STNK, saya akan upload STNK, foto depan-belakang dashboard, dan KTP — coverage: Comprehensive."
+Dimension: 携带描述提供本意图槽位数据,"My car is new, I have BSTK and my KTP ready to upload, choose Car and Comprehensive."
+Dimension: 单意图切换到T / S（用户切换到 Claim）,"Saya mau order cepat. Oh btw, bagaimana cara klaim jika terjadi kecelakaan?"
+Dimension: 单意图切换到T / S（用户切换到 Payment）,"Quick order car, also how can I pay later?"
+Dimension: 提供本意图槽位数据 + 意图切换（下单转支付）,"Order langsung Car, upload STNK dan KTP. Setelah itu saya mau bayar via credit card."
+Dimension: 提供本意图槽位数据 + 意图切换（下单转邀请）,"I want to quick order motor, upload KTP. Also I want to invite my friend to join."
+Dimension: 提供非本意图的槽位数据 + 意图切换,"Quick order car, vehicle_brand: Honda. By the way, I need help registering as agent."
+Dimension: 提供不常见的槽位数据 + 意图切换,"Saya upload geo_location, workshop_authorized false, dan mau klaim selanjutnya."
+Dimension: 携带描述提供本意图槽位数据 + 意图切换,"Mobil lama, STNK ada, dashboard foto lengkap. Saya mau order cepat, lalu minta panduan endorsement (ganti plat)."
+Dimension: 携带描述提供非本意图的槽位数据 + 意图切换,"Saya upload STNK dan foto mobil, juga ingin tahu komisi partner untuk produk ini."
+Dimension: 描述提供非本意图的槽位数据,"Mobil saya Avanza tahun 2020, saya belum siap upload dokumen, mau tanya benefit produk dulu."
+Dimension: 意图切换携带槽位数据,I want to switch to claim process — claim_type: Accident; but I also uploaded STNK and KTP.
+Dimension: 咨询Fina->不携带槽位数据,Apa itu Fina?
+Dimension: 咨询Fina->携带槽位数据,What services does Fina provide for car insurance?
+Dimension: 质疑Fina输出/指出Fina有问题,Your link expired.
+Dimension: 质疑Fina输出/指出Fina有问题（本地语言）,Kenapa jawabannya salah?
+Dimension: 指令-skip,skip
+Dimension: 指令-skip（印尼语）,Lewati
+Dimension: 指令-place another order,place another order
+Dimension: 指令-place another order（印尼语）,Buat transaksi baru
+Dimension: Complaint Fina — 为什么你没有回复,Kenapa kamu belum balas pesan saya?
+Dimension: Complaint Fina — 回复慢,Why are you so slow to respond?
+Dimension: Complaint Fina — 何时回复,你什么时候才会回复我？
+Dimension: 提供本意图槽位数据（仅 coverage）,Quick order Car. coverage_type: TLO. I will upload STNK.
+Dimension: 提供本意图槽位数据（仅 upload_doc）,"I want quick order motor — upload KTP.jpg, bike_front.png."
+Dimension: 提供非本意图槽位数据（payment_method）,Order cepat car — payment_method: Bank transfer.
+Dimension: 提供非本意图槽位数据（quote_id）,I want to quick order and reference RFQ123456.
+Dimension: 提供不常见的槽位数据（clause_type）,"Saya mau order cepat, dan tanya clause_type: exclusion."
+Dimension: 携带描述提供本意图槽位数据（详述文件要求）,"Mobil baru, BSTK saya jelas ada timestamp dan GPS; silakan pilih Car dan Comprehensive, saya akan upload sekarang."
+Dimension: 单意图切换到T / S（找人工）,I want quick order but connect me to human agent.
+Dimension: 单意图切换到T / S（reset）,I want to order. Also reset session.
+Dimension: 提供本意图槽位数据 + 非本意图槽位（vehicle_year）,"Quick order Car, upload STNK, vehicle_year 2022."
+Dimension: 提供本意图槽位数据 + 不常见槽位（risk_factor）,"Order cepat mobil, upload KTP. Risk_factor: vehicle damage history."
+Dimension: 提供非本意图槽位数据 + 不常见槽位,"I want to order car but also check workshop geo_location {latitude:-6.21,longitude:106.8}."
+Dimension: 携带描述提供非本意图槽位数据,"Saya mau pesan cepat tapi oleh karena itu, saya juga mau tahu product_name: Comprehensive — apa bedanya?"
+Dimension: 意图切换携带槽位数据（从 QuickOrder 到 Withdrawal）,"Quick order motor, upload KTP. Also I want withdrawal amount: 500000."
+Dimension: 咨询Fina（带槽位 - insurance_company）,Does Fina work with insurance_company MSIG?
+Dimension: 咨询Fina（带槽位 - product_name）,"Fina, is the product_name 'Comprehensive' available for my car?"
+Dimension: 质疑Fina输出/指出Fina有问题（链接）,Your ordering link gives an error.
+Dimension: 指令-skip（英文）,Skip this step
+Dimension: 指令-place another order（英文）,Start a new transaction
+Dimension: Complaint Fina（why reply slow）印尼语,Kenapa proses unggah dokumen lama banget?
+Dimension: 提供本意图槽位数据（带文件格式说明）,Quick order Car. I'll upload STNK.jpg (JPEG) and KTP.png (PNG). Coverage: Comprehensive.
+Dimension: 提供本意图槽位数据（BSTK场景）,"Mobil baru, saya hanya punya BSTK dan KTP, product: Car, coverage: TLO."
+Dimension: 提供本意图槽位数据（旧车场景）,"Mobil lama, upload STNK + foto depan belakang dashboard + KTP, pilih Car."
+Dimension: 提供非本意图槽位数据（endorsement_type）,Quick order but I also want to do endorsement_type: Address change later.
+Dimension: 提供不常见的槽位数据（fusetopic）,I have a question about Fusetopic: Fuse Pro — do you support it?
+Dimension: 携带描述提供本意图槽位数据（详细照片要求）,"Saya akan upload foto mobil depan, belakang, kiri, kanan dengan timestamp & GPS. Quick order Car, coverage Comprehensive."
+Dimension: 单意图切换到T / S（用户要帮助菜单）,I want to order quick. Also show help menu.
+Dimension: 提供本意图槽位数据（含 file types）,"Order cepat mobil — upload_doc: STNK.jpeg, KTP.jpeg."
+Dimension: 提供非本意图的槽位数据（payment_method: e-commerce）,"Quick order Car, payment_method: E-commerce payment."
+Dimension: 提供不常见槽位数据（workshop_authorized true）,"Saya mau pesan dan workshop_authorized:true, bagaimana proses klaimnya?"
+Dimension: 携带描述提供本意图槽位数据 + 意图切换（下单后询问T&C）,"Uploading STNK and KTP for quick order Car. After that, explain policy T&C duration."
+Dimension: 提供非本意图槽位数据（address）,"I want to quick order, my workshop address is Jl. K.H. Mas Mansyur No.Kav. 121."
+Dimension: 描述提供非本意图的槽位数据（vehicle_series）,"Mobil saya tipe E A, tapi saya belum siap upload dokumen sekarang."
+Dimension: 意图切换携带槽位数据（order -> quote comparison）,"Quick order Car, upload STNK; now compare with Product A, Product B."
+Dimension: 咨询Fina->不携带槽位数据（印尼语）,Bagaimana Fina bantu proses klaim?
+Dimension: 咨询Fina->携带槽位数据（英文）,"Fina, can you check if product 'Comprehensive' covers theft?"
+Dimension: 质疑Fina输出/指出Fina有问题（未识别KTP）,You didn't detect my KTP photo.
+Dimension: 指令-skip（用户在收集材料时发出）,Lewati bahan yg kurang
+Dimension: 指令-place another order（用户完成后）,Buat transaksi baru sekarang
+Dimension: Complaint Fina（没收到确认）,I uploaded STNK but didn't get confirmation.
+Dimension: 提供本意图槽位数据（motor，新车/BSTK）,"Quick order Moto — BSTK + KTP, coverage Comprehensive."
+Dimension: 提供非本意图槽位数据（clause_type: duration）,"I want to order car, and what is clause_type: duration for this product?"
+Dimension: 提供不常见槽位数据（risk_factor: age）,"Quick order, risk_factor: age 60 — is that accepted?"
+Dimension: 携带描述提供本意图槽位数据（中文）,我要直接下单，车辆为旧车，会上传STNK、前后左右车照和KTP，险种：全保（Comprehensive）。
+Dimension: 单意图切换到T / S（用户切换到 workshop查询）,Quick order Car; where is the nearest workshop?
+Dimension: 提供本意图槽位数据 + 非本意图槽位（vehicle_model）,"Order langsung: Car, saya siap upload STNK. vehicle_model: Civic."
+Dimension: 提供本意图槽位数据（带说明：照片必须有timestamp）,"I will upload car photos with timestamp and GPS. Quick order Car, upload_doc: front.jpg, back.jpg."
+Dimension: 提供非本意图槽位数据（process_type）,I want quick order and also guide to process_type: submit_claim.
+Dimension: 提供不常见的槽位数据（insurance_company）,Quick order car — insurance_company: MSIG preferred.
+Dimension: 携带描述提供本意图槽位数据（包含免责声明）,"Saya mau langsung order, tapi ingatkan saya: foto harus ada timestamp & GPS sebelum upload STNK dan KTP."
+Dimension: 意图切换携带槽位数据（从下单切换到 Invite）,"Quick order motor, upload KTP. Invite friend: phone 08123456789."
+Dimension: 咨询Fina->携带槽位数据（中文）,Fina，这个Comprehensive包含盗抢吗？我的车是Honda Avanza 2020。
+Dimension: 质疑Fina输出/指出Fina有问题（回复延迟）,Why did you wait one minute to reply?
+Dimension: 指令-skip（英文短句）,Skip upload
+Dimension: 指令-place another order（印尼语）,Buat transaksi baru dong
+Dimension: Complaint Fina（上传失败）,"Upload failed, why?"
+Dimension: 提供本意图槽位数据（包含 file type note: not PDF）,Quick order Car: uploading STNK.jpg and NOT pdf. Coverage: Comprehensive.
+Dimension: 提供非本意图的槽位数据（payment status）,I want quick order and check payment status.
+Dimension: 提供不常见的槽位数据（workshop geo_location）,"Order cepat mobil, workshop geo_location {latitude:-6.22,longitude:106.82}."
+Dimension: 携带描述提供本意图槽位数据 + 意图切换（下单并想查看Quote List）,"I'll upload STNK and KTP now for quick order Car, then show my Quote List."
+Dimension: 描述提供非本意图的槽位数据（claim_type）,I might claim for theft in future — claim_type: Theft. For now quick order car.
+Dimension: 意图切换携带槽位数据（quick order -> withdrawal）,"Quick order complete, now I want withdrawal amount 250000."
+Dimension: 咨询Fina->不携带槽位数据（英文）,How do I contact Fina support?
+Dimension: 咨询Fina->携带槽位数据（英文）,"Fina, can you tell me the partner agreement T&C for agent recruitment?"
+Dimension: 质疑Fina输出/指出Fina有问题（识别错意图）,"You misinterpreted my intent — I wanted to order, not claim."
+Dimension: 指令-skip（用户在系统提示后）,"Lewati aja, saya lanjut tanpa KTP"
+Dimension: 指令-place another order（英文）,Make another transaction
+Dimension: Complaint Fina（为什么没通知）,Kenapa saya nggak dapat notifikasi setelah upload?
+Dimension: 提供本意图槽位数据（带 vehicle_series）,"Quick order Car — vehicle_series: 2WD S A; upload STNK, KTP, coverage Comprehensive."
+Dimension: 提供非本意图槽位数据（compared_products）,"I want quick order and compare compared_products: Product A, Product B."
+Dimension: 提供不常见的槽位数据（clause_type: limitation）,"Order cepat, tolong jelaskan clause_type: limitation untuk paket Comprehensive."
+Dimension: 携带描述提供本意图槽位数据（含时间说明）,"Saya akan upload sekarang jam 14:00 dengan gps aktif. Quick order Car, coverage TLO."
+Dimension: 单意图切换到T / S（用户问成长模型规则）,I want to quick order motor. Also explain Growth Model T&C.
+Dimension: 提供本意图槽位数据（上传多文件）,"Order langsung: Car. Upload files: STNK.jpg, foto depan.jpg, foto belakang.jpg, KTP.jpg."
+Dimension: 提供非本意图槽位数据（payment_method: Credit card）,Quick order Car — payment_method: Credit card.
+Dimension: 提供不常见的槽位数据（workshop_authorized false + 描述）,Saya upload foto workshop tapi workshop_authorized:false. Apa beda klaimnya?
+Dimension: 携带描述提供本意图槽位数据 + 意图切换（下单并想看T&C）,Uploading STNK & KTP for quick order Car; afterwards show me policy T&C exclusion list.
+Dimension: 描述提供非本意图的槽位数据（location）,"Saya di DKI Jakarta, mau order cepat mobil."
+Dimension: 意图切换携带槽位数据（order -> get quote）,I want quick order Car but also get a quote comparison for Product A.
+Dimension: 咨询Fina->不携带槽位数据（印尼语）,Apa syarat jadi agen di Fina?
+Dimension: 咨询Fina->携带槽位数据（含联系人）,"Fina, apakah kalian terintegrasi dengan MSIG dan produk Comprehensive?"
+Dimension: 质疑Fina输出/指出Fina有问题（文件读取失败）,System says it cannot read my file.
+Dimension: 指令-skip（用户在未识别KTP时）,skip KTP
+Dimension: 指令-place another order（用户在完成后提出）,Saya mau buat transaksi baru setelah ini.
+Dimension: Complaint Fina（为什么要等待一分钟）,Kenapa harus nunggu satu menit setelah upload?
+Dimension: 提供本意图槽位数据（含 vehicle_brand）,"Quick order Car — vehicle_brand: Suzuki, upload STNK."
+Dimension: 提供非本意图槽位数据（process_type: apply_for_insurance）,I want quick order and guidance on process_type: apply_for_insurance.
+Dimension: 提供不常见的槽位数据（clause_type: cancellation）,"Order cepat, jelaskan clause_type: cancellation untuk paket ini."
+Dimension: 携带描述提供本意图槽位数据（照片缺陷说明）,Saya punya STNK tapi fotonya buram kadang; tetap mau upload untuk quick order Car.
+Dimension: 单意图切换到T / S（help 菜单）,Quick order motor. Show help.
+Dimension: 提供本意图槽位数据 + 意图切换（order -> invite）,"Order cepat Car, upload KTP. Also invite: email friend@gmail.com."
+Dimension: 提供非本意图槽位数据 + 意图切换（order + endorsement）,"I want quick order, and then do endorsement_type: License plate change."
+Dimension: 描述提供非本意图的槽位数据（quote_id描述）,"Saya punya RFQ123456 dari sebelumnya, mau pakai itu untuk order cepat."
+Dimension: 咨询Fina->携带槽位数据（中文）,Fina，我上传了STNK，但系统提示无法识别，这是为什么？
+Dimension: 质疑Fina输出/指出Fina有问题（意图识别错误）,You kept asking for KTP but I already uploaded it.
+Dimension: 指令-skip（用户放弃额外文件）,Skip the dashboard photos.
+Dimension: 指令-place another order（中文）,下一个订单
+Dimension: Complaint Fina（等待进度）,Why hasn't my order link been generated yet?
+Dimension: 提供本意图槽位数据（带语言混合）,"Quick order Car — saya upload STNK & KTP, coverage Comprehensive, thanks."
+Dimension: 提供非本意图槽位数据（vehicle_year + vehicle_brand）,"I want to quick order: vehicle_brand Toyota, vehicle_year 2020."
+Dimension: 提供不常见的槽位数据（risk_factor: pre-existing condition for life）,Quick order Life product? risk_factor: pre-existing condition — will it affect?
+Dimension: 携带描述提供本意图槽位数据（含免责声明多语言）,"Saya akan upload foto STNK (pastikan GPS & timestamp). Quick order Car, Coverage: TLO."
+Dimension: 单意图切换到T / S（end session）,I want to order quickly. End session.
+Dimension: 提供本意图槽位数据（用户直接只说 product_category）,Car
+Dimension: 提供非本意图槽位数据（claim_type in description）,I want to quick order Car but I'm worried about claim_type: Natural Disaster coverage.
+Dimension: 咨询Fina->不携带槽位数据（中文）,Fina 是什么公司？
+Dimension: 质疑Fina输出/指出Fina有问题（过期链接中文）,你的链接过期了。
+Dimension: 指令-skip（用户在系统提示要求GPS时）,Skip GPS requirement
+Dimension: Complaint Fina（用户催促）,"Please hurry, I need the order link now."

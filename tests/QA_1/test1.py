@@ -243,12 +243,12 @@ def process_single_file(args):
 
 
 def llm_evaluate(boot_dir: str, source_dir: str, tarrget_dir: str, app_id: str, token: str,
-                 base_url: str, suffix: str, email: str, password: str, num_processes: int = 4):
+                 base_url: str, suffix: str, email: str, password: str, num_processes: int = 2):
     input_dir = os.path.join(boot_dir, source_dir)
     file_names = [f for f in os.listdir(input_dir) if f.endswith('.json')]
 
     # 准备多进程参数
-    args_list = [(name, boot_dir, source_dir, tarrget_dir, app_id, token, base_url, suffix, email, password)
+    args_list = [(boot_dir, source_dir, tarrget_dir, app_id, token, base_url, suffix, email, password)
                  for name in file_names if name not in ["ETIQA CAR.json"]]
 
     # 使用多进程池处理文件
