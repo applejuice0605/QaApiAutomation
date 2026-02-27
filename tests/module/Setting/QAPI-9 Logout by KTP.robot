@@ -18,6 +18,7 @@ Test Teardown    Delete All Sessions
 
 *** Test Cases ***
 Logout by ktp
+    [Tags]    uat
 #    Given Login FusePro Success
     Given I have a whitelist account and have logined
     When Logout FusePro By Phone Number

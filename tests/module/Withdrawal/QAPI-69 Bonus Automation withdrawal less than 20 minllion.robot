@@ -15,6 +15,7 @@ ${withdrawalAmount}=  100000
 
 *** Test Cases ***
 Withdrawal Amount Less Than 20000000 Success
+    [Tags]    uat    
     Have logined
     Input Withdrawal Amount Less Than 20000000 And Send Withdrawal Application
 

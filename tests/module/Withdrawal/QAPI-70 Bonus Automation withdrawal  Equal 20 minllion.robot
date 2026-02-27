@@ -12,6 +12,7 @@ ${withdrawalAmount}=  20000000
 
 *** Test Cases ***
 Withdrawal Amount Equal 20000000 Success
+    [Tags]    uat
     Have logined
     Input Withdrawal Amount Equal 20000000 And Send Withdrawal Application
 

@@ -23,7 +23,7 @@ ${BODY_FILE_PATH}    Motor_PlaceOrderData.json
 ${isAdvancePremium}     0
 ${payerType}    2
 ${paymentScheme}    2
-${CouponCode}   PR00000727
+${CouponCode}   PR00000915
 ${paymentMethod}    GoPay
 
 

@@ -16,7 +16,7 @@ Test Teardown    Delete All Sessions
 
 *** Test Cases ***
 Withdrawal Amount Less Than 20000000 Success
-    [Tags]    uat   withdrawal  notUsed
+    [Tags]    notUsed
     Given I have logined
     Input Withdrawal Amount Less Than 20000000 And Send Withdrawal Application
 

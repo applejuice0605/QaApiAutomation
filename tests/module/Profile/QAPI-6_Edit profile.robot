@@ -18,7 +18,7 @@ Test Teardown    Delete All Sessions
 
 *** Test Cases ***
 Edit Profile Success
-    [Tags]  prod
+    [Tags]  prod    uat
     Given Setup Data Testing
     When I have logined
     Then Update Nickname And Address Fields In Edit Profile

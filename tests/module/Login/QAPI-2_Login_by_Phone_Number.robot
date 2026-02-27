@@ -21,7 +21,7 @@ ${loginMethod}    mobile
 
 *** Test Cases ***
 Login Success by Phone Number
-    [Tags]    uatAndprod    prod
+    [Tags]    uatAndprod    prod    uat
     Given I have a valid login account and password
     When I send a POST request to the byLogin API
     Then The response should contain the user's openid and tenantId

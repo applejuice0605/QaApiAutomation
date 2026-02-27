@@ -15,7 +15,7 @@ Test Teardown    Delete All Sessions
 
 *** Test Cases ***
 Edit Profile Success
-#    [Tags]  prod
+   [Tags]  uat
     Given Setup Data Testing
     When I have logined
     Then Change Password

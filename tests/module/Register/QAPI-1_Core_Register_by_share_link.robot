@@ -36,7 +36,7 @@ Test Teardown    Delete All Sessions
 
 *** Test Cases ***
 Core - Register by share link
-    [Tags]    uatAndprod
+    [Tags]    uatAndprod    uat
     Given I have a valid login account and password and a unregisted mobile number
     When I Click button Invite Friend
     Then The status code should be 200    ${jsonResult}[code]
@@ -153,7 +153,7 @@ I send a request to register by share link2
 
 
 I send a POST request to the Login API
-    ${response}    api_login.Send Request And Get Response Data    ${loginAccount}    ${password}    ${openId}    ${tenantId}
+    ${response}    api_login.Send Request And Get Response Data    ${loginAccount}    ${password}    ${openId}    ${tenantId}    loginMethod=MOBILE
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
 

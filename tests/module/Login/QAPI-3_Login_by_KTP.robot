@@ -20,7 +20,7 @@ ${loginMethod}    nationId
 
 *** Test Cases ***
 Login Success by KTP
-    [Tags]    uatAndprod    prod
+    [Tags]    uatAndprod    prod    uat
     Given I have a valid KTP and password
 #    When I send a POST request to the fuse_user_login API
 #    Then the response should contain the user's loginAccount

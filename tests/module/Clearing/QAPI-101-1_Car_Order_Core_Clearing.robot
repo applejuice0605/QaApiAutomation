@@ -72,19 +72,6 @@ Non-API_policyUnderwritingWorkflow_Approved
 
 *** Keywords ***
 Setup Data Testing
-    Log    ${BODY_FILE_PATH}
-    Log    ${env_vars}[DATA_BASEURL]
-    ${BODY_FILE_PATH}    Set Variable    ${env_vars}[DATA_BASEURL]${BODY_FILE_PATH}
-    Log    ${BODY_FILE_PATH}
-    ${AP_POSITIVE_DATA}=    Load JSON From File    ${BODY_FILE_PATH}
-    Set Test Variable    ${AP_POSITIVE_DATA}
-
-I have a whitelist account and have logined
-    ${token}=   login.Login to Application using mobile     ${env_vars}[FUSE_ACCOUNT]    ${env_vars}[FUSE_PASSWORD]
-    Set Test Variable    ${token}
-
-*** Keywords ***
-Setup Data Testing
     #1.加载下单的产品数据
     Log    ${ORDER_MSG_BODY_FILE_PATH}
     Log    ${env_vars}[DATA_BASEURL]
@@ -94,8 +81,16 @@ Setup Data Testing
     Set Test Variable    ${ORDER_MSG_AP_POSITIVE_DATA}
 
     #2.加载核保的json
+    Log    ${BODY_FILE_PATH}
+    Log    ${env_vars}[DATA_BASEURL]
+    ${BODY_FILE_PATH}    Set Variable    ${env_vars}[DATA_BASEURL]${BODY_FILE_PATH}
+    Log    ${BODY_FILE_PATH}
     ${AP_POSITIVE_DATA}=    Load JSON From File    ${BODY_FILE_PATH}    encoding=UTF-8
     Set Test Variable    ${AP_POSITIVE_DATA}
+
+I have a whitelist account and have logined
+    ${token}=   login.Login to Application using mobile     ${env_vars}[FUSE_ACCOUNT]    ${env_vars}[FUSE_PASSWORD]
+    Set Test Variable    ${token}
 
 
 

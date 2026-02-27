@@ -14,7 +14,7 @@ ${CheckAccamount}=  8123268988
 
 *** Test Cases ***
 Add Bank Account not meed the condition of API, status is failed
-    [Tags]
+    [Tags]    uat
     Given Have logined fusepro and boss
     Then Add Bank Account
     Then Check Bank Account Is Failed

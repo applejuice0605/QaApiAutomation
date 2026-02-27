@@ -50,7 +50,7 @@ the response should contain the user's loginAccount
     Set Test Variable    ${loginAccount}    ${jsonResult}[resultObj][accountId]
 
 I send a POST request to the byLogin API
-    ${response}    api_bylogin.Send Request And Get Response Data    ${loginAccount}    ${password}
+    ${response}    api_bylogin.Send Request And Get Response Data    ${loginAccount}    ${password}    loginMethod=EMAIL
 
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}
@@ -66,7 +66,7 @@ The response should contain the user's openid and tenantId
 
 
 I send a POST request to the Login API
-    ${response}    api_login.Send Request And Get Response Data    ${loginAccount}    ${password}    ${openId}    ${tenantId}
+    ${response}    api_login.Send Request And Get Response Data    ${loginAccount}    ${password}    ${openId}    ${tenantId}    loginMethod=EMAIL
 
     Set Test Variable    ${jsonResult}    ${response.json()}
     Log    ${jsonResult}

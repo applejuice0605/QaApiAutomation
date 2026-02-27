@@ -14,6 +14,7 @@ ${CheckAccamount}=  8123268987
 
 *** Test Cases ***
 Withdrawal Amount More Than 20000000 And Decline Success
+    [Tags]    uat
     Given Have logined fusepro and boss
     Then Input Withdrawal Amount More Than 20000000 And Send Withdrawal Application
     Then Confirm Manual Process And Get ManualId

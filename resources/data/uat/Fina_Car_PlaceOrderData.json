@@ -1,0 +1,707 @@
+{
+  "quotationBody": {
+    "bizSource": 5,
+    "categoryId": "49",
+    "coverageDataJson": {
+        "auditFlag": true,
+        "discountSwitch": true,
+        "express": 1,
+        "filterRawProductCode": "R_1140402001",
+        "mainInsuranceCompanyCode": "6603000933",
+        "mainInsuranceCompanyName": "PT Asuransi Simas Insurtech",
+        "mpCode": "M_1231649001",
+        "mpName": "SIMAS BASIC LIVE PHOTO",
+        "mpNameLocal": "SIMAS BASIC LIVE PHOTO",
+        "mpPlanCode": "MP_1231717001",
+        "mpPlanName": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE",
+        "mpPlanNameLocal": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE",
+        "productHeaderPicture": "fuse-id-core-prod-rw_images/20250807/35671817edd645c3a1cbaff2320a00b0.png",
+        "productHeaderPictureLocal": "fuse-id-core-prod-rw_images/20250807/9bd3b23d85254411b2eb02f3b0acd51c.png",
+        "productListPicture": "fuse-id-core-prod-rw_images/20250807/52f56ad316bf471ca6e54e623001ff5b.png",
+        "productListPictureLocal": "fuse-id-core-prod-rw_images/20250807/e1ba043c28364a9c9e20b25b0e57bd3d.png",
+        "productLs": [
+            {
+                "commissionInfo": {
+                    "mulitCommissionType": 0,
+                    "partnerCommissionAmount": 1819068,
+                    "partnerMatchCommissionRule": null,
+                    "partnerSpecialBonusAmount": 727627,
+                    "partnerSupportingFeeAmount": 0,
+                    "partnerCommissionIncomeTaxAmount": 45477,
+                    "partnerCommissionRate": 0,
+                    "partnerCommissionVatTaxAmount": 0,
+                    "partnerSpecialBonusIncomeTaxAmount": 18191,
+                    "partnerSpecialBonusRate": 0,
+                    "partnerSpecialBonusVatTaxAmount": 0,
+                    "partnerSupportingFeeIncomeTaxAmount": 0,
+                    "partnerSupportingFeeRate": 0,
+                    "partnerSupportingFeeVatTaxAmount": 0,
+                    "partnerUplineReferralRate": 0
+                },
+                "adminFee": 0,
+                "coverageLs": [
+                    {
+                        "bindCoverages": [
+                            
+                        ],
+                        "coverageCode": "CM_00012",
+                        "coverageFlag": 1,
+                        "coverageId": 600000692,
+                        "coverageName": "COMPREHENSIVE",
+                        "coverageNameLocal": "COMPREHENSIVE",
+                        "coverageRequired": 1,
+                        "coverageStandardCode": "PC_100023",
+                        "coverageTypeId": 1,
+                        "dutyDTOList": [
+                            {
+                                "coverageId": 600000692,
+                                "dutyCode": "D_00099",
+                                "dutyId": 1063,
+                                "dutyName": "Comprehensive",
+                                "dutyNameLocal": "Comprehensive",
+                                "dutyStandardCode": "PB_100001",
+                                "externalDutyCode": "COMPREHENSIVE",
+                                "insuredType": 0,
+                                "insuredUnit": 2,
+                                "planDutyId": 43834
+                            }
+                        ],
+                        "maxCoverageDiscount": 0,
+                        "minCoverageDiscount": 0,
+                        "planDutyId": 43834,
+                        "rawPlanId": 734,
+                        "vatRate": 0,
+                        "auditFlag": true,
+                        "commissionInfo": {
+                            "mulitCommissionType": 0,
+                            "partnerCommissionAmount": 1819068,
+                            "partnerCommissionRate": 0.25,
+                            "partnerMatchCommissionRule": [
+                                "Rule:19750"
+                            ],
+                            "partnerSpecialBonusAmount": 727627,
+                            "partnerSpecialBonusRate": 0.1,
+                            "partnerSupportingFeeAmount": 0,
+                            "partnerSupportingFeeRate": 0,
+                            "partnerUplineReferralRate": 0,
+                            "pdBreakupFeeRate": 0,
+                            "pmBreakupFeeRate": 0,
+                            "uplineReferralsRate": {
+                                "1": 0.1,
+                                "2": 0,
+                                "3": 0,
+                                "4": 0,
+                                "5": 0,
+                                "6": 0
+                            }
+                        },
+                        "declineReason": [
+                            
+                        ],
+                        "declineReasonLocal": [
+                            
+                        ],
+                        "discountAmount": 0,
+                        "discountRate": 0,
+                        "dutyLs": [
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": 0,
+                                "coverageId": 600000692,
+                                "dutyCode": "D_00099",
+                                "dutyId": 1063,
+                                "dutyName": "Comprehensive",
+                                "dutyNameLocal": "Comprehensive",
+                                "dutyStandardCode": "PB_100001",
+                                "externalDutyCode": "COMPREHENSIVE",
+                                "insuredType": 0,
+                                "insuredUnit": 2,
+                                "planDutyId": 43834,
+                                "insuredAmount": 317880000,
+                                "matchPremiumRule": [
+                                    
+                                ],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            }
+                        ],
+                        "installmentNetPremium": 0,
+                        "installmentPremium": 0,
+                        "installmentVatAmount": 0,
+                        "insuredAmount": 317880000,
+                        "loadingPremium": 346489.2,
+                        "loadingRate": 0.05,
+                        "netPremium": 7276273,
+                        "originalNetPremium": 7276273.2,
+                        "premium": 7276273,
+                        "riskRate": 0.0218,
+                        "vatAmount": 0,
+                        "isSelect": true
+                    }
+                ],
+                "declineReason": [
+                    
+                ],
+                "declineReasonLocal": [
+                    
+                ],
+                "discountCommissionFromPartnerWhiteList": false,
+                "inspectionFlag": true,
+                "inspectionReason": [
+                    "63562: null"
+                ],
+                "inspectionReasonLocal": [
+                    "63562: null"
+                ],
+                "leaderGroup": true,
+                "matchPremiumRule": [
+                    "Rule:206386|null",
+                    "Rule:9872|null",
+                    "Rule:9872|null",
+                    "Rule:9872|null",
+                    "Rule:9872|null",
+                    "Rule:9872|null",
+                    "Rule:9872|null",
+                    "Rule:9872|null"
+                ],
+                "planCode": "RP_1165104001",
+                "planName": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE",
+                "planNameLocal": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE",
+                "planStandardCode": "PBP_100020",
+                "policyFee": 0,
+                "productCode": "R_1140402001",
+                "productName": "SIMAS BASIC LIVE PHOTO",
+                "productNameLocal": "SIMAS BASIC LIVE PHOTO",
+                "quoteDimension": 4,
+                "serviceFee": 0,
+                "totalInstallmentNetPremium": 0,
+                "totalInstallmentPremium": 0,
+                "totalInstallmentVatAmount": 0,
+                "totalNetPremium": 7276273,
+                "totalNoCalculateCommissionPremium": 0,
+                "totalOriginalNetPremium": 7276273.2,
+                "totalPolicyDiscountAmount": 0,
+                "totalPolicyDiscountRate": 0,
+                "totalPremium": 7276273,
+                "totalRiderNetPremium": 0,
+                "totalRiderPremium": 0,
+                "totalStamp": 0,
+                "totalVATAmount": 0,
+                "vehicleRepairType": 99,
+                "insuranceFullName": "PT Asuransi Simas Insurtech",
+                "insuranceId": "6603000933",
+                "insuranceLogoUrl": "https://oss-pre.fuse.co.id/images/20240111/f1e24fd5423b4233a4c2eea9232712d0.png?Expires=1763164799&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=bngaE62eGjIAzlfoSzQ%2FCPBZ2m0%3D",
+                "policyDiscountEnd": "0",
+                "policyDiscountStart": "0",
+                "rawPlanDTOList": [
+                    {
+                        "mandatory": 1,
+                        "rawPlanCode": "RP_1165104001",
+                        "rawPlanId": 734,
+                        "rawPlanName": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE",
+                        "rawPlanNameLocal": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE"
+                    }
+                ],
+                "rawProductId": 600200460,
+                "mandatory": 1,
+                "rawPlanCode": "RP_1165104001",
+                "rawPlanId": 734,
+                "rawPlanName": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE",
+                "rawPlanNameLocal": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE",
+                "brokerDiscountConfigVO": {
+                    "discountFromCommissionBy": 0,
+                    "discountFromCommissionDefault": 0,
+                    "discountFromSpecialBounsBy": 2,
+                    "discountFromSpecialBounsDefault": 0,
+                    "isByBroker": false,
+                    "isDiscountFromCommissionByBroker": false,
+                    "isDiscountFromSpecialBounsByBroker": false,
+                    "takeOn": true
+                },
+                "coInsFlag": 1,
+                "discountCommissionFromType": 0,
+                "discountCommissionType": 1,
+                "discountFromCommissionDefault": 0,
+                "discountFromSpecialBounsDefault": 0,
+                "discountSpecialBonusType": 2,
+                "inputType": 1,
+                "leaderBookAs": 1,
+                "maxDiscountAmount": 1819068,
+                "maxDiscountFromPartnerSpecialBonusAmount": 673055,
+                "partnerCommissionDeductRebateIncomeTax": 45476.7,
+                "shareRate": 1,
+                "subPlanCode": "null|RP_1165104001",
+                "transactionNumber": "AA055B27538A44EABC1DE4E14B42AF06",
+                "maxDiscountRate": 24,
+                "rebateAmount": "",
+                "rebateAmountDefault": 0,
+                "rebateRate": "",
+                "rebateRateDefault": 0,
+                "maxDiscountFromPartnerSpecialBonusRate": 9,
+                "discountFromPartnerSpecialBonusAmount": "",
+                "discountFromPartnerSpecialBonusAmountDefault": 0,
+                "discountFromPartnerSpecialBonusRate": "",
+                "discountFromPartnerSpecialBonusRateDefault": 0
+            }
+        ],
+        "starLabel": 4,
+        "totalNetPremium": 7276273,
+        "totalPolicyDiscountAmount": 0,
+        "totalPremium": 7276273,
+        "totalVATAmount": 0,
+        "mpId": 600300356,
+        "mpPlanId": 4700,
+        "rawDTOList": [
+            {
+                "insuranceFullName": "PT Asuransi Simas Insurtech",
+                "insuranceId": "6603000933",
+                "insuranceLogoUrl": "https://oss-pre.fuse.co.id/images/20240111/f1e24fd5423b4233a4c2eea9232712d0.png?Expires=1763164799&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=bngaE62eGjIAzlfoSzQ%2FCPBZ2m0%3D",
+                "policyDiscountEnd": "0",
+                "policyDiscountStart": "0",
+                "productCode": "R_1140402001",
+                "productName": "SIMAS BASIC LIVE PHOTO",
+                "productNameLocal": "SIMAS BASIC LIVE PHOTO",
+                "rawPlanDTOList": [
+                    {
+                        "mandatory": 1,
+                        "rawPlanCode": "RP_1165104001",
+                        "rawPlanId": 734,
+                        "rawPlanName": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE",
+                        "rawPlanNameLocal": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE"
+                    }
+                ],
+                "rawProductId": 600200460
+            }
+        ],
+        "adminFee": 0,
+        "discountCommissionType": 1,
+        "discountSpecialBonusType": 2,
+        "maxRebateAmount": 1819068,
+        "maxRebateRate": 0,
+        "partnerCommissionRateDimensionType": 2,
+        "serviceFee": 0
+    },
+    "quotationDataJson": {
+        "insuredInfo": [
+            {
+                "homeDetailAddress": "JL. KARYA BARU NO.207 RT.005 RW.002,Karya Baru,Alang-Alang Lebar,Kota Palembang,Sumatera Selatan",
+                "homeAddress": {
+                    
+                }
+            }
+        ],
+        "insuranceInfo": {
+            "premiumPaymentPeriod": 1,
+            "productCode": "M_1231649001",
+            "planCode": "MP_1231717001",
+            "coveragePeriod": 1,
+            "coveragePeriodUnit": 3,
+            "effectiveDate": 1761973200000,
+            "epolicyExpires": "21/06/2025",
+            "expiredDate": 1793505600000,
+            "productName": "SIMAS BASIC LIVE PHOTO",
+            "productNameLocal": "SIMAS BASIC LIVE PHOTO",
+            "mpPlanName": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE",
+            "mpPlanNameLocal": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE",
+            "productInfo": [
+                {
+                    "productCode": "R_1140402001",
+                    "productName": "SIMAS BASIC LIVE PHOTO",
+                    "productNameLocal": "SIMAS BASIC LIVE PHOTO",
+                    "planCode": "RP_1165104001",
+                    "rawPlanName": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE",
+                    "rawPlanNameLocal": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE",
+                    "policyDiscount": 0,
+                    "coverageInfo": [
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CM_00012",
+                            "coverageName": "COMPREHENSIVE",
+                            "coverageNameLocal": "COMPREHENSIVE",
+                            "insuredAmount": 317880000,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00099",
+                                    "dutyName": "Comprehensive",
+                                    "dutyNameLocal": "Comprehensive",
+                                    "insuredAmount": 317880000,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "ownerPersonInfo": {
+            "homeAddress": {
+                
+            }
+        },
+        "riskGroupInfo": {
+            "vehicle": {
+                "plateNo": "tba",
+                "brandCode": "TOYOTA",
+                "plateCode": "BG",
+                "plateArea": "1",
+                "vehicleType": "MINIBUS",
+                "vehicleColor": "Abu abu metalik",
+                "vehicleUsage": "",
+                "vehicleVinNo": "MHFJB8EM0K1054568",
+                "brandModelCode": "ALL NEW KIJANG INNOVA",
+                "brandSeriesCode": "2.4 V A/T DIESEL",
+                "vehicleEngineNo": "2GDC549210",
+                "vehicleManufactureYear": 2019,
+                "carPrice": 317880000,
+                "carModifyPrice": 317880000,
+                "carValue": 317880000
+            }
+        }
+    }
+},
+  "placeOrderBody": {
+    "rfqNo": "RFQ-1989228494414618626",
+    "quoteNo": "QS-1989228494414618625",
+    "agentUid": 20660000001269,
+    "bizSource": 5,
+    "creatorUid": 20660000001269,
+    "appPlatform": "2",
+    "appVersion": "1.2.7",
+    "deviceId": "78717ed5c357c98c",
+    "osModel": "AKA-AL10",
+    "osVersion": "10",
+    "dataFormJson": {
+        "insuredInfo": [
+            {
+                "homeDetailAddress": "ewew",
+                "homeAddress": {
+                    "province": "1423416",
+                    "provinceName": "Bali",
+                    "provinceNameLocal": "Bali",
+                    "city": "1423451",
+                    "cityName": "Kab. Badung",
+                    "cityNameLocal": "Kab. Badung",
+                    "district": "1423962",
+                    "districtName": "Abiansemal",
+                    "districtNameLocal": "Abiansemal",
+                    "urban": "1431033",
+                    "urbanName": "Abiansemal",
+                    "urbanNameLocal": "Abiansemal"
+                },
+                "firstName": "test",
+                "lastName": "eee",
+                "mobilePhone": "232323",
+                "email": "ouoieuwo@qq.com"
+            }
+        ],
+        "insuranceInfo": {
+            "premiumPaymentPeriod": 1,
+            "productCode": "M_1231649001",
+            "planCode": "MP_1231717001",
+            "coveragePeriod": 1,
+            "coveragePeriodUnit": 3,
+            "effectiveDate": 1761973200000,
+            "epolicyExpires": "21/06/2025",
+            "expiredDate": 1793505600000,
+            "productName": "SIMAS BASIC LIVE PHOTO",
+            "productNameLocal": "SIMAS BASIC LIVE PHOTO",
+            "mpPlanName": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE",
+            "mpPlanNameLocal": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE",
+            "productInfo": [
+                {
+                    "productCode": "R_1140402001",
+                    "productName": "SIMAS BASIC LIVE PHOTO",
+                    "productNameLocal": "SIMAS BASIC LIVE PHOTO",
+                    "planCode": "RP_1165104001",
+                    "rawPlanName": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE",
+                    "rawPlanNameLocal": "SIMAS BASIC LIVE PHOTO - COMPREHENSIVE",
+                    "policyDiscount": 0,
+                    "coverageInfo": [
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CM_00012",
+                            "coverageName": "COMPREHENSIVE",
+                            "coverageNameLocal": "COMPREHENSIVE",
+                            "insuredAmount": 317880000,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00099",
+                                    "dutyName": "Comprehensive",
+                                    "dutyNameLocal": "Comprehensive",
+                                    "insuredAmount": 317880000,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "ownerPersonInfo": {
+            "homeAddress": {
+                "province": "1423416",
+                "provinceName": "Bali",
+                "provinceNameLocal": "Bali",
+                "city": "1423451",
+                "cityName": "Kab. Badung",
+                "cityNameLocal": "Kab. Badung",
+                "district": "1423962",
+                "districtName": "Abiansemal",
+                "districtNameLocal": "Abiansemal"
+            }
+        },
+        "riskGroupInfo": {
+            "vehicle": {
+                "plateNo": "1299 JV",
+                "brandCode": "TOYOTA",
+                "plateCode": "BG",
+                "plateArea": "1",
+                "vehicleType": "MINIBUS",
+                "vehicleColor": "Abu abu metalik",
+                "vehicleUsage": "",
+                "vehicleVinNo": "MHFJB8EM0K1054568",
+                "brandModelCode": "ALL NEW KIJANG INNOVA",
+                "brandSeriesCode": "2.4 V A/T DIESEL",
+                "vehicleEngineNo": "2GDC549210",
+                "vehicleManufactureYear": 2019,
+                "carPrice": 317880000,
+                "carModifyPrice": 317880000,
+                "carValue": 317880000,
+                "attachments": [
+                    {
+                        "confirmPhotoUsage": [],
+                        "confirmPhotoUsageLabel": "",
+                        "confirmPhotoUsageLabelLocal": "",
+                        "attachmentType": "identityCard",
+                        "attachmentTypeLabel": "KTP",
+                        "attachmentTypeLabelLocal": "KTP"
+                    },
+                    {},
+                    {
+                        "confirmPhotoUsage": [
+                            0
+                        ],
+                        "confirmPhotoUsageLabel": "Personal information and vehicle photos will only be used for claim documentation and other purposes as outlined in our terms and conditions Please contact FUSE to update your information after submission.",
+                        "confirmPhotoUsageLabelLocal": "Informasi pribadi dan foto kendaraan hanya akan digunakan untuk dokumentasi klaim dan tujuan lain sebagaimana diuraikan dalam syarat dan ketentuan kami. Silakan hubungi FUSE untuk memperbarui informasi Anda setelah penyerahan.",
+                        "attachmentType": "identityCard",
+                        "attachmentTypeLabel": "KTP",
+                        "attachmentTypeLabelLocal": "KTP",
+                        "ktpPhoto": [
+                            "fuse-id-core-prod-rw_images/20251114/45053e28cd1a4d5ca2cb2e8c2228ee39.png"
+                        ],
+                        "attachmentMeta": [
+                            {
+                                "attachmentPath": "fuse-id-core-prod-rw_images/20251114/45053e28cd1a4d5ca2cb2e8c2228ee39.png",
+                                "attachmentFileType": "image",
+                                "metadata": {
+                                    "file": ""
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "stnkPhoto": [
+                            "fuse-id-core-prod-rw_images/20251114/35a8280d4d074d02baf0f8233f504705.png"
+                        ],
+                        "attachmentMeta": [
+                            {
+                                "attachmentPath": "fuse-id-core-prod-rw_images/20251114/35a8280d4d074d02baf0f8233f504705.png",
+                                "attachmentFileType": "image",
+                                "metadata": {
+                                    "file": ""
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "insBranchLs": [
+                    {
+                        "insBranchCode": "HO",
+                        "insBranchName": "HO",
+                        "technicalCode": "R_1140402001"
+                    }
+                ],
+                "newCarFlag": 2,
+                "newCarFlagLabel": "Used",
+                "newCarFlagLabelLocal": "Bekas"
+            }
+        },
+        "inspectionInformation": {
+            "customerInspect": 2,
+            "customerInspectLabel": "Customer",
+            "customerInspectLabelLocal": "Customer"
+        }
+    },
+    "mpCode": "M_1231649001",
+    "mpPlanCode": "MP_1231717001",
+    "isAdvancePremium": 0,
+    "partnerToCustomerDiscountAmountProducts": [
+        {
+            "productName": "SIMAS BASIC LIVE PHOTO",
+            "productNameLocal": "SIMAS BASIC LIVE PHOTO",
+            "productCode": "R_1140402001",
+            "planCode": "RP_1165104001",
+            "discountAmount": 0,
+            "discountFromPartnerSpecialBonusAmount": 0
+        }
+    ],
+    "inspectionFormJson": [
+        {
+            "productCode": "R_1140402001",
+            "inspectionCode": "PT_09113106082025: 1",
+            "checkSchema": {},
+            "carInspectionData": {}
+        }
+    ]
+},
+  "couponBody": {
+    "couponOrderQOList": [
+        {
+            "adminFee": 35000,
+            "auditFlag": true,
+            "discountFromPartnerSpecialBonusAmount": 0,
+            "filterRawProductCode": "R_00139",
+            "mainInsuranceCompanyCode": "6603001124",
+            "mainInsuranceCompanyName": "PT Asuransi Multi Artha Guna Tbk",
+            "mpCode": "M_00092",
+            "mpName": "MAG BASIC CAR",
+            "mpNameLocal": "MAG BASIC CAR",
+            "mpPlanCode": "MP_00207",
+            "mpPlanName": "MAG BASIC TOTAL LOSS ONLY",
+            "mpPlanNameLocal": "MAG BASIC TOTAL LOSS ONLY",
+            "productHeaderPicture": "fuse-id-core-prod-rw_images/20240926/bf981b29b8964a1a91f4fa9da2c1811d.jpg",
+            "productHeaderPictureLocal": "fuse-id-core-prod-rw_images/20240926/a43370357ded4c328d9b30399d3e67e5.jpg",
+            "productListPicture": "fuse-id-core-prod-rw_images/20240926/e443d93ae3db4659bc7d92903d3a74e4.jpg",
+            "productListPictureLocal": "fuse-id-core-prod-rw_images/20240926/7b6ad32b73eb46c69ef6d8e699bd1f13.jpg",
+            "productLs": [
+                {
+                    "adminFee": 35000,
+                    "commissionInfo": {
+                        "mulitCommissionType": 0,
+                        "partnerCommissionAmount": 736983,
+                        "partnerSpecialBonusAmount": 294794,
+                        "partnerSupportingFeeAmount": 0
+                    },
+                    "coverageLs": [
+                        {
+                            "auditFlag": true,
+                            "commissionInfo": {
+                                "mulitCommissionType": 0,
+                                "partnerCommissionAmount": 381375,
+                                "partnerCommissionRate": 0.25,
+                                "partnerMatchCommissionRule": [
+                                    "Rule:4650"
+                                ],
+                                "partnerSpecialBonusAmount": 152550,
+                                "partnerSpecialBonusRate": 0.1,
+                                "partnerSupportingFeeAmount": 0,
+                                "partnerSupportingFeeRate": 0,
+                                "partnerUplineReferralRate": 0,
+                                "pdBreakupFeeRate": 0,
+                                "pmBreakupFeeRate": 0,
+                                "uplineReferralsRate": {
+                                    "1": 0.1,
+                                    "2": 0.05,
+                                    "3": 0.025,
+                                    "4": 0.0125,
+                                    "5": 0.0063,
+                                    "6": 0
+                                }
+                            },
+                            "coverageCode": "CM_00129",
+                            "coverageName": "TOTAL LOSS ONLY",
+                            "coverageNameLocal": "TOTAL LOSS ONLY",
+                            "coverageRequired": 1,
+                            "declineReason": [],
+                            "declineReasonLocal": [],
+                            "discountAmount": 0,
+                            "discountRate": 0,
+                            "dutyLs": [
+                                {
+                                    "dutyCode": "D_00382",
+                                    "dutyName": "Total Loss Only",
+                                    "dutyNameLocal": "Total Loss Only",
+                                    "dutyStandardCode": "PB_300030",
+                                    "insuredAmount": 610200000,
+                                    "insuredType": 0,
+                                    "insuredUnit": 2,
+                                    "matchPremiumRule": [],
+                                    "netPremium": 0,
+                                    "premium": 0,
+                                    "stamp": 0,
+                                    "vatAmount": 0
+                                }
+                            ],
+                            "installmentNetPremium": 0,
+                            "installmentPremium": 0,
+                            "installmentVatAmount": 0,
+                            "insuredAmount": 610200000,
+                            "netPremium": 1525500,
+                            "originalNetPremium": 1525500,
+                            "premium": 1525500,
+                            "riskRate": 0.0025,
+                            "vatAmount": 0,
+                            "vatRate": 0
+                        }
+                    ],
+                    "declineReason": [],
+                    "declineReasonLocal": [],
+                    "discountCommissionFromPartnerWhiteList": false,
+                    "inspectionFlag": false,
+                    "inspectionReason": [],
+                    "inspectionReasonLocal": [],
+                    "leaderGroup": false,
+                    "matchPremiumRule": [
+                        "Rule:6324|null",
+                        "Rule:6324|null",
+                        "Rule:6324|null",
+                        "Rule:6324|null",
+                        "Rule:6324|null",
+                        "Rule:6324|null",
+                        "Rule:6324|null",
+                        "Rule:6324|null"
+                    ],
+                    "planCode": "RP_00248",
+                    "planName": "MAG BASIC TOTAL LOSS ONLY",
+                    "planNameLocal": "MAG BASIC TOTAL LOSS ONLY",
+                    "policyFee": 25000,
+                    "productCode": "R_00139",
+                    "productName": "MAG BASIC CAR",
+                    "productNameLocal": "MAG BASIC CAR",
+                    "quoteDimension": 4,
+                    "serviceFee": 0,
+                    "totalInstallmentNetPremium": 0,
+                    "totalInstallmentPremium": 0,
+                    "totalInstallmentVatAmount": 0,
+                    "totalNetPremium": 2947940,
+                    "totalNoCalculateCommissionPremium": 0,
+                    "totalOriginalNetPremium": 2947940,
+                    "totalPolicyDiscountAmount": 0,
+                    "totalPolicyDiscountRate": 0,
+                    "totalPremium": 2947940,
+                    "totalRiderNetPremium": 1422440,
+                    "totalRiderPremium": 1422440,
+                    "totalStamp": 10000,
+                    "totalVATAmount": 0
+                }
+            ],
+            "rebateAmount": 0,
+            "serviceFee": 0,
+            "totalNetPremium": 2947940,
+            "totalPolicyDiscountAmount": 0,
+            "totalPremium": 2947940,
+            "totalVATAmount": 0
+        }
+    ],
+    "renewalApplyId": "",
+    "bizSource": 2,
+    "rfqNo": "RFQ-1983709565529427971"
+},
+  "paymentBilling_manager_existsAssignee": "true",
+  "UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE": "true",
+  "UNDERWRITING_OFFLINE_EXISTSASSIGNEE": "true"
+}

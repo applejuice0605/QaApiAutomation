@@ -5,6 +5,8 @@ Library    JSONLibrary
 Library    String
 Library    os
 
+Library    SeleniumLibrary
+
 Resource    ../api/Login/loginA.robot
 
 *** Keywords ***
