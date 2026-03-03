@@ -46,6 +46,57 @@ poetry run robot  --listener allure_robotframework:log4 --variable DATA_FILE:dat
 PS： poetry run robot 用例路径/用例文件.robot 
 
 
+## 使用 run.py 执行测试（推荐）
+
+项目根目录下的 `run.py` 支持按 **resources/api** 下的模块执行用例，并可选择生成 **RF 报告** 或 **Allure 报告**，报告按「模块名 + 报告类型 + 时间戳」自动命名。
+
+### 环境要求
+
+- 已安装：`robotframework`、`robotframework-requests`、`robotframework-jsonlibrary`
+- 使用 `--allure` 时还需：`allure-robotframework`、本机已安装 Allure 命令行（用于生成报告）
+
+若使用 Poetry，先进入虚拟环境：`poetry shell`，再执行下述命令；或使用 `poetry run python run.py ...`。
+
+### 命令格式
+
+```bash
+python run.py [--module 模块名] [--rf | --allure]
+```
+
+| 参数 | 说明 |
+|------|------|
+| `--module NAME` | 指定模块名（resources/api 下目录名，如 Login、payment）。不传则执行全部模块。 |
+| `--rf` | 生成 Robot Framework 报告（log.html、report.html、output.xml），**默认**。 |
+| `--allure` | 生成 Allure 报告；完成后会启动本地 HTTP 服务并尝试打开浏览器查看。 |
+
+不指定 `--rf` 或 `--allure` 时，默认按 **RF 报告** 生成。
+
+### 示例
+
+```bash
+# 仅执行 Login 模块，生成 RF 报告（默认）
+python run.py --module Login
+
+# 仅执行 Login 模块，生成 Allure 报告（会启动 HTTP 服务并打开浏览器）
+python run.py --module Login --allure
+
+# 执行全部模块，生成 RF 报告
+python run.py --rf
+
+# 执行全部模块，生成 Allure 报告
+python run.py --allure
+```
+
+### 报告输出位置与命名
+
+- 报告根目录：项目下的 **results/** 目录。
+- 单模块：`results/<模块名>_<rf|allure>_<yyyy-mm-dd_HH-MM-SS>/`
+- 全部模块：`results/all_<rf|allure>_<yyyy-mm-dd_HH-MM-SS>/`
+
+示例：`results/Login_rf_2026-03-03_15-30-00/`、`results/Login_allure_2026-03-03_15-33-57/`。
+
+- **RF 模式**：报告目录内包含 `log.html`、`report.html`、`output.xml`。
+- **Allure 模式**：报告目录内仅包含 `allure-results/`、`allure-report/`；浏览器需通过脚本启动的 **http://127.0.0.1:8080** 访问（不能直接打开 index.html 的 file://，否则数据无法加载）。脚本会提示「按 Enter 键结束服务并退出」，在结束前可一直访问该地址查看报告。
 
 
 # 生成测试报告

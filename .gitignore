@@ -1,5 +1,8 @@
 .idea
 log4
+results
+__pycache__
+*.pyc
 log.html
 output.xml
 report.html
