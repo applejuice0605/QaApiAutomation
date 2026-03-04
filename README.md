@@ -68,6 +68,8 @@ python run.py [--module 模块名] [--rf | --allure]
 | `--module NAME` | 指定模块名（resources/api 下目录名，如 Login、payment）。不传则执行全部模块。 |
 | `--rf` | 生成 Robot Framework 报告（log.html、report.html、output.xml），**默认**。 |
 | `--allure` | 生成 Allure 报告；完成后会启动本地 HTTP 服务并尝试打开浏览器查看。 |
+| `--lark-webhook URL` | 飞书/Lark 机器人 webhook 地址；执行完成后推送报告摘要与报告链接。 |
+| `--report-url BASE_URL` | 报告访问地址前缀；与报告目录名拼接后作为 Lark 消息中的可点击链接。CI 中也可用环境变量 `LARK_REPORT_LINK` 直接指定完整链接（如 GitHub Actions 运行页 URL）。 |
 
 不指定 `--rf` 或 `--allure` 时，默认按 **RF 报告** 生成。
 
@@ -97,6 +99,57 @@ python run.py --allure
 
 - **RF 模式**：报告目录内包含 `log.html`、`report.html`、`output.xml`。
 - **Allure 模式**：报告目录内仅包含 `allure-results/`、`allure-report/`；浏览器需通过脚本启动的 **http://127.0.0.1:8080** 访问（不能直接打开 index.html 的 file://，否则数据无法加载）。脚本会提示「按 Enter 键结束服务并退出」，在结束前可一直访问该地址查看报告。
+
+### 飞书/Lark 推送（可选）
+
+使用 `--lark-webhook` 时，执行结束后会向该 webhook 发送一条富文本消息，包含：
+
+- **标题**：本次执行结果（通过/失败）、模块名、报告类型
+- **正文**：模块列表、报告类型、退出码、通过/失败/跳过数量（从 output.xml 解析）
+- **报告链接**：可点击的 URL，用于在飞书中打开本次报告。来源见下文「report_url / 报告链接」说明。
+
+**Webhook 配置方式**：在飞书群聊 → 设置 → 群机器人 → 添加自定义机器人 → 复制 webhook 地址。可通过以下任一方式传入（优先级从高到低）：命令行 `--lark-webhook "复制的URL"`、环境变量 `LARK_WEBHOOK`、本地配置文件 `config/lark_config.json`（该文件已加入 .gitignore，不会提交到仓库）。使用配置文件时，可将 `config/lark_config.example.json` 复制为 `config/lark_config.json` 并填入 `webhook_url` 和可选的 `report_url`。若机器人开启了「签名」或「关键词」校验，需在机器人设置里配置一致。
+
+**report_url / 报告链接（如何填写）**：
+
+| 场景 | 建议 |
+|------|------|
+| **仅本机跑** | 留空即可，飞书消息里会显示本机报告目录路径。 |
+| **报告部署在固定前缀的 URL** | 填「报告根地址」。脚本会把本次报告目录名拼在后面，例如 `report_url` 填 `https://your-domain.com/artifacts`，链接即为 `https://your-domain.com/artifacts/Login_rf_2026-02-28_12-00-00`。适用于自建静态站、对象存储前缀等。 |
+| **GitHub Actions（上传 artifact）** | 不填 `report_url`。在 workflow 里上传 `results` 为 artifact，并设置环境变量 `LARK_REPORT_LINK` 为本次运行的 URL，飞书中的链接会直接指向该次 Actions 运行页，便于下载制品、查看日志。示例见下。 |
+
+**GitHub Actions 示例**（推送摘要 + 报告链接指向本次运行页）：
+
+```yaml
+# .github/workflows/run-tests.yml
+on:
+  push:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run tests and notify Lark
+        env:
+          LARK_WEBHOOK: ${{ secrets.LARK_WEBHOOK }}
+          LARK_REPORT_LINK: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python run.py --rf
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results-${{ github.run_id }}
+          path: results/
+```
+
+在仓库 Settings → Secrets 中配置 `LARK_WEBHOOK` 为飞书机器人 webhook 地址；运行后飞书消息里的「报告链接」会指向本次 Actions 运行页，可在该页下载 `test-results-xxx` 制品查看报告。
 
 
 # 生成测试报告

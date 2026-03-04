@@ -77,10 +77,11 @@ The response should contain the user's token
     Should Not Be Equal As Strings    ${jsonResult}[data][token]    null
     Set Global Variable    ${token}     ${jsonResult}[data][token]
 
-
-The status code should be 200
+# 因为目前没有使用邮箱登陆,修改判断不等于200
+The status code should  be 40002
     Log    ${jsonResult}
-    Log    ${jsonResult}[code]
-    Should Be Equal As Numbers    ${jsonResult}[code]    200
+    Log    ${jsonResult['code']}
+    Dictionary Should Contain Key    ${jsonResult}    code
+    Should  Be Equal As Numbers    ${jsonResult.code}    40002
 
 

@@ -5,15 +5,20 @@
 """
 
 import argparse
+import json
+import os
 import subprocess
 import sys
 import tempfile
 import threading
 import time
 import webbrowser
+import xml.etree.ElementTree as ET
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
+from urllib.request import Request, urlopen
+from urllib.error import URLError, HTTPError
 
 try:
     from http.server import HTTPServer, SimpleHTTPRequestHandler
@@ -27,6 +32,22 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 RESOURCES_API = PROJECT_ROOT / "resources" / "api"
 TESTS_MODULE = PROJECT_ROOT / "tests" / "module"
 RESULTS_BASE = PROJECT_ROOT / "results"
+CONFIG_DIR = PROJECT_ROOT / "config"
+LARK_CONFIG_FILE = CONFIG_DIR / "lark_config.json"
+
+
+def load_lark_config() -> Optional[dict]:
+    """从 config/lark_config.json 读取 webhook 等配置；文件不存在或无效时返回 None。"""
+    if not LARK_CONFIG_FILE.is_file():
+        return None
+    try:
+        with open(LARK_CONFIG_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if not isinstance(data, dict):
+            return None
+        return data
+    except (json.JSONDecodeError, OSError):
+        return None
 
 
 def get_available_modules():
@@ -58,9 +79,8 @@ def get_report_dir_name(module_name: Optional[str], report_type: str) -> str:
     return f"{label}_{report_type}_{timestamp}"
 
 
-def build_robot_cmd(execution_paths: list[Path], output_dir: Path, use_allure: bool) -> list[str]:
-    """构建 robot 命令（列表形式，避免 shell=True）。Allure 模式下 RF 输出写入系统临时目录，报告目录内仅保留 Allure。"""
-    # Allure 模式下不把 RF 报告放进报告目录，只保留 allure-results / allure-report
+def build_robot_cmd(execution_paths: list[Path], output_dir: Path, use_allure: bool) -> tuple[list[str], Path]:
+    """构建 robot 命令（列表形式，避免 shell=True）。返回 (cmd, robot_output_dir)。"""
     if use_allure:
         robot_output_dir = Path(tempfile.mkdtemp(prefix="rf_"))
     else:
@@ -76,7 +96,6 @@ def build_robot_cmd(execution_paths: list[Path], output_dir: Path, use_allure: b
     if use_allure:
         allure_results = output_dir / "allure-results"
         allure_results.mkdir(parents=True, exist_ok=True)
-        # 使用相对路径避免 Windows 下路径中 ':' 被当作参数分隔符
         try:
             listener_arg = str(allure_results.relative_to(Path.cwd()))
         except ValueError:
@@ -85,7 +104,7 @@ def build_robot_cmd(execution_paths: list[Path], output_dir: Path, use_allure: b
         cmd.extend(["--listener", f"allure_robotframework:{listener_arg}"])
     for p in execution_paths:
         cmd.append(str(p))
-    return cmd
+    return cmd, robot_output_dir
 
 
 def run_robot(cmd: list[str]) -> int:
@@ -133,6 +152,61 @@ def generate_allure_report(allure_results_dir: Path, allure_report_dir: Path) ->
         return False
     except Exception as e:
         print(f"生成 Allure 报告时出错: {e}", file=sys.stderr)
+        return False
+
+
+def parse_robot_output_stats(output_xml_path: Path) -> Optional[dict]:
+    """从 Robot output.xml 解析通过/失败/跳过数量。返回 {'pass': int, 'fail': int, 'skip': int} 或 None。"""
+    if not output_xml_path.is_file():
+        return None
+    try:
+        tree = ET.parse(output_xml_path)
+        root = tree.getroot()
+        # Robot Framework: <statistics><total><stat pass="..." fail="..." skip="...">All Tests</stat>
+        for stat in root.findall(".//stat"):
+            if stat.text and "All Tests" in stat.text:
+                return {
+                    "pass": int(stat.get("pass", 0)),
+                    "fail": int(stat.get("fail", 0)),
+                    "skip": int(stat.get("skip", 0)),
+                }
+        # 兼容：取最后一个 stat
+        stats = root.findall(".//stat")
+        if stats:
+            s = stats[-1]
+            return {
+                "pass": int(s.get("pass", 0)),
+                "fail": int(s.get("fail", 0)),
+                "skip": int(s.get("skip", 0)),
+            }
+    except Exception:
+        pass
+    return None
+
+
+def send_lark_webhook(webhook_url: str, title: str, content_blocks: list[list[dict]], report_link: str) -> bool:
+    """通过飞书/Lark 机器人 webhook 发送富文本消息。content_blocks 为 post.zh_cn.content 的段落列表。"""
+    content = content_blocks + [[{"tag": "text", "text": "报告链接: "}, {"tag": "a", "text": report_link, "href": report_link}]]
+    payload = {
+        "msg_type": "post",
+        "content": {
+            "post": {
+                "zh_cn": {
+                    "title": title,
+                    "content": content,
+                }
+            }
+        },
+    }
+    try:
+        data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        req = Request(webhook_url, data=data, headers={"Content-Type": "application/json"}, method="POST")
+        with urlopen(req, timeout=15) as resp:
+            if resp.status in (200, 204):
+                return True
+            return False
+    except (URLError, HTTPError, OSError) as e:
+        print(f"发送 Lark 通知失败: {e}", file=sys.stderr)
         return False
 
 
@@ -194,11 +268,31 @@ def main():
         action="store_true",
         help="生成 RF 报告（默认）",
     )
+    parser.add_argument(
+        "--lark-webhook",
+        metavar="URL",
+        default=None,
+        help="飞书/Lark 机器人 webhook URL，执行完成后推送报告摘要与链接",
+    )
+    parser.add_argument(
+        "--report-url",
+        metavar="BASE_URL",
+        default=None,
+        help="报告访问地址前缀（如 https://ci.example.com/artifacts/），与目录名拼接后作为 Lark 消息中的报告链接；不填则发本地路径",
+    )
     args = parser.parse_args()
 
     # 报告类型：默认 RF
     use_allure = args.allure
     report_type = "allure" if use_allure else "rf"
+    # 飞书 webhook：优先命令行 > 环境变量 LARK_WEBHOOK > config/lark_config.json
+    lark_config = load_lark_config()
+    lark_webhook = (
+        args.lark_webhook
+        or os.environ.get("LARK_WEBHOOK")
+        or (lark_config.get("webhook_url") if lark_config else None)
+    )
+    report_url_from_config = (lark_config or {}).get("report_url") or ""
 
     # 模块列表
     available = get_available_modules()
@@ -241,7 +335,7 @@ def main():
     print(f"输出目录: {output_dir}")
     print("=" * 60)
 
-    cmd = build_robot_cmd(execution_paths, output_dir, use_allure)
+    cmd, robot_output_dir = build_robot_cmd(execution_paths, output_dir, use_allure)
     print(f"执行: {' '.join(cmd)}")
     print("-" * 60)
 
@@ -261,6 +355,37 @@ def main():
     if not use_allure:
         print(f"  - log.html, report.html, output.xml")
     print("=" * 60)
+
+    # 飞书/Lark webhook 推送报告摘要与链接
+    if lark_webhook:
+        output_xml = robot_output_dir / "output.xml"
+        stats = parse_robot_output_stats(output_xml)
+        module_label = report_label or "all"
+        status_emoji = "✅" if (exit_code == 0) else "❌"
+        title = f"RF 测试报告 {status_emoji} {module_label} ({report_type})"
+        content_blocks = [
+            [{"tag": "text", "text": f"模块: {', '.join(module_names)}\n"}],
+            [{"tag": "text", "text": f"报告类型: {report_type}\n"}],
+            [{"tag": "text", "text": f"退出码: {exit_code}\n"}],
+        ]
+        if stats:
+            content_blocks.append([
+                {"tag": "text", "text": f"通过: {stats['pass']} | 失败: {stats['fail']} | 跳过: {stats['skip']}\n"},
+            ])
+        # 报告链接：优先完整链接（如 CI 中 LARK_REPORT_LINK），否则用 base URL + 报告目录名，否则用本地路径
+        report_link_override = os.environ.get("LARK_REPORT_LINK")
+        if report_link_override:
+            report_link = report_link_override
+        else:
+            report_url = args.report_url or report_url_from_config
+            if report_url:
+                report_link = (report_url.rstrip("/") + "/" + report_dir_name).strip("/")
+            else:
+                report_link = str(output_dir.resolve())
+        if send_lark_webhook(lark_webhook, title, content_blocks, report_link):
+            print("已推送报告摘要至 Lark。")
+        else:
+            print("Lark 推送失败，请检查 webhook 或网络。", file=sys.stderr)
 
     sys.exit(exit_code if exit_code is not None else 0)
 
