@@ -1,0 +1,45 @@
+*** Settings ***
+Library    JSONLibrary
+Resource    ../../api/order/getAvailableCoupon.robot
+Resource    ../../util/utilCommon.robot
+
+
+*** Keywords ***
+I send request to getAvailableCoupon API
+    [Arguments]    ${AP_POSITIVE_DATA}    ${token}
+    #1. getJsonBody
+    ${jsonBody}     Set Variable    ${AP_POSITIVE_DATA["couponBody"]}
+
+    #2. convert jsonBody to string
+    ${strBody}  Convert Json To String    ${jsonBody}
+
+    #3. send request and get response data
+    ${response} =    getAvailableCoupon.Send Request And Get Response Data    ${token}    ${strBody}
+    Set Test Variable    ${jsonResult}    ${response.json()}
+    Log    ${jsonResult}
+
+the response should contain the available coupon list and get coupon info by couponCode
+    [Arguments]     ${jsonResult}   ${CouponCode}
+    ${couponUseInfo}=    utilCommon.Get CouponId by CouponCode    ${jsonResult}[data]    ${CouponCode}
+    Log    ${couponUseInfo}
+    Set Test Variable    ${couponUseInfo}   ${couponUseInfo}
+
+the response should contain the available coupon list and get first available coupon
+    [Arguments]     ${jsonResult}
+    ${couponUseInfo}=    utilCommon.Get First Available Coupon    ${jsonResult}[data]
+    Log    ${couponUseInfo}
+    Set Test Variable    ${couponUseInfo}   ${couponUseInfo}
+
+
+
+the response should contain the available coupon list and get coupon info by productCode
+    [Arguments]     ${jsonResult}   ${rawProductCode}
+    ${couponDTO}=    utilCommon.Get CouponId by ProductCode    ${jsonResult}[data]    ${rawProductCode}
+    ${couponUseInfo}    Create List     ${couponDTO}
+    ${couponUseInfo}    Convert To String    ${couponUseInfo}
+    ${couponUseInfo}    Replace String    ${couponUseInfo}    [    ${EMPTY}
+    Set Test Variable    ${couponUseInfo}   ${couponDTO}
+
+
+
+

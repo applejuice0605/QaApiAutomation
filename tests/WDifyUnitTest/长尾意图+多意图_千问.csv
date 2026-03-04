@@ -1,0 +1,3635 @@
+Question,Target Intent ID,Answer,,,Answer_json,need_clarification,explanation.clarification_need
+Saya ingin membayar polis saya dan juga ingin tahu cara klaim asuransi.,"INTENT_PAYMENT,INTENT_PG_CLAIM","INTENT_PAYMENT,INTENT_PG_CLAIM",1.00 ,,"{  ""text"": ""Saya ingin membayar polis saya dan juga ingin tahu cara klaim asuransi."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_PAYMENT"",
+      ""confidence"": 0.82
+    },
+    {
+      ""intent"": ""INTENT_PG_CLAIM"",
+      ""confidence"": 0.79
+    },
+    {
+      ""intent"": ""INTENT_QNA_PAYMENT"",
+      ""confidence"": 0.65
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_PAYMENT"", ""INTENT_PG_CLAIM""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": ""INTENT_PAYMENT"",
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_PG_CLAIM""],
+  ""slots"": {
+    ""product_category"": ""car""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": null,
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": false,
+  ""clarify_reason"": [],
+  ""clarify_question"": null,
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""proceed_tx"",
+  ""intent_queue"": {
+    ""count"": 2,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_PAYMENT"",
+        ""confidence"": 0.82,
+        ""intent_type"": ""Tx""
+      },
+      {
+        ""intent"": ""INTENT_PG_CLAIM"",
+        ""confidence"": 0.79,
+        ""intent_type"": ""Info""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_PAYMENT"", ""INTENT_PG_CLAIM""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_PAYMENT"": ""PAYMENT"",
+      ""INTENT_PG_CLAIM"": ""Process Guidance""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""car""
+    },
+    ""tokenization"": [""Saya"", ""ingin"", ""membayar"", ""polis"", ""saya"", ""dan"", ""juga"", ""ingin"", ""tahu"", ""cara"", ""klaim"", ""asuransi""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Saya ingin membayar polis saya"",
+      ""detected_intents"": [""INTENT_PAYMENT""]
+    },
+    {
+      ""sub_text"": ""juga ingin tahu cara klaim asuransi"",
+      ""detected_intents"": [""INTENT_PG_CLAIM""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Saya ingin membayar polis saya dan juga ingin tahu cara klaim asuransi."",
+      ""action"": ""proceed_tx"",
+      ""clarify_reason"": null
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Saya akan bantu Anda dengan pembayaran terlebih dahulu. Apakah Anda sudah memiliki ID pesanan atau faktur yang aktif?"",
+      ""action"": ""ask_for_missing_slots"",
+      ""clarify_reason"": ""missing_slots""
+    }
+  ],
+  ""reference"": {},
+  ""explanation"": {
+    ""reasoning"": ""The user expressed two distinct intentions: to pay for their policy (INTENT_PAYMENT) and to learn about the insurance claim process (INTENT_PG_CLAIM). Both are valid and supported in the system. The transactional intent (INTENT_PAYMENT) is prioritized first due to its higher confidence and relevance to an actionable task."",
+    ""clarification_need"": ""No clarification is needed at this stage since both intents are clear and non-conflicting. However, the bot will need to confirm if the user has an active order or invoice to proceed with payment."",
+    ""slot_analysis"": ""The 'product_category' slot was detected as 'car', which is supported in FINA. No other slots were missing for either intent."",
+    ""intent_queue_logic"": ""The transactional intent (INTENT_PAYMENT) is processed first, followed by the informational intent (INTENT_PG_CLAIM), following the rule that transactional actions take precedence when actionable.""
+  }
+}",FALSE,"No clarification is needed at this stage since both intents are clear and non-conflicting. However, the bot will need to confirm if the user has an active order or invoice to proceed with payment."
+Tolong bantu saya mendapatkan penawaran dan lanjutkan ke pembayaran.,"INTENT_QUOTE_COMPARISON,INTENT_PAYMENT","INTENT_QUOTE_COMPARISON,INTENT_ORDER",0.50 ,,"{  ""text"": ""Tolong bantu saya mendapatkan penawaran dan lanjutkan ke pembayaran."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_QUOTE_COMPARISON"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_ORDER"",
+      ""confidence"": 0.78
+    },
+    {
+      ""intent"": ""INTENT_QNA_PAYMENT"",
+      ""confidence"": 0.62
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_QUOTE_COMPARISON"", ""INTENT_ORDER""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [""INTENT_ORDER""],
+  ""non_transactional_intents"": [""INTENT_QUOTE_COMPARISON""],
+  ""slots"": {
+    ""product_category"": ""car""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": false,
+  ""clarify_reason"": [],
+  ""clarify_question"": null,
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""pause_tx_and_clarify"",
+  ""intent_queue"": {
+    ""count"": 2,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_QUOTE_COMPARISON"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_ORDER"",
+        ""confidence"": 0.78,
+        ""intent_type"": ""Transactional""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_QUOTE_COMPARISON"", ""INTENT_ORDER""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_QUOTE_COMPARISON"": ""Quote"",
+      ""INTENT_ORDER"": ""Order"",
+      ""INTENT_QNA_PAYMENT"": ""Payment""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""car""
+    },
+    ""tokenization"": [""Tolong"", ""bantu"", ""saya"", ""mendapatkan"", ""penawaran"", ""dan"", ""lanjutkan"", ""ke"", ""pembayaran""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Tolong bantu saya mendapatkan penawaran"",
+      ""detected_intents"": [""INTENT_QUOTE_COMPARISON""]
+    },
+    {
+      ""sub_text"": ""lanjutkan ke pembayaran"",
+      ""detected_intents"": [""INTENT_ORDER""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Tolong bantu saya mendapatkan penawaran dan lanjutkan ke pembayaran."",
+      ""action"": ""split_into_two_intents"",
+      ""clarify_reason"": ""multi_intent""
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang penawaran dan pengajuan. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Dapatkan penawaran terlebih dahulu\n?? Opsi B: Lanjutkan ke pembayaran (pastikan kamu sudah memiliki penawaran)"",
+      ""action"": ""ask_for_intent_disambiguation"",
+      ""clarify_reason"": ""multi_intent""
+    }
+  ],
+  ""reference"": {},
+  ""explanation"": {
+    ""reasoning"": ""The input contains two distinct intent signals: 'get quotation' and 'proceed to payment'. The system detected both INTENT_QUOTE_COMPARISON and INTENT_ORDER as top candidates with high confidence. Since these are not mutually exclusive but require sequential steps, the system paused for clarification on which step to proceed first."",
+    ""clarification_need"": ""Clarification is needed because the user mentioned both getting a quote and proceeding to payment, which are sequential actions requiring confirmation of order."",
+    ""slot_analysis"": ""Detected slot: product_category = car (default assumption). No missing slots in this stage."",
+    ""intent_queue_logic"": ""INTENT_QUOTE_COMPARISON (Info) was prioritized over INTENT_ORDER (Tx) due to the rule that Info comes before Tx unless gating conditions are met.""
+  }
+}",FALSE,"Clarification is needed because the user mentioned both getting a quote and proceeding to payment, which are sequential actions requiring confirmation of order."
+Saya ingin tahu tentang manfaat polis dan cara mengajukan klaim.,"INTENT_QNA_COVERAGE,INTENT_PG_CLAIM","INTENT_QNA_COVERAGE,INTENT_PG_CLAIM",1.00 ,,"{  ""text"": ""Saya ingin tahu tentang manfaat polis dan cara mengajukan klaim."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_QNA_COVERAGE"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_PG_CLAIM"",
+      ""confidence"": 0.78
+    },
+    {
+      ""intent"": ""INTENT_QNA_GENERAL"",
+      ""confidence"": 0.62
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_QNA_COVERAGE"", ""INTENT_PG_CLAIM""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_QNA_COVERAGE"", ""INTENT_PG_CLAIM""],
+  ""slots"": {
+    ""product_category"": ""unknown""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car"", ""travel"", ""health"", ""life""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": true,
+  ""clarify_reason"": [""ambiguous""],
+  ""clarify_question"": ""Baik ?? Kamu sedang bertanya tentang manfaat polis dan proses klaim. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Detail manfaat polis (cakupan perlindungan)\n?? Opsi B: Panduan cara mengajukan klaim"",
+  ""missing_slots"": [""product_category""],
+  ""rule_intent"": null,
+  ""action"": ""pause_tx_and_clarify"",
+  ""intent_queue"": {
+    ""count"": 2,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_QNA_COVERAGE"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_PG_CLAIM"",
+        ""confidence"": 0.78,
+        ""intent_type"": ""Informational""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_QNA_COVERAGE"", ""INTENT_PG_CLAIM""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_QNA_COVERAGE"": ""Informational"",
+      ""INTENT_PG_CLAIM"": ""Informational"",
+      ""INTENT_QNA_GENERAL"": ""Informational""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""unknown""
+    },
+    ""tokenization"": [""Saya"", ""ingin"", ""tahu"", ""tentang"", ""manfaat"", ""polis"", ""dan"", ""cara"", ""mengajukan"", ""klaim""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Saya ingin tahu tentang manfaat polis"",
+      ""detected_intents"": [""INTENT_QNA_COVERAGE""]
+    },
+    {
+      ""sub_text"": ""cara mengajukan klaim"",
+      ""detected_intents"": [""INTENT_PG_CLAIM""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Saya ingin tahu tentang manfaat polis dan cara mengajukan klaim."",
+      ""action"": ""pause_tx_and_clarify"",
+      ""clarify_reason"": ""ambiguous""
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang manfaat polis dan proses klaim. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Detail manfaat polis (cakupan perlindungan)\n?? Opsi B: Panduan cara mengajukan klaim"",
+      ""action"": ""ask_for_choice""
+    }
+  ],
+  ""reference"": {},
+  ""explanation"": {
+    ""reasoning"": ""The user is asking about two distinct topics: policy benefits (manfaat polis) and claim submission process (cara mengajukan klaim). These map to INTENT_QNA_COVERAGE and INTENT_PG_CLAIM respectively. Both are valid informational intents but require clarification on which one the user wants to proceed with first."",
+    ""clarification_need"": ""Clarification is needed because the user mentioned both intent types in a single utterance without specifying priority or context for either."",
+    ""slot_analysis"": ""Detected slot 'product_category' is missing; it's required for some intents like INTENT_QNA_COVERAGE. However, since this is an ambiguous multi-intent case, we prioritize clarification over slot validation."",
+    ""intent_queue_logic"": ""Both intents are informational and non-transactional. They are queued based on confidence score, with INTENT_QNA_COVERAGE slightly higher than INTENT_PG_CLAIM.""
+  }
+}",TRUE,Clarification is needed because the user mentioned both intent types in a single utterance without specifying priority or context for either.
+"Halo, saya ingin tahu premi dan juga ingin memulai pesanan asuransi.","INTENT_QNA_PREMIUM,INTENT_ORDER","INTENT_QNA_PREMIUM,INTENT_QUICK_ORDER",0.50 ,,"{  ""text"": ""Halo, saya ingin tahu premi dan juga ingin memulai pesanan asuransi."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_QNA_PREMIUM"",
+      ""confidence"": 0.82
+    },
+    {
+      ""intent"": ""INTENT_QUICK_ORDER"",
+      ""confidence"": 0.79
+    },
+    {
+      ""intent"": ""INTENT_QUOTE_COMPARISON"",
+      ""confidence"": 0.65
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_QNA_PREMIUM"", ""INTENT_QUICK_ORDER""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [""INTENT_QUICK_ORDER""],
+  ""non_transactional_intents"": [""INTENT_QNA_PREMIUM""],
+  ""slots"": {
+    ""product_category"": ""car""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": true,
+  ""clarify_reason"": [""tie_in_tx_selection""],
+  ""clarify_question"": ""Baik ?? Kamu sedang bertanya tentang premi dan ingin memulai pesanan asuransi. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Cek informasi premi terlebih dahulu\n?? Opsi B: Langsung mulai proses pesanan asuransi"",
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""pause_tx_and_clarify"",
+  ""intent_queue"": {
+    ""count"": 2,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_QNA_PREMIUM"",
+        ""confidence"": 0.82,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_QUICK_ORDER"",
+        ""confidence"": 0.79,
+        ""intent_type"": ""Transactional""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_QNA_PREMIUM"", ""INTENT_QUICK_ORDER""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_QNA_PREMIUM"": ""Informational"",
+      ""INTENT_QUICK_ORDER"": ""Transactional""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""car""
+    },
+    ""tokenization"": [""Halo"", "","", ""saya"", ""ingin"", ""tahu"", ""premi"", ""dan"", ""juga"", ""ingin"", ""memulai"", ""pesanan"", ""asuransi"", "".""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""saya ingin tahu premi"",
+      ""detected_intents"": [""INTENT_QNA_PREMIUM""]
+    },
+    {
+      ""sub_text"": ""saya ingin memulai pesanan asuransi"",
+      ""detected_intents"": [""INTENT_QUICK_ORDER""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Halo, saya ingin tahu premi dan juga ingin memulai pesanan asuransi."",
+      ""action"": ""pause_tx_and_clarify"",
+      ""clarify_reason"": ""tie_in_tx_selection""
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang premi dan ingin memulai pesanan asuransi. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Cek informasi premi terlebih dahulu\n?? Opsi B: Langsung mulai proses pesanan asuransi"",
+      ""action"": ""ask_for_choice""
+    }
+  ],
+  ""reference"": {},
+  ""explanation"": {
+    ""reasoning"": ""The user expressed two distinct but related intentions: to know the premium (INTENT_QNA_PREMIUM) and to start an insurance order (INTENT_QUICK_ORDER). Both are valid and supported in the system. The model detected a close confidence between the two intents (0.82 vs 0.79), so it is ambiguous which one should be prioritized without clarification."",
+    ""clarification_need"": ""Clarification is needed because the user mentioned both informational and transactional goals, and the system must determine the correct flow based on their preference."",
+    ""slot_analysis"": ""Detected slot 'product_category' is set to 'car', which is supported in both intents. No missing slots were found."",
+    ""intent_queue_logic"": ""The intent queue follows the rule of prioritizing informational intents first. INTENT_QNA_PREMIUM was placed ahead of INTENT_QUICK_ORDER due to its higher confidence and being non-transactional.""
+  }
+}",TRUE,"Clarification is needed because the user mentioned both informational and transactional goals, and the system must determine the correct flow based on their preference."
+Bisa bantu saya reset percakapan dan beri tahu cara pembayaran?,"INTENT_SYSTEM_RESET,INTENT_QNA_PAYMENT","INTENT_SYSTEM_RESET,INTENT_QNA_PAYMENT",1.00 ,,"{  ""text"": ""Bisa bantu saya reset percakapan dan beri tahu cara pembayaran?"",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_SYSTEM_RESET"",
+      ""confidence"": 0.92
+    },
+    {
+      ""intent"": ""INTENT_QNA_PAYMENT"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_SYSTEM_HUMAN_ESCALATION"",
+      ""confidence"": 0.60
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_SYSTEM_RESET"", ""INTENT_QNA_PAYMENT""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_SYSTEM_RESET"", ""INTENT_QNA_PAYMENT""],
+  ""slots"": {},
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": false,
+  ""clarify_reason"": [],
+  ""clarify_question"": null,
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""pause_tx_and_clarify"",
+  ""intent_queue"": {
+    ""count"": 2,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_SYSTEM_RESET"",
+        ""confidence"": 0.92,
+        ""intent_type"": ""System""
+      },
+      {
+        ""intent"": ""INTENT_QNA_PAYMENT"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_SYSTEM_RESET"", ""INTENT_QNA_PAYMENT""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_SYSTEM_RESET"": ""System"",
+      ""INTENT_QNA_PAYMENT"": ""Informational""
+    },
+    ""detected_slots"": {},
+    ""tokenization"": [""Bisa"", ""bantu"", ""saya"", ""reset"", ""percakapan"", ""dan"", ""beri"", ""tahu"", ""cara"", ""pembayaran"", ""?""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Bisa bantu saya reset percakapan"",
+      ""detected_intents"": [""INTENT_SYSTEM_RESET""]
+    },
+    {
+      ""sub_text"": ""beri tahu cara pembayaran"",
+      ""detected_intents"": [""INTENT_QNA_PAYMENT""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Bisa bantu saya reset percakapan dan beri tahu cara pembayaran?"",
+      ""action"": ""ask_for_confirmation"",
+      ""clarify_reason"": ""multi_intent""
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang reset percakapan dan cara pembayaran. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Reset percakapan dari awal\n?? Opsi B: Tahu lebih banyak tentang cara pembayaran"",
+      ""action"": ""present_options"",
+      ""clarify_reason"": ""multi_intent""
+    }
+  ],
+  ""reference"": {
+    ""fuse_topic"": ""fina"",
+    ""product_category"": ""unknown""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user is asking for two distinct actions: resetting the conversation and learning about payment methods. These are mapped to INTENT_SYSTEM_RESET and INTENT_QNA_PAYMENT respectively. Both are valid and non-conflicting, so they are queued in priority order (system intent first)."",
+    ""clarification_need"": ""Clarification is needed to disambiguate which action the user wants to proceed with first."",
+    ""slot_analysis"": ""No slots are required for either intent at this stage."",
+    ""intent_queue_logic"": ""The system intent (reset) is prioritized over the informational intent (payment method), as per the rule 'Info intents before Tx intents'.""
+  }
+}",FALSE,Clarification is needed to disambiguate which action the user wants to proceed with first.
+"Saya mau ajukan klaim, tapi juga ingin bicara dengan manusia.","INTENT_PG_CLAIM,INTENT_SYSTEM_HUMAN_ESCALATION","INTENT_PG_CLAIM,INTENT_SYSTEM_HUMAN_ESCALATION",1.00 ,,"{  ""text"": ""Saya mau ajukan klaim, tapi juga ingin bicara dengan manusia."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_PG_CLAIM"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_SYSTEM_HUMAN_ESCALATION"",
+      ""confidence"": 0.78
+    },
+    {
+      ""intent"": ""INTENT_QNA_CLAIM_CON"",
+      ""confidence"": 0.62
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_PG_CLAIM"", ""INTENT_SYSTEM_HUMAN_ESCALATION""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_PG_CLAIM"", ""INTENT_SYSTEM_HUMAN_ESCALATION""],
+  ""slots"": {
+    ""product_category"": ""car""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": false,
+  ""clarify_reason"": [],
+  ""clarify_question"": null,
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""pause_tx_and_clarify"",
+  ""intent_queue"": {
+    ""count"": 2,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_PG_CLAIM"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_SYSTEM_HUMAN_ESCALATION"",
+        ""confidence"": 0.78,
+        ""intent_type"": ""System""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_PG_CLAIM"", ""INTENT_SYSTEM_HUMAN_ESCALATION""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_PG_CLAIM"": ""Informational"",
+      ""INTENT_SYSTEM_HUMAN_ESCALATION"": ""System""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""car""
+    },
+    ""tokenization"": [""Saya"", ""mau"", ""ajukan"", ""klaim"", "","", ""tapi"", ""juga"", ""ingin"", ""bicara"", ""dengan"", ""manusia"", "".""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Saya mau ajukan klaim"",
+      ""detected_intents"": [""INTENT_PG_CLAIM""]
+    },
+    {
+      ""sub_text"": ""tapi juga ingin bicara dengan manusia"",
+      ""detected_intents"": [""INTENT_SYSTEM_HUMAN_ESCALATION""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Saya mau ajukan klaim, tapi juga ingin bicara dengan manusia."",
+      ""action"": ""none"",
+      ""clarify_reason"": ""none""
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang proses klaim dan ingin berbicara langsung dengan petugas. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Ajukan klaim melalui chat (langkah-langkah akan saya bantu)\n?? Opsi B: Saya hubungkan kamu ke petugas layanan pelanggan"",
+      ""action"": ""clarify"",
+      ""clarify_reason"": ""multi_intent""
+    }
+  ],
+  ""reference"": {},
+  ""explanation"": {
+    ""reasoning"": ""The user expressed two distinct intentions: submitting a claim and connecting with a human agent. Both are valid but require different handling paths. The system detected both as high-confidence candidates and triggered the multi-intent clarification template to guide the user on next steps."",
+    ""clarification_need"": ""Clarification is needed because the user has multiple simultaneous requests that may conflict or require prioritization."",
+    ""slot_analysis"": ""Detected slot 'product_category' was inferred as 'car' based on context of insurance claims in Fuse/FINA domain."",
+    ""intent_queue_logic"": ""The intent queue prioritized informational intent first (claim process guidance) followed by the system intent (human escalation). No mutual exclusivity exists between these intents.""
+  }
+}",FALSE,Clarification is needed because the user has multiple simultaneous requests that may conflict or require prioritization.
+Saya ingin membandingkan dua produk dan tahu komisinya.,"INTENT_QNA_PRODUCT_COMP,INTENT_GM_COMM","INTENT_QNA_PRODUCT_COMP,INTENT_GM_COMM",1.00 ,,"{  ""text"": ""Saya ingin membandingkan dua produk dan tahu komisinya."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_QNA_PRODUCT_COMP"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_GM_COMM"",
+      ""confidence"": 0.72
+    },
+    {
+      ""intent"": ""INTENT_QNA_GENERAL"",
+      ""confidence"": 0.60
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_QNA_PRODUCT_COMP"", ""INTENT_GM_COMM""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_QNA_PRODUCT_COMP"", ""INTENT_GM_COMM""],
+  ""slots"": {
+    ""compared_products"": [""Product A"", ""Product B""],
+    ""product_category"": ""car""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": true,
+  ""clarify_reason"": [""multi_intent""],
+  ""clarify_question"": ""Baik ?? Kamu sedang bertanya tentang perbandingan produk dan informasi komisi. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Bandingkan dua produk asuransi mobil\n?? Opsi B: Tahu lebih banyak tentang struktur komisi untuk agen"",
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""pause_tx_and_clarify"",
+  ""intent_queue"": {
+    ""count"": 2,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_QNA_PRODUCT_COMP"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_GM_COMM"",
+        ""confidence"": 0.72,
+        ""intent_type"": ""Informational""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_QNA_PRODUCT_COMP""],
+      ""ambiguous"": [""INTENT_GM_COMM""]
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_QNA_PRODUCT_COMP"": ""Informational"",
+      ""INTENT_GM_COMM"": ""Informational"",
+      ""INTENT_QNA_GENERAL"": ""Informational""
+    },
+    ""detected_slots"": {
+      ""compared_products"": [""Product A"", ""Product B""],
+      ""product_category"": ""car""
+    },
+    ""tokenization"": [""Saya"", ""ingin"", ""membandingkan"", ""dua"", ""produk"", ""dan"", ""tahu"", ""komisinya""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Saya ingin membandingkan dua produk"",
+      ""detected_intents"": [""INTENT_QNA_PRODUCT_COMP""]
+    },
+    {
+      ""sub_text"": ""tahu komisinya"",
+      ""detected_intents"": [""INTENT_GM_COMM""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Saya ingin membandingkan dua produk dan tahu komisinya."",
+      ""action"": ""pause_tx_and_clarify"",
+      ""clarify_reason"": ""multi_intent""
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang perbandingan produk dan informasi komisi. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Bandingkan dua produk asuransi mobil\n?? Opsi B: Tahu lebih banyak tentang struktur komisi untuk agen"",
+      ""action"": ""ask_for_choice""
+    }
+  ],
+  ""reference"": {
+    ""intent_config_version"": ""v1.6d"",
+    ""fuse_topic"": ""fina""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user expressed intent to compare two products and learn about commissions. This maps to both INTENT_QNA_PRODUCT_COMP (comparing insurance products) and INTENT_GM_COMM (commission structure). Both are valid informational intents but require clarification on which one the user wants to proceed with first."",
+    ""clarification_need"": ""Clarification is needed because the user mentioned two distinct topics in a single query, and the system must determine which intent to prioritize."",
+    ""slot_analysis"": ""Detected slots include 'compared_products' and 'product_category'. No missing slots for either intent, but the multi-intent nature requires disambiguation."",
+    ""intent_queue_logic"": ""Both intents are informational and non-transactional. The system prioritizes them based on confidence score and offers a choice to the user.""
+  }
+}",TRUE,"Clarification is needed because the user mentioned two distinct topics in a single query, and the system must determine which intent to prioritize."
+Saya ingin menarik komisi dan juga melihat daftar penawaran sebelumnya.,"INTENT_WITHDRAWAL,INTENT_COMPARISON_LIST","INTENT_WITHDRAWAL,INTENT_COMPARISON_LIST",1.00 ,,"{  ""text"": ""Saya ingin menarik komisi dan juga melihat daftar penawaran sebelumnya."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_WITHDRAWAL"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_COMPARISON_LIST"",
+      ""confidence"": 0.78
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_WITHDRAWAL"", ""INTENT_COMPARISON_LIST""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_WITHDRAWAL"", ""INTENT_COMPARISON_LIST""],
+  ""slots"": {
+    ""intent_id_1"": ""INTENT_WITHDRAWAL"",
+    ""intent_id_2"": ""INTENT_COMPARISON_LIST""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": true,
+  ""clarify_reason"": [""multi_intent""],
+  ""clarify_question"": ""Baik ?? Kamu sedang bertanya tentang penarikan komisi dan riwayat perbandingan. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Tarik komisi\n?? Opsi B: Lihat riwayat perbandingan"",
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""pause_tx_and_clarify"",
+  ""intent_queue"": {
+    ""count"": 2,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_WITHDRAWAL"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_COMPARISON_LIST"",
+        ""confidence"": 0.78,
+        ""intent_type"": ""Transactional""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_WITHDRAWAL"", ""INTENT_COMPARISON_LIST""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_WITHDRAWAL"": ""Informational"",
+      ""INTENT_COMPARISON_LIST"": ""Transactional""
+    },
+    ""detected_slots"": {},
+    ""tokenization"": [""Saya"", ""ingin"", ""menarik"", ""komisi"", ""dan"", ""juga"", ""melihat"", ""daftar"", ""penawaran"", ""sebelumnya""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Saya ingin menarik komisi"",
+      ""detected_intents"": [""INTENT_WITHDRAWAL""]
+    },
+    {
+      ""sub_text"": ""Saya ingin melihat daftar penawaran sebelumnya"",
+      ""detected_intents"": [""INTENT_COMPARISON_LIST""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Saya ingin menarik komisi dan juga melihat daftar penawaran sebelumnya."",
+      ""action"": ""pause_tx_and_clarify"",
+      ""clarify_reason"": ""multi_intent""
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang penarikan komisi dan riwayat perbandingan. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Tarik komisi\n?? Opsi B: Lihat riwayat perbandingan"",
+      ""action"": ""ask_for_choice""
+    }
+  ],
+  ""reference"": {
+    ""intent_withdrawal"": ""INTENT_WITHDRAWAL"",
+    ""intent_comparison_list"": ""INTENT_COMPARISON_LIST""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user expressed two distinct intentions: to withdraw commission (INTENT_WITHDRAWAL) and to view previous quote lists (INTENT_COMPARISON_LIST). Both are valid and supported in the system. Since they are not mutually exclusive but require separate handling, a clarification is needed to determine which one to address first."",
+    ""clarification_need"": ""Clarification is needed because the user mentioned two different intents that need to be handled sequentially or separately."",
+    ""slot_analysis"": ""No slots were missing for either intent, so no additional information is required at this stage."",
+    ""intent_queue_logic"": ""The intents were queued based on their type (informational vs transactional), with informational intent prioritized.""
+  }
+}",TRUE,Clarification is needed because the user mentioned two different intents that need to be handled sequentially or separately.
+Tolong bantu jelaskan T&C pertumbuhan mitra dan cara penarikan.,"INTENT_GM_TNC,INTENT_QNA_WITHDRAW","INTENT_GM_TNC,INTENT_QNA_WITHDRAW",1.00 ,,"{  ""text"": ""Tolong bantu jelaskan T&C pertumbuhan mitra dan cara penarikan."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_GM_TNC"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_QNA_WITHDRAW"",
+      ""confidence"": 0.78
+    },
+    {
+      ""intent"": ""INTENT_QNA_GENERAL"",
+      ""confidence"": 0.62
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_GM_TNC"", ""INTENT_QNA_WITHDRAW""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_GM_TNC"", ""INTENT_QNA_WITHDRAW""],
+  ""slots"": {
+    ""clause_type"": ""growth model"",
+    ""payment_method"": ""not specified""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": false,
+  ""clarify_reason"": [],
+  ""clarify_question"": null,
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""answer_info"",
+  ""intent_queue"": {
+    ""count"": 2,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_GM_TNC"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_QNA_WITHDRAW"",
+        ""confidence"": 0.78,
+        ""intent_type"": ""Informational""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_GM_TNC"", ""INTENT_QNA_WITHDRAW""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_GM_TNC"": ""Informational"",
+      ""INTENT_QNA_WITHDRAW"": ""Informational""
+    },
+    ""detected_slots"": {
+      ""clause_type"": ""growth model"",
+      ""payment_method"": ""not specified""
+    },
+    ""tokenization"": [""Tolong"", ""bantu"", ""jelaskan"", ""T&C"", ""pertumbuhan"", ""mitra"", ""dan"", ""cara"", ""penarikan""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Tolong bantu jelaskan T&C pertumbuhan mitra"",
+      ""detected_intents"": [""INTENT_GM_TNC""]
+    },
+    {
+      ""sub_text"": ""cara penarikan"",
+      ""detected_intents"": [""INTENT_QNA_WITHDRAW""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Tolong bantu jelaskan T&C pertumbuhan mitra dan cara penarikan."",
+      ""action"": ""ask_info"",
+      ""clarify_reason"": null
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu ingin mengetahui tentang T&C pertumbuhan mitra dan cara penarikan. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Jelaskan terlebih dahulu T&C pertumbuhan mitra\n?? Opsi B: Jelaskan terlebih dahulu cara penarikan"",
+      ""action"": ""clarify_multi_intent"",
+      ""clarify_reason"": ""multi_intent""
+    }
+  ],
+  ""reference"": {
+    ""fuse_topic"": ""fina"",
+    ""product_category"": ""unknown""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user is asking about two distinct informational topics: the Terms & Conditions (T&C) of partner growth and the withdrawal process. Both are valid informational intents under 'General Q&A' and 'Growth Model'. The system has identified these as separate but related queries and is offering a clarification prompt to determine which one to address first."",
+    ""clarification_need"": ""Clarification is needed because the user is asking for two different pieces of information in one message. The system must decide which intent to prioritize based on the user's next input."",
+    ""slot_analysis"": ""Detected slots include clause_type ('growth model') and payment_method ('not specified'). No missing slots were found."",
+    ""intent_queue_logic"": ""The system prioritizes both intents as they are informational and non-transactional. Since there is no transactional intent involved, the system will handle them sequentially after clarification.""
+  }
+}",FALSE,Clarification is needed because the user is asking for two different pieces of information in one message. The system must decide which intent to prioritize based on the user's next input.
+"Hai, saya mau tahu cara bayar dan ingin bicara dengan CS.","INTENT_QNA_PAYMENT,INTENT_SYSTEM_HUMAN_ESCALATION","INTENT_QNA_PAYMENT,INTENT_SYSTEM_HUMAN_ESCALATION",1.00 ,,"{  ""text"": ""Hai, saya mau tahu cara bayar dan ingin bicara dengan CS."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_QNA_PAYMENT"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_SYSTEM_HUMAN_ESCALATION"",
+      ""confidence"": 0.78
+    },
+    {
+      ""intent"": ""INTENT_GREETING"",
+      ""confidence"": 0.65
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_QNA_PAYMENT"", ""INTENT_SYSTEM_HUMAN_ESCALATION""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_QNA_PAYMENT"", ""INTENT_SYSTEM_HUMAN_ESCALATION""],
+  ""slots"": {
+    ""payment_method"": null
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": null,
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": false,
+  ""clarify_reason"": [],
+  ""clarify_question"": null,
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""answer_info"",
+  ""intent_queue"": {
+    ""count"": 2,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_QNA_PAYMENT"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_SYSTEM_HUMAN_ESCALATION"",
+        ""confidence"": 0.78,
+        ""intent_type"": ""System""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_QNA_PAYMENT"", ""INTENT_SYSTEM_HUMAN_ESCALATION""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_QNA_PAYMENT"": ""Informational"",
+      ""INTENT_SYSTEM_HUMAN_ESCALATION"": ""System""
+    },
+    ""detected_slots"": {
+      ""payment_method"": null
+    },
+    ""tokenization"": [""Hai"", "","", ""saya"", ""mau"", ""tahu"", ""cara"", ""bayar"", ""dan"", ""ingin"", ""bicara"", ""dengan"", ""CS"", "".""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""saya mau tahu cara bayar"",
+      ""detected_intents"": [""INTENT_QNA_PAYMENT""]
+    },
+    {
+      ""sub_text"": ""ingin bicara dengan CS"",
+      ""detected_intents"": [""INTENT_SYSTEM_HUMAN_ESCALATION""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Hai, saya mau tahu cara bayar dan ingin bicara dengan CS."",
+      ""action"": ""none"",
+      ""clarify_reason"": null
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Got it ?? You’re asking about payment methods and want to speak with a customer service representative. To move forward, what would you like to do next?\n\n?? Option A: Learn about the available payment methods.\n?? Option B: Connect with a live agent now."",
+      ""action"": ""clarify"",
+      ""clarify_reason"": ""multi_intent""
+    }
+  ],
+  ""reference"": {},
+  ""explanation"": {
+    ""reasoning"": ""The user expressed two distinct intentions: (1) to learn about payment methods (`INTENT_QNA_PAYMENT`) and (2) to connect with a human agent (`INTENT_SYSTEM_HUMAN_ESCALATION`). Both are valid and non-mutually exclusive. The system is using the multi-intent clarification template to disambiguate which action the user wants to take first."",
+    ""clarification_need"": ""Clarification is needed because the user mentioned two separate actions in one message. The system must ask for confirmation on which path to follow."",
+    ""slot_analysis"": ""No required slots were missing for either intent, so no slot-based clarification was triggered."",
+    ""intent_queue_logic"": ""The system prioritized `INTENT_QNA_PAYMENT` over `INTENT_SYSTEM_HUMAN_ESCALATION` due to higher confidence and the rule that informational intents come before transactional ones.""
+  }
+}",FALSE,Clarification is needed because the user mentioned two separate actions in one message. The system must ask for confirmation on which path to follow.
+"Saya ingin tahu manfaat polis, cara klaim, dan ingin membayar premi sekarang.","INTENT_QNA_COVERAGE,INTENT_PG_CLAIM,INTENT_PAYMENT","INTENT_QNA_COVERAGE,INTENT_PG_CLAIM,INTENT_PAYMENT",1.00 ,,"{  ""text"": ""Saya ingin tahu manfaat polis, cara klaim, dan ingin membayar premi sekarang."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_QNA_COVERAGE"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_PG_CLAIM"",
+      ""confidence"": 0.78
+    },
+    {
+      ""intent"": ""INTENT_PAYMENT"",
+      ""confidence"": 0.72
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_QNA_COVERAGE"", ""INTENT_PG_CLAIM"", ""INTENT_PAYMENT""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [""INTENT_PAYMENT""],
+  ""non_transactional_intents"": [""INTENT_QNA_COVERAGE"", ""INTENT_PG_CLAIM""],
+  ""slots"": {
+    ""product_category"": ""car""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": false,
+  ""clarify_reason"": [],
+  ""clarify_question"": null,
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""pause_tx_and_clarify"",
+  ""intent_queue"": {
+    ""count"": 3,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_QNA_COVERAGE"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_PG_CLAIM"",
+        ""confidence"": 0.78,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_PAYMENT"",
+        ""confidence"": 0.72,
+        ""intent_type"": ""Transactional""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_QNA_COVERAGE""],
+      ""ambiguous"": [""INTENT_PG_CLAIM"", ""INTENT_PAYMENT""]
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_QNA_COVERAGE"": ""Informational"",
+      ""INTENT_PG_CLAIM"": ""Informational"",
+      ""INTENT_PAYMENT"": ""Transactional""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""car""
+    },
+    ""tokenization"": [""Saya"", ""ingin"", ""tahu"", ""manfaat"", ""polis"", "","", ""cara"", ""klaim"", "","", ""dan"", ""ingin"", ""membayar"", ""premi"", ""sekarang"", "".""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Saya ingin tahu manfaat polis"",
+      ""detected_intents"": [""INTENT_QNA_COVERAGE""]
+    },
+    {
+      ""sub_text"": ""cara klaim"",
+      ""detected_intents"": [""INTENT_PG_CLAIM""]
+    },
+    {
+      ""sub_text"": ""ingin membayar premi sekarang"",
+      ""detected_intents"": [""INTENT_PAYMENT""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Saya ingin tahu manfaat polis, cara klaim, dan ingin membayar premi sekarang."",
+      ""action"": ""none"",
+      ""clarify_reason"": ""none""
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang manfaat polis, proses klaim, dan pembayaran premi. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Mulai dengan menjelaskan manfaat polis terlebih dahulu.\n?? Opsi B: Langsung ke panduan klaim atau pembayaran premi."",
+      ""action"": ""clarify"",
+      ""clarify_reason"": ""multi_intent""
+    }
+  ],
+  ""reference"": {
+    ""fuse_topic"": ""fina"",
+    ""intent_order"": [""INTENT_QNA_COVERAGE"", ""INTENT_PG_CLAIM"", ""INTENT_PAYMENT""]
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user expressed three distinct but related intentions: to know the policy benefits (INTENT_QNA_COVERAGE), to understand the claim process (INTENT_PG_CLAIM), and to pay the premium now (INTENT_PAYMENT). The system detected all three as valid candidates with high confidence. Since these are not mutually exclusive and follow a logical sequence, they were queued in order of priority (info first, then transactional)."",
+    ""clarification_need"": ""Clarification is needed to determine which intent to address first due to multiple valid options being present."",
+    ""slot_analysis"": ""Product category 'car' was inferred from context. No missing slots for any of the intents at this stage."",
+    ""intent_queue_logic"": ""The system prioritized informational intents (QNA) over transactional ones (Payment) per the rule 'Info intents before Tx intents'. INTENT_PAYMENT was deferred until after the user clarifies their next step.""
+  }
+}",FALSE,Clarification is needed to determine which intent to address first due to multiple valid options being present.
+"Tolong bandingkan produk asuransi, jelaskan T&C, dan bantu saya pesan langsung.","INTENT_QNA_PRODUCT_COMP,INTENT_QNA_POLICY_TNC,INTENT_QUICK_ORDER","INTENT_QNA_PRODUCT_COMP,INTENT_QNA_POLICY_TNC,INTENT_QUICK_ORDER",1.00 ,,"{  ""text"": ""Tolong bandingkan produk asuransi, jelaskan T&C, dan bantu saya pesan langsung."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_QNA_PRODUCT_COMP"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_QNA_POLICY_TNC"",
+      ""confidence"": 0.78
+    },
+    {
+      ""intent"": ""INTENT_QUICK_ORDER"",
+      ""confidence"": 0.72
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_QNA_PRODUCT_COMP"", ""INTENT_QNA_POLICY_TNC"", ""INTENT_QUICK_ORDER""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [""INTENT_QUICK_ORDER""],
+  ""non_transactional_intents"": [""INTENT_QNA_PRODUCT_COMP"", ""INTENT_QNA_POLICY_TNC""],
+  ""slots"": {
+    ""product_category"": ""car"",
+    ""compared_products"": [""Product A"", ""Product B""],
+    ""clause_type"": ""duration""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": true,
+  ""clarify_reason"": [""multi_intent""],
+  ""clarify_question"": ""Baik ?? Kamu sedang bertanya tentang perbandingan produk asuransi, syarat & ketentuan, dan ingin memesan langsung. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Bandingkan produk terlebih dahulu\n?? Opsi B: Langsung pesan setelah melihat T&C"",
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""pause_tx_and_clarify"",
+  ""intent_queue"": {
+    ""count"": 3,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_QNA_PRODUCT_COMP"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_QNA_POLICY_TNC"",
+        ""confidence"": 0.78,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_QUICK_ORDER"",
+        ""confidence"": 0.72,
+        ""intent_type"": ""Transactional""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_QNA_PRODUCT_COMP"", ""INTENT_QNA_POLICY_TNC""],
+      ""ambiguous"": [""INTENT_QUICK_ORDER""]
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_QNA_PRODUCT_COMP"": ""Informational"",
+      ""INTENT_QNA_POLICY_TNC"": ""Informational"",
+      ""INTENT_QUICK_ORDER"": ""Transactional""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""car"",
+      ""compared_products"": [""Product A"", ""Product B""],
+      ""clause_type"": ""duration""
+    },
+    ""tokenization"": [""Tolong"", ""bandingkan"", ""produk"", ""asuransi"", "","", ""jelaskan"", ""T&C"", "","", ""dan"", ""bantu"", ""saya"", ""pesan"", ""langsung"", "".""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Tolong bandingkan produk asuransi"",
+      ""detected_intents"": [""INTENT_QNA_PRODUCT_COMP""]
+    },
+    {
+      ""sub_text"": ""jelaskan T&C"",
+      ""detected_intents"": [""INTENT_QNA_POLICY_TNC""]
+    },
+    {
+      ""sub_text"": ""bantu saya pesan langsung"",
+      ""detected_intents"": [""INTENT_QUICK_ORDER""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Tolong bandingkan produk asuransi, jelaskan T&C, dan bantu saya pesan langsung."",
+      ""action"": ""pause_tx_and_clarify"",
+      ""clarify_reason"": ""multi_intent""
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang perbandingan produk asuransi, syarat & ketentuan, dan ingin memesan langsung. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Bandingkan produk terlebih dahulu\n?? Opsi B: Langsung pesan setelah melihat T&C"",
+      ""action"": ""ask_for_choice""
+    }
+  ],
+  ""reference"": {
+    ""intent_config_version"": ""v1.6d"",
+    ""fuse_topic"": ""fina""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user is asking for three actions: compare insurance products, explain the terms and conditions (T&C), and place an order directly. These are mapped to INTENT_QNA_PRODUCT_COMP, INTENT_QNA_POLICY_TNC, and INTENT_QUICK_ORDER respectively. Since multiple intents are detected with high confidence, a clarification is needed to determine the next step."",
+    ""clarification_need"": ""Clarification is required because the user has expressed intent to perform multiple actions in one message. The system must ask the user to choose which action to prioritize."",
+    ""slot_analysis"": ""Detected slots include product_category (car), compared_products (Product A, Product B), and clause_type (duration). No missing slots were found."",
+    ""intent_queue_logic"": ""The intents are queued in priority order: informational first (QNA) followed by transactional (Quick Order). This follows the rule that informational intents should be addressed before transactional ones.""
+  }
+}",TRUE,Clarification is required because the user has expressed intent to perform multiple actions in one message. The system must ask the user to choose which action to prioritize.
+"Saya ingin tahu tentang komisi, cara undang teman, dan juga ingin menarik bonus.","INTENT_GM_COMM,INTENT_INVITE,INTENT_WITHDRAWAL","INTENT_QNA_COMM,INTENT_INVITE,INTENT_WITHDRAWAL",0.67 ,模型幻觉，输出了错误的code,"{  ""text"": ""Saya ingin tahu tentang komisi, cara undang teman, dan juga ingin menarik bonus."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_QNA_COMM"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_INVITE"",
+      ""confidence"": 0.78
+    },
+    {
+      ""intent"": ""INTENT_WITHDRAWAL"",
+      ""confidence"": 0.72
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_QNA_COMM"", ""INTENT_INVITE"", ""INTENT_WITHDRAWAL""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_QNA_COMM"", ""INTENT_INVITE"", ""INTENT_WITHDRAWAL""],
+  ""slots"": {
+    ""intent_id"": ""INTENT_QNA_COMM"",
+    ""product_category"": ""unknown""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": true,
+  ""clarify_reason"": [""multi_intent""],
+  ""clarify_question"": ""Baik ?? Kamu sedang bertanya tentang komisi, cara mengundang teman, dan penarikan bonus. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Mulai dengan informasi tentang komisi\n?? Opsi B: Pelajari cara mengundang teman\n?? Opsi C: Pelajari bagaimana menarik bonus"",
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""pause_tx_and_clarify"",
+  ""intent_queue"": {
+    ""count"": 3,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_QNA_COMM"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_INVITE"",
+        ""confidence"": 0.78,
+        ""intent_type"": ""Transactional""
+      },
+      {
+        ""intent"": ""INTENT_WITHDRAWAL"",
+        ""confidence"": 0.72,
+        ""intent_type"": ""Transactional""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_QNA_COMM""],
+      ""ambiguous"": [""INTENT_INVITE"", ""INTENT_WITHDRAWAL""]
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_QNA_COMM"": ""Informational"",
+      ""INTENT_INVITE"": ""Transactional"",
+      ""INTENT_WITHDRAWAL"": ""Transactional""
+    },
+    ""detected_slots"": {
+      ""intent_id"": ""INTENT_QNA_COMM""
+    },
+    ""tokenization"": [""Saya"", ""ingin"", ""tahu"", ""tentang"", ""komisi"", "","", ""cara"", ""undang"", ""teman"", "","", ""dan"", ""juga"", ""ingin"", ""menarik"", ""bonus"", "".""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Saya ingin tahu tentang komisi"",
+      ""detected_intents"": [""INTENT_QNA_COMM""]
+    },
+    {
+      ""sub_text"": ""cara undang teman"",
+      ""detected_intents"": [""INTENT_INVITE""]
+    },
+    {
+      ""sub_text"": ""ingin menarik bonus"",
+      ""detected_intents"": [""INTENT_WITHDRAWAL""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Saya ingin tahu tentang komisi, cara undang teman, dan juga ingin menarik bonus."",
+      ""action"": ""pause_tx_and_clarify"",
+      ""clarify_reason"": ""multi_intent""
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang komisi, cara mengundang teman, dan penarikan bonus. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Mulai dengan informasi tentang komisi\n?? Opsi B: Pelajari cara mengundang teman\n?? Opsi C: Pelajari bagaimana menarik bonus"",
+      ""action"": ""ask_for_choice""
+    }
+  ],
+  ""reference"": {
+    ""intent_config_version"": ""v1.6d"",
+    ""rules_version"": ""v1.6c_merged""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user mentioned three distinct topics: commission (INTENT_QNA_COMM), inviting friends (INTENT_INVITE), and withdrawing bonuses (INTENT_WITHDRAWAL). These are all valid intents in the configuration with high confidence scores. Since they are not mutually exclusive but require clarification to proceed with one at a time, we pause and ask for clarification."",
+    ""clarification_need"": ""Clarification is needed because the user has expressed multiple intent paths that need to be addressed sequentially or prioritized."",
+    ""slot_analysis"": ""No slots were missing in any of the top intents; however, the system cannot determine which intent to prioritize without further input from the user."",
+    ""intent_queue_logic"": ""The non-transactional INTENT_QNA_COMM was prioritized first due to the 'info before tx' rule. The transactional intents followed in descending order of confidence.""
+  }
+}",TRUE,Clarification is needed because the user has expressed multiple intent paths that need to be addressed sequentially or prioritized.
+"Halo, tolong reset, bantu klaim, dan beri tahu dokumen apa yang dibutuhkan.","INTENT_SYSTEM_RESET,INTENT_PG_CLAIM,INTENT_QNA_DOC_REQ","INTENT_SYSTEM_RESET,INTENT_PG_CLAIM,INTENT_QNA_DOC_REQ",1.00 ,,"{  ""text"": ""Halo, tolong reset, bantu klaim, dan beri tahu dokumen apa yang dibutuhkan."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_SYSTEM_RESET"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_PG_CLAIM"",
+      ""confidence"": 0.78
+    },
+    {
+      ""intent"": ""INTENT_QNA_DOC_REQ"",
+      ""confidence"": 0.72
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_SYSTEM_RESET"", ""INTENT_PG_CLAIM"", ""INTENT_QNA_DOC_REQ""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_SYSTEM_RESET"", ""INTENT_PG_CLAIM"", ""INTENT_QNA_DOC_REQ""],
+  ""slots"": {
+    ""product_category"": ""car""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": true,
+  ""clarify_reason"": [""multi_intent""],
+  ""clarify_question"": ""Baik ?? Kamu sedang bertanya tentang reset, klaim, dan dokumen yang diperlukan. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Reset percakapan\n?? Opsi B: Ajukan klaim\n?? Opsi C: Tahu dokumen yang diperlukan"",
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""pause_tx_and_clarify"",
+  ""intent_queue"": {
+    ""count"": 3,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_SYSTEM_RESET"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""System""
+      },
+      {
+        ""intent"": ""INTENT_PG_CLAIM"",
+        ""confidence"": 0.78,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_QNA_DOC_REQ"",
+        ""confidence"": 0.72,
+        ""intent_type"": ""Informational""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_SYSTEM_RESET"", ""INTENT_PG_CLAIM""],
+      ""ambiguous"": [""INTENT_QNA_DOC_REQ""]
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_SYSTEM_RESET"": ""System"",
+      ""INTENT_PG_CLAIM"": ""Informational"",
+      ""INTENT_QNA_DOC_REQ"": ""Informational""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""car""
+    },
+    ""tokenization"": [""Halo"", "","", ""tolong"", ""reset"", "","", ""bantu"", ""klaim"", "","", ""dan"", ""beri"", ""tahu"", ""dokumen"", ""apa"", ""yang"", ""dibutuhkan"", "".""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Halo, tolong reset"",
+      ""detected_intents"": [""INTENT_SYSTEM_RESET""]
+    },
+    {
+      ""sub_text"": ""bantu klaim"",
+      ""detected_intents"": [""INTENT_PG_CLAIM""]
+    },
+    {
+      ""sub_text"": ""beri tahu dokumen apa yang dibutuhkan"",
+      ""detected_intents"": [""INTENT_QNA_DOC_REQ""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Halo, tolong reset, bantu klaim, dan beri tahu dokumen apa yang dibutuhkan."",
+      ""action"": ""pause_tx_and_clarify"",
+      ""clarify_reason"": ""multi_intent""
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang reset, klaim, dan dokumen yang diperlukan. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Reset percakapan\n?? Opsi B: Ajukan klaim\n?? Opsi C: Tahu dokumen yang diperlukan"",
+      ""action"": ""ask_for_choice""
+    }
+  ],
+  ""reference"": {},
+  ""explanation"": {
+    ""reasoning"": ""The user input contains three distinct requests: resetting the conversation, submitting a claim, and asking about required documents. These are mapped to INTENT_SYSTEM_RESET, INTENT_PG_CLAIM, and INTENT_QNA_DOC_REQ respectively. The top candidates are selected based on keyword matches and intent similarity."",
+    ""clarification_need"": ""Clarification is needed because the user has mentioned multiple intents in one message. It's unclear which one they want to proceed with first."",
+    ""slot_analysis"": ""Detected slot 'product_category' as 'car', which is valid for all intents. No missing slots."",
+    ""intent_queue_logic"": ""All three intents are non-transactional and informational. They are queued in descending order of confidence.""
+  }
+}",TRUE,Clarification is needed because the user has mentioned multiple intents in one message. It's unclear which one they want to proceed with first.
+"Saya ingin tahu premi, manfaat, dan cara bayar asuransi kendaraan saya.","INTENT_QNA_PREMIUM,INTENT_QNA_COVERAGE,INTENT_QNA_PAYMENT","INTENT_QNA_PREMIUM,INTENT_QNA_COVERAGE,INTENT_QNA_PAYMENT",1.00 ,,"{  ""text"": ""Saya ingin tahu premi, manfaat, dan cara bayar asuransi kendaraan saya."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_QNA_PREMIUM"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_QNA_COVERAGE"",
+      ""confidence"": 0.78
+    },
+    {
+      ""intent"": ""INTENT_QNA_PAYMENT"",
+      ""confidence"": 0.72
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_QNA_PREMIUM"", ""INTENT_QNA_COVERAGE"", ""INTENT_QNA_PAYMENT""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_QNA_PREMIUM"", ""INTENT_QNA_COVERAGE"", ""INTENT_QNA_PAYMENT""],
+  ""slots"": {
+    ""product_category"": ""car""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": false,
+  ""clarify_reason"": [],
+  ""clarify_question"": null,
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""answer_info"",
+  ""intent_queue"": {
+    ""count"": 3,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_QNA_PREMIUM"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_QNA_COVERAGE"",
+        ""confidence"": 0.78,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_QNA_PAYMENT"",
+        ""confidence"": 0.72,
+        ""intent_type"": ""Informational""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_QNA_PREMIUM""],
+      ""ambiguous"": [""INTENT_QNA_COVERAGE"", ""INTENT_QNA_PAYMENT""]
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_QNA_PREMIUM"": ""Informational"",
+      ""INTENT_QNA_COVERAGE"": ""Informational"",
+      ""INTENT_QNA_PAYMENT"": ""Informational""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""car""
+    },
+    ""tokenization"": [""Saya"", ""ingin"", ""tahu"", ""premi"", "","", ""manfaat"", "","", ""dan"", ""cara"", ""bayar"", ""asuransi"", ""kendaraan"", ""saya"", "".""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Saya ingin tahu premi asuransi kendaraan saya"",
+      ""detected_intents"": [""INTENT_QNA_PREMIUM""]
+    },
+    {
+      ""sub_text"": ""Saya ingin tahu manfaat asuransi kendaraan saya"",
+      ""detected_intents"": [""INTENT_QNA_COVERAGE""]
+    },
+    {
+      ""sub_text"": ""Saya ingin tahu cara bayar asuransi kendaraan saya"",
+      ""detected_intents"": [""INTENT_QNA_PAYMENT""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Saya ingin tahu premi, manfaat, dan cara bayar asuransi kendaraan saya."",
+      ""action"": ""split_and_queue"",
+      ""clarify_reason"": null
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Saya paham Anda ingin mengetahui tentang premi, manfaat, dan cara pembayaran asuransi kendaraan Anda. Untuk memulai, maukah Anda menjelaskan lebih lanjut apakah ini untuk mobil baru atau bekas?"",
+      ""action"": ""ask_for_more_details"",
+      ""clarify_reason"": ""extend_ambiguous""
+    }
+  ],
+  ""reference"": {
+    ""intent_config_version"": ""v1.6d"",
+    ""rules_version"": ""v1.6c_merged""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user is asking about three distinct informational aspects of their car insurance: premium, coverage/benefits, and payment methods. These map to three separate intents in the configuration (QNA_PREMIUM, QNA_COVERAGE, QNA_PAYMENT). The system has split the input into sub-questions and queued them for sequential handling."",
+    ""clarification_need"": ""No immediate clarification needed since all intents are valid and supported. However, a follow-up question is suggested to gather more context for better personalization."",
+    ""slot_analysis"": ""Detected slot 'product_category' = 'car', which is supported. No missing slots in this case."",
+    ""intent_queue_logic"": ""All three intents are non-transactional and fall under the 'Informational' category. They are ordered based on confidence scores.""
+  }
+}",FALSE,"No immediate clarification needed since all intents are valid and supported. However, a follow-up question is suggested to gather more context for better personalization."
+Saya ingin memesan polis baru dan ingin membandingkan harga.,"INTENT_QUOTE_COMPARISON,INTENT_QUOTATION","INTENT_QUOTATION,INTENT_QUOTE_COMPARISON",0.80 ,顺序问题,"{  ""text"": ""Saya ingin memesan polis baru dan ingin membandingkan harga."",
+  ""candidates"": [
+    {""intent"": ""INTENT_QUOTATION"", ""confidence"": 0.82},
+    {""intent"": ""INTENT_QUOTE_COMPARISON"", ""confidence"": 0.79},
+    {""intent"": ""INTENT_QNA_PREMIUM"", ""confidence"": 0.65}
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_QUOTATION"", ""INTENT_QUOTE_COMPARISON""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [""INTENT_QUOTATION""],
+  ""non_transactional_intents"": [""INTENT_QUOTE_COMPARISON""],
+  ""slots"": {
+    ""product_category"": ""car""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": true,
+  ""clarify_reason"": [""multi_intent""],
+  ""clarify_question"": ""Baik ?? Kamu sedang bertanya tentang pemesanan polis baru dan perbandingan harga. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Lanjut memesan polis baru\n?? Opsi B: Lihat perbandingan harga terlebih dahulu"",
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""pause_tx_and_clarify"",
+  ""intent_queue"": {
+    ""count"": 2,
+    ""order"": [
+      {""intent"": ""INTENT_QUOTE_COMPARISON"", ""confidence"": 0.79, ""intent_type"": ""Informational""},
+      {""intent"": ""INTENT_QUOTATION"", ""confidence"": 0.82, ""intent_type"": ""Transactional""}
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_QUOTATION"", ""INTENT_QUOTE_COMPARISON""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_QUOTATION"": ""ORDER"",
+      ""INTENT_QUOTE_COMPARISON"": ""QUOTE"",
+      ""INTENT_QNA_PREMIUM"": ""INFORMATIONAL""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""car""
+    },
+    ""tokenization"": [""Saya"", ""ingin"", ""memesan"", ""polis"", ""baru"", ""dan"", ""ingin"", ""membandingkan"", ""harga""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Saya ingin memesan polis baru"",
+      ""detected_intents"": [""INTENT_QUOTATION""]
+    },
+    {
+      ""sub_text"": ""ingin membandingkan harga"",
+      ""detected_intents"": [""INTENT_QUOTE_COMPARISON""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Saya ingin memesan polis baru dan ingin membandingkan harga."",
+      ""action"": ""pause_tx_and_clarify"",
+      ""clarify_reason"": ""multi_intent""
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang pemesanan polis baru dan perbandingan harga. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Lanjut memesan polis baru\n?? Opsi B: Lihat perbandingan harga terlebih dahulu"",
+      ""action"": ""ask_for_choice""
+    }
+  ],
+  ""reference"": {},
+  ""explanation"": {
+    ""reasoning"": ""The user expressed two distinct but related intentions: ordering a new policy (INTENT_QUOTATION) and comparing prices (INTENT_QUOTE_COMPARISON). Both are valid and supported in the system. Since they are not mutually exclusive, we pause to ask for clarification on which action to prioritize."",
+    ""clarification_need"": ""Clarification is needed because the user mentioned both transactional and informational actions without specifying priority."",
+    ""slot_analysis"": ""Detected slot 'product_category' as 'car', which is supported in Fina. No missing slots."",
+    ""intent_queue_logic"": ""INTENT_QUOTE_COMPARISON (info) was prioritized over INTENT_QUOTATION (tx) due to the rule that info comes first unless tx gating is satisfied.""
+  }
+}",TRUE,Clarification is needed because the user mentioned both transactional and informational actions without specifying priority.
+Bisa jelaskan proses endorsement dan juga cara klaim?,"INTENT_PG_ENDORSEMENT,INTENT_PG_CLAIM","INTENT_PG_ENDORSEMENT,INTENT_PG_CLAIM",1.00 ,,"{  ""text"": ""Bisa jelaskan proses endorsement dan juga cara klaim?"",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_PG_ENDORSEMENT"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_PG_CLAIM"",
+      ""confidence"": 0.83
+    },
+    {
+      ""intent"": ""INTENT_QNA_GENERAL"",
+      ""confidence"": 0.62
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_PG_ENDORSEMENT"", ""INTENT_PG_CLAIM""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_PG_ENDORSEMENT"", ""INTENT_PG_CLAIM""],
+  ""slots"": {
+    ""product_category"": ""unknown""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": false,
+  ""clarify_reason"": [],
+  ""clarify_question"": null,
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""answer_info"",
+  ""intent_queue"": {
+    ""count"": 2,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_PG_ENDORSEMENT"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_PG_CLAIM"",
+        ""confidence"": 0.83,
+        ""intent_type"": ""Informational""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_PG_ENDORSEMENT"", ""INTENT_PG_CLAIM""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_PG_ENDORSEMENT"": ""Process Guidance"",
+      ""INTENT_PG_CLAIM"": ""Process Guidance"",
+      ""INTENT_QNA_GENERAL"": ""Informational""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""unknown""
+    },
+    ""tokenization"": [""Bisa"", ""jelaskan"", ""proses"", ""endorsement"", ""dan"", ""juga"", ""cara"", ""klaim"", ""?""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Bisa jelaskan proses endorsement?"",
+      ""detected_intents"": [""INTENT_PG_ENDORSEMENT""]
+    },
+    {
+      ""sub_text"": ""juga cara klaim?"",
+      ""detected_intents"": [""INTENT_PG_CLAIM""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Bisa jelaskan proses endorsement dan juga cara klaim?"",
+      ""action"": ""ask_for_multiple_intents"",
+      ""clarify_reason"": null
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang proses endorsement dan cara klaim. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Jelaskan proses endorsement terlebih dahulu.\n?? Opsi B: Jelaskan cara klaim terlebih dahulu."",
+      ""action"": ""clarify_multi_intent"",
+      ""clarify_reason"": ""multi_intent""
+    }
+  ],
+  ""reference"": {},
+  ""explanation"": {
+    ""reasoning"": ""The user is asking about two distinct informational topics: the process of endorsement (changing/updating an insurance policy) and how to make a claim. Both are valid intents under 'Process Guidance' and are supported in the system. The top two candidates have high confidence scores and are not mutually exclusive, so both are retained as final intents."",
+    ""clarification_need"": ""Clarification is needed to determine which intent to address first since the user mentioned both in one query."",
+    ""slot_analysis"": ""No required slots are missing for either intent at this stage. Product category is unknown but not required for these intents."",
+    ""intent_queue_logic"": ""Both intents are informational and non-transactional, so they are queued in descending order of confidence.""
+  }
+}",FALSE,Clarification is needed to determine which intent to address first since the user mentioned both in one query.
+Saya ingin membayar premi dan meninjau polis saya.,"INTENT_PAYMENT,INTENT_QNA_POLICY_TNC","INTENT_PAYMENT,INTENT_QNA_POLICY_TNC",1.00 ,,"{  ""text"": ""Saya ingin membayar premi dan meninjau polis saya."",
+  ""candidates"": [
+    {""intent"": ""INTENT_PAYMENT"", ""confidence"": 0.82},
+    {""intent"": ""INTENT_QNA_POLICY_TNC"", ""confidence"": 0.75},
+    {""intent"": ""INTENT_QNA_PREMIUM"", ""confidence"": 0.68}
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_PAYMENT"", ""INTENT_QNA_POLICY_TNC""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": ""INTENT_PAYMENT"",
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_QNA_POLICY_TNC""],
+  ""slots"": {
+    ""product_category"": ""car""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": null,
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": false,
+  ""clarify_reason"": [],
+  ""clarify_question"": null,
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""proceed_tx"",
+  ""intent_queue"": {
+    ""count"": 2,
+    ""order"": [
+      {""intent"": ""INTENT_PAYMENT"", ""confidence"": 0.82, ""intent_type"": ""Tx""},
+      {""intent"": ""INTENT_QNA_POLICY_TNC"", ""confidence"": 0.75, ""intent_type"": ""Info""}
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_PAYMENT"", ""INTENT_QNA_POLICY_TNC""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_PAYMENT"": ""Payment"",
+      ""INTENT_QNA_POLICY_TNC"": ""Informational""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""car""
+    },
+    ""tokenization"": [""Saya"", ""ingin"", ""membayar"", ""premi"", ""dan"", ""meninjau"", ""polis"", ""saya""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Saya ingin membayar premi"",
+      ""detected_intents"": [""INTENT_PAYMENT""]
+    },
+    {
+      ""sub_text"": ""meninjau polis saya"",
+      ""detected_intents"": [""INTENT_QNA_POLICY_TNC""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Saya ingin membayar premi dan meninjau polis saya."",
+      ""action"": ""proceed_tx"",
+      ""clarify_reason"": null
+    }
+  ],
+  ""reference"": {},
+  ""explanation"": {
+    ""reasoning"": ""The user expressed two distinct intentions: to pay a premium (INTENT_PAYMENT) and to review their policy (INTENT_QNA_POLICY_TNC). Both are valid and supported in the current scope. The transactional intent (INTENT_PAYMENT) is prioritized due to its higher confidence score and relevance to an actionable task."",
+    ""clarification_need"": ""No clarification needed as both intents are clear and non-conflicting."",
+    ""slot_analysis"": ""Detected slot 'product_category' with value 'car', which is supported in the system."",
+    ""intent_queue_logic"": ""The transactional intent (INTENT_PAYMENT) is placed first in the queue, followed by the informational intent (INTENT_QNA_POLICY_TNC), following the rule of prioritizing transactional over informational when no mutual exclusivity exists.""
+  }
+}",FALSE,No clarification needed as both intents are clear and non-conflicting.
+"Halo, tolong bantu reset percakapan dan beri tahu cara undang teman.","INTENT_SYSTEM_RESET,INTENT_QNA_INVITE","INTENT_SYSTEM_RESET,INTENT_QNA_INVITE",1.00 ,,"{  ""text"": ""Halo, tolong bantu reset percakapan dan beri tahu cara undang teman."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_SYSTEM_RESET"",
+      ""confidence"": 0.92
+    },
+    {
+      ""intent"": ""INTENT_QNA_INVITE"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_GREETING"",
+      ""confidence"": 0.78
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_SYSTEM_RESET"", ""INTENT_QNA_INVITE""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_SYSTEM_RESET"", ""INTENT_QNA_INVITE""],
+  ""slots"": {
+    ""intent_id_1"": ""INTENT_SYSTEM_RESET"",
+    ""intent_id_2"": ""INTENT_QNA_INVITE""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": false,
+  ""clarify_reason"": [],
+  ""clarify_question"": null,
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""proceed_tx"",
+  ""intent_queue"": {
+    ""count"": 2,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_SYSTEM_RESET"",
+        ""confidence"": 0.92,
+        ""intent_type"": ""System""
+      },
+      {
+        ""intent"": ""INTENT_QNA_INVITE"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_SYSTEM_RESET"", ""INTENT_QNA_INVITE""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_SYSTEM_RESET"": ""System"",
+      ""INTENT_QNA_INVITE"": ""Informational""
+    },
+    ""detected_slots"": {},
+    ""tokenization"": [""Halo"", "","", ""tolong"", ""bantu"", ""reset"", ""percakapan"", ""dan"", ""beri"", ""tahu"", ""cara"", ""undang"", ""teman"", "".""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Halo"",
+      ""detected_intents"": [""INTENT_GREETING""]
+    },
+    {
+      ""sub_text"": ""tolong bantu reset percakapan"",
+      ""detected_intents"": [""INTENT_SYSTEM_RESET""]
+    },
+    {
+      ""sub_text"": ""beri tahu cara undang teman"",
+      ""detected_intents"": [""INTENT_QNA_INVITE""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Halo, tolong bantu reset percakapan dan beri tahu cara undang teman."",
+      ""action"": ""proceed_tx"",
+      ""clarify_reason"": null
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Saya akan mereset percakapan terlebih dahulu. Setelah itu, saya akan menjelaskan bagaimana cara mengundang teman untuk bergabung. Apakah Anda setuju?"",
+      ""action"": ""confirm"",
+      ""clarify_reason"": null
+    },
+    {
+      ""turn"": 3,
+      ""role"": ""user"",
+      ""utterance"": ""Setuju."",
+      ""action"": ""proceed_tx"",
+      ""clarify_reason"": null
+    },
+    {
+      ""turn"": 4,
+      ""role"": ""bot"",
+      ""utterance"": ""Percakapan telah direset. Untuk mengundang teman, Anda bisa menggunakan fitur 'Undang Teman' di aplikasi Fuse Pro atau melalui halaman khusus di situs web kami. Silakan ikuti langkah-langkahnya sesuai panduan yang tersedia."",
+      ""action"": ""answer_info"",
+      ""clarify_reason"": null
+    }
+  ],
+  ""reference"": {
+    ""fuse_pro_app"": ""https://www.fuse.com/id-id/invite-friends"",
+    ""website_invite"": ""https://www.fuse.com/id-id/partner-program""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user requested two actions: resetting the conversation and explaining how to invite friends. Both are valid system and informational intents. The top candidates were selected based on keyword matching and intent category priority (system first). No clarification is needed as both intents are clear and supported."",
+    ""clarification_need"": ""No clarification is required because the user's request is unambiguous and falls under supported intents."",
+    ""slot_analysis"": ""No slots are missing for these intents; they are straightforward and do not require additional information."",
+    ""intent_queue_logic"": ""The system intent (reset) was prioritized over the informational intent (invite), following the rule that system-level actions take precedence.""
+  }
+}",FALSE,No clarification is required because the user's request is unambiguous and falls under supported intents.
+Saya ingin tahu cara withdraw dan juga mau bicara dengan CS.,"INTENT_QNA_WITHDRAW,INTENT_SYSTEM_HUMAN_ESCALATION","INTENT_QNA_WITHDRAW,INTENT_SYSTEM_HUMAN_ESCALATION",1.00 ,,"{  ""text"": ""Saya ingin tahu cara withdraw dan juga mau bicara dengan CS."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_QNA_WITHDRAW"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_SYSTEM_HUMAN_ESCALATION"",
+      ""confidence"": 0.78
+    },
+    {
+      ""intent"": ""INTENT_QNA_GENERAL"",
+      ""confidence"": 0.62
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_QNA_WITHDRAW"", ""INTENT_SYSTEM_HUMAN_ESCALATION""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_QNA_WITHDRAW"", ""INTENT_SYSTEM_HUMAN_ESCALATION""],
+  ""slots"": {},
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": false,
+  ""clarify_reason"": [],
+  ""clarify_question"": null,
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""answer_info"",
+  ""intent_queue"": {
+    ""count"": 2,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_QNA_WITHDRAW"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_SYSTEM_HUMAN_ESCALATION"",
+        ""confidence"": 0.78,
+        ""intent_type"": ""System""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_QNA_WITHDRAW"", ""INTENT_SYSTEM_HUMAN_ESCALATION""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_QNA_WITHDRAW"": ""Informational"",
+      ""INTENT_SYSTEM_HUMAN_ESCALATION"": ""System""
+    },
+    ""detected_slots"": {},
+    ""tokenization"": [""Saya"", ""ingin"", ""tahu"", ""cara"", ""withdraw"", ""dan"", ""juga"", ""mau"", ""bicara"", ""dengan"", ""CS""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Saya ingin tahu cara withdraw"",
+      ""detected_intents"": [""INTENT_QNA_WITHDRAW""]
+    },
+    {
+      ""sub_text"": ""juga mau bicara dengan CS"",
+      ""detected_intents"": [""INTENT_SYSTEM_HUMAN_ESCALATION""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Saya ingin tahu cara withdraw dan juga mau bicara dengan CS."",
+      ""action"": ""none"",
+      ""clarify_reason"": null
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang cara penarikan dana dan ingin berbicara dengan Customer Service. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Jelaskan cara withdraw terlebih dahulu.\n?? Opsi B: Langsung hubungkan kamu ke tim Customer Service."",
+      ""action"": ""clarify"",
+      ""clarify_reason"": ""multi_intent""
+    }
+  ],
+  ""reference"": {
+    ""fuse_topic"": ""fina"",
+    ""product_category"": ""unknown""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The input contains two distinct requests: one about withdrawal (INTENT_QNA_WITHDRAW) and another to connect with customer service (INTENT_SYSTEM_HUMAN_ESCALATION). Both are valid and non-conflicting, so they are queued as separate intents."",
+    ""clarification_need"": ""Clarification is needed to determine the user's preferred next step since there are multiple valid intents in the input."",
+    ""slot_analysis"": ""No slots were detected for either intent, but both can be addressed without additional information."",
+    ""intent_queue_logic"": ""The system prioritizes informational intents first, followed by system-level actions like connecting to a human agent.""
+  }
+}",FALSE,Clarification is needed to determine the user's preferred next step since there are multiple valid intents in the input.
+Tolong jelaskan tentang FUSE dan juga T&C Growth Model.,"INTENT_QNA_FUSE,INTENT_GM_TNC","INTENT_QNA_FUSE,INTENT_GM_TNC",1.00 ,,"{  ""text"": ""Tolong jelaskan tentang FUSE dan juga T&C Growth Model."",
+  ""candidates"": [
+    {""intent"": ""INTENT_QNA_FUSE"", ""confidence"": 0.92},
+    {""intent"": ""INTENT_GM_TNC"", ""confidence"": 0.87},
+    {""intent"": ""INTENT_QNA_GENERAL"", ""confidence"": 0.65}
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_QNA_FUSE"", ""INTENT_GM_TNC""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_QNA_FUSE"", ""INTENT_GM_TNC""],
+  ""slots"": {
+    ""Fusetopic"": ""Fuse"",
+    ""clause_type"": ""T&C""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": false,
+  ""clarify_reason"": [],
+  ""clarify_question"": null,
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""answer_info"",
+  ""intent_queue"": {
+    ""count"": 2,
+    ""order"": [
+      {""intent"": ""INTENT_QNA_FUSE"", ""confidence"": 0.92, ""intent_type"": ""Informational""},
+      {""intent"": ""INTENT_GM_TNC"", ""confidence"": 0.87, ""intent_type"": ""Informational""}
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_QNA_FUSE"", ""INTENT_GM_TNC""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_QNA_FUSE"": ""Informational"",
+      ""INTENT_GM_TNC"": ""Informational""
+    },
+    ""detected_slots"": {
+      ""Fusetopic"": ""Fuse"",
+      ""clause_type"": ""T&C""
+    },
+    ""tokenization"": [""Tolong"", ""jelaskan"", ""tentang"", ""FUSE"", ""dan"", ""juga"", ""T&C"", ""Growth"", ""Model""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {""sub_text"": ""Tolong jelaskan tentang FUSE"", ""detected_intents"": [""INTENT_QNA_FUSE""]},
+    {""sub_text"": ""juga T&C Growth Model."", ""detected_intents"": [""INTENT_GM_TNC""]}
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Tolong jelaskan tentang FUSE dan juga T&C Growth Model."",
+      ""action"": ""ask_info"",
+      ""clarify_reason"": null
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu ingin mengetahui tentang FUSE dan T&C dari Growth Model. Mari saya jelaskan satu per satu.\n\n?? Pertama, apakah kamu ingin tahu lebih lanjut tentang FUSE (perusahaan atau aplikasi)?\n?? Kedua, apakah kamu ingin saya menjelaskan syarat dan ketentuan model pertumbuhan?"",
+      ""action"": ""clarify_multi_intent"",
+      ""clarify_reason"": null
+    }
+  ],
+  ""reference"": {
+    ""fuse_topic"": ""Fuse"",
+    ""growth_model_clause"": ""T&C""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user is asking about two distinct informational topics: Fuse (an insurtech company/app) and the Terms & Conditions of the Growth Model. Both are valid informational intents with high confidence scores. The system will handle them in order of detection (Fuse first, then Growth Model T&C)."",
+    ""clarification_need"": ""No clarification needed as both intents are clear and non-conflicting."",
+    ""slot_analysis"": ""Detected slots include 'Fusetopic' for Fuse-related intent and 'clause_type' for Growth Model T&C. No missing slots."",
+    ""intent_queue_logic"": ""Both intents are informational and non-transactional, so they are queued in the order of their detection.""
+  }
+}",FALSE,No clarification needed as both intents are clear and non-conflicting.
+"Hai, saya ingin tahu daftar penawaran sebelumnya dan membayar premi.",INTENT_PAYMENT,"INTENT_COMPARISON_LIST,INTENT_PAYMENT",0.50 ,数量问题,"{  ""text"": ""Hai, saya ingin tahu daftar penawaran sebelumnya dan membayar premi."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_COMPARISON_LIST"",
+      ""confidence"": 0.82
+    },
+    {
+      ""intent"": ""INTENT_PAYMENT"",
+      ""confidence"": 0.75
+    },
+    {
+      ""intent"": ""INTENT_QNA_PREMIUM"",
+      ""confidence"": 0.63
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_COMPARISON_LIST"", ""INTENT_PAYMENT""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [""INTENT_PAYMENT""],
+  ""non_transactional_intents"": [""INTENT_COMPARISON_LIST""],
+  ""slots"": {
+    ""product_category"": ""car""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": true,
+  ""clarify_reason"": [""multi_intent""],
+  ""clarify_question"": ""Baik ?? Kamu sedang bertanya tentang daftar penawaran sebelumnya dan pembayaran premi. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Lihat riwayat perbandingan penawaran\n?? Opsi B: Lanjutkan proses pembayaran premi"",
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""pause_tx_and_clarify"",
+  ""intent_queue"": {
+    ""count"": 2,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_COMPARISON_LIST"",
+        ""confidence"": 0.82,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_PAYMENT"",
+        ""confidence"": 0.75,
+        ""intent_type"": ""Transactional""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_COMPARISON_LIST""],
+      ""ambiguous"": [""INTENT_PAYMENT""]
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_COMPARISON_LIST"": ""Informational"",
+      ""INTENT_PAYMENT"": ""Transactional"",
+      ""INTENT_QNA_PREMIUM"": ""Informational""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""car""
+    },
+    ""tokenization"": [""Hai"", "","", ""saya"", ""ingin"", ""tahu"", ""daftar"", ""penawaran"", ""sebelumnya"", ""dan"", ""membayar"", ""premi"", "".""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""saya ingin tahu daftar penawaran sebelumnya"",
+      ""detected_intents"": [""INTENT_COMPARISON_LIST""]
+    },
+    {
+      ""sub_text"": ""membayar premi"",
+      ""detected_intents"": [""INTENT_PAYMENT""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Hai, saya ingin tahu daftar penawaran sebelumnya dan membayar premi."",
+      ""action"": ""none"",
+      ""clarify_reason"": ""multi_intent""
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang daftar penawaran sebelumnya dan pembayaran premi. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Lihat riwayat perbandingan penawaran\n?? Opsi B: Lanjutkan proses pembayaran premi"",
+      ""action"": ""ask_for_choice"",
+      ""clarify_reason"": ""multi_intent""
+    }
+  ],
+  ""reference"": {
+    ""intent_config_version"": ""v1.6d"",
+    ""rules_version"": ""v1.6c_merged""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user expressed two distinct intentions: to view previous quote comparisons (INTENT_COMPARISON_LIST) and to pay a premium (INTENT_PAYMENT). Both are valid but require separate handling. The system detected this as a multi-intent scenario and generated a clarification prompt to disambiguate the next step."",
+    ""clarification_need"": ""Clarification is needed because the user mentioned both informational and transactional actions in one message. The system must determine which intent to prioritize or process first."",
+    ""slot_analysis"": ""Detected slot 'product_category' was set to 'car', which is supported in Fina. No missing slots were found for either intent at this stage."",
+    ""intent_queue_logic"": ""The non-transactional intent (INTENT_COMPARISON_LIST) was prioritized over the transactional intent (INTENT_PAYMENT), as per the rule that information should precede transactions unless contextually overridden.""
+  }
+}",TRUE,Clarification is needed because the user mentioned both informational and transactional actions in one message. The system must determine which intent to prioritize or process first.
+"Saya ingin klaim asuransi, bandingkan produk, dan ingin bicara dengan manusia.","INTENT_PG_CLAIM,INTENT_QNA_PRODUCT_COMP,INTENT_SYSTEM_HUMAN_ESCALATION","INTENT_QNA_CLAIM_CON,INTENT_QNA_PRODUCT_COMP,INTENT_SYSTEM_HUMAN_ESCALATION",0.67 ,意图识别问题,"{  ""text"": ""Saya ingin klaim asuransi, bandingkan produk, dan ingin bicara dengan manusia."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_QNA_CLAIM_CON"",
+      ""confidence"": 0.82
+    },
+    {
+      ""intent"": ""INTENT_QNA_PRODUCT_COMP"",
+      ""confidence"": 0.76
+    },
+    {
+      ""intent"": ""INTENT_SYSTEM_HUMAN_ESCALATION"",
+      ""confidence"": 0.74
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_QNA_CLAIM_CON"", ""INTENT_QNA_PRODUCT_COMP"", ""INTENT_SYSTEM_HUMAN_ESCALATION""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_QNA_CLAIM_CON"", ""INTENT_QNA_PRODUCT_COMP"", ""INTENT_SYSTEM_HUMAN_ESCALATION""],
+  ""slots"": {
+    ""claim_type"": ""unknown"",
+    ""compared_products"": ""unknown"",
+    ""product_category"": ""car""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": true,
+  ""clarify_reason"": [""multi_intent""],
+  ""clarify_question"": ""Baik ?? Kamu sedang bertanya tentang klaim asuransi, perbandingan produk, dan ingin berbicara dengan manusia. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Mulai dari klaim asuransi\n?? Opsi B: Bandingkan produk terlebih dahulu"",
+  ""missing_slots"": [""claim_type"", ""compared_products""],
+  ""rule_intent"": null,
+  ""action"": ""pause_tx_and_clarify"",
+  ""intent_queue"": {
+    ""count"": 3,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_QNA_CLAIM_CON"",
+        ""confidence"": 0.82,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_QNA_PRODUCT_COMP"",
+        ""confidence"": 0.76,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_SYSTEM_HUMAN_ESCALATION"",
+        ""confidence"": 0.74,
+        ""intent_type"": ""System""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_QNA_CLAIM_CON""],
+      ""ambiguous"": [""INTENT_QNA_PRODUCT_COMP"", ""INTENT_SYSTEM_HUMAN_ESCALATION""]
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_QNA_CLAIM_CON"": ""Informational"",
+      ""INTENT_QNA_PRODUCT_COMP"": ""Informational"",
+      ""INTENT_SYSTEM_HUMAN_ESCALATION"": ""System""
+    },
+    ""detected_slots"": {
+      ""claim_type"": ""unknown"",
+      ""compared_products"": ""unknown"",
+      ""product_category"": ""car""
+    },
+    ""tokenization"": [""Saya"", ""ingin"", ""klaim"", ""asuransi"", "","", ""bandingkan"", ""produk"", "","", ""dan"", ""ingin"", ""bicara"", ""dengan"", ""manusia"", "".""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Saya ingin klaim asuransi"",
+      ""detected_intents"": [""INTENT_QNA_CLAIM_CON""]
+    },
+    {
+      ""sub_text"": ""bandingkan produk"",
+      ""detected_intents"": [""INTENT_QNA_PRODUCT_COMP""]
+    },
+    {
+      ""sub_text"": ""ingin bicara dengan manusia"",
+      ""detected_intents"": [""INTENT_SYSTEM_HUMAN_ESCALATION""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Saya ingin klaim asuransi, bandingkan produk, dan ingin bicara dengan manusia."",
+      ""action"": ""pause_tx_and_clarify"",
+      ""clarify_reason"": ""multi_intent""
+    }
+  ],
+  ""reference"": {},
+  ""explanation"": {
+    ""reasoning"": ""The user expressed three distinct intentions in one message: filing a claim, comparing products, and requesting to speak with a human agent. The top intents are INTENT_QNA_CLAIM_CON (0.82), INTENT_QNA_PRODUCT_COMP (0.76), and INTENT_SYSTEM_HUMAN_ESCALATION (0.74). These are all valid but require clarification on the order of priority or which one to address first."",
+    ""clarification_need"": ""Clarification is needed because the user mentioned multiple intents that may not be logically connected and could lead to confusion if processed without context."",
+    ""slot_analysis"": ""Detected slots include 'claim_type' and 'compared_products', both marked as unknown. No transactional intent was triggered due to missing required slots."",
+    ""intent_queue_logic"": ""The system prioritized informational intents over transactional ones. Since there were no clear transactional triggers, the non-transactional intents were queued based on their confidence scores.""
+  }
+}",TRUE,Clarification is needed because the user mentioned multiple intents that may not be logically connected and could lead to confusion if processed without context.
+"Bisa jelaskan cara apply, cara endorse, dan dokumen yang dibutuhkan?","INTENT_PG_APPLY,INTENT_PG_ENDORSEMENT,INTENT_QNA_DOC_REQ","INTENT_PG_APPLY,INTENT_PG_ENDORSEMENT,INTENT_QNA_DOC_REQ",1.00 ,,"{  ""text"": ""Bisa jelaskan cara apply, cara endorse, dan dokumen yang dibutuhkan?"",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_PG_APPLY"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_PG_ENDORSEMENT"",
+      ""confidence"": 0.82
+    },
+    {
+      ""intent"": ""INTENT_QNA_DOC_REQ"",
+      ""confidence"": 0.79
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_PG_APPLY"", ""INTENT_PG_ENDORSEMENT"", ""INTENT_QNA_DOC_REQ""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_PG_APPLY"", ""INTENT_PG_ENDORSEMENT"", ""INTENT_QNA_DOC_REQ""],
+  ""slots"": {
+    ""product_category"": ""car""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": false,
+  ""clarify_reason"": [],
+  ""clarify_question"": null,
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""answer_info"",
+  ""intent_queue"": {
+    ""count"": 3,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_PG_APPLY"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_PG_ENDORSEMENT"",
+        ""confidence"": 0.82,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_QNA_DOC_REQ"",
+        ""confidence"": 0.79,
+        ""intent_type"": ""Informational""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_PG_APPLY"", ""INTENT_PG_ENDORSEMENT"", ""INTENT_QNA_DOC_REQ""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_PG_APPLY"": ""Process Guidance"",
+      ""INTENT_PG_ENDORSEMENT"": ""Process Guidance"",
+      ""INTENT_QNA_DOC_REQ"": ""General Q&A""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""car""
+    },
+    ""tokenization"": [""Bisa"", ""jelaskan"", ""cara"", ""apply"", "","", ""cara"", ""endorse"", "","", ""dan"", ""dokumen"", ""yang"", ""dibutuhkan"", ""?""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Bisa jelaskan cara apply?"",
+      ""detected_intents"": [""INTENT_PG_APPLY""]
+    },
+    {
+      ""sub_text"": ""Bisa jelaskan cara endorse?"",
+      ""detected_intents"": [""INTENT_PG_ENDORSEMENT""]
+    },
+    {
+      ""sub_text"": ""Dokumen yang dibutuhkan?"",
+      ""detected_intents"": [""INTENT_QNA_DOC_REQ""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Bisa jelaskan cara apply, cara endorse, dan dokumen yang dibutuhkan?"",
+      ""action"": ""ask_multiple_questions"",
+      ""clarify_reason"": null
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Tentu! Berikut penjelasan singkat:\n\n1. **Cara Apply (Pengajuan Asuransi)**: Anda bisa mengajukan asuransi melalui aplikasi Fuse Pro atau website resmi. Isi formulir dengan data kendaraan dan pemilik, unggah dokumen seperti STNK, KTP, dan foto kendaraan dari berbagai sisi.\n\n2. **Cara Endorse (Amandemen Polis)**: Jika ingin mengubah atau menambah cakupan polis, hubungi agen atau tim Fuse. Anda perlu menyediakan nomor polis dan detail perubahan yang diinginkan.\n\n3. **Dokumen yang Dibutuhkan**: Untuk pengajuan awal, diperlukan KTP pemilik kendaraan, STNK, BPKB, serta foto kendaraan dari depan, belakang, kiri, kanan, dan dasbor.\n\nApakah ada bagian yang ingin Anda tanyakan lebih lanjut?"",
+      ""action"": ""provide_information"",
+      ""clarify_reason"": null
+    }
+  ],
+  ""reference"": {
+    ""fuse_pro_app"": ""https://www.fusepro.com/apply"",
+    ""endorsement_process"": ""https://www.fusepro.com/endorsement"",
+    ""required_documents"": ""https://www.fusepro.com/documents""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user is asking for a general explanation of the application process, endorsement process, and required documents. These are all informational queries under the 'Process Guidance' and 'General Q&A' categories. The top three intents were selected based on keyword matches and semantic similarity."",
+    ""clarification_need"": ""No clarification needed since the query is clear and fits within supported intents."",
+    ""slot_analysis"": ""Detected slot 'product_category' was set to 'car' based on context and default assumption in absence of explicit mention."",
+    ""intent_queue_logic"": ""All detected intents are informational and non-transactional, so they are queued in descending order of confidence.""
+  }
+}",FALSE,No clarification needed since the query is clear and fits within supported intents.
+"Saya ingin tahu premi, manfaat polis, dan ingin menarik komisi.","INTENT_QNA_PREMIUM,INTENT_QNA_COVERAGE,INTENT_WITHDRAWAL","INTENT_QNA_PREMIUM,INTENT_QNA_COVERAGE,INTENT_WITHDRAWAL",1.00 ,,"{  ""text"": ""Saya ingin tahu premi, manfaat polis, dan ingin menarik komisi."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_QNA_PREMIUM"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_QNA_COVERAGE"",
+      ""confidence"": 0.78
+    },
+    {
+      ""intent"": ""INTENT_WITHDRAWAL"",
+      ""confidence"": 0.72
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_QNA_PREMIUM"", ""INTENT_QNA_COVERAGE"", ""INTENT_WITHDRAWAL""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_QNA_PREMIUM"", ""INTENT_QNA_COVERAGE"", ""INTENT_WITHDRAWAL""],
+  ""slots"": {
+    ""product_category"": ""car"",
+    ""clause_type"": ""benefit""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": false,
+  ""clarify_reason"": [],
+  ""clarify_question"": null,
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""answer_info"",
+  ""intent_queue"": {
+    ""count"": 3,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_QNA_PREMIUM"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_QNA_COVERAGE"",
+        ""confidence"": 0.78,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_WITHDRAWAL"",
+        ""confidence"": 0.72,
+        ""intent_type"": ""Transactional""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_QNA_PREMIUM"", ""INTENT_QNA_COVERAGE"", ""INTENT_WITHDRAWAL""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_QNA_PREMIUM"": ""Informational"",
+      ""INTENT_QNA_COVERAGE"": ""Informational"",
+      ""INTENT_WITHDRAWAL"": ""Transactional""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""car""
+    },
+    ""tokenization"": [""Saya"", ""ingin"", ""tahu"", ""premi"", "","", ""manfaat"", ""polis"", "","", ""dan"", ""ingin"", ""menarik"", ""komisi"", "".""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Saya ingin tahu premi"",
+      ""detected_intents"": [""INTENT_QNA_PREMIUM""]
+    },
+    {
+      ""sub_text"": ""manfaat polis"",
+      ""detected_intents"": [""INTENT_QNA_COVERAGE""]
+    },
+    {
+      ""sub_text"": ""ingin menarik komisi"",
+      ""detected_intents"": [""INTENT_WITHDRAWAL""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Saya ingin tahu premi, manfaat polis, dan ingin menarik komisi."",
+      ""action"": ""none"",
+      ""clarify_reason"": null
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang premi, manfaat polis, dan penarikan komisi. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Mulai dengan informasi premi\n?? Opsi B: Lanjut ke detail manfaat polis"",
+      ""action"": ""clarify_multi_intent"",
+      ""clarify_reason"": ""multi_intent""
+    }
+  ],
+  ""reference"": {
+    ""intent_config_version"": ""v1.6d"",
+    ""rules_version"": ""v1.6c_merged""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user is asking about three distinct topics: insurance premium (INTENT_QNA_PREMIUM), policy benefits (INTENT_QNA_COVERAGE), and commission withdrawal (INTENT_WITHDRAWAL). These are all valid informational intents within the domain of car insurance. The system has detected them with high confidence and queued them in priority order (info first, tx last)."",
+    ""clarification_need"": ""Clarification is needed to determine which intent to address first due to multiple simultaneous requests."",
+    ""slot_analysis"": ""Detected slot 'product_category' as 'car', which is supported. No missing slots for any of the intents."",
+    ""intent_queue_logic"": ""The system prioritizes informational intents over transactional ones. INTENT_QNA_PREMIUM and INTENT_QNA_COVERAGE are both informational and ordered by confidence. INTENT_WITHDRAWAL is transactional and deferred.""
+  }
+}",FALSE,Clarification is needed to determine which intent to address first due to multiple simultaneous requests.
+"Hai, tolong reset percakapan, jelaskan klaim, dan bandingkan produk.","INTENT_SYSTEM_RESET,INTENT_PG_CLAIM,INTENT_QNA_PRODUCT_COMP","INTENT_SYSTEM_RESET,INTENT_QNA_CLAIM_CON,INTENT_QNA_PRODUCT_COMP",0.67 ,意图识别问题,"{  ""text"": ""Hai, tolong reset percakapan, jelaskan klaim, dan bandingkan produk."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_SYSTEM_RESET"",
+      ""confidence"": 0.92
+    },
+    {
+      ""intent"": ""INTENT_QNA_CLAIM_CON"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_QNA_PRODUCT_COMP"",
+      ""confidence"": 0.83
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_SYSTEM_RESET"", ""INTENT_QNA_CLAIM_CON"", ""INTENT_QNA_PRODUCT_COMP""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_SYSTEM_RESET"", ""INTENT_QNA_CLAIM_CON"", ""INTENT_QNA_PRODUCT_COMP""],
+  ""slots"": {
+    ""product_category"": ""unknown""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": true,
+  ""clarify_reason"": [""multi_intent""],
+  ""clarify_question"": ""Baik ?? Kamu sedang bertanya tentang reset percakapan, klaim asuransi, dan perbandingan produk. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Reset percakapan dulu\n?? Opsi B: Jelaskan klaim atau bandingkan produk"",
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""pause_tx_and_clarify"",
+  ""intent_queue"": {
+    ""count"": 3,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_SYSTEM_RESET"",
+        ""confidence"": 0.92,
+        ""intent_type"": ""System""
+      },
+      {
+        ""intent"": ""INTENT_QNA_CLAIM_CON"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_QNA_PRODUCT_COMP"",
+        ""confidence"": 0.83,
+        ""intent_type"": ""Informational""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_SYSTEM_RESET""],
+      ""ambiguous"": [""INTENT_QNA_CLAIM_CON"", ""INTENT_QNA_PRODUCT_COMP""]
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_SYSTEM_RESET"": ""System"",
+      ""INTENT_QNA_CLAIM_CON"": ""Informational"",
+      ""INTENT_QNA_PRODUCT_COMP"": ""Informational""
+    },
+    ""detected_slots"": {},
+    ""tokenization"": [""Hai,"", ""tolong"", ""reset"", ""percakapan,"", ""jelaskan"", ""klaim,"", ""dan"", ""bandingkan"", ""produk.""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Hai, tolong reset percakapan"",
+      ""detected_intents"": [""INTENT_SYSTEM_RESET""]
+    },
+    {
+      ""sub_text"": ""jelaskan klaim"",
+      ""detected_intents"": [""INTENT_QNA_CLAIM_CON""]
+    },
+    {
+      ""sub_text"": ""bandingkan produk"",
+      ""detected_intents"": [""INTENT_QNA_PRODUCT_COMP""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Hai, tolong reset percakapan, jelaskan klaim, dan bandingkan produk."",
+      ""action"": ""pause_tx_and_clarify"",
+      ""clarify_reason"": ""multi_intent""
+    }
+  ],
+  ""reference"": {
+    ""intent_config_version"": ""v1.6d"",
+    ""rules_version"": ""v1.6c_merged""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user input contains three distinct requests: resetting the conversation, explaining a claim, and comparing products. These are mapped to three different intents with high confidence. Since they are not mutually exclusive but require clarification on which one to prioritize, the system triggers a multi-intent clarification prompt."",
+    ""clarification_need"": ""Clarification is needed because the user has requested multiple actions in one message, and the system must determine the order of processing or which intent to address first."",
+    ""slot_analysis"": ""No slots were detected for any of the intents, so no slot-based filtering was applied."",
+    ""intent_queue_logic"": ""The intents are queued based on their type (System > Informational) and confidence level. The System intent (reset) is prioritized over the two Informational intents.""
+  }
+}",TRUE,"Clarification is needed because the user has requested multiple actions in one message, and the system must determine the order of processing or which intent to address first."
+"Saya ingin membayar, apply polis baru, dan tahu syarat T&C.","INTENT_PAYMENT,INTENT_QUOTATION,INTENT_QNA_POLICY_TNC","INTENT_PAYMENT,INTENT_QUOTATION,INTENT_QNA_POLICY_TNC",1.00 ,,"{  ""text"": ""Saya ingin membayar, apply polis baru, dan tahu syarat T&C."",
+  ""candidates"": [
+    {""intent"": ""INTENT_PAYMENT"", ""confidence"": 0.82},
+    {""intent"": ""INTENT_QUOTATION"", ""confidence"": 0.75},
+    {""intent"": ""INTENT_QNA_POLICY_TNC"", ""confidence"": 0.70}
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_PAYMENT"", ""INTENT_QUOTATION"", ""INTENT_QNA_POLICY_TNC""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [""INTENT_PAYMENT"", ""INTENT_QUOTATION""],
+  ""non_transactional_intents"": [""INTENT_QNA_POLICY_TNC""],
+  ""slots"": {
+    ""product_category"": ""car""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": true,
+  ""clarify_reason"": [""multi_intent""],
+  ""clarify_question"": ""Baik ?? Kamu sedang bertanya tentang pembayaran, pengajuan polis baru, dan syarat & ketentuan. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Membayar pesanan yang sudah ada atau mengajukan polis baru\n?? Opsi B: Mengetahui lebih detail tentang syarat & ketentuan asuransi"",
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""pause_tx_and_clarify"",
+  ""intent_queue"": {
+    ""count"": 3,
+    ""order"": [
+      {""intent"": ""INTENT_QNA_POLICY_TNC"", ""confidence"": 0.70, ""intent_type"": ""Informational""},
+      {""intent"": ""INTENT_QUOTATION"", ""confidence"": 0.75, ""intent_type"": ""Transactional""},
+      {""intent"": ""INTENT_PAYMENT"", ""confidence"": 0.82, ""intent_type"": ""Transactional""}
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_PAYMENT"", ""INTENT_QUOTATION""],
+      ""ambiguous"": [""INTENT_QNA_POLICY_TNC""]
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_PAYMENT"": ""PAYMENT"",
+      ""INTENT_QUOTATION"": ""ORDER"",
+      ""INTENT_QNA_POLICY_TNC"": ""INFORMATIONAL""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""car""
+    },
+    ""tokenization"": [""Saya"", ""ingin"", ""membayar"", "","", ""apply"", ""polis"", ""baru"", "","", ""dan"", ""tahu"", ""syarat"", ""T&C"", "".""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {""sub_text"": ""Saya ingin membayar"", ""detected_intents"": [""INTENT_PAYMENT""]},
+    {""sub_text"": ""apply polis baru"", ""detected_intents"": [""INTENT_QUOTATION""]},
+    {""sub_text"": ""tahu syarat T&C"", ""detected_intents"": [""INTENT_QNA_POLICY_TNC""]}
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Saya ingin membayar, apply polis baru, dan tahu syarat T&C."",
+      ""action"": ""pause_tx_and_clarify"",
+      ""clarify_reason"": ""multi_intent""
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang pembayaran, pengajuan polis baru, dan syarat & ketentuan. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Membayar pesanan yang sudah ada atau mengajukan polis baru\n?? Opsi B: Mengetahui lebih detail tentang syarat & ketentuan asuransi"",
+      ""action"": ""ask_for_choice""
+    }
+  ],
+  ""reference"": {
+    ""fuse_topic"": ""fina"",
+    ""product_category"": ""car""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user mentioned three distinct actions: paying for an order, applying for a new policy, and understanding the terms and conditions (T&C). These map to three different intents: INTENT_PAYMENT, INTENT_QUOTATION, and INTENT_QNA_POLICY_TNC. Since these are not mutually exclusive but require clarification on which one to prioritize, we pause and ask the user to choose between options."",
+    ""clarification_need"": ""Clarification is needed because the user expressed multiple intents in one message, and it's unclear which one should be prioritized or processed first."",
+    ""slot_analysis"": ""Detected slot 'product_category' is set to 'car', which is supported in FINA. No missing slots were found."",
+    ""intent_queue_logic"": ""The intent queue follows the rule of prioritizing informational intents before transactional ones. However, since all three intents are valid and non-conflicting, we present them in descending order of confidence.""
+  }
+}",TRUE,"Clarification is needed because the user expressed multiple intents in one message, and it's unclear which one should be prioritized or processed first."
+"Tolong bantu klaim, undang teman, dan jelaskan komisi Growth Model.","INTENT_PG_CLAIM,INTENT_INVITE,INTENT_GM_COMM","INTENT_QNA_CLAIM_CON,INTENT_INVITE,INTENT_GM_COMM",0.67 ,意图识别问题,"{  ""text"": ""Tolong bantu klaim, undang teman, dan jelaskan komisi Growth Model."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_QNA_CLAIM_CON"",
+      ""confidence"": 0.82
+    },
+    {
+      ""intent"": ""INTENT_INVITE"",
+      ""confidence"": 0.79
+    },
+    {
+      ""intent"": ""INTENT_GM_COMM"",
+      ""confidence"": 0.76
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_QNA_CLAIM_CON"", ""INTENT_INVITE"", ""INTENT_GM_COMM""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_QNA_CLAIM_CON"", ""INTENT_INVITE"", ""INTENT_GM_COMM""],
+  ""slots"": {
+    ""claim_type"": ""Accident"",
+    ""product_category"": ""Car"",
+    ""compared_products"": [""Product A"", ""Product B""],
+    ""Fusetopic"": ""fuse""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": true,
+  ""clarify_reason"": [""multi_intent""],
+  ""clarify_question"": ""Baik ?? Kamu sedang bertanya tentang klaim asuransi, mengundang teman, dan komisi dalam Growth Model. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Mulai dengan penjelasan klaim asuransi\n?? Opsi B: Lanjut ke fitur undang teman\n?? Opsi C: Jelaskan detail komisi Growth Model"",
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""pause_tx_and_clarify"",
+  ""intent_queue"": {
+    ""count"": 3,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_QNA_CLAIM_CON"",
+        ""confidence"": 0.82,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_INVITE"",
+        ""confidence"": 0.79,
+        ""intent_type"": ""Transactional""
+      },
+      {
+        ""intent"": ""INTENT_GM_COMM"",
+        ""confidence"": 0.76,
+        ""intent_type"": ""Informational""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_QNA_CLAIM_CON"", ""INTENT_INVITE"", ""INTENT_GM_COMM""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_QNA_CLAIM_CON"": ""Informational"",
+      ""INTENT_INVITE"": ""Transactional"",
+      ""INTENT_GM_COMM"": ""Informational""
+    },
+    ""detected_slots"": {
+      ""claim_type"": ""Accident"",
+      ""product_category"": ""Car"",
+      ""compared_products"": [""Product A"", ""Product B""],
+      ""Fusetopic"": ""fuse""
+    },
+    ""tokenization"": [""Tolong"", ""bantu"", ""klaim"", "","", ""undang"", ""teman"", "","", ""dan"", ""jelaskan"", ""komisi"", ""Growth"", ""Model"", "".""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Tolong bantu klaim"",
+      ""detected_intents"": [""INTENT_QNA_CLAIM_CON""]
+    },
+    {
+      ""sub_text"": ""undang teman"",
+      ""detected_intents"": [""INTENT_INVITE""]
+    },
+    {
+      ""sub_text"": ""jelaskan komisi Growth Model"",
+      ""detected_intents"": [""INTENT_GM_COMM""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Tolong bantu klaim, undang teman, dan jelaskan komisi Growth Model."",
+      ""action"": ""pause_tx_and_clarify"",
+      ""clarify_reason"": ""multi_intent""
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang klaim asuransi, mengundang teman, dan komisi dalam Growth Model. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Mulai dengan penjelasan klaim asuransi\n?? Opsi B: Lanjut ke fitur undang teman\n?? Opsi C: Jelaskan detail komisi Growth Model"",
+      ""action"": ""ask_for_choice"",
+      ""clarify_reason"": ""multi_intent""
+    }
+  ],
+  ""reference"": {
+    ""intent_config_version"": ""v1.6d"",
+    ""rules_version"": ""v1.6c_merged""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user input contains three distinct requests: (1) assistance with a claim, (2) inviting friends, and (3) explaining the commission in the Growth Model. These map to three different intents: INTENT_QNA_CLAIM_CON, INTENT_INVITE, and INTENT_GM_COMM. Since these are not mutually exclusive but require clarification on which one to address first, the system triggers a multi-intent clarification prompt."",
+    ""clarification_need"": ""Clarification is needed because the user has requested multiple actions simultaneously, and the system must determine the order of processing or prioritize based on user choice."",
+    ""slot_analysis"": ""Slots such as 'claim_type', 'product_category', and 'Fusetopic' were detected from the context, indicating that the user is likely referring to car insurance and Fuse-related topics."",
+    ""intent_queue_logic"": ""The intent queue prioritizes informational intents before transactional ones. However, since all three intents are non-transactional, they are ordered by confidence score.""
+  }
+}",TRUE,"Clarification is needed because the user has requested multiple actions simultaneously, and the system must determine the order of processing or prioritize based on user choice."
+"Saya ingin melihat daftar penawaran, tahu dokumen apa yang dibutuhkan, dan bicara dengan CS.","INTENT_PAYMENT,INTENT_QNA_DOC_REQ,INTENT_SYSTEM_HUMAN_ESCALATION","INTENT_COMPARISON_LIST,INTENT_QNA_DOC_REQ,INTENT_SYSTEM_HUMAN_ESCALATION",0.67 ,意图识别问题,"{  ""text"": ""Saya ingin melihat daftar penawaran, tahu dokumen apa yang dibutuhkan, dan bicara dengan CS."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_COMPARISON_LIST"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_QNA_DOC_REQ"",
+      ""confidence"": 0.78
+    },
+    {
+      ""intent"": ""INTENT_SYSTEM_HUMAN_ESCALATION"",
+      ""confidence"": 0.72
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_COMPARISON_LIST"", ""INTENT_QNA_DOC_REQ"", ""INTENT_SYSTEM_HUMAN_ESCALATION""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_COMPARISON_LIST"", ""INTENT_QNA_DOC_REQ"", ""INTENT_SYSTEM_HUMAN_ESCALATION""],
+  ""slots"": {
+    ""product_category"": ""car""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": false,
+  ""clarify_reason"": [],
+  ""clarify_question"": null,
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""answer_info"",
+  ""intent_queue"": {
+    ""count"": 3,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_COMPARISON_LIST"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_QNA_DOC_REQ"",
+        ""confidence"": 0.78,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_SYSTEM_HUMAN_ESCALATION"",
+        ""confidence"": 0.72,
+        ""intent_type"": ""System""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_COMPARISON_LIST""],
+      ""ambiguous"": [""INTENT_QNA_DOC_REQ"", ""INTENT_SYSTEM_HUMAN_ESCALATION""]
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_COMPARISON_LIST"": ""Informational"",
+      ""INTENT_QNA_DOC_REQ"": ""Informational"",
+      ""INTENT_SYSTEM_HUMAN_ESCALATION"": ""System""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""car""
+    },
+    ""tokenization"": [""Saya"", ""ingin"", ""melihat"", ""daftar"", ""penawaran"", "","", ""tahu"", ""dokumen"", ""apa"", ""yang"", ""dibutuhkan"", "","", ""dan"", ""bicara"", ""dengan"", ""CS"", "".""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""Saya ingin melihat daftar penawaran"",
+      ""detected_intents"": [""INTENT_COMPARISON_LIST""]
+    },
+    {
+      ""sub_text"": ""tahu dokumen apa yang dibutuhkan"",
+      ""detected_intents"": [""INTENT_QNA_DOC_REQ""]
+    },
+    {
+      ""sub_text"": ""bicara dengan CS"",
+      ""detected_intents"": [""INTENT_SYSTEM_HUMAN_ESCALATION""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Saya ingin melihat daftar penawaran, tahu dokumen apa yang dibutuhkan, dan bicara dengan CS."",
+      ""action"": ""none"",
+      ""clarify_reason"": null
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu sedang bertanya tentang daftar penawaran, dokumen yang diperlukan, dan ingin berbicara dengan Customer Service. Untuk lanjut, mau pilih langkah berikut?\n\n?? Opsi A: Lihat daftar penawaran sebelumnya\n?? Opsi B: Tahu dokumen apa saja yang diperlukan untuk pengajuan asuransi mobil"",
+      ""action"": ""clarify"",
+      ""clarify_reason"": ""multi_intent""
+    }
+  ],
+  ""reference"": {
+    ""fuse_topic"": ""fina""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user expressed three distinct but related intentions: to view a list of quotes, to know the required documents for an insurance application, and to speak with customer service. These are all informational or system-related requests. The top intent is INTENT_COMPARISON_LIST due to the mention of 'daftar penawaran', followed by INTENT_QNA_DOC_REQ for the document inquiry, and finally INTENT_SYSTEM_HUMAN_ESCALATION for the request to contact customer service."",
+    ""clarification_need"": ""Clarification is needed because the user has multiple intents in one message. The bot must ask the user to choose which action to proceed with first."",
+    ""slot_analysis"": ""Detected slot: product_category = car (default assumption based on context). No missing slots in this case."",
+    ""intent_queue_logic"": ""The intents are ordered by priority: Informational intents come first, followed by System intents. Since there are no transactional intents, the queue only includes the three informational/system intents.""
+  }
+}",FALSE,Clarification is needed because the user has multiple intents in one message. The bot must ask the user to choose which action to proceed with first.
+"Halo, jelaskan manfaat polis, premi, dan cara withdraw komisi.","INTENT_QNA_COVERAGE,INTENT_QNA_PREMIUM,INTENT_QNA_WITHDRAW","INTENT_QNA_COVERAGE,INTENT_QNA_PREMIUM,INTENT_QNA_WITHDRAW",1.00 ,,"{  ""text"": ""Halo, jelaskan manfaat polis, premi, dan cara withdraw komisi."",
+  ""candidates"": [
+    {
+      ""intent"": ""INTENT_QNA_COVERAGE"",
+      ""confidence"": 0.85
+    },
+    {
+      ""intent"": ""INTENT_QNA_PREMIUM"",
+      ""confidence"": 0.82
+    },
+    {
+      ""intent"": ""INTENT_QNA_WITHDRAW"",
+      ""confidence"": 0.79
+    }
+  ],
+  ""topn_applied"": 3,
+  ""final_intents"": [""INTENT_QNA_COVERAGE"", ""INTENT_QNA_PREMIUM"", ""INTENT_QNA_WITHDRAW""],
+  ""intent_type"": ""Mixed"",
+  ""selected_tx_intent"": null,
+  ""deferred_tx_intents"": [],
+  ""non_transactional_intents"": [""INTENT_QNA_COVERAGE"", ""INTENT_QNA_PREMIUM"", ""INTENT_QNA_WITHDRAW""],
+  ""slots"": {
+    ""product_category"": ""car"",
+    ""clause_type"": ""benefit"",
+    ""payment_method"": ""bank_transfer""
+  },
+  ""capability_check"": {
+    ""supported"": true,
+    ""reason"": ""ok"",
+    ""unsupported_reason"": """",
+    ""supported_alternatives"": [""car""],
+    ""policy_ref"": ""support_policy.v1""
+  },
+  ""need_clarification"": false,
+  ""clarify_reason"": [],
+  ""clarify_question"": null,
+  ""missing_slots"": [],
+  ""rule_intent"": null,
+  ""action"": ""answer_info"",
+  ""intent_queue"": {
+    ""count"": 3,
+    ""order"": [
+      {
+        ""intent"": ""INTENT_QNA_COVERAGE"",
+        ""confidence"": 0.85,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_QNA_PREMIUM"",
+        ""confidence"": 0.82,
+        ""intent_type"": ""Informational""
+      },
+      {
+        ""intent"": ""INTENT_QNA_WITHDRAW"",
+        ""confidence"": 0.79,
+        ""intent_type"": ""Informational""
+      }
+    ]
+  },
+  ""intent_queue_logic"": {
+    ""priority_rule"": ""Info intents before Tx intents"",
+    ""tx_sorting"": ""Tx intents sorted by confidence desc"",
+    ""tie_break"": ""If Δ < 0.05, trigger clarify"",
+    ""mutual_exclusive"": ""If mutually exclusive pair, skip queue and clarify"",
+    ""ood_info_handling"": ""OOD Info answered by LLM fallback"",
+    ""smalltalk_first"": true
+  },
+  ""trace"": {
+    ""confidence_bands"": {
+      ""confident"": [""INTENT_QNA_COVERAGE"", ""INTENT_QNA_PREMIUM"", ""INTENT_QNA_WITHDRAW""],
+      ""ambiguous"": []
+    },
+    ""thresholds"": {
+      ""min_conf"": 0.55,
+      ""confident_floor"": 0.70,
+      ""ood_conf"": 0.35
+    },
+    ""categories"": {
+      ""INTENT_QNA_COVERAGE"": ""Informational"",
+      ""INTENT_QNA_PREMIUM"": ""Informational"",
+      ""INTENT_QNA_WITHDRAW"": ""Informational""
+    },
+    ""detected_slots"": {
+      ""product_category"": ""car"",
+      ""clause_type"": ""benefit"",
+      ""payment_method"": ""bank_transfer""
+    },
+    ""tokenization"": [""Halo,"", ""jelaskan"", ""manfaat"", ""polis,"", ""premi,"", ""dan"", ""cara"", ""withdraw"", ""komisi.""],
+    ""dialogue_context"": {
+      ""bot_asked_yesno"": false
+    }
+  },
+  ""question_splitting"": [
+    {
+      ""sub_text"": ""jelaskan manfaat polis"",
+      ""detected_intents"": [""INTENT_QNA_COVERAGE""]
+    },
+    {
+      ""sub_text"": ""premi"",
+      ""detected_intents"": [""INTENT_QNA_PREMIUM""]
+    },
+    {
+      ""sub_text"": ""cara withdraw komisi"",
+      ""detected_intents"": [""INTENT_QNA_WITHDRAW""]
+    }
+  ],
+  ""multi_turn_dialogue"": [
+    {
+      ""turn"": 1,
+      ""role"": ""user"",
+      ""utterance"": ""Halo, jelaskan manfaat polis, premi, dan cara withdraw komisi."",
+      ""action"": ""ask_multiple_questions"",
+      ""clarify_reason"": null
+    },
+    {
+      ""turn"": 2,
+      ""role"": ""bot"",
+      ""utterance"": ""Baik ?? Kamu bertanya tentang manfaat polis, premi, dan cara menarik komisi. Mau saya jawab satu per satu?"",
+      ""action"": ""acknowledge_and_offer_sequential_response"",
+      ""clarify_reason"": null
+    }
+  ],
+  ""reference"": {
+    ""intent_config_version"": ""v1.6d"",
+    ""rules_version"": ""v1.6c_merged""
+  },
+  ""explanation"": {
+    ""reasoning"": ""The user asked three distinct informational questions: about policy benefits (INTENT_QNA_COVERAGE), premium details (INTENT_QNA_PREMIUM), and withdrawal process (INTENT_QNA_WITHDRAW). All are in-domain and supported under Fuse/FINA for car insurance. No transactional intent is present, so no payment or order processing is required."",
+    ""clarification_need"": ""No clarification needed as the input is clear and all intents are valid and supported."",
+    ""slot_analysis"": ""Detected slots include product_category=car, clause_type=benefit, and payment_method=bank_transfer. These align with the context of car insurance and general information queries."",
+    ""intent_queue_logic"": ""All detected intents are informational and non-mutually exclusive. They are ordered by confidence descending.""
+  }
+}",FALSE,No clarification needed as the input is clear and all intents are valid and supported.
+,,,0.89 ,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理
+,,,,,,FALSE,问题为空，跳过处理

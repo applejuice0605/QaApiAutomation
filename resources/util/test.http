@@ -1,0 +1,59 @@
+import requests
+#### GET request to example server
+#GET https://examples.http-client.intellij.net/get
+#    ?generated-in=PyCharm
+#
+####
+
+#
+#
+## 1. 配置Archery服务地址和端口
+#archery_host = "localhost"    # 根据实际环境替换
+#archery_port = 9123            # 根据实际环境替换
+#
+## 2. 构建正确的URL
+#auth_url = f"https://rd-dms.fuseinsurtech.com:9123/api/auth/token/"
+#
+## 3. 执行请求
+#try:
+#    auth_data = {"username": "caishubin", "password": "XV5s3h&NGquiG9dD"}
+#    response = requests.post(auth_url, json=auth_data, timeout=10)
+#    response.raise_for_status()  # 检查HTTP错误
+#    token = response.json()["access"]
+#    print("Token获取成功:", token)
+#except requests.exceptions.RequestException as e:
+#    print(f"请求失败: {e}")
+
+
+
+
+
+# 功能：
+url_query_basic = 'https://rd-dms.fuseinsurtech.com/query/'
+# 【重点修改！！！！！】认证信息cookie
+cookie = 'csrftoken=5JNNMOsC6VE9qyl0DhgYhW2qNL3YyoVP9M22dLDX68T1xPjMCDQUhOEfLni9SdvU; sessionid=c9p76iis3pzw1iy1onzy45bckpkl0q0t'
+# 设置请求头
+headers = {
+	'Content-Type': 'application/json',
+	'Cookie': cookie,
+	'X-CSRFToken': XCSRFToken,
+}
+def login_archery():
+	global cookie
+	if len(cookie) != 0:
+		print('cookie is not empty, use current: ', cookie)
+		return cookie;
+	login_url = 'https://rd-dms.fuseinsurtech.com/authenticate/'
+	form_data = {
+			'username': 'xxx',
+			'password': 'xxx'
+	}
+	header = {
+		'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+	}
+	cookie = post_form(login_url, form_data, header)
+	print('login token:', cookie)
+	return cookie
+query_instance_url = 'https://rd-dms.fuseinsurtech.com/group/user_all_instances/?tag_codes%5B%5D=can_read'
+query_db_url = 'https://rd-dms.fuseinsurtech.com/instance/instance_resource/?instance_name={instance_name}&resource_type=database'
+query_table_url = 'https://rd-dms.fuseinsurtech.com/instance/instance_resource/?instance_name={instance_name}&db_name={db_name}&resource_type=table'

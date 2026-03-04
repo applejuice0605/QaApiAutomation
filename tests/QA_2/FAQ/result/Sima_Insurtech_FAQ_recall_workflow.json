@@ -1,0 +1,1022 @@
+[
+    {
+        "question": "- Question 1: What are the premium rates for property and motor vehicle insurance according to OJK regulations?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9236434514768672
+    },
+    {
+        "question": "- Question 2: Which regulatory document specifies the premium rates for insurance in Indonesia?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 3: What is the role of the Financial Services Authority (OJK) in determining insurance premium rates?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 4: How are contribution rates for property and motor vehicle insurance established under OJK Circular Letter No. 6/SEOJK.05/2017?",
+        "right": true,
+        "mun": 1,
+        "score": 0.43935847997420646
+    },
+    {
+        "question": "- Question 5: What is the significance of Attachment VI in OJK Circular Letter No. 6/SEOJK.05/2017?",
+        "right": true,
+        "mun": 1,
+        "score": 0.4803487240780326
+    },
+    {
+        "question": "- Question 1: Is car insurance mandatory in all countries?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8852249306492134
+    },
+    {
+        "question": "- Question 2: What are the benefits of purchasing car insurance even if it's not legally required?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 3: Why is car insurance important for drivers and passengers?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 4: Are there any legal requirements for car insurance in Indonesia?",
+        "right": true,
+        "mun": 1,
+        "score": 0.856557751347525
+    },
+    {
+        "question": "- Question 5: How can I find the best online car insurance options and promotions?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 1: What types of damage does Mobil All Risk Insurance cover?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 2: How is Mobil Total Loss (TLO) Insurance different from Mobil All Risk Insurance?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8575945458562826
+    },
+    {
+        "question": "- Question 3: What qualifies as a total loss under Mobil TLO Insurance?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 4: Does Mobil All Risk Insurance cover minor damages like scratches and dents?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8641666494880678
+    },
+    {
+        "question": "- Question 5: Which insurance product is more suitable for comprehensive vehicle protection?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 1: How does the type of car insurance coverage affect the cost in Indonesia?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9482824481745777
+    },
+    {
+        "question": "- Question 2: What role does the Financial Services Authority (OJK) play in determining car insurance rates?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5696284512084222
+    },
+    {
+        "question": "- Question 3: Why might car insurance costs increase as a vehicle ages?",
+        "right": true,
+        "mun": 1,
+        "score": 0.4563375835571379
+    },
+    {
+        "question": "- Question 4: Are there specific regions in Indonesia where car insurance is more expensive?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8226752991053325
+    },
+    {
+        "question": "- Question 5: Which car insurance companies in Indonesia typically offer TLO coverage only for older vehicles?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6194555150142756
+    },
+    {
+        "question": "- Question 1: What factors should be considered when choosing the best car insurance policy?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8907987884366952
+    },
+    {
+        "question": "- Question 2: How does car insurance help in covering unexpected expenses after an accident?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8429980429168373
+    },
+    {
+        "question": "- Question 3: What additional services might be included in some car insurance policies?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8839505020024078
+    },
+    {
+        "question": "- Question 4: Why is it important to have suitable car insurance for financial protection?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: What types of events are typically covered by car insurance policies?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 1: What are the typical steps involved in filing a car insurance claim?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9176942215651103
+    },
+    {
+        "question": "- Question 2: How does the claim notification process work with different insurance companies?",
+        "right": true,
+        "mun": 1,
+        "score": 0.30182239033106434
+    },
+    {
+        "question": "- Question 3: Why is submitting a police report important in the car insurance claim process?",
+        "right": true,
+        "mun": 1,
+        "score": 0.3760987267051133
+    },
+    {
+        "question": "- Question 4: What role does a damage assessment play in car insurance claims?",
+        "right": true,
+        "mun": 1,
+        "score": 0.22195170311672394
+    },
+    {
+        "question": "- Question 5: How can policyholders ensure a smooth and quick car insurance claim process?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 1: What additional coverage options does insurance provide?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9537814445276975
+    },
+    {
+        "question": "- Question 2: How does insurance cover repairs at authorized workshops?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8182064913867099
+    },
+    {
+        "question": "- Question 3: What is included in third-party liability coverage?",
+        "right": true,
+        "mun": 5,
+        "score": 0.1933317510666071
+    },
+    {
+        "question": "- Question 4: Can personal accident insurance for drivers and passengers be customized?",
+        "right": true,
+        "mun": 2,
+        "score": 0.2214874255712603
+    },
+    {
+        "question": "- Question 5: Which company or product offers these insurance coverage options?",
+        "right": true,
+        "mun": 1,
+        "score": 0.3368950814254704
+    },
+    {
+        "question": "- Question 1: Can multiple drivers be added to a car insurance policy?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9589444235197121
+    },
+    {
+        "question": "- Question 2: Is there a restriction on who can drive the vehicle under the policy?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 3: Does the policy require each driver to have a valid driver's license (SIM)?",
+        "right": true,
+        "mun": 1,
+        "score": 0.4600024957183266
+    },
+    {
+        "question": "- Question 4: What types of driver's licenses (SIM) are acceptable for different vehicle types (A, B, or C)?",
+        "right": true,
+        "mun": 1,
+        "score": 0.19331192639897254
+    },
+    {
+        "question": "- Question 5: Are there any specific requirements for drivers listed on the insurance policy?",
+        "right": true,
+        "mun": 1,
+        "score": 0.32864515198396677
+    },
+    {
+        "question": "- Question 1: What types of damages does All Risk Car Insurance cover?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8939804559682891
+    },
+    {
+        "question": "- Question 2: How does Total Loss Only (TLO) Insurance differ from All Risk Car Insurance?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9030079935120863
+    },
+    {
+        "question": "- Question 3: Under what conditions does TLO Insurance provide coverage?",
+        "right": true,
+        "mun": 3,
+        "score": 0.36218153686867155
+    },
+    {
+        "question": "- Question 4: Is theft covered under All Risk Car Insurance?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6429483369593932
+    },
+    {
+        "question": "- Question 5: What is the threshold for repair costs in Total Loss Only (TLO) Insurance?",
+        "right": true,
+        "mun": 1,
+        "score": 0.4409332284541862
+    },
+    {
+        "question": "- Question 1: How can customers renew their vehicle insurance policy?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8753379282361504
+    },
+    {
+        "question": "- Question 2: Through which channels will customers receive a notification about their car insurance policy expiration?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8895826253518762
+    },
+    {
+        "question": "- Question 3: What is the contact number for the insurance company's customer service?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 4: What are the operating hours for the insurance company's customer service?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: How much time before the policy expires do customers receive a notification?",
+        "right": true,
+        "mun": 1,
+        "score": 0.7628218068473439
+    },
+    {
+        "question": "- Question 1: Can car insurance policies be cancelled at any time?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9585498761592351
+    },
+    {
+        "question": "- Question 2: What factors determine whether a car insurance policy can be cancelled?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 3: Are there fees associated with cancelling a car insurance policy?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8273530468274595
+    },
+    {
+        "question": "- Question 4: How does the refund process work for unused premiums when cancelling car insurance?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: What steps should be taken before cancelling a car insurance policy with an insurer?",
+        "right": true,
+        "mun": 2,
+        "score": 0.6525833739519374
+    },
+    {
+        "question": "- Question 1: What types of coverage does Insurance offer for electric vehicles?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9147152162547959
+    },
+    {
+        "question": "- Question 2: How does Insurance ensure comprehensive protection for all electric cars?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 3: Is Insurance a specialized provider for electric vehicle insurance?",
+        "right": true,
+        "mun": 1,
+        "score": 0.7530574498283397
+    },
+    {
+        "question": "- Question 4: What are the key features of Insurance's electric vehicle insurance policy?",
+        "right": true,
+        "mun": 1,
+        "score": 0.19645396586899758
+    },
+    {
+        "question": "- Question 5: Which company provides electric vehicle insurance, and what is its reputation in the industry?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 1: How does Simas Insurtech handle transportation cost reimbursement for vehicles under the Complete Package?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9458676486697328
+    },
+    {
+        "question": "- Question 2: What types of compensation are offered by Simas Insurtech for transportation costs during vehicle repairs?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8953447463072135
+    },
+    {
+        "question": "- Question 3: Are there specific conditions outlined in the policy for receiving transportation cost reimbursement from Simas Insurtech?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8897862011223211
+    },
+    {
+        "question": "- Question 4: Can customers choose between online taxi vouchers or saldo for transportation cost reimbursement at Simas Insurtech?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: What is the process for claiming transportation cost reimbursement through Simas Insurtech's Complete Package?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8791631602077129
+    },
+    {
+        "question": "- Question 1: What is the transportation cost reimbursement policy for Simas Insurtech?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 2: How much transportation reimbursement is provided for a trip lasting 7-11 days at Simas Insurtech?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 3: What options are available for receiving transportation cost reimbursement at Simas Insurtech?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 4: What is the maximum transportation reimbursement offered by Simas Insurtech?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: How does Simas Insurtech handle transportation cost reimbursements for trips longer than 30 days?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 1: What are the eligibility requirements for transportation cost reimbursement from Mobil Simas Insurtech?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9274234046704836
+    },
+    {
+        "question": "- Question 2: How is the transportation cost reimbursement amount determined based on repair duration?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8421482288699994
+    },
+    {
+        "question": "- Question 3: What options are available for receiving the transportation cost reimbursement?",
+        "right": true,
+        "mun": 1,
+        "score": 0.647791759513698
+    },
+    {
+        "question": "- Question 4: Which insurance package is required to qualify for transportation cost reimbursement?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: Under what conditions can customers claim transportation cost reimbursement through Mobil Simas Insurtech?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 1: What is the maximum age limit for vehicles to be insured under Comprehensive Coverage with Simas Insurtech?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9109711395530301
+    },
+    {
+        "question": "- Question 2: How old can a vehicle be to qualify for Total Loss Only Coverage with Simas Insurtech?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8955382857971486
+    },
+    {
+        "question": "- Question 3: Are there different age limits for different types of coverage offered by Simas Insurtech?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8959243506242848
+    },
+    {
+        "question": "- Question 4: What is the difference in age limits between Comprehensive Coverage and Total Loss Only Coverage at Simas Insurtech?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: Does Simas Insurtech have specific guidelines for vehicle age when offering insurance policies?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 1: What types of vehicles does Simas Insurtech cover under its insurance policies?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9601824230824311
+    },
+    {
+        "question": "- Question 2: Can Simas Insurtech insure vehicles used for both personal and official purposes?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 3: Are minibuses included in the range of vehicles that can be insured by Simas Insurtech?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9301066057769459
+    },
+    {
+        "question": "- Question 4: What are some common uses of vehicles that can be insured through Simas Insurtech?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: Does Simas Insurtech provide insurance for station wagons used in daily commuting?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8687903250818614
+    },
+    {
+        "question": "- Question 1: What is the difference between private use and commercial use in motor vehicle insurance?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 2: How does duty use relate to private use in the context of vehicle insurance?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8052192034961044
+    },
+    {
+        "question": "- Question 3: Why is it important to distinguish between private and commercial vehicle use in insurance policies?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8711646691730119
+    },
+    {
+        "question": "- Question 4: Can a vehicle used for rental income be classified as commercial use in auto insurance?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: How does the classification of vehicle usage affect the type of insurance coverage required?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 1: What types of risks are covered under Personal Accident (PA) insurance for motor vehicle drivers and passengers?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8711646691730119
+    },
+    {
+        "question": "- Question 2: How does Simas Insurtech provide coverage for personal accident insurance?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8644137221536221
+    },
+    {
+        "question": "- Question 3: What is the scope of coverage in the expansion of Personal Accident (PA) insurance?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8845893677068734
+    },
+    {
+        "question": "- Question 4: What are the key benefits of Personal Accident (PA) insurance offered by Simas Insurtech?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: In which domain does Simas Insurtech operate with its Personal Accident (PA) insurance product?",
+        "right": true,
+        "mun": 1,
+        "score": 0.7899463825153237
+    },
+    {
+        "question": "- Question 1: What is the definition of a Partial Loss claim in the context of Simas Insurtech?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9339528953267451
+    },
+    {
+        "question": "- Question 2: How does Simas Insurtech determine the actual value of a vehicle before a loss occurs?",
+        "right": true,
+        "mun": 4,
+        "score": 0.539892529246256
+    },
+    {
+        "question": "- Question 3: What are the implications of a Partial Loss claim for policyholders at Simas Insurtech?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8381265804327689
+    },
+    {
+        "question": "- Question 4: How does Simas Insurtech differentiate between a Partial Loss and a Total Loss?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5623274575319019
+    },
+    {
+        "question": "- Question 5: What factors influence the repair cost in a Partial Loss claim according to Simas Insurtech?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8811435578527194
+    },
+    {
+        "question": "- Question 1: What is a third-party legal liability claim in the context of motor vehicle insurance?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9116333561951862
+    },
+    {
+        "question": "- Question 2: How does Simas Insurtech handle third-party legal liability claims?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 3: What types of damages are covered under a third-party legal liability claim?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8798266996519848
+    },
+    {
+        "question": "- Question 4: Can you provide an example of a situation where a third-party legal liability claim would be filed?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8875273085910325
+    },
+    {
+        "question": "- Question 5: What is the role of an insurance company in processing third-party legal liability claims?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 1: What is a Total Loss claim in the context of insurance?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 2: How does Simas Insurtech handle Construction Total Loss (CTL) claims?",
+        "right": true,
+        "mun": 2,
+        "score": 0.8429980429168373
+    },
+    {
+        "question": "- Question 3: What types of cases are included in Total Loss claims?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8307120837284381
+    },
+    {
+        "question": "- Question 4: What role does Simas Insurtech play in dealing with theft-related insurance claims?",
+        "right": true,
+        "mun": 2,
+        "score": 0.4878257668139841
+    },
+    {
+        "question": "- Question 5: What are the key components of a Total Loss claim in the insurance industry?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6880474158926958
+    },
+    {
+        "question": "- Question 1: What is a CTL claim and how is it determined?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8658874261497609
+    },
+    {
+        "question": "- Question 2: How does Simas Insurtech handle vehicles classified as total losses?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8723367839506794
+    },
+    {
+        "question": "- Question 3: Why is accurate evaluation important in CTL claims?",
+        "right": true,
+        "mun": 1,
+        "score": 0.7073378808566255
+    },
+    {
+        "question": "- Question 4: What role does Simas Insurtech play in the insurance industry?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: How does the cost of repairs relate to the vehicle's pre-accident value in a CTL claim?",
+        "right": true,
+        "mun": 1,
+        "score": 0.7024244769015984
+    },
+    {
+        "question": "- Question 1: What is the definition of a stolen claim according to Simas Insurtech?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 2: How does Simas Insurtech define theft involving violence or threats?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5922680290152725
+    },
+    {
+        "question": "- Question 3: What types of motor vehicle-related theft are covered under Simas Insurtech's policy?",
+        "right": true,
+        "mun": 1,
+        "score": 0.40138008357973604
+    },
+    {
+        "question": "- Question 4: Can a stolen claim involve the theft of motor vehicle equipment according to Simas Insurtech?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8871119499030092
+    },
+    {
+        "question": "- Question 5: What constitutes a malicious action in the context of a stolen claim under Simas Insurtech?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8925993884749475
+    },
+    {
+        "question": "- Question 1: What are the required steps to submit a claim report under Mobil Simas Insurtech?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9498337181279428
+    },
+    {
+        "question": "- Question 2: Within how many calendar days must the insured submit a claim report after an accident?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 3: What are the available methods for submitting a claim report to Simas Insurtech?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 4: Is it necessary to complete a claim form when filing a claim with Simas Insurtech?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: Are there specific locations where the claim report can be submitted in person?",
+        "right": true,
+        "mun": 1,
+        "score": 0.7085556805036863
+    },
+    {
+        "question": "- Question 1: What documents are required for a partial loss claim with Simas Insurtech?",
+        "right": true,
+        "mun": 1,
+        "score": 0.8881476526293899
+    },
+    {
+        "question": "- Question 2: What additional documents are needed for a third-party liability claim compared to a partial loss claim?",
+        "right": true,
+        "mun": 1,
+        "score": 0.4133934747662032
+    },
+    {
+        "question": "- Question 3: How do the requirements for a CTL (Comprehensive Theft and Liability) claim differ from a general loss claim?",
+        "right": true,
+        "mun": 2,
+        "score": 0.1962963769226107
+    },
+    {
+        "question": "- Question 4: Why is a police accident certificate required for both CTL and loss claims with Simas Insurtech?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: What is the purpose of the empty receipt stamped with Rp 6,000,- in Simas Insurtech claims?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5259086461942317
+    },
+    {
+        "question": "- Question 1: What does the term \"Own Risk\" (OR) refer to in insurance?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 2: How is \"Self Risk\" different from other types of risk in insurance policies?",
+        "right": true,
+        "mun": 1,
+        "score": 0.44583682801281943
+    },
+    {
+        "question": "- Question 3: In which insurance products is the concept of \"Own Risk\" commonly applied?",
+        "right": true,
+        "mun": 1,
+        "score": 0.2495030597804695
+    },
+    {
+        "question": "- Question 4: How does \"Own Risk\" affect the insured's financial responsibility during a claim?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6446637066861216
+    },
+    {
+        "question": "- Question 5: What is the significance of \"Self Risk\" in property and casualty insurance?",
+        "right": true,
+        "mun": 1,
+        "score": 0.3750502114873799
+    },
+    {
+        "question": "- Question 1: What is the minimum deductible for partial loss claims handled by Simas Insurtech?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9468868580090015
+    },
+    {
+        "question": "- Question 2: How is the deductible calculated for CTL and theft claims at Simas Insurtech?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 3: Does Simas Insurtech handle all types of insurance claims, including partial losses, CTL, and theft?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 4: What is the difference between the deductible for partial loss claims and CTL/theft claims at Simas Insurtech?",
+        "right": true,
+        "mun": 1,
+        "score": 0.915981889142093
+    },
+    {
+        "question": "- Question 5: In which insurance domains is Simas Insurtech actively involved according to the provided information?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 1: How is the compensation value determined for a Total Loss claim according to Simas Insurtech?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 2: What factors influence the actual value of a vehicle before an accident in the context of a Total Loss claim?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6406511047467089
+    },
+    {
+        "question": "- Question 3: Can the compensation value exceed the insured value in a Total Loss claim?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6685438173460959
+    },
+    {
+        "question": "- Question 4: How does Simas Insurtech calculate the actual value of a vehicle for insurance purposes?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: What is the role of the insured value in determining the maximum compensation for a Total Loss claim?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 1: What is the definition of the Actual Value of a vehicle according to Simas Insurtech?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 2: How is the Actual Value determined for insurance purposes?",
+        "right": true,
+        "mun": 1,
+        "score": 0.4026082092881863
+    },
+    {
+        "question": "- Question 3: Why is the free market price important in calculating the Actual Value?",
+        "right": true,
+        "mun": 1,
+        "score": 0.36726146707788115
+    },
+    {
+        "question": "- Question 4: What factors are considered when evaluating the Actual Value of a vehicle?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: How does Simas Insurtech apply the concept of Actual Value in its insurance policies?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 1: What is under insured coverage in the context of motor vehicle insurance?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9325669226142242
+    },
+    {
+        "question": "- Question 2: How does under insured coverage affect the compensation received in case of a vehicle loss?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 3: What are the risks associated with under insured coverage for vehicle owners?",
+        "right": true,
+        "mun": 1,
+        "score": 0.5315371256661066
+    },
+    {
+        "question": "- Question 4: How can policyholders ensure that their motor vehicle is adequately insured?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: In which insurance products is under insured coverage commonly discussed?",
+        "right": true,
+        "mun": 1,
+        "score": 0.2597768942747782
+    },
+    {
+        "question": "- Question 1: How does Simas Insurtech calculate compensation for under insured vehicles?",
+        "right": true,
+        "mun": 1,
+        "score": 0.9448294355464201
+    },
+    {
+        "question": "- Question 2: What is the formula used by Simas Insurtech to determine compensation for under insured vehicles?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 3: Why does Simas Insurtech use the ratio of Insured Value to Market Value in calculating compensation?",
+        "right": true,
+        "mun": 1,
+        "score": 0.6744421884097862
+    },
+    {
+        "question": "- Question 4: How does the market value at the time of loss affect the compensation calculation for under insured vehicles?",
+        "right": true,
+        "mun": 1,
+        "score": 0.7813503398447221
+    },
+    {
+        "question": "- Question 5: What role does the repair value play in the compensation calculation method used by Simas Insurtech?",
+        "right": true,
+        "mun": 1,
+        "score": 0.7747998005093216
+    },
+    {
+        "question": "- Question 1: Can a third party submit an insurance claim on behalf of the policyholder?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 2: What documents are required when a third party submits an insurance claim?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 3: Is a power of attorney necessary for someone else to file an insurance claim?",
+        "right": true,
+        "mun": 1,
+        "score": 0.3433719164673175
+    },
+    {
+        "question": "- Question 4: Must the person submitting the claim be informed about the incident?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: Which company or product is this policy related to?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 1: What other motor vehicle insurance products are available in the market?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 2: Are there any competitors of Mobil Simas Insurtech in the motor vehicle insurance sector?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 3: How can I get more details about the motor vehicle insurance products offered by Mobil Simas Insurtech?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 4: Is there a customer service contact for inquiries about motor vehicle insurance?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    },
+    {
+        "question": "- Question 5: What is the email address for contacting Mobil Simas Insurtech regarding insurance products?",
+        "right": false,
+        "mun": -1,
+        "score": 0
+    }
+]

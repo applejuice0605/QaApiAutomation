@@ -1,0 +1,1160 @@
+{
+  "quotationBody": {
+    "bizSource": 1,
+    "categoryId": "42",
+    "coverageDataJson": {
+        "auditFlag": true,
+        "discountSwitch": true,
+        "express": 0,
+        "filterRawProductCode": "R_00045",
+        "mainInsuranceCompanyCode": "6603000931",
+        "mainInsuranceCompanyName": "PT. Asuransi Intra Asia",
+        "mpCode": "M_00029",
+        "mpName": "INTRA ASIA PROPERTY ALL RISK EQVET",
+        "mpNameLocal": "INTRA ASIA PROPERTY ALL RISK EQVET",
+        "mpPlanCode": "MP_00136",
+        "mpPlanName": "INTRA ASIA PROPERTY ALL RISK EQVET",
+        "mpPlanNameLocal": "INTRA ASIA PROPERTY ALL RISK EQVET",
+        "productHeaderPicture": "fuse-id-core-prod-rw_images/20240115/d64cfdaeed26468fa8bddba332410914.jpg",
+        "productHeaderPictureLocal": "fuse-id-core-prod-rw_images/20240115/d74b320f75984d7fa0d7329a86166e14.jpg",
+        "productListPicture": "fuse-id-core-prod-rw_images/20240115/f34552ce5ef5476d9d78913ccdd256cd.jpg",
+        "productListPictureLocal": "fuse-id-core-prod-rw_images/20240115/a48162e4ff70484190e5b5102d28c9a3.jpg",
+        "productLs": [
+            {
+                "commissionInfo": {
+                    "mulitCommissionType": 0,
+                    "partnerCommissionAmount": 848,
+                    "partnerMatchCommissionRule": null,
+                    "partnerSpecialBonusAmount": 566,
+                    "partnerSupportingFeeAmount": 0,
+                    "partnerCommissionIncomeTaxAmount": 22,
+                    "partnerCommissionRate": 0,
+                    "partnerCommissionVatTaxAmount": 0,
+                    "partnerSpecialBonusIncomeTaxAmount": 15,
+                    "partnerSpecialBonusRate": 0,
+                    "partnerSpecialBonusVatTaxAmount": 0,
+                    "partnerSupportingFeeIncomeTaxAmount": 0,
+                    "partnerSupportingFeeRate": 0,
+                    "partnerSupportingFeeVatTaxAmount": 0,
+                    "partnerUplineReferralRate": 0
+                },
+                "adminFee": 60000,
+                "coverageLs": [
+                    {
+                        "bindCoverages": [],
+                        "coverageCode": "CM_00030",
+                        "coverageFlag": 1,
+                        "coverageId": 600000778,
+                        "coverageName": "Property All Risk",
+                        "coverageNameLocal": "Property All Risk",
+                        "coverageRequired": 1,
+                        "coverageStandardCode": "PC_100007",
+                        "coverageTypeId": 4,
+                        "dutyDTOList": [
+                            {
+                                "coverageId": 600000778,
+                                "dutyCode": "D_00236",
+                                "dutyId": 1200,
+                                "dutyName": "PROPERTY ALL RISK",
+                                "dutyNameLocal": "PROPERTY ALL RISK",
+                                "dutyStandardCode": "PB_300026",
+                                "insuredType": 0,
+                                "insuredUnit": 2,
+                                "planDutyId": 33513
+                            }
+                        ],
+                        "maxCoverageDiscount": 0,
+                        "minCoverageDiscount": 0,
+                        "planDutyId": 33513,
+                        "rawPlanId": 473,
+                        "vatRate": 0,
+                        "auditFlag": true,
+                        "commissionInfo": {
+                            "mulitCommissionType": 0,
+                            "partnerCommissionAmount": 564,
+                            "partnerCommissionRate": 0.15,
+                            "partnerMatchCommissionRule": [
+                                "Rule:4873"
+                            ],
+                            "partnerSpecialBonusAmount": 376,
+                            "partnerSpecialBonusRate": 0.1,
+                            "partnerSupportingFeeAmount": 0,
+                            "partnerSupportingFeeRate": 0,
+                            "partnerUplineReferralRate": 0,
+                            "pdBreakupFeeRate": 0,
+                            "pmBreakupFeeRate": 0,
+                            "uplineReferralsRate": {
+                                "1": 0.1,
+                                "2": 0.05,
+                                "3": 0.025,
+                                "4": 0.0125,
+                                "5": 0.0063,
+                                "6": 0
+                            }
+                        },
+                        "declineReason": [],
+                        "declineReasonLocal": [],
+                        "dutyLs": [
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": 0,
+                                "coverageId": 600000778,
+                                "dutyCode": "D_00236",
+                                "dutyId": 1200,
+                                "dutyName": "PROPERTY ALL RISK",
+                                "dutyNameLocal": "PROPERTY ALL RISK",
+                                "dutyStandardCode": "PB_300026",
+                                "insuredType": 0,
+                                "insuredUnit": 2,
+                                "planDutyId": 33513,
+                                "insuredAmount": 4212122,
+                                "matchPremiumRule": [],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            }
+                        ],
+                        "installmentNetPremium": 0,
+                        "installmentPremium": 0,
+                        "installmentVatAmount": 0,
+                        "insuredAmount": 4212122,
+                        "netPremium": 3761,
+                        "originalNetPremium": 0,
+                        "premium": 3761,
+                        "riskRate": 0,
+                        "vatAmount": 0,
+                        "isSelect": true
+                    },
+                    {
+                        "bindCoverages": [],
+                        "coverageCode": "CA_00170",
+                        "coverageFlag": 2,
+                        "coverageId": 600000821,
+                        "coverageName": "Strike, Riots, Civil Commotions",
+                        "coverageNameLocal": "Kerusuhan, Pemogokan, Perbuatan Jahat & Huru-Hara",
+                        "coverageRequired": 1,
+                        "coverageStandardCode": "PC_100007",
+                        "coverageTypeId": 4,
+                        "dutyDTOList": [
+                            {
+                                "coverageId": 600000821,
+                                "dutyCode": "D_00301",
+                                "dutyId": 1265,
+                                "dutyName": "Strike, Riots, Civil Commotions",
+                                "dutyNameLocal": "Kerusuhan, Pemogokan, Perbuatan Jahat & Huru-Hara",
+                                "dutyStandardCode": "PB_300029",
+                                "externalDutyCode": "SRCC",
+                                "insuredType": 0,
+                                "insuredUnit": 2,
+                                "planDutyId": 33516
+                            }
+                        ],
+                        "maxCoverageDiscount": 0,
+                        "minCoverageDiscount": 0,
+                        "planDutyId": 33516,
+                        "rawPlanId": 473,
+                        "vatRate": 0,
+                        "auditFlag": true,
+                        "commissionInfo": {
+                            "mulitCommissionType": 0,
+                            "partnerCommissionAmount": 0,
+                            "partnerCommissionRate": 0.15,
+                            "partnerMatchCommissionRule": [
+                                "Rule:4873"
+                            ],
+                            "partnerSpecialBonusAmount": 0,
+                            "partnerSpecialBonusRate": 0.1,
+                            "partnerSupportingFeeAmount": 0,
+                            "partnerSupportingFeeRate": 0,
+                            "partnerUplineReferralRate": 0,
+                            "pdBreakupFeeRate": 0,
+                            "pmBreakupFeeRate": 0,
+                            "uplineReferralsRate": {
+                                "1": 0.1,
+                                "2": 0.05,
+                                "3": 0.025,
+                                "4": 0.0125,
+                                "5": 0.0063,
+                                "6": 0
+                            }
+                        },
+                        "declineReason": [],
+                        "declineReasonLocal": [],
+                        "dutyLs": [
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": 0,
+                                "coverageId": 600000821,
+                                "dutyCode": "D_00301",
+                                "dutyId": 1265,
+                                "dutyName": "Strike, Riots, Civil Commotions",
+                                "dutyNameLocal": "Kerusuhan, Pemogokan, Perbuatan Jahat & Huru-Hara",
+                                "dutyStandardCode": "PB_300029",
+                                "externalDutyCode": "SRCC",
+                                "insuredType": 0,
+                                "insuredUnit": 2,
+                                "planDutyId": 33516,
+                                "insuredAmount": 4212122,
+                                "matchPremiumRule": [],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            }
+                        ],
+                        "installmentNetPremium": 0,
+                        "installmentPremium": 0,
+                        "installmentVatAmount": 0,
+                        "insuredAmount": 4212122,
+                        "netPremium": 0,
+                        "originalNetPremium": 0,
+                        "premium": 0,
+                        "riskRate": 0,
+                        "vatAmount": 0,
+                        "isSelect": true
+                    },
+                    {
+                        "bindCoverages": [],
+                        "coverageCode": "CA_00169",
+                        "coverageFlag": 2,
+                        "coverageId": 600000820,
+                        "coverageName": "Others",
+                        "coverageNameLocal": "Lain - lain",
+                        "coverageRequired": 1,
+                        "coverageStandardCode": "PC_100007",
+                        "coverageTypeId": 4,
+                        "dutyDTOList": [
+                            {
+                                "coverageId": 600000820,
+                                "dutyCode": "D_00300",
+                                "dutyId": 1264,
+                                "dutyName": "Others",
+                                "dutyNameLocal": "Lain - Lain",
+                                "dutyStandardCode": "PB_100112",
+                                "externalDutyCode": "Others",
+                                "insuredType": 0,
+                                "insuredUnit": 2,
+                                "planDutyId": 33515
+                            }
+                        ],
+                        "maxCoverageDiscount": 0,
+                        "minCoverageDiscount": 0,
+                        "planDutyId": 33515,
+                        "rawPlanId": 473,
+                        "vatRate": 0,
+                        "auditFlag": true,
+                        "commissionInfo": {
+                            "mulitCommissionType": 0,
+                            "partnerCommissionAmount": 0,
+                            "partnerCommissionRate": 0.15,
+                            "partnerMatchCommissionRule": [
+                                "Rule:4873"
+                            ],
+                            "partnerSpecialBonusAmount": 0,
+                            "partnerSpecialBonusRate": 0.1,
+                            "partnerSupportingFeeAmount": 0,
+                            "partnerSupportingFeeRate": 0,
+                            "partnerUplineReferralRate": 0,
+                            "pdBreakupFeeRate": 0,
+                            "pmBreakupFeeRate": 0,
+                            "uplineReferralsRate": {
+                                "1": 0.1,
+                                "2": 0.05,
+                                "3": 0.025,
+                                "4": 0.0125,
+                                "5": 0.0063,
+                                "6": 0
+                            }
+                        },
+                        "declineReason": [],
+                        "declineReasonLocal": [],
+                        "dutyLs": [
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": 0,
+                                "coverageId": 600000820,
+                                "dutyCode": "D_00300",
+                                "dutyId": 1264,
+                                "dutyName": "Others",
+                                "dutyNameLocal": "Lain - Lain",
+                                "dutyStandardCode": "PB_100112",
+                                "externalDutyCode": "Others",
+                                "insuredType": 0,
+                                "insuredUnit": 2,
+                                "planDutyId": 33515,
+                                "insuredAmount": 4212122,
+                                "matchPremiumRule": [],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            }
+                        ],
+                        "installmentNetPremium": 0,
+                        "installmentPremium": 0,
+                        "installmentVatAmount": 0,
+                        "insuredAmount": 4212122,
+                        "netPremium": 0,
+                        "originalNetPremium": 0,
+                        "premium": 0,
+                        "riskRate": 0,
+                        "vatAmount": 0,
+                        "isSelect": true
+                    },
+                    {
+                        "bindCoverages": [],
+                        "coverageCode": "CA_00154",
+                        "coverageFlag": 2,
+                        "coverageId": 600000779,
+                        "coverageName": "Floods, Typhoons",
+                        "coverageNameLocal": "Banjir, Angin Topan",
+                        "coverageRequired": 2,
+                        "coverageStandardCode": "PC_100006",
+                        "coverageTypeId": 4,
+                        "dutyDTOList": [
+                            {
+                                "coverageId": 600000779,
+                                "dutyCode": "D_00239",
+                                "dutyId": 1203,
+                                "dutyName": "Floods, Typhoons",
+                                "dutyNameLocal": "Banjir, Angin Topan",
+                                "dutyStandardCode": "PB_300028",
+                                "externalDutyCode": "TSFWD",
+                                "insuredType": 0,
+                                "insuredUnit": 2,
+                                "planDutyId": 33514
+                            }
+                        ],
+                        "maxCoverageDiscount": 0,
+                        "minCoverageDiscount": 0,
+                        "planDutyId": 33514,
+                        "rawPlanId": 473,
+                        "vatRate": 0,
+                        "auditFlag": true,
+                        "commissionInfo": {
+                            "mulitCommissionType": 0,
+                            "partnerCommissionAmount": 284,
+                            "partnerCommissionRate": 0.15,
+                            "partnerMatchCommissionRule": [
+                                "Rule:4873"
+                            ],
+                            "partnerSpecialBonusAmount": 189,
+                            "partnerSpecialBonusRate": 0.1,
+                            "partnerSupportingFeeAmount": 0,
+                            "partnerSupportingFeeRate": 0,
+                            "partnerUplineReferralRate": 0,
+                            "pdBreakupFeeRate": 0,
+                            "pmBreakupFeeRate": 0,
+                            "uplineReferralsRate": {
+                                "1": 0.1,
+                                "2": 0.05,
+                                "3": 0.025,
+                                "4": 0.0125,
+                                "5": 0.0063,
+                                "6": 0
+                            }
+                        },
+                        "declineReason": [],
+                        "declineReasonLocal": [],
+                        "dutyLs": [
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": 0,
+                                "coverageId": 600000779,
+                                "dutyCode": "D_00239",
+                                "dutyId": 1203,
+                                "dutyName": "Floods, Typhoons",
+                                "dutyNameLocal": "Banjir, Angin Topan",
+                                "dutyStandardCode": "PB_300028",
+                                "externalDutyCode": "TSFWD",
+                                "insuredType": 0,
+                                "insuredUnit": 2,
+                                "planDutyId": 33514,
+                                "insuredAmount": 4212122,
+                                "matchPremiumRule": [],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            }
+                        ],
+                        "installmentNetPremium": 0,
+                        "installmentPremium": 0,
+                        "installmentVatAmount": 0,
+                        "insuredAmount": 4212122,
+                        "netPremium": 1895,
+                        "originalNetPremium": 0,
+                        "premium": 1895,
+                        "riskRate": 0,
+                        "vatAmount": 0,
+                        "isSelect": true
+                    }
+                ],
+                "declineReason": [],
+                "declineReasonLocal": [],
+                "inspectionFlag": false,
+                "inspectionReason": [],
+                "inspectionReasonLocal": [],
+                "leaderGroup": true,
+                "matchPremiumRule": [
+                    "Rule:30445",
+                    "Rule:30514",
+                    "Rule:30513",
+                    "Rule:30518"
+                ],
+                "planCode": "RP_00067",
+                "planName": "INTRA ASIA PROPERTY ALL RISK",
+                "planNameLocal": "INTRA ASIA PROPERTY ALL RISK",
+                "policyFee": 50000,
+                "productCode": "R_00045",
+                "productName": "INTRA ASIA PROPERTY ALL RISK",
+                "productNameLocal": "INTRA ASIA PROPERTY ALL RISK",
+                "quoteDimension": 4,
+                "serviceFee": 0,
+                "subPlanCode": "null|RP_00067",
+                "totalInstallmentNetPremium": 0,
+                "totalInstallmentPremium": 0,
+                "totalInstallmentVatAmount": 0,
+                "totalNetPremium": 5656,
+                "totalNoCalculateCommissionPremium": 0,
+                "totalOriginalNetPremium": 0,
+                "totalPolicyDiscountAmount": 0,
+                "totalPolicyDiscountRate": 0,
+                "totalPremium": 15656,
+                "totalRiderNetPremium": 1895,
+                "totalRiderPremium": 1895,
+                "totalStamp": 10000,
+                "totalVATAmount": 0,
+                "insuranceFullName": "PT. Asuransi Intra Asia",
+                "insuranceId": "6603000931",
+                "insuranceLogoUrl": "https://oss-pre.fuse.co.id/images/20240111/7151990b91f54fb09e637c4b2b3ab86f.jpg?Expires=1744934399&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=p%2BaCrDX%2F4XqaHG3%2FiGV1ixPXKxU%3D",
+                "policyDiscountEnd": "0",
+                "policyDiscountStart": "0",
+                "rawPlanDTOList": [
+                    {
+                        "mandatory": 1,
+                        "rawPlanCode": "RP_00067",
+                        "rawPlanId": 473,
+                        "rawPlanName": "INTRA ASIA PROPERTY ALL RISK",
+                        "rawPlanNameLocal": "INTRA ASIA PROPERTY ALL RISK"
+                    }
+                ],
+                "rawProductId": 600200322,
+                "mandatory": 1,
+                "rawPlanCode": "RP_00067",
+                "rawPlanId": 473,
+                "rawPlanName": "INTRA ASIA PROPERTY ALL RISK",
+                "rawPlanNameLocal": "INTRA ASIA PROPERTY ALL RISK",
+                "brokerDiscountConfigVO": {
+                    "discountFromCommissionBy": 0,
+                    "discountFromCommissionDefault": 0,
+                    "discountFromSpecialBounsBy": 2,
+                    "discountFromSpecialBounsDefault": 0,
+                    "isByBroker": false,
+                    "isDiscountFromCommissionByBroker": false,
+                    "isDiscountFromSpecialBounsByBroker": false,
+                    "takeOn": true
+                },
+                "coInsFlag": 1,
+                "discountCommissionFromType": 0,
+                "discountCommissionType": 1,
+                "discountFromCommissionDefault": 0,
+                "discountFromSpecialBounsDefault": 0,
+                "discountSpecialBonusType": 2,
+                "inputType": 1,
+                "leaderBookAs": 1,
+                "maxDiscountAmount": 848,
+                "maxDiscountFromPartnerSpecialBonusAmount": 524,
+                "partnerCommissionDeductRebateIncomeTax": 21.2,
+                "shareRate": 1,
+                "transactionNumber": "C0E369D891C941B587394C6424F636D8",
+                "maxDiscountRate": 14,
+                "rebateAmount": "",
+                "rebateAmountDefault": 0,
+                "rebateRate": "",
+                "rebateRateDefault": 0,
+                "maxDiscountFromPartnerSpecialBonusRate": 9,
+                "discountFromPartnerSpecialBonusAmount": "",
+                "discountFromPartnerSpecialBonusAmountDefault": 0,
+                "discountFromPartnerSpecialBonusRate": "",
+                "discountFromPartnerSpecialBonusRateDefault": 0
+            },
+            {
+                "commissionInfo": {
+                    "mulitCommissionType": 0,
+                    "partnerCommissionAmount": 903,
+                    "partnerMatchCommissionRule": null,
+                    "partnerSpecialBonusAmount": 602,
+                    "partnerSupportingFeeAmount": 0,
+                    "partnerCommissionIncomeTaxAmount": 23,
+                    "partnerCommissionRate": 0,
+                    "partnerCommissionVatTaxAmount": 0,
+                    "partnerSpecialBonusIncomeTaxAmount": 16,
+                    "partnerSpecialBonusRate": 0,
+                    "partnerSpecialBonusVatTaxAmount": 0,
+                    "partnerSupportingFeeIncomeTaxAmount": 0,
+                    "partnerSupportingFeeRate": 0,
+                    "partnerSupportingFeeVatTaxAmount": 0,
+                    "partnerUplineReferralRate": 0
+                },
+                "adminFee": 35000,
+                "coverageLs": [
+                    {
+                        "bindCoverages": [],
+                        "coverageCode": "CM_00044",
+                        "coverageFlag": 1,
+                        "coverageId": 600000797,
+                        "coverageName": "Earthquake, Tsunami",
+                        "coverageNameLocal": "Gempa Bumi, Tsunami",
+                        "coverageRequired": 1,
+                        "coverageStandardCode": "PC_100007",
+                        "coverageTypeId": 4,
+                        "dutyDTOList": [
+                            {
+                                "coverageId": 600000797,
+                                "dutyCode": "D_00275",
+                                "dutyId": 1239,
+                                "dutyName": "Earthquake, Tsunami",
+                                "dutyNameLocal": "Gempa Bumi, Tsunami",
+                                "dutyStandardCode": "PB_300027",
+                                "externalDutyCode": "EQVET",
+                                "insuredType": 0,
+                                "insuredUnit": 2,
+                                "planDutyId": 32651
+                            }
+                        ],
+                        "maxCoverageDiscount": 0,
+                        "minCoverageDiscount": 0,
+                        "planDutyId": 32651,
+                        "rawPlanId": 486,
+                        "vatRate": 0,
+                        "auditFlag": true,
+                        "commissionInfo": {
+                            "mulitCommissionType": 0,
+                            "partnerCommissionAmount": 903,
+                            "partnerCommissionRate": 0.15,
+                            "partnerMatchCommissionRule": [
+                                "Rule:4877"
+                            ],
+                            "partnerSpecialBonusAmount": 602,
+                            "partnerSpecialBonusRate": 0.1,
+                            "partnerSupportingFeeAmount": 0,
+                            "partnerSupportingFeeRate": 0,
+                            "partnerUplineReferralRate": 0,
+                            "pdBreakupFeeRate": 0,
+                            "pmBreakupFeeRate": 0,
+                            "uplineReferralsRate": {
+                                "1": 0.1,
+                                "2": 0.05,
+                                "3": 0.025,
+                                "4": 0.0125,
+                                "5": 0.0063,
+                                "6": 0
+                            }
+                        },
+                        "declineReason": [],
+                        "declineReasonLocal": [],
+                        "dutyLs": [
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": 0,
+                                "coverageId": 600000797,
+                                "dutyCode": "D_00275",
+                                "dutyId": 1239,
+                                "dutyName": "Earthquake, Tsunami",
+                                "dutyNameLocal": "Gempa Bumi, Tsunami",
+                                "dutyStandardCode": "PB_300027",
+                                "externalDutyCode": "EQVET",
+                                "insuredType": 0,
+                                "insuredUnit": 2,
+                                "planDutyId": 32651,
+                                "insuredAmount": 4212122,
+                                "matchPremiumRule": [],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            }
+                        ],
+                        "installmentNetPremium": 0,
+                        "installmentPremium": 0,
+                        "installmentVatAmount": 0,
+                        "insuredAmount": 4212122,
+                        "netPremium": 6023,
+                        "originalNetPremium": 0,
+                        "premium": 6023,
+                        "riskRate": 0,
+                        "vatAmount": 0,
+                        "isSelect": true
+                    }
+                ],
+                "declineReason": [],
+                "declineReasonLocal": [],
+                "inspectionFlag": false,
+                "inspectionReason": [],
+                "inspectionReasonLocal": [],
+                "leaderGroup": true,
+                "matchPremiumRule": [
+                    "Rule:26554"
+                ],
+                "planCode": "RP_00080",
+                "planName": "INTRA EQVET",
+                "planNameLocal": "INTRA EQVET",
+                "policyFee": 25000,
+                "productCode": "R_00059",
+                "productName": "INTRA EQVET",
+                "productNameLocal": "INTRA EQVET",
+                "quoteDimension": 4,
+                "serviceFee": 0,
+                "subPlanCode": "null|RP_00080",
+                "totalInstallmentNetPremium": 0,
+                "totalInstallmentPremium": 0,
+                "totalInstallmentVatAmount": 0,
+                "totalNetPremium": 6023,
+                "totalNoCalculateCommissionPremium": 0,
+                "totalOriginalNetPremium": 0,
+                "totalPolicyDiscountAmount": 0,
+                "totalPolicyDiscountRate": 0,
+                "totalPremium": 16023,
+                "totalRiderNetPremium": 0,
+                "totalRiderPremium": 0,
+                "totalStamp": 10000,
+                "totalVATAmount": 0,
+                "insuranceFullName": "PT. Asuransi Intra Asia",
+                "insuranceId": "6603000931",
+                "insuranceLogoUrl": "https://oss-pre.fuse.co.id/images/20240111/7151990b91f54fb09e637c4b2b3ab86f.jpg?Expires=1744934399&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=p%2BaCrDX%2F4XqaHG3%2FiGV1ixPXKxU%3D",
+                "policyDiscountEnd": "0",
+                "policyDiscountStart": "0",
+                "rawPlanDTOList": [
+                    {
+                        "mandatory": 3,
+                        "rawPlanCode": "RP_00080",
+                        "rawPlanId": 486,
+                        "rawPlanName": "INTRA EQVET",
+                        "rawPlanNameLocal": "INTRA EQVET"
+                    }
+                ],
+                "rawProductId": 600200336,
+                "mandatory": 3,
+                "rawPlanCode": "RP_00080",
+                "rawPlanId": 486,
+                "rawPlanName": "INTRA EQVET",
+                "rawPlanNameLocal": "INTRA EQVET",
+                "brokerDiscountConfigVO": {
+                    "discountFromCommissionBy": 0,
+                    "discountFromCommissionDefault": 0,
+                    "discountFromSpecialBounsBy": 2,
+                    "discountFromSpecialBounsDefault": 0,
+                    "isByBroker": false,
+                    "isDiscountFromCommissionByBroker": false,
+                    "isDiscountFromSpecialBounsByBroker": false,
+                    "takeOn": true
+                },
+                "coInsFlag": 1,
+                "discountCommissionFromType": 0,
+                "discountCommissionType": 1,
+                "discountFromCommissionDefault": 0,
+                "discountFromSpecialBounsDefault": 0,
+                "discountSpecialBonusType": 2,
+                "inputType": 1,
+                "leaderBookAs": 1,
+                "maxDiscountAmount": 903,
+                "maxDiscountFromPartnerSpecialBonusAmount": 557,
+                "partnerCommissionDeductRebateIncomeTax": 22.575,
+                "shareRate": 1,
+                "transactionNumber": "E9EDD173642D425E92ECA7E49B8B99CB",
+                "maxDiscountRate": 14,
+                "rebateAmount": "",
+                "rebateAmountDefault": 0,
+                "rebateRate": "",
+                "rebateRateDefault": 0,
+                "maxDiscountFromPartnerSpecialBonusRate": 9,
+                "discountFromPartnerSpecialBonusAmount": "",
+                "discountFromPartnerSpecialBonusAmountDefault": 0,
+                "discountFromPartnerSpecialBonusRate": "",
+                "discountFromPartnerSpecialBonusRateDefault": 0
+            }
+        ],
+        "starLabel": 5,
+        "totalNetPremium": 11679,
+        "totalPolicyDiscountAmount": 0,
+        "totalPremium": 31679,
+        "totalVATAmount": 0,
+        "mpId": 600300255,
+        "mpPlanId": 4209,
+        "rawDTOList": [
+            {
+                "insuranceFullName": "PT. Asuransi Intra Asia",
+                "insuranceId": "6603000931",
+                "insuranceLogoUrl": "https://oss-pre.fuse.co.id/images/20240111/7151990b91f54fb09e637c4b2b3ab86f.jpg?Expires=1744934399&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=p%2BaCrDX%2F4XqaHG3%2FiGV1ixPXKxU%3D",
+                "policyDiscountEnd": "0",
+                "policyDiscountStart": "0",
+                "productCode": "R_00045",
+                "productName": "INTRA ASIA PROPERTY ALL RISK",
+                "productNameLocal": "INTRA ASIA PROPERTY ALL RISK",
+                "rawPlanDTOList": [
+                    {
+                        "mandatory": 1,
+                        "rawPlanCode": "RP_00067",
+                        "rawPlanId": 473,
+                        "rawPlanName": "INTRA ASIA PROPERTY ALL RISK",
+                        "rawPlanNameLocal": "INTRA ASIA PROPERTY ALL RISK"
+                    }
+                ],
+                "rawProductId": 600200322
+            },
+            {
+                "insuranceFullName": "PT. Asuransi Intra Asia",
+                "insuranceId": "6603000931",
+                "insuranceLogoUrl": "https://oss-pre.fuse.co.id/images/20240111/7151990b91f54fb09e637c4b2b3ab86f.jpg?Expires=1744934399&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=p%2BaCrDX%2F4XqaHG3%2FiGV1ixPXKxU%3D",
+                "policyDiscountEnd": "0",
+                "policyDiscountStart": "0",
+                "productCode": "R_00059",
+                "productName": "INTRA EQVET",
+                "productNameLocal": "INTRA EQVET",
+                "rawPlanDTOList": [
+                    {
+                        "mandatory": 3,
+                        "rawPlanCode": "RP_00080",
+                        "rawPlanId": 486,
+                        "rawPlanName": "INTRA EQVET",
+                        "rawPlanNameLocal": "INTRA EQVET"
+                    }
+                ],
+                "rawProductId": 600200336
+            }
+        ],
+        "adminFee": 95000,
+        "discountCommissionType": 1,
+        "discountSpecialBonusType": 2,
+        "maxRebateAmount": 848,
+        "maxRebateRate": 0,
+        "partnerCommissionRateDimensionType": 2,
+        "serviceFee": 0
+    },
+    "quotationDataJson": {
+        "riskGroupInfo": {
+            "property": {
+                "defaultFloor": 1,
+                "floor": 2,
+                "useUpperRate": 2,
+                "useUpperRateLabel": "No",
+                "useUpperRateLabelLocal": "Tidak",
+                "price": 4212122,
+                "address": {
+                    "province": "1423416",
+                    "provinceName": "Bali",
+                    "provinceNameLocal": "Bali",
+                    "city": "1423451",
+                    "cityName": "Kab. Badung",
+                    "cityNameLocal": "Kab. Badung",
+                    "district": "1423962",
+                    "districtName": "Abiansemal",
+                    "districtNameLocal": "Abiansemal",
+                    "urban": "1431033",
+                    "urbanName": "Abiansemal",
+                    "urbanNameLocal": "Abiansemal"
+                },
+                "postalCode": "80352",
+                "zone": 4,
+                "floodZoneFlag": 2,
+                "detailAddress": "Test",
+                "occupation": 293131,
+                "occupationLabel": "29313A Shopping Mall/Center - Grade A",
+                "occupationLabelLocal": "29313A Pusat Perbelanjaan/Mall (Kelas A)",
+                "buildingFloor": 1,
+                "buildingFloorLabel": "1-9 Floors",
+                "buildingFloorLabelLocal": "1-9 Lantai",
+                "buildingMaterial": 1,
+                "buildingMaterialLabel": "Yes",
+                "buildingMaterialLabelLocal": "Ya",
+                "flood": 2,
+                "floodLabel": "No",
+                "floodLabelLocal": "Tidak",
+                "claim": 2,
+                "claimLabel": "No",
+                "claimLabelLocal": "Tidak",
+                "buildingValue": 3232323,
+                "contentValue": 323233,
+                "machineryValue": 323233,
+                "stocksValue": 333333
+            }
+        },
+        "insuranceInfo": {
+            "premiumPaymentPeriod": 1,
+            "coveragePeriodUnit": 3,
+            "idTimeZone": 86398999,
+            "expiredDate": 1776441597999,
+            "coveragePeriod": 1,
+            "coveragePeriodLabel": "1 Year",
+            "coveragePeriodLabelLocal": "1 Tahun",
+            "effectiveDate": 1744851600000,
+            "productCode": "M_00029",
+            "productName": "INTRA ASIA PROPERTY ALL RISK EQVET",
+            "productNameLocal": "INTRA ASIA PROPERTY ALL RISK EQVET",
+            "planCode": "MP_00136",
+            "mpPlanName": "INTRA ASIA PROPERTY ALL RISK EQVET",
+            "mpPlanNameLocal": "INTRA ASIA PROPERTY ALL RISK EQVET",
+            "productInfo": [
+                {
+                    "productCode": "R_00045",
+                    "productName": "INTRA ASIA PROPERTY ALL RISK",
+                    "productNameLocal": "INTRA ASIA PROPERTY ALL RISK",
+                    "planCode": "RP_00067",
+                    "rawPlanName": "INTRA ASIA PROPERTY ALL RISK",
+                    "rawPlanNameLocal": "INTRA ASIA PROPERTY ALL RISK",
+                    "policyDiscount": 0,
+                    "coverageInfo": [
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CM_00030",
+                            "coverageName": "Property All Risk",
+                            "coverageNameLocal": "Property All Risk",
+                            "insuredAmount": 4212122,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00236",
+                                    "dutyName": "PROPERTY ALL RISK",
+                                    "dutyNameLocal": "PROPERTY ALL RISK",
+                                    "insuredAmount": 4212122,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        },
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CA_00170",
+                            "coverageName": "Strike, Riots, Civil Commotions",
+                            "coverageNameLocal": "Kerusuhan, Pemogokan, Perbuatan Jahat & Huru-Hara",
+                            "insuredAmount": 4212122,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00301",
+                                    "dutyName": "Strike, Riots, Civil Commotions",
+                                    "dutyNameLocal": "Kerusuhan, Pemogokan, Perbuatan Jahat & Huru-Hara",
+                                    "insuredAmount": 4212122,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        },
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CA_00169",
+                            "coverageName": "Others",
+                            "coverageNameLocal": "Lain - lain",
+                            "insuredAmount": 4212122,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00300",
+                                    "dutyName": "Others",
+                                    "dutyNameLocal": "Lain - Lain",
+                                    "insuredAmount": 4212122,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        },
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CA_00154",
+                            "coverageName": "Floods, Typhoons",
+                            "coverageNameLocal": "Banjir, Angin Topan",
+                            "insuredAmount": 4212122,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00239",
+                                    "dutyName": "Floods, Typhoons",
+                                    "dutyNameLocal": "Banjir, Angin Topan",
+                                    "insuredAmount": 4212122,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "productCode": "R_00059",
+                    "productName": "INTRA EQVET",
+                    "productNameLocal": "INTRA EQVET",
+                    "planCode": "RP_00080",
+                    "rawPlanName": "INTRA EQVET",
+                    "rawPlanNameLocal": "INTRA EQVET",
+                    "policyDiscount": 0,
+                    "coverageInfo": [
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CM_00044",
+                            "coverageName": "Earthquake, Tsunami",
+                            "coverageNameLocal": "Gempa Bumi, Tsunami",
+                            "insuredAmount": 4212122,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00275",
+                                    "dutyName": "Earthquake, Tsunami",
+                                    "dutyNameLocal": "Gempa Bumi, Tsunami",
+                                    "insuredAmount": 4212122,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+},
+  "placeOrderBody": {
+    "rfqNo": "RFQ-1912858368073863170",
+    "quoteNo": "QS-1912858368073863169",
+    "agentUid": "62813800088888",
+    "bizSource": 1,
+    "creatorUid": "62813800088888",
+    "appPlatform": "2",
+    "appVersion": "1.2.7",
+    "deviceId": "78717ed5c357c98c",
+    "osModel": "AKA-AL10",
+    "osVersion": "10",
+    "dataFormJson": {
+        "riskGroupInfo": {
+            "property": {
+                "defaultFloor": 1,
+                "floor": 2,
+                "useUpperRate": 2,
+                "useUpperRateLabel": "No",
+                "useUpperRateLabelLocal": "Tidak",
+                "price": 4212122,
+                "address": {
+                    "province": "1423416",
+                    "provinceName": "Bali",
+                    "provinceNameLocal": "Bali",
+                    "city": "1423451",
+                    "cityName": "Kab. Badung",
+                    "cityNameLocal": "Kab. Badung",
+                    "district": "1423962",
+                    "districtName": "Abiansemal",
+                    "districtNameLocal": "Abiansemal",
+                    "urban": "1431033",
+                    "urbanName": "Abiansemal",
+                    "urbanNameLocal": "Abiansemal"
+                },
+                "postalCode": "80352",
+                "zone": 4,
+                "floodZoneFlag": 2,
+                "detailAddress": "Test",
+                "occupation": 293131,
+                "occupationLabel": "29313A Shopping Mall/Center - Grade A",
+                "occupationLabelLocal": "29313A Pusat Perbelanjaan/Mall (Kelas A)",
+                "buildingFloor": 1,
+                "buildingFloorLabel": "1-9 Floors",
+                "buildingFloorLabelLocal": "1-9 Lantai",
+                "buildingMaterial": 1,
+                "buildingMaterialLabel": "Yes",
+                "buildingMaterialLabelLocal": "Ya",
+                "flood": 2,
+                "floodLabel": "No",
+                "floodLabelLocal": "Tidak",
+                "claim": 2,
+                "claimLabel": "No",
+                "claimLabelLocal": "Tidak",
+                "buildingValue": 3232323,
+                "contentValue": 323233,
+                "machineryValue": 323233,
+                "stocksValue": 333333
+            }
+        },
+        "insuranceInfo": {
+            "premiumPaymentPeriod": 1,
+            "coveragePeriodUnit": 3,
+            "idTimeZone": 86398999,
+            "expiredDate": 1776441597999,
+            "coveragePeriod": 1,
+            "coveragePeriodLabel": "1 Year",
+            "coveragePeriodLabelLocal": "1 Tahun",
+            "effectiveDate": 1744851600000,
+            "productCode": "M_00029",
+            "productName": "INTRA ASIA PROPERTY ALL RISK EQVET",
+            "productNameLocal": "INTRA ASIA PROPERTY ALL RISK EQVET",
+            "planCode": "MP_00136",
+            "mpPlanName": "INTRA ASIA PROPERTY ALL RISK EQVET",
+            "mpPlanNameLocal": "INTRA ASIA PROPERTY ALL RISK EQVET",
+            "productInfo": [
+                {
+                    "productCode": "R_00045",
+                    "productName": "INTRA ASIA PROPERTY ALL RISK",
+                    "productNameLocal": "INTRA ASIA PROPERTY ALL RISK",
+                    "planCode": "RP_00067",
+                    "rawPlanName": "INTRA ASIA PROPERTY ALL RISK",
+                    "rawPlanNameLocal": "INTRA ASIA PROPERTY ALL RISK",
+                    "policyDiscount": 0,
+                    "coverageInfo": [
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CM_00030",
+                            "coverageName": "Property All Risk",
+                            "coverageNameLocal": "Property All Risk",
+                            "insuredAmount": 4212122,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00236",
+                                    "dutyName": "PROPERTY ALL RISK",
+                                    "dutyNameLocal": "PROPERTY ALL RISK",
+                                    "insuredAmount": 4212122,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        },
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CA_00170",
+                            "coverageName": "Strike, Riots, Civil Commotions",
+                            "coverageNameLocal": "Kerusuhan, Pemogokan, Perbuatan Jahat & Huru-Hara",
+                            "insuredAmount": 4212122,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00301",
+                                    "dutyName": "Strike, Riots, Civil Commotions",
+                                    "dutyNameLocal": "Kerusuhan, Pemogokan, Perbuatan Jahat & Huru-Hara",
+                                    "insuredAmount": 4212122,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        },
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CA_00169",
+                            "coverageName": "Others",
+                            "coverageNameLocal": "Lain - lain",
+                            "insuredAmount": 4212122,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00300",
+                                    "dutyName": "Others",
+                                    "dutyNameLocal": "Lain - Lain",
+                                    "insuredAmount": 4212122,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        },
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CA_00154",
+                            "coverageName": "Floods, Typhoons",
+                            "coverageNameLocal": "Banjir, Angin Topan",
+                            "insuredAmount": 4212122,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00239",
+                                    "dutyName": "Floods, Typhoons",
+                                    "dutyNameLocal": "Banjir, Angin Topan",
+                                    "insuredAmount": 4212122,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "productCode": "R_00059",
+                    "productName": "INTRA EQVET",
+                    "productNameLocal": "INTRA EQVET",
+                    "planCode": "RP_00080",
+                    "rawPlanName": "INTRA EQVET",
+                    "rawPlanNameLocal": "INTRA EQVET",
+                    "policyDiscount": 0,
+                    "coverageInfo": [
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CM_00044",
+                            "coverageName": "Earthquake, Tsunami",
+                            "coverageNameLocal": "Gempa Bumi, Tsunami",
+                            "insuredAmount": 4212122,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00275",
+                                    "dutyName": "Earthquake, Tsunami",
+                                    "dutyNameLocal": "Gempa Bumi, Tsunami",
+                                    "insuredAmount": 4212122,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "declaration": {
+            "1712331799334_30157": [
+                0
+            ],
+            "1712331799334_30157Label": "Personal information will only be used for claim documentation and other purposes as outlined in our terms and conditions. Please contact FUSE to update your information after submission.",
+            "1712331799334_30157LabelLocal": "Data pribadi hanya akan digunakan untuk dokumen klaim dan kebutuhan lainnya sesuai dengan syarat dan ketentuan. Hubungi FUSE untuk mengubah data setelah pengajuan"
+        },
+        "insuredInfo": [
+            {
+                "gender": 1,
+                "genderLabel": "Male",
+                "genderLabelLocal": "Pria",
+                "firstName": "Test",
+                "lastName": "API",
+                "mobilePhone": "3232323",
+                "email": "TEst@qq.com",
+                "mailingAddress": {
+                    "province": "1423416",
+                    "provinceName": "Bali",
+                    "provinceNameLocal": "Bali",
+                    "city": "1423451",
+                    "cityName": "Kab. Badung",
+                    "cityNameLocal": "Kab. Badung",
+                    "district": "1423962",
+                    "districtName": "Abiansemal",
+                    "districtNameLocal": "Abiansemal"
+                },
+                "ktpPhoto": [
+                    "fuse-id-core-prod-rw_images/20250417/146177f71afb481a8bb4064d1f926923.jpg"
+                ],
+                "attachmentMeta": [
+                    {
+                        "attachmentPath": "fuse-id-core-prod-rw_images/20250417/146177f71afb481a8bb4064d1f926923.jpg",
+                        "attachmentFileType": "image",
+                        "metadata": {}
+                    }
+                ]
+            }
+        ]
+    },
+    "mpCode": "M_00029",
+    "mpPlanCode": "MP_00136",
+    "isAdvancePremium": 1,
+    "partnerToCustomerDiscountAmountProducts": [
+        {
+            "productName": "INTRA ASIA PROPERTY ALL RISK",
+            "productNameLocal": "INTRA ASIA PROPERTY ALL RISK",
+            "productCode": "R_00045",
+            "planCode": "RP_00067",
+            "discountAmount": 0,
+            "discountFromPartnerSpecialBonusAmount": 0
+        },
+        {
+            "productName": "INTRA EQVET",
+            "productNameLocal": "INTRA EQVET",
+            "productCode": "R_00059",
+            "planCode": "RP_00080",
+            "discountAmount": 0,
+            "discountFromPartnerSpecialBonusAmount": 0
+        }
+    ]
+},
+  "couponBody": {"couponOrderQOList":[{"adminFee":95000,"auditFlag":true,"discountFromPartnerSpecialBonusAmount":0,"filterRawProductCode":"R_00045","mainInsuranceCompanyCode":"6603000931","mainInsuranceCompanyName":"PT. Asuransi Intra Asia","maxRebateAmount":848,"maxRebateRate":0,"mpCode":"M_00029","mpName":"INTRA ASIA PROPERTY ALL RISK EQVET","mpNameLocal":"INTRA ASIA PROPERTY ALL RISK EQVET","mpPlanCode":"MP_00136","mpPlanName":"INTRA ASIA PROPERTY ALL RISK EQVET","mpPlanNameLocal":"INTRA ASIA PROPERTY ALL RISK EQVET","partnerCommissionRateDimensionType":2,"productHeaderPicture":"fuse-id-core-prod-rw_images/20240115/d64cfdaeed26468fa8bddba332410914.jpg","productHeaderPictureLocal":"fuse-id-core-prod-rw_images/20240115/d74b320f75984d7fa0d7329a86166e14.jpg","productListPicture":"fuse-id-core-prod-rw_images/20240115/f34552ce5ef5476d9d78913ccdd256cd.jpg","productListPictureLocal":"fuse-id-core-prod-rw_images/20240115/a48162e4ff70484190e5b5102d28c9a3.jpg","productLs":[{"adminFee":60000,"coInsFlag":1,"commissionInfo":{"mulitCommissionType":0,"partnerCommissionAmount":848,"partnerCommissionIncomeTaxAmount":22,"partnerCommissionRate":0,"partnerCommissionVatTaxAmount":0,"partnerSpecialBonusAmount":566,"partnerSpecialBonusIncomeTaxAmount":15,"partnerSpecialBonusRate":0,"partnerSpecialBonusVatTaxAmount":0,"partnerSupportingFeeAmount":0,"partnerSupportingFeeIncomeTaxAmount":0,"partnerSupportingFeeRate":0,"partnerSupportingFeeVatTaxAmount":0,"partnerUplineReferralRate":0},"coverageLs":[{"auditFlag":true,"commissionInfo":{"mulitCommissionType":0,"partnerCommissionAmount":564,"partnerCommissionRate":0.15,"partnerMatchCommissionRule":["Rule:4873"],"partnerSpecialBonusAmount":376,"partnerSpecialBonusRate":0.1,"partnerSupportingFeeAmount":0,"partnerSupportingFeeRate":0,"partnerUplineReferralRate":0,"pdBreakupFeeRate":0,"pmBreakupFeeRate":0,"uplineReferralsRate":{"1":0.1,"2":0.05,"3":0.025,"4":0.0125,"5":0.0063,"6":0}},"coverageCode":"CM_00030","coverageName":"Property All Risk","coverageNameLocal":"Property All Risk","coverageRequired":1,"declineReason":[],"declineReasonLocal":[],"dutyLs":[{"dutyCode":"D_00236","dutyName":"PROPERTY ALL RISK","dutyNameLocal":"PROPERTY ALL RISK","dutyStandardCode":"PB_300026","insuredAmount":4212122,"insuredType":0,"insuredUnit":2,"matchPremiumRule":[],"netPremium":0,"premium":0,"stamp":0,"vatAmount":0}],"installmentNetPremium":0,"installmentPremium":0,"installmentVatAmount":0,"insuredAmount":4212122,"netPremium":3761,"originalNetPremium":0,"premium":3761,"riskRate":0,"vatAmount":0,"vatRate":0},{"auditFlag":true,"commissionInfo":{"mulitCommissionType":0,"partnerCommissionAmount":0,"partnerCommissionRate":0.15,"partnerMatchCommissionRule":["Rule:4873"],"partnerSpecialBonusAmount":0,"partnerSpecialBonusRate":0.1,"partnerSupportingFeeAmount":0,"partnerSupportingFeeRate":0,"partnerUplineReferralRate":0,"pdBreakupFeeRate":0,"pmBreakupFeeRate":0,"uplineReferralsRate":{"1":0.1,"2":0.05,"3":0.025,"4":0.0125,"5":0.0063,"6":0}},"coverageCode":"CA_00170","coverageName":"Strike, Riots, Civil Commotions","coverageNameLocal":"Kerusuhan, Pemogokan, Perbuatan Jahat & Huru-Hara","coverageRequired":1,"declineReason":[],"declineReasonLocal":[],"dutyLs":[{"dutyCode":"D_00301","dutyName":"Strike, Riots, Civil Commotions","dutyNameLocal":"Kerusuhan, Pemogokan, Perbuatan Jahat & Huru-Hara","dutyStandardCode":"PB_300029","insuredAmount":4212122,"insuredType":0,"insuredUnit":2,"matchPremiumRule":[],"netPremium":0,"premium":0,"stamp":0,"vatAmount":0}],"installmentNetPremium":0,"installmentPremium":0,"installmentVatAmount":0,"insuredAmount":4212122,"netPremium":0,"originalNetPremium":0,"premium":0,"riskRate":0,"vatAmount":0,"vatRate":0},{"auditFlag":true,"commissionInfo":{"mulitCommissionType":0,"partnerCommissionAmount":0,"partnerCommissionRate":0.15,"partnerMatchCommissionRule":["Rule:4873"],"partnerSpecialBonusAmount":0,"partnerSpecialBonusRate":0.1,"partnerSupportingFeeAmount":0,"partnerSupportingFeeRate":0,"partnerUplineReferralRate":0,"pdBreakupFeeRate":0,"pmBreakupFeeRate":0,"uplineReferralsRate":{"1":0.1,"2":0.05,"3":0.025,"4":0.0125,"5":0.0063,"6":0}},"coverageCode":"CA_00169","coverageName":"Others","coverageNameLocal":"Lain - lain","coverageRequired":1,"declineReason":[],"declineReasonLocal":[],"dutyLs":[{"dutyCode":"D_00300","dutyName":"Others","dutyNameLocal":"Lain - Lain","dutyStandardCode":"PB_100112","insuredAmount":4212122,"insuredType":0,"insuredUnit":2,"matchPremiumRule":[],"netPremium":0,"premium":0,"stamp":0,"vatAmount":0}],"installmentNetPremium":0,"installmentPremium":0,"installmentVatAmount":0,"insuredAmount":4212122,"netPremium":0,"originalNetPremium":0,"premium":0,"riskRate":0,"vatAmount":0,"vatRate":0},{"auditFlag":true,"commissionInfo":{"mulitCommissionType":0,"partnerCommissionAmount":284,"partnerCommissionRate":0.15,"partnerMatchCommissionRule":["Rule:4873"],"partnerSpecialBonusAmount":189,"partnerSpecialBonusRate":0.1,"partnerSupportingFeeAmount":0,"partnerSupportingFeeRate":0,"partnerUplineReferralRate":0,"pdBreakupFeeRate":0,"pmBreakupFeeRate":0,"uplineReferralsRate":{"1":0.1,"2":0.05,"3":0.025,"4":0.0125,"5":0.0063,"6":0}},"coverageCode":"CA_00154","coverageName":"Floods, Typhoons","coverageNameLocal":"Banjir, Angin Topan","coverageRequired":2,"declineReason":[],"declineReasonLocal":[],"dutyLs":[{"dutyCode":"D_00239","dutyName":"Floods, Typhoons","dutyNameLocal":"Banjir, Angin Topan","dutyStandardCode":"PB_300028","insuredAmount":4212122,"insuredType":0,"insuredUnit":2,"matchPremiumRule":[],"netPremium":0,"premium":0,"stamp":0,"vatAmount":0}],"installmentNetPremium":0,"installmentPremium":0,"installmentVatAmount":0,"insuredAmount":4212122,"netPremium":1895,"originalNetPremium":0,"premium":1895,"riskRate":0,"vatAmount":0,"vatRate":0}],"declineReason":[],"declineReasonLocal":[],"discountCommissionType":1,"inputType":1,"inspectionFlag":false,"inspectionReason":[],"inspectionReasonLocal":[],"leaderBookAs":1,"leaderGroup":true,"matchPremiumRule":["Rule:30445","Rule:30514","Rule:30513","Rule:30518"],"maxDiscountFromPartnerSpecialBonusAmount":524,"planCode":"RP_00067","planName":"INTRA ASIA PROPERTY ALL RISK","planNameLocal":"INTRA ASIA PROPERTY ALL RISK","policyFee":50000,"productCode":"R_00045","productName":"INTRA ASIA PROPERTY ALL RISK","productNameLocal":"INTRA ASIA PROPERTY ALL RISK","quoteDimension":4,"serviceFee":0,"shareRate":1,"subPlanCode":"null|RP_00067","totalInstallmentNetPremium":0,"totalInstallmentPremium":0,"totalInstallmentVatAmount":0,"totalNetPremium":5656,"totalNoCalculateCommissionPremium":0,"totalOriginalNetPremium":0,"totalPolicyDiscountAmount":0,"totalPolicyDiscountRate":0,"totalPremium":15656,"totalRiderNetPremium":1895,"totalRiderPremium":1895,"totalStamp":10000,"totalVATAmount":0},{"adminFee":35000,"coInsFlag":1,"commissionInfo":{"mulitCommissionType":0,"partnerCommissionAmount":903,"partnerCommissionIncomeTaxAmount":23,"partnerCommissionRate":0,"partnerCommissionVatTaxAmount":0,"partnerSpecialBonusAmount":602,"partnerSpecialBonusIncomeTaxAmount":16,"partnerSpecialBonusRate":0,"partnerSpecialBonusVatTaxAmount":0,"partnerSupportingFeeAmount":0,"partnerSupportingFeeIncomeTaxAmount":0,"partnerSupportingFeeRate":0,"partnerSupportingFeeVatTaxAmount":0,"partnerUplineReferralRate":0},"coverageLs":[{"auditFlag":true,"commissionInfo":{"mulitCommissionType":0,"partnerCommissionAmount":903,"partnerCommissionRate":0.15,"partnerMatchCommissionRule":["Rule:4877"],"partnerSpecialBonusAmount":602,"partnerSpecialBonusRate":0.1,"partnerSupportingFeeAmount":0,"partnerSupportingFeeRate":0,"partnerUplineReferralRate":0,"pdBreakupFeeRate":0,"pmBreakupFeeRate":0,"uplineReferralsRate":{"1":0.1,"2":0.05,"3":0.025,"4":0.0125,"5":0.0063,"6":0}},"coverageCode":"CM_00044","coverageName":"Earthquake, Tsunami","coverageNameLocal":"Gempa Bumi, Tsunami","coverageRequired":1,"declineReason":[],"declineReasonLocal":[],"dutyLs":[{"dutyCode":"D_00275","dutyName":"Earthquake, Tsunami","dutyNameLocal":"Gempa Bumi, Tsunami","dutyStandardCode":"PB_300027","insuredAmount":4212122,"insuredType":0,"insuredUnit":2,"matchPremiumRule":[],"netPremium":0,"premium":0,"stamp":0,"vatAmount":0}],"installmentNetPremium":0,"installmentPremium":0,"installmentVatAmount":0,"insuredAmount":4212122,"netPremium":6023,"originalNetPremium":0,"premium":6023,"riskRate":0,"vatAmount":0,"vatRate":0}],"declineReason":[],"declineReasonLocal":[],"discountCommissionType":1,"inputType":1,"inspectionFlag":false,"inspectionReason":[],"inspectionReasonLocal":[],"leaderBookAs":1,"leaderGroup":true,"matchPremiumRule":["Rule:26554"],"maxDiscountFromPartnerSpecialBonusAmount":557,"planCode":"RP_00080","planName":"INTRA EQVET","planNameLocal":"INTRA EQVET","policyFee":25000,"productCode":"R_00059","productName":"INTRA EQVET","productNameLocal":"INTRA EQVET","quoteDimension":4,"serviceFee":0,"shareRate":1,"subPlanCode":"null|RP_00080","totalInstallmentNetPremium":0,"totalInstallmentPremium":0,"totalInstallmentVatAmount":0,"totalNetPremium":6023,"totalNoCalculateCommissionPremium":0,"totalOriginalNetPremium":0,"totalPolicyDiscountAmount":0,"totalPolicyDiscountRate":0,"totalPremium":16023,"totalRiderNetPremium":0,"totalRiderPremium":0,"totalStamp":10000,"totalVATAmount":0}],"rebateAmount":0,"serviceFee":0,"totalNetPremium":11679,"totalPolicyDiscountAmount":0,"totalPremium":31679,"totalVATAmount":0}],"renewalApplyId":""},
+  "UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE": "true",
+  "UNDERWRITING_OFFLINE_EXISTSASSIGNEE": "true"
+}

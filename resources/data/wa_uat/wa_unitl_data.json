@@ -1,0 +1,12 @@
+{
+    "testdata1": [
+        {
+            "input": "Toyota Innova 2022 B",
+            "output": ""
+        },
+        {
+            "input": "BYD seal 2025 B",
+            "output": ""
+        }
+    ]
+}

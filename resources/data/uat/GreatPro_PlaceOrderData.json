@@ -1,0 +1,1750 @@
+{
+  "quotationBody": {
+    "bizSource": 1,
+    "categoryId": "61",
+    "coverageDataJson": {
+        "auditFlag": true,
+        "discountSwitch": true,
+        "express": 0,
+        "filterRawProductCode": "R_00140",
+        "mainInsuranceCompanyCode": "6603000871",
+        "mainInsuranceCompanyName": "PT. Asuransi Simas Jiwa.",
+        "mpCode": "M_00094",
+        "mpName": "Test Great Pro Solution",
+        "mpNameLocal": "Test Great Pro Solution",
+        "mpPlanCode": "MP_00212",
+        "mpPlanName": "Asuransi Great Pro Medical, Plan Bronze 1",
+        "mpPlanNameLocal": "Asuransi Great Pro Medical, Plan Bronze 1",
+        "productHeaderPicture": "fuse-id-core-prod-rw_images/20240930/650f3cd3ce8b4cc89f52649f0a1288df.jpg",
+        "productHeaderPictureLocal": "fuse-id-core-prod-rw_images/20240930/d0d874c03cc4493b8034c9bc6fe19110.jpg",
+        "productListPicture": "fuse-id-core-prod-rw_images/20240930/371a0fe481a244a9a71e7c03fd5d8627.jpg",
+        "productListPictureLocal": "fuse-id-core-prod-rw_images/20240930/139c4400e3144139bec4a1af42a21c44.jpg",
+        "productLs": [
+            {
+                "commissionInfo": {
+                    "mulitCommissionType": 0,
+                    "partnerCommissionAmount": 7968100,
+                    "partnerMatchCommissionRule": null,
+                    "partnerSpecialBonusAmount": 3984050,
+                    "partnerSupportingFeeAmount": 0,
+                    "partnerCommissionIncomeTaxAmount": 199203,
+                    "partnerCommissionRate": 0,
+                    "partnerCommissionVatTaxAmount": 0,
+                    "partnerSpecialBonusIncomeTaxAmount": 99602,
+                    "partnerSpecialBonusRate": 0,
+                    "partnerSpecialBonusVatTaxAmount": 0,
+                    "partnerSupportingFeeIncomeTaxAmount": 0,
+                    "partnerSupportingFeeRate": 0,
+                    "partnerSupportingFeeVatTaxAmount": 0,
+                    "partnerUplineReferralRate": 0
+                },
+                "adminFee": 0,
+                "coverageLs": [
+                    {
+                        "bindCoverages": [],
+                        "coverageCode": "CM_00130",
+                        "coverageFlag": 1,
+                        "coverageId": 600000918,
+                        "coverageName": "Great Pro PA PA",
+                        "coverageNameLocal": "Great Pro PA PA",
+                        "coverageRequired": 1,
+                        "coverageTypeId": 2,
+                        "dutyDTOList": [
+                            {
+                                "coverageId": 600000918,
+                                "dutyCode": "D_00392",
+                                "dutyId": 1359,
+                                "dutyName": "Great Pro PA",
+                                "dutyNameLocal": "Great Pro PA",
+                                "dutyStandardCode": "PB_300080",
+                                "insuredAmount": [
+                                    {
+                                        "value": "5000000",
+                                        "label": "5000000",
+                                        "index": 0
+                                    },
+                                    {
+                                        "value": "100000000",
+                                        "label": "100000000",
+                                        "index": 1
+                                    },
+                                    {
+                                        "value": "200000000",
+                                        "label": "200000000",
+                                        "index": 2
+                                    },
+                                    {
+                                        "value": "300000000",
+                                        "label": "300000000",
+                                        "index": 3
+                                    },
+                                    {
+                                        "value": "400000000",
+                                        "label": "400000000",
+                                        "index": 4
+                                    },
+                                    {
+                                        "value": "500000000",
+                                        "label": "500000000",
+                                        "index": 5
+                                    }
+                                ],
+                                "insuredType": 3,
+                                "insuredUnit": 2,
+                                "planDutyId": 39366,
+                                "insuredAmountOptions": [
+                                    {
+                                        "text": "5,000,000",
+                                        "value": "5000000"
+                                    },
+                                    {
+                                        "text": "100,000,000",
+                                        "value": "100000000"
+                                    },
+                                    {
+                                        "text": "200,000,000",
+                                        "value": "200000000"
+                                    },
+                                    {
+                                        "text": "300,000,000",
+                                        "value": "300000000"
+                                    },
+                                    {
+                                        "text": "400,000,000",
+                                        "value": "400000000"
+                                    },
+                                    {
+                                        "text": "500,000,000",
+                                        "value": "500000000"
+                                    }
+                                ],
+                                "insuredAmountVal": "5000000",
+                                "insuredAmountLabel": "5,000,000"
+                            }
+                        ],
+                        "maxCoverageDiscount": 0,
+                        "minCoverageDiscount": 0,
+                        "planDutyId": 39366,
+                        "rawPlanId": 658,
+                        "vatRate": 0,
+                        "auditFlag": true,
+                        "commissionInfo": {
+                            "mulitCommissionType": 0,
+                            "partnerCommissionAmount": 2250,
+                            "partnerCommissionRate": 0.2,
+                            "partnerMatchCommissionRule": [
+                                "Rule:9345"
+                            ],
+                            "partnerSpecialBonusAmount": 1125,
+                            "partnerSpecialBonusRate": 0.1,
+                            "partnerSupportingFeeAmount": 0,
+                            "partnerSupportingFeeRate": 0,
+                            "partnerUplineReferralRate": 0,
+                            "pdBreakupFeeRate": 0,
+                            "pmBreakupFeeRate": 0,
+                            "uplineReferralsRate": {
+                                "1": 0,
+                                "2": 0,
+                                "3": 0,
+                                "4": 0,
+                                "5": 0,
+                                "6": 0
+                            }
+                        },
+                        "declineReason": [],
+                        "declineReasonLocal": [],
+                        "dutyLs": [
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": "5000000",
+                                "coverageId": 600000918,
+                                "dutyCode": "D_00392",
+                                "dutyId": 1359,
+                                "dutyName": "Great Pro PA",
+                                "dutyNameLocal": "Great Pro PA",
+                                "dutyStandardCode": "PB_300080",
+                                "insuredAmount": 5000000,
+                                "insuredType": 3,
+                                "insuredUnit": 2,
+                                "planDutyId": 39366,
+                                "insuredAmountOptions": [
+                                    {
+                                        "text": "5,000,000",
+                                        "value": "5000000"
+                                    },
+                                    {
+                                        "text": "100,000,000",
+                                        "value": "100000000"
+                                    },
+                                    {
+                                        "text": "200,000,000",
+                                        "value": "200000000"
+                                    },
+                                    {
+                                        "text": "300,000,000",
+                                        "value": "300000000"
+                                    },
+                                    {
+                                        "text": "400,000,000",
+                                        "value": "400000000"
+                                    },
+                                    {
+                                        "text": "500,000,000",
+                                        "value": "500000000"
+                                    }
+                                ],
+                                "insuredAmountLabel": "5,000,000",
+                                "insuredAmountOption": [
+                                    5000000,
+                                    100000000,
+                                    200000000,
+                                    300000000,
+                                    400000000,
+                                    500000000
+                                ],
+                                "matchPremiumRule": [],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            }
+                        ],
+                        "installmentNetPremium": 0,
+                        "installmentPremium": 0,
+                        "installmentVatAmount": 0,
+                        "insuredAmount": 5000000,
+                        "netPremium": 11250,
+                        "originalNetPremium": 0,
+                        "premium": 11250,
+                        "riskRate": 0,
+                        "vatAmount": 0,
+                        "isSelect": true
+                    },
+                    {
+                        "bindCoverages": [],
+                        "coverageCode": "CA_00191",
+                        "coverageFlag": 2,
+                        "coverageId": 600000919,
+                        "coverageName": "Great Pro Life PA",
+                        "coverageNameLocal": "Great Pro Life PA",
+                        "coverageRequired": 2,
+                        "coverageTypeId": 2,
+                        "dutyDTOList": [
+                            {
+                                "coverageId": 600000919,
+                                "dutyCode": "D_00393",
+                                "dutyId": 1360,
+                                "dutyName": "Great Pro Life",
+                                "dutyNameLocal": "Great Pro Life",
+                                "dutyStandardCode": "PB_300081",
+                                "insuredAmount": [
+                                    {
+                                        "value": "100000000",
+                                        "label": "100000000",
+                                        "index": 0
+                                    },
+                                    {
+                                        "value": "200000000",
+                                        "label": "200000000",
+                                        "index": 1
+                                    },
+                                    {
+                                        "value": "300000000",
+                                        "label": "300000000",
+                                        "index": 2
+                                    },
+                                    {
+                                        "value": "400000000",
+                                        "label": "400000000",
+                                        "index": 3
+                                    },
+                                    {
+                                        "value": "500000000",
+                                        "label": "500000000",
+                                        "index": 4
+                                    },
+                                    {
+                                        "value": "600000000",
+                                        "label": "600000000",
+                                        "index": 5
+                                    },
+                                    {
+                                        "value": "700000000",
+                                        "label": "700000000",
+                                        "index": 6
+                                    },
+                                    {
+                                        "value": "800000000",
+                                        "label": "800000000",
+                                        "index": 7
+                                    },
+                                    {
+                                        "value": "900000000",
+                                        "label": "900000000",
+                                        "index": 8
+                                    },
+                                    {
+                                        "value": "1000000000",
+                                        "label": "1000000000",
+                                        "index": 9
+                                    },
+                                    {
+                                        "value": "2000000000",
+                                        "label": "2000000000",
+                                        "index": 10
+                                    },
+                                    {
+                                        "value": "3000000000",
+                                        "label": "3000000000",
+                                        "index": 11
+                                    },
+                                    {
+                                        "value": "4000000000",
+                                        "label": "4000000000",
+                                        "index": 12
+                                    },
+                                    {
+                                        "value": "5000000000",
+                                        "label": "5000000000",
+                                        "index": 13
+                                    }
+                                ],
+                                "insuredType": 3,
+                                "insuredUnit": 2,
+                                "planDutyId": 39368,
+                                "insuredAmountOptions": [
+                                    {
+                                        "text": "100,000,000",
+                                        "value": "100000000"
+                                    },
+                                    {
+                                        "text": "200,000,000",
+                                        "value": "200000000"
+                                    },
+                                    {
+                                        "text": "300,000,000",
+                                        "value": "300000000"
+                                    },
+                                    {
+                                        "text": "400,000,000",
+                                        "value": "400000000"
+                                    },
+                                    {
+                                        "text": "500,000,000",
+                                        "value": "500000000"
+                                    },
+                                    {
+                                        "text": "600,000,000",
+                                        "value": "600000000"
+                                    },
+                                    {
+                                        "text": "700,000,000",
+                                        "value": "700000000"
+                                    },
+                                    {
+                                        "text": "800,000,000",
+                                        "value": "800000000"
+                                    },
+                                    {
+                                        "text": "900,000,000",
+                                        "value": "900000000"
+                                    },
+                                    {
+                                        "text": "1,000,000,000",
+                                        "value": "1000000000"
+                                    },
+                                    {
+                                        "text": "2,000,000,000",
+                                        "value": "2000000000"
+                                    },
+                                    {
+                                        "text": "3,000,000,000",
+                                        "value": "3000000000"
+                                    },
+                                    {
+                                        "text": "4,000,000,000",
+                                        "value": "4000000000"
+                                    },
+                                    {
+                                        "text": "5,000,000,000",
+                                        "value": "5000000000"
+                                    }
+                                ],
+                                "insuredAmountVal": "100000000",
+                                "insuredAmountLabel": "100,000,000"
+                            }
+                        ],
+                        "maxCoverageDiscount": 0,
+                        "minCoverageDiscount": 0,
+                        "planDutyId": 39368,
+                        "rawPlanId": 658,
+                        "vatRate": 0,
+                        "auditFlag": true,
+                        "commissionInfo": {
+                            "mulitCommissionType": 0,
+                            "partnerCommissionAmount": 757200,
+                            "partnerCommissionRate": 0.2,
+                            "partnerMatchCommissionRule": [
+                                "Rule:9345"
+                            ],
+                            "partnerSpecialBonusAmount": 378600,
+                            "partnerSpecialBonusRate": 0.1,
+                            "partnerSupportingFeeAmount": 0,
+                            "partnerSupportingFeeRate": 0,
+                            "partnerUplineReferralRate": 0,
+                            "pdBreakupFeeRate": 0,
+                            "pmBreakupFeeRate": 0,
+                            "uplineReferralsRate": {
+                                "1": 0,
+                                "2": 0,
+                                "3": 0,
+                                "4": 0,
+                                "5": 0,
+                                "6": 0
+                            }
+                        },
+                        "declineReason": [],
+                        "declineReasonLocal": [],
+                        "dutyLs": [
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": "100000000",
+                                "coverageId": 600000919,
+                                "dutyCode": "D_00393",
+                                "dutyId": 1360,
+                                "dutyName": "Great Pro Life",
+                                "dutyNameLocal": "Great Pro Life",
+                                "dutyStandardCode": "PB_300081",
+                                "insuredAmount": 100000000,
+                                "insuredType": 3,
+                                "insuredUnit": 2,
+                                "planDutyId": 39368,
+                                "insuredAmountOptions": [
+                                    {
+                                        "text": "100,000,000",
+                                        "value": "100000000"
+                                    },
+                                    {
+                                        "text": "200,000,000",
+                                        "value": "200000000"
+                                    },
+                                    {
+                                        "text": "300,000,000",
+                                        "value": "300000000"
+                                    },
+                                    {
+                                        "text": "400,000,000",
+                                        "value": "400000000"
+                                    },
+                                    {
+                                        "text": "500,000,000",
+                                        "value": "500000000"
+                                    },
+                                    {
+                                        "text": "600,000,000",
+                                        "value": "600000000"
+                                    },
+                                    {
+                                        "text": "700,000,000",
+                                        "value": "700000000"
+                                    },
+                                    {
+                                        "text": "800,000,000",
+                                        "value": "800000000"
+                                    },
+                                    {
+                                        "text": "900,000,000",
+                                        "value": "900000000"
+                                    },
+                                    {
+                                        "text": "1,000,000,000",
+                                        "value": "1000000000"
+                                    },
+                                    {
+                                        "text": "2,000,000,000",
+                                        "value": "2000000000"
+                                    },
+                                    {
+                                        "text": "3,000,000,000",
+                                        "value": "3000000000"
+                                    },
+                                    {
+                                        "text": "4,000,000,000",
+                                        "value": "4000000000"
+                                    },
+                                    {
+                                        "text": "5,000,000,000",
+                                        "value": "5000000000"
+                                    }
+                                ],
+                                "insuredAmountLabel": "100,000,000",
+                                "insuredAmountOption": [
+                                    100000000,
+                                    200000000,
+                                    300000000,
+                                    400000000,
+                                    500000000,
+                                    600000000,
+                                    700000000,
+                                    800000000,
+                                    900000000,
+                                    1000000000,
+                                    2000000000,
+                                    3000000000,
+                                    4000000000,
+                                    5000000000
+                                ],
+                                "matchPremiumRule": [],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            }
+                        ],
+                        "installmentNetPremium": 0,
+                        "installmentPremium": 0,
+                        "installmentVatAmount": 0,
+                        "insuredAmount": 100000000,
+                        "netPremium": 3786000,
+                        "originalNetPremium": 0,
+                        "premium": 3786000,
+                        "riskRate": 0,
+                        "vatAmount": 0,
+                        "isSelect": true
+                    },
+                    {
+                        "bindCoverages": [
+                            {
+                                "bindCoverageCode": "CA_00193",
+                                "bindCoverageFlag": 2,
+                                "bindCoverageInfoId": 600000921,
+                                "bindCoverageName": "Great Pro Medical – INPATIENT PA",
+                                "bindCoverageNameLocal": "Great Pro Medical – INPATIENT PA",
+                                "businessUniqueKey": "600200418-658-600000922-600000921-1000662",
+                                "coverageCode": "CA_00194",
+                                "coverageFlag": 2,
+                                "coverageInfoId": 600000922,
+                                "coverageName": "Great Pro Medical – OUTPATIENT PA",
+                                "coverageNameLocal": "Great Pro Medical – OUTPATIENT PA",
+                                "groupKey": "R_00140-RP_00251-CA_00194"
+                            }
+                        ],
+                        "coverageCode": "CA_00194",
+                        "coverageFlag": 2,
+                        "coverageId": 600000922,
+                        "coverageName": "Great Pro Medical – OUTPATIENT PA",
+                        "coverageNameLocal": "Great Pro Medical – OUTPATIENT PA",
+                        "coverageRequired": 2,
+                        "coverageTypeId": 2,
+                        "dutyDTOList": [
+                            {
+                                "coverageId": 600000922,
+                                "dutyCode": "D_00396",
+                                "dutyId": 1363,
+                                "dutyName": "Great Pro Medical – OUTPATIENT",
+                                "dutyNameLocal": "Great Pro Medical – OUTPATIENT",
+                                "dutyStandardCode": "PB_300084",
+                                "insuredAmount": "350000",
+                                "insuredType": 2,
+                                "insuredUnit": 1,
+                                "planDutyId": 39370
+                            }
+                        ],
+                        "maxCoverageDiscount": 0,
+                        "minCoverageDiscount": 0,
+                        "planDutyId": 39370,
+                        "rawPlanId": 658,
+                        "vatRate": 0,
+                        "auditFlag": true,
+                        "commissionInfo": {
+                            "mulitCommissionType": 0,
+                            "partnerCommissionAmount": 455000,
+                            "partnerCommissionRate": 0.2,
+                            "partnerMatchCommissionRule": [
+                                "Rule:9345"
+                            ],
+                            "partnerSpecialBonusAmount": 227500,
+                            "partnerSpecialBonusRate": 0.1,
+                            "partnerSupportingFeeAmount": 0,
+                            "partnerSupportingFeeRate": 0,
+                            "partnerUplineReferralRate": 0,
+                            "pdBreakupFeeRate": 0,
+                            "pmBreakupFeeRate": 0,
+                            "uplineReferralsRate": {
+                                "1": 0,
+                                "2": 0,
+                                "3": 0,
+                                "4": 0,
+                                "5": 0,
+                                "6": 0
+                            }
+                        },
+                        "declineReason": [],
+                        "declineReasonLocal": [],
+                        "dutyLs": [
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": 0,
+                                "coverageId": 600000922,
+                                "dutyCode": "D_00396",
+                                "dutyId": 1363,
+                                "dutyName": "Great Pro Medical – OUTPATIENT",
+                                "dutyNameLocal": "Great Pro Medical – OUTPATIENT",
+                                "dutyStandardCode": "PB_300084",
+                                "insuredAmount": 350000,
+                                "insuredType": 2,
+                                "insuredUnit": 1,
+                                "planDutyId": 39370,
+                                "matchPremiumRule": [],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            }
+                        ],
+                        "installmentNetPremium": 0,
+                        "installmentPremium": 0,
+                        "installmentVatAmount": 0,
+                        "insuredAmount": 350000,
+                        "netPremium": 2275000,
+                        "originalNetPremium": 0,
+                        "premium": 2275000,
+                        "riskRate": 0,
+                        "vatAmount": 0,
+                        "isSelect": true
+                    },
+                    {
+                        "bindCoverages": [],
+                        "coverageCode": "CA_00193",
+                        "coverageFlag": 2,
+                        "coverageId": 600000921,
+                        "coverageName": "Great Pro Medical – INPATIENT PA",
+                        "coverageNameLocal": "Great Pro Medical – INPATIENT PA",
+                        "coverageRequired": 1,
+                        "coverageTypeId": 2,
+                        "dutyDTOList": [
+                            {
+                                "coverageId": 600000921,
+                                "dutyCode": "D_00395",
+                                "dutyId": 1362,
+                                "dutyName": "Great Pro Medical – INPATIENT",
+                                "dutyNameLocal": "Great Pro Medical – INPATIENT",
+                                "dutyStandardCode": "PB_300083",
+                                "insuredAmount": "1500000",
+                                "insuredType": 2,
+                                "insuredUnit": 1,
+                                "planDutyId": 39369
+                            }
+                        ],
+                        "maxCoverageDiscount": 0,
+                        "minCoverageDiscount": 0,
+                        "planDutyId": 39369,
+                        "rawPlanId": 658,
+                        "vatRate": 0,
+                        "auditFlag": true,
+                        "commissionInfo": {
+                            "mulitCommissionType": 0,
+                            "partnerCommissionAmount": 833000,
+                            "partnerCommissionRate": 0.2,
+                            "partnerMatchCommissionRule": [
+                                "Rule:9345"
+                            ],
+                            "partnerSpecialBonusAmount": 416500,
+                            "partnerSpecialBonusRate": 0.1,
+                            "partnerSupportingFeeAmount": 0,
+                            "partnerSupportingFeeRate": 0,
+                            "partnerUplineReferralRate": 0,
+                            "pdBreakupFeeRate": 0,
+                            "pmBreakupFeeRate": 0,
+                            "uplineReferralsRate": {
+                                "1": 0,
+                                "2": 0,
+                                "3": 0,
+                                "4": 0,
+                                "5": 0,
+                                "6": 0
+                            }
+                        },
+                        "declineReason": [],
+                        "declineReasonLocal": [],
+                        "dutyLs": [
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": 0,
+                                "coverageId": 600000921,
+                                "dutyCode": "D_00395",
+                                "dutyId": 1362,
+                                "dutyName": "Great Pro Medical – INPATIENT",
+                                "dutyNameLocal": "Great Pro Medical – INPATIENT",
+                                "dutyStandardCode": "PB_300083",
+                                "insuredAmount": 1500000,
+                                "insuredType": 2,
+                                "insuredUnit": 1,
+                                "planDutyId": 39369,
+                                "matchPremiumRule": [],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            }
+                        ],
+                        "installmentNetPremium": 0,
+                        "installmentPremium": 0,
+                        "installmentVatAmount": 0,
+                        "insuredAmount": 1500000,
+                        "netPremium": 4165000,
+                        "originalNetPremium": 0,
+                        "premium": 4165000,
+                        "riskRate": 0,
+                        "vatAmount": 0,
+                        "isSelect": true,
+                        "isBinding": true
+                    },
+                    {
+                        "bindCoverages": [],
+                        "coverageCode": "CA_00192",
+                        "coverageFlag": 2,
+                        "coverageId": 600000920,
+                        "coverageName": "Great Pro Critical PA",
+                        "coverageNameLocal": "Great Pro Critical PA",
+                        "coverageRequired": 2,
+                        "coverageTypeId": 2,
+                        "dutyDTOList": [
+                            {
+                                "coverageId": 600000920,
+                                "dutyCode": "D_00394",
+                                "dutyId": 1361,
+                                "dutyName": "Great Pro Critical",
+                                "dutyNameLocal": "Great Pro Critical",
+                                "dutyStandardCode": "PB_300082",
+                                "insuredAmount": [
+                                    {
+                                        "value": "500000000",
+                                        "label": "500000000",
+                                        "index": 0
+                                    }
+                                ],
+                                "insuredType": 3,
+                                "insuredUnit": 2,
+                                "planDutyId": 39367,
+                                "insuredAmountOptions": [
+                                    {
+                                        "text": "500,000,000",
+                                        "value": "500000000"
+                                    }
+                                ],
+                                "insuredAmountVal": "500000000",
+                                "insuredAmountLabel": "500,000,000"
+                            }
+                        ],
+                        "maxCoverageDiscount": 0,
+                        "minCoverageDiscount": 0,
+                        "planDutyId": 39367,
+                        "rawPlanId": 658,
+                        "vatRate": 0,
+                        "auditFlag": true,
+                        "commissionInfo": {
+                            "mulitCommissionType": 0,
+                            "partnerCommissionAmount": 5800000,
+                            "partnerCommissionRate": 0.2,
+                            "partnerMatchCommissionRule": [
+                                "Rule:9345"
+                            ],
+                            "partnerSpecialBonusAmount": 2900000,
+                            "partnerSpecialBonusRate": 0.1,
+                            "partnerSupportingFeeAmount": 0,
+                            "partnerSupportingFeeRate": 0,
+                            "partnerUplineReferralRate": 0,
+                            "pdBreakupFeeRate": 0,
+                            "pmBreakupFeeRate": 0,
+                            "uplineReferralsRate": {
+                                "1": 0,
+                                "2": 0,
+                                "3": 0,
+                                "4": 0,
+                                "5": 0,
+                                "6": 0
+                            }
+                        },
+                        "declineReason": [],
+                        "declineReasonLocal": [],
+                        "dutyLs": [
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": "500000000",
+                                "coverageId": 600000920,
+                                "dutyCode": "D_00394",
+                                "dutyId": 1361,
+                                "dutyName": "Great Pro Critical",
+                                "dutyNameLocal": "Great Pro Critical",
+                                "dutyStandardCode": "PB_300082",
+                                "insuredAmount": 500000000,
+                                "insuredType": 3,
+                                "insuredUnit": 2,
+                                "planDutyId": 39367,
+                                "insuredAmountOptions": [
+                                    {
+                                        "text": "500,000,000",
+                                        "value": "500000000"
+                                    }
+                                ],
+                                "insuredAmountLabel": "500,000,000",
+                                "insuredAmountOption": [
+                                    500000000
+                                ],
+                                "matchPremiumRule": [],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            }
+                        ],
+                        "installmentNetPremium": 0,
+                        "installmentPremium": 0,
+                        "installmentVatAmount": 0,
+                        "insuredAmount": 500000000,
+                        "netPremium": 29000000,
+                        "originalNetPremium": 0,
+                        "premium": 29000000,
+                        "riskRate": 0,
+                        "vatAmount": 0,
+                        "isSelect": true
+                    },
+                    {
+                        "bindCoverages": [
+                            {
+                                "bindCoverageCode": "CA_00193",
+                                "bindCoverageFlag": 2,
+                                "bindCoverageInfoId": 600000921,
+                                "bindCoverageName": "Great Pro Medical – INPATIENT PA",
+                                "bindCoverageNameLocal": "Great Pro Medical – INPATIENT PA",
+                                "businessUniqueKey": "600200418-658-600000927-600000921-1000662",
+                                "coverageCode": "CA_00196",
+                                "coverageFlag": 2,
+                                "coverageInfoId": 600000927,
+                                "coverageName": "Great Pro Medical - Dental",
+                                "coverageNameLocal": "Great Pro Medical - Dental",
+                                "groupKey": "R_00140-RP_00251-CA_00196"
+                            }
+                        ],
+                        "coverageCode": "CA_00196",
+                        "coverageFlag": 2,
+                        "coverageId": 600000927,
+                        "coverageName": "Great Pro Medical - Dental",
+                        "coverageNameLocal": "Great Pro Medical - Dental",
+                        "coverageRequired": 2,
+                        "coverageStandardCode": "PC_100013",
+                        "coverageTypeId": 2,
+                        "dutyDTOList": [
+                            {
+                                "coverageId": 600000927,
+                                "dutyCode": "D_00406",
+                                "dutyId": 1373,
+                                "dutyName": "Great Pro Medical - Basic Dental",
+                                "dutyNameLocal": "Great Pro Medical - Basic Dental",
+                                "dutyStandardCode": "PB_300085",
+                                "insuredAmount": "2000000",
+                                "insuredType": 2,
+                                "insuredUnit": 3,
+                                "planDutyId": 39371
+                            },
+                            {
+                                "coverageId": 600000927,
+                                "dutyCode": "D_00407",
+                                "dutyId": 1374,
+                                "dutyName": "Great Pro Medical - Gum Care",
+                                "dutyNameLocal": "Great Pro Medical - Gum Care",
+                                "dutyStandardCode": "PB_300095",
+                                "insuredAmount": "2000000",
+                                "insuredType": 2,
+                                "insuredUnit": 3,
+                                "planDutyId": 39372
+                            },
+                            {
+                                "coverageId": 600000927,
+                                "dutyCode": "D_00408",
+                                "dutyId": 1375,
+                                "dutyName": "Great Pro Medical - Preventive Care",
+                                "dutyNameLocal": "Great Pro Medical - Preventive Care",
+                                "dutyStandardCode": "PB_300096",
+                                "insuredAmount": "2000000",
+                                "insuredType": 2,
+                                "insuredUnit": 3,
+                                "planDutyId": 39373
+                            },
+                            {
+                                "coverageId": 600000927,
+                                "dutyCode": "D_00409",
+                                "dutyId": 1376,
+                                "dutyName": "Great Pro Medical - Complex Treatment",
+                                "dutyNameLocal": "Great Pro Medical - Complex Treatment",
+                                "dutyStandardCode": "PB_300097",
+                                "insuredAmount": "3000000",
+                                "insuredType": 2,
+                                "insuredUnit": 3,
+                                "planDutyId": 39374
+                            },
+                            {
+                                "coverageId": 600000927,
+                                "dutyCode": "D_00410",
+                                "dutyId": 1377,
+                                "dutyName": "Great Pro Medical - Dentures",
+                                "dutyNameLocal": "Great Pro Medical - Dentures",
+                                "dutyStandardCode": "PB_300098",
+                                "insuredAmount": "1000000",
+                                "insuredType": 2,
+                                "insuredUnit": 3,
+                                "planDutyId": 39375
+                            }
+                        ],
+                        "maxCoverageDiscount": 0,
+                        "minCoverageDiscount": 0,
+                        "planDutyId": 39371,
+                        "rawPlanId": 658,
+                        "vatRate": 0,
+                        "auditFlag": true,
+                        "commissionInfo": {
+                            "mulitCommissionType": 0,
+                            "partnerCommissionAmount": 120650,
+                            "partnerCommissionRate": 0.2,
+                            "partnerMatchCommissionRule": [
+                                "Rule:9345"
+                            ],
+                            "partnerSpecialBonusAmount": 60325,
+                            "partnerSpecialBonusRate": 0.1,
+                            "partnerSupportingFeeAmount": 0,
+                            "partnerSupportingFeeRate": 0,
+                            "partnerUplineReferralRate": 0,
+                            "pdBreakupFeeRate": 0,
+                            "pmBreakupFeeRate": 0,
+                            "uplineReferralsRate": {
+                                "1": 0,
+                                "2": 0,
+                                "3": 0,
+                                "4": 0,
+                                "5": 0,
+                                "6": 0
+                            }
+                        },
+                        "declineReason": [],
+                        "declineReasonLocal": [],
+                        "dutyLs": [
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": 0,
+                                "coverageId": 600000927,
+                                "dutyCode": "D_00406",
+                                "dutyId": 1373,
+                                "dutyName": "Great Pro Medical - Basic Dental",
+                                "dutyNameLocal": "Great Pro Medical - Basic Dental",
+                                "dutyStandardCode": "PB_300085",
+                                "insuredAmount": 2000000,
+                                "insuredType": 2,
+                                "insuredUnit": 3,
+                                "planDutyId": 39371,
+                                "matchPremiumRule": [],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            },
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": 0,
+                                "coverageId": 600000927,
+                                "dutyCode": "D_00407",
+                                "dutyId": 1374,
+                                "dutyName": "Great Pro Medical - Gum Care",
+                                "dutyNameLocal": "Great Pro Medical - Gum Care",
+                                "dutyStandardCode": "PB_300095",
+                                "insuredAmount": 2000000,
+                                "insuredType": 2,
+                                "insuredUnit": 3,
+                                "planDutyId": 39372,
+                                "matchPremiumRule": [],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            },
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": 0,
+                                "coverageId": 600000927,
+                                "dutyCode": "D_00408",
+                                "dutyId": 1375,
+                                "dutyName": "Great Pro Medical - Preventive Care",
+                                "dutyNameLocal": "Great Pro Medical - Preventive Care",
+                                "dutyStandardCode": "PB_300096",
+                                "insuredAmount": 2000000,
+                                "insuredType": 2,
+                                "insuredUnit": 3,
+                                "planDutyId": 39373,
+                                "matchPremiumRule": [],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            },
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": 0,
+                                "coverageId": 600000927,
+                                "dutyCode": "D_00409",
+                                "dutyId": 1376,
+                                "dutyName": "Great Pro Medical - Complex Treatment",
+                                "dutyNameLocal": "Great Pro Medical - Complex Treatment",
+                                "dutyStandardCode": "PB_300097",
+                                "insuredAmount": 3000000,
+                                "insuredType": 2,
+                                "insuredUnit": 3,
+                                "planDutyId": 39374,
+                                "matchPremiumRule": [],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            },
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": 0,
+                                "coverageId": 600000927,
+                                "dutyCode": "D_00410",
+                                "dutyId": 1377,
+                                "dutyName": "Great Pro Medical - Dentures",
+                                "dutyNameLocal": "Great Pro Medical - Dentures",
+                                "dutyStandardCode": "PB_300098",
+                                "insuredAmount": 1000000,
+                                "insuredType": 2,
+                                "insuredUnit": 3,
+                                "planDutyId": 39375,
+                                "matchPremiumRule": [],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            }
+                        ],
+                        "installmentNetPremium": 0,
+                        "installmentPremium": 0,
+                        "installmentVatAmount": 0,
+                        "insuredAmount": 10000000,
+                        "netPremium": 603250,
+                        "originalNetPremium": 0,
+                        "premium": 603250,
+                        "riskRate": 0,
+                        "vatAmount": 0,
+                        "isSelect": true
+                    }
+                ],
+                "declineReason": [],
+                "declineReasonLocal": [],
+                "inspectionFlag": true,
+                "inspectionReason": [
+                    "553: null",
+                    "555: null",
+                    "554: null"
+                ],
+                "inspectionReasonLocal": [
+                    "553: null",
+                    "555: null",
+                    "554: null"
+                ],
+                "inspectionTemplateCode": "PT_09414426092024,PT_08482019112024,PT_09460926092024",
+                "leaderGroup": true,
+                "matchPremiumRule": [
+                    "Rule:6609",
+                    "Rule:6675",
+                    "Rule:6618"
+                ],
+                "planCode": "RP_00251",
+                "planName": "Asuransi Great Pro Medical, Plan Bronze 1",
+                "planNameLocal": "Asuransi Great Pro Medical, Plan Bronze 1",
+                "policyFee": 0,
+                "productCode": "R_00140",
+                "productName": "PA Test Great Pro",
+                "productNameLocal": "PA Test Great Pro",
+                "quoteDimension": 4,
+                "serviceFee": 0,
+                "subPlanCode": "null|RP_00251",
+                "totalInstallmentNetPremium": 0,
+                "totalInstallmentPremium": 0,
+                "totalInstallmentVatAmount": 0,
+                "totalNetPremium": 39840500,
+                "totalNoCalculateCommissionPremium": 0,
+                "totalOriginalNetPremium": 0,
+                "totalPolicyDiscountAmount": 0,
+                "totalPolicyDiscountRate": 0,
+                "totalPremium": 39840500,
+                "totalRiderNetPremium": 39829250,
+                "totalRiderPremium": 39829250,
+                "totalStamp": 0,
+                "totalVATAmount": 0,
+                "insuranceFullName": "PT. Asuransi Simas Jiwa.",
+                "insuranceId": "6603000871",
+                "policyDiscountEnd": "0",
+                "policyDiscountStart": "0",
+                "rawPlanDTOList": [
+                    {
+                        "mandatory": 1,
+                        "rawPlanCode": "RP_00251",
+                        "rawPlanId": 658,
+                        "rawPlanName": "Asuransi Great Pro Medical, Plan Bronze 1",
+                        "rawPlanNameLocal": "Asuransi Great Pro Medical, Plan Bronze 1"
+                    }
+                ],
+                "rawProductId": 600200418,
+                "mandatory": 1,
+                "rawPlanCode": "RP_00251",
+                "rawPlanId": 658,
+                "rawPlanName": "Asuransi Great Pro Medical, Plan Bronze 1",
+                "rawPlanNameLocal": "Asuransi Great Pro Medical, Plan Bronze 1",
+                "brokerDiscountConfigVO": {
+                    "discountFromCommissionBy": 0,
+                    "discountFromCommissionDefault": 0,
+                    "discountFromSpecialBounsBy": 2,
+                    "discountFromSpecialBounsDefault": 0,
+                    "isByBroker": false,
+                    "isDiscountFromCommissionByBroker": false,
+                    "isDiscountFromSpecialBounsByBroker": false,
+                    "takeOn": true
+                },
+                "coInsFlag": 1,
+                "discountCommissionFromType": 0,
+                "discountCommissionType": 1,
+                "discountFromCommissionDefault": 0,
+                "discountFromSpecialBounsDefault": 0,
+                "discountSpecialBonusType": 2,
+                "inputType": 1,
+                "leaderBookAs": 1,
+                "maxDiscountAmount": 7968100,
+                "maxDiscountFromPartnerSpecialBonusAmount": 3685246,
+                "partnerCommissionDeductRebateIncomeTax": 199202.5,
+                "shareRate": 1,
+                "transactionNumber": "6BE43D0F065A454BB7E09A390E6A2F60",
+                "maxDiscountRate": 20,
+                "rebateAmount": "",
+                "rebateAmountDefault": 0,
+                "rebateRate": "",
+                "rebateRateDefault": 0,
+                "maxDiscountFromPartnerSpecialBonusRate": 9,
+                "discountFromPartnerSpecialBonusAmount": "",
+                "discountFromPartnerSpecialBonusAmountDefault": 0,
+                "discountFromPartnerSpecialBonusRate": "",
+                "discountFromPartnerSpecialBonusRateDefault": 0
+            }
+        ],
+        "starLabel": 0,
+        "totalNetPremium": 39840500,
+        "totalPolicyDiscountAmount": 0,
+        "totalPremium": 39840500,
+        "totalVATAmount": 0,
+        "mpId": 600300321,
+        "mpPlanId": 4180,
+        "rawDTOList": [
+            {
+                "insuranceFullName": "PT. Asuransi Simas Jiwa.",
+                "insuranceId": "6603000871",
+                "policyDiscountEnd": "0",
+                "policyDiscountStart": "0",
+                "productCode": "R_00140",
+                "productName": "PA Test Great Pro",
+                "productNameLocal": "PA Test Great Pro",
+                "rawPlanDTOList": [
+                    {
+                        "mandatory": 1,
+                        "rawPlanCode": "RP_00251",
+                        "rawPlanId": 658,
+                        "rawPlanName": "Asuransi Great Pro Medical, Plan Bronze 1",
+                        "rawPlanNameLocal": "Asuransi Great Pro Medical, Plan Bronze 1"
+                    }
+                ],
+                "rawProductId": 600200418
+            }
+        ],
+        "adminFee": 0,
+        "discountCommissionType": 1,
+        "discountSpecialBonusType": 2,
+        "maxRebateAmount": 7968100,
+        "maxRebateRate": 0,
+        "partnerCommissionRateDimensionType": 2,
+        "serviceFee": 0
+    },
+    "quotationDataJson": {
+        "insuranceInfo": {
+            "premiumPaymentPeriod": 1,
+            "coveragePeriodUnit": 3,
+            "expiredDate": 1775836799000,
+            "coveragePeriod": 1,
+            "coveragePeriodLabel": "1 Year",
+            "coveragePeriodLabelLocal": "1 Năm",
+            "effectiveDate": 1744304399000,
+            "productCode": "M_00094",
+            "productName": "Test Great Pro Solution",
+            "productNameLocal": "Test Great Pro Solution",
+            "planCode": "MP_00212",
+            "mpPlanName": "Asuransi Great Pro Medical, Plan Bronze 1",
+            "mpPlanNameLocal": "Asuransi Great Pro Medical, Plan Bronze 1",
+            "productInfo": [
+                {
+                    "productCode": "R_00140",
+                    "productName": "PA Test Great Pro",
+                    "productNameLocal": "PA Test Great Pro",
+                    "planCode": "RP_00251",
+                    "rawPlanName": "Asuransi Great Pro Medical, Plan Bronze 1",
+                    "rawPlanNameLocal": "Asuransi Great Pro Medical, Plan Bronze 1",
+                    "policyDiscount": 0,
+                    "coverageInfo": [
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CM_00130",
+                            "coverageName": "Great Pro PA PA",
+                            "coverageNameLocal": "Great Pro PA PA",
+                            "insuredAmount": 5000000,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00392",
+                                    "dutyName": "Great Pro PA",
+                                    "dutyNameLocal": "Great Pro PA",
+                                    "insuredAmount": 5000000,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        },
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CA_00191",
+                            "coverageName": "Great Pro Life PA",
+                            "coverageNameLocal": "Great Pro Life PA",
+                            "insuredAmount": 100000000,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00393",
+                                    "dutyName": "Great Pro Life",
+                                    "dutyNameLocal": "Great Pro Life",
+                                    "insuredAmount": 100000000,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        },
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CA_00194",
+                            "coverageName": "Great Pro Medical – OUTPATIENT PA",
+                            "coverageNameLocal": "Great Pro Medical – OUTPATIENT PA",
+                            "insuredAmount": 350000,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00396",
+                                    "dutyName": "Great Pro Medical – OUTPATIENT",
+                                    "dutyNameLocal": "Great Pro Medical – OUTPATIENT",
+                                    "insuredAmount": 350000,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        },
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CA_00193",
+                            "coverageName": "Great Pro Medical – INPATIENT PA",
+                            "coverageNameLocal": "Great Pro Medical – INPATIENT PA",
+                            "insuredAmount": 1500000,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00395",
+                                    "dutyName": "Great Pro Medical – INPATIENT",
+                                    "dutyNameLocal": "Great Pro Medical – INPATIENT",
+                                    "insuredAmount": 1500000,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        },
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CA_00192",
+                            "coverageName": "Great Pro Critical PA",
+                            "coverageNameLocal": "Great Pro Critical PA",
+                            "insuredAmount": 500000000,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00394",
+                                    "dutyName": "Great Pro Critical",
+                                    "dutyNameLocal": "Great Pro Critical",
+                                    "insuredAmount": 500000000,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        },
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CA_00196",
+                            "coverageName": "Great Pro Medical - Dental",
+                            "coverageNameLocal": "Great Pro Medical - Dental",
+                            "insuredAmount": 10000000,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00406",
+                                    "dutyName": "Great Pro Medical - Basic Dental",
+                                    "dutyNameLocal": "Great Pro Medical - Basic Dental",
+                                    "insuredAmount": 2000000,
+                                    "deductibleAmount": 0
+                                },
+                                {
+                                    "dutyCode": "D_00407",
+                                    "dutyName": "Great Pro Medical - Gum Care",
+                                    "dutyNameLocal": "Great Pro Medical - Gum Care",
+                                    "insuredAmount": 2000000,
+                                    "deductibleAmount": 0
+                                },
+                                {
+                                    "dutyCode": "D_00408",
+                                    "dutyName": "Great Pro Medical - Preventive Care",
+                                    "dutyNameLocal": "Great Pro Medical - Preventive Care",
+                                    "insuredAmount": 2000000,
+                                    "deductibleAmount": 0
+                                },
+                                {
+                                    "dutyCode": "D_00409",
+                                    "dutyName": "Great Pro Medical - Complex Treatment",
+                                    "dutyNameLocal": "Great Pro Medical - Complex Treatment",
+                                    "insuredAmount": 3000000,
+                                    "deductibleAmount": 0
+                                },
+                                {
+                                    "dutyCode": "D_00410",
+                                    "dutyName": "Great Pro Medical - Dentures",
+                                    "dutyNameLocal": "Great Pro Medical - Dentures",
+                                    "insuredAmount": 1000000,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "insuredInfo": [
+            {
+                "age": 65,
+                "birthday": -307090800000,
+                "gender": 1,
+                "genderLabel": "Male",
+                "genderLabelLocal": "Laki-laki",
+                "height": 180,
+                "weight": 60
+            }
+        ]
+    }
+},
+  "placeOrderBody": {
+    "rfqNo": "RFQ-1909838435940106242",
+    "quoteNo": "QS-1909838435940106241",
+    "agentUid": "628123268989",
+    "bizSource": 1,
+    "creatorUid": "628123268989",
+    "appPlatform": "2",
+    "appVersion": "1.2.7",
+    "deviceId": "78717ed5c357c98c",
+    "osModel": "AKA-AL10",
+    "osVersion": "10",
+    "dataFormJson": {
+        "insuranceInfo": {
+            "premiumPaymentPeriod": 1,
+            "coveragePeriodUnit": 3,
+            "expiredDate": 1775836799000,
+            "coveragePeriod": 1,
+            "coveragePeriodLabel": "1 Year",
+            "coveragePeriodLabelLocal": "1 Năm",
+            "effectiveDate": 1744304399000,
+            "productCode": "M_00094",
+            "productName": "Test Great Pro Solution",
+            "productNameLocal": "Test Great Pro Solution",
+            "planCode": "MP_00212",
+            "mpPlanName": "Asuransi Great Pro Medical, Plan Bronze 1",
+            "mpPlanNameLocal": "Asuransi Great Pro Medical, Plan Bronze 1",
+            "productInfo": [
+                {
+                    "productCode": "R_00140",
+                    "productName": "PA Test Great Pro",
+                    "productNameLocal": "PA Test Great Pro",
+                    "planCode": "RP_00251",
+                    "rawPlanName": "Asuransi Great Pro Medical, Plan Bronze 1",
+                    "rawPlanNameLocal": "Asuransi Great Pro Medical, Plan Bronze 1",
+                    "policyDiscount": 0,
+                    "coverageInfo": [
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CM_00130",
+                            "coverageName": "Great Pro PA PA",
+                            "coverageNameLocal": "Great Pro PA PA",
+                            "insuredAmount": 5000000,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00392",
+                                    "dutyName": "Great Pro PA",
+                                    "dutyNameLocal": "Great Pro PA",
+                                    "insuredAmount": 5000000,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        },
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CA_00191",
+                            "coverageName": "Great Pro Life PA",
+                            "coverageNameLocal": "Great Pro Life PA",
+                            "insuredAmount": 100000000,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00393",
+                                    "dutyName": "Great Pro Life",
+                                    "dutyNameLocal": "Great Pro Life",
+                                    "insuredAmount": 100000000,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        },
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CA_00194",
+                            "coverageName": "Great Pro Medical – OUTPATIENT PA",
+                            "coverageNameLocal": "Great Pro Medical – OUTPATIENT PA",
+                            "insuredAmount": 350000,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00396",
+                                    "dutyName": "Great Pro Medical – OUTPATIENT",
+                                    "dutyNameLocal": "Great Pro Medical – OUTPATIENT",
+                                    "insuredAmount": 350000,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        },
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CA_00193",
+                            "coverageName": "Great Pro Medical – INPATIENT PA",
+                            "coverageNameLocal": "Great Pro Medical – INPATIENT PA",
+                            "insuredAmount": 1500000,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00395",
+                                    "dutyName": "Great Pro Medical – INPATIENT",
+                                    "dutyNameLocal": "Great Pro Medical – INPATIENT",
+                                    "insuredAmount": 1500000,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        },
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CA_00192",
+                            "coverageName": "Great Pro Critical PA",
+                            "coverageNameLocal": "Great Pro Critical PA",
+                            "insuredAmount": 500000000,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00394",
+                                    "dutyName": "Great Pro Critical",
+                                    "dutyNameLocal": "Great Pro Critical",
+                                    "insuredAmount": 500000000,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        },
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CA_00196",
+                            "coverageName": "Great Pro Medical - Dental",
+                            "coverageNameLocal": "Great Pro Medical - Dental",
+                            "insuredAmount": 10000000,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00406",
+                                    "dutyName": "Great Pro Medical - Basic Dental",
+                                    "dutyNameLocal": "Great Pro Medical - Basic Dental",
+                                    "insuredAmount": 2000000,
+                                    "deductibleAmount": 0
+                                },
+                                {
+                                    "dutyCode": "D_00407",
+                                    "dutyName": "Great Pro Medical - Gum Care",
+                                    "dutyNameLocal": "Great Pro Medical - Gum Care",
+                                    "insuredAmount": 2000000,
+                                    "deductibleAmount": 0
+                                },
+                                {
+                                    "dutyCode": "D_00408",
+                                    "dutyName": "Great Pro Medical - Preventive Care",
+                                    "dutyNameLocal": "Great Pro Medical - Preventive Care",
+                                    "insuredAmount": 2000000,
+                                    "deductibleAmount": 0
+                                },
+                                {
+                                    "dutyCode": "D_00409",
+                                    "dutyName": "Great Pro Medical - Complex Treatment",
+                                    "dutyNameLocal": "Great Pro Medical - Complex Treatment",
+                                    "insuredAmount": 3000000,
+                                    "deductibleAmount": 0
+                                },
+                                {
+                                    "dutyCode": "D_00410",
+                                    "dutyName": "Great Pro Medical - Dentures",
+                                    "dutyNameLocal": "Great Pro Medical - Dentures",
+                                    "insuredAmount": 1000000,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "insuredInfo": [
+            {
+                "age": 65,
+                "birthday": -307090800000,
+                "gender": 1,
+                "genderLabel": "Male",
+                "genderLabelLocal": "Laki-laki",
+                "height": 180,
+                "weight": 60,
+                "firstName": "test",
+                "lastName": "Insured",
+                "identityType": "1",
+                "identityTypeLabel": "KTP",
+                "identityTypeLabelLocal": "KTP",
+                "identityNo": "1234560904601234",
+                "KTPPhoto": [
+                    "fuse-id-core-prod-rw_images/20250409/87a48aa3ff7344dfa63d43d5fffc3b7c.jpg"
+                ],
+                "attachmentMeta": [
+                    {
+                        "attachmentPath": "fuse-id-core-prod-rw_images/20250409/87a48aa3ff7344dfa63d43d5fffc3b7c.jpg",
+                        "attachmentFileType": "image"
+                    }
+                ],
+                "BirthdayCountry": 1,
+                "BirthdayCountryLabel": "Indonesia",
+                "BirthdayCountryLabelLocal": "Indonesia",
+                "salutation": 1,
+                "salutationLabel": "Mr",
+                "salutationLabelLocal": "",
+                "Marital": 1,
+                "MaritalLabel": "Married",
+                "MaritalLabelLocal": "Married",
+                "mobilePhone": "8123268989",
+                "email": "Test@qq.com",
+                "homeAddress": {
+                    "province": "1423416",
+                    "provinceName": "Bali",
+                    "provinceNameLocal": "Bali",
+                    "city": "1423451",
+                    "cityName": "Kab. Badung",
+                    "cityNameLocal": "Kab. Badung",
+                    "district": "1423962",
+                    "districtName": "Abiansemal",
+                    "districtNameLocal": "Abiansemal"
+                },
+                "homeDetailAddress": "Test",
+                "PostalCode": 21212,
+                "LA_Maiden_Name": "inusredmaiden"
+            }
+        ],
+        "beneficiaryInfo": [
+            {
+                "age": 65,
+                "birthday": -307090800000,
+                "gender": 1,
+                "genderLabel": "Male",
+                "genderLabelLocal": "Laki-laki",
+                "height": 180,
+                "weight": 60,
+                "firstName": "test",
+                "lastName": "bene",
+                "identityType": "1",
+                "identityTypeLabel": "KTP",
+                "identityTypeLabelLocal": "KTP",
+                "identityNo": "1234560904601234",
+                "KTPPhoto": [
+                    "fuse-id-core-prod-rw_images/20250409/87a48aa3ff7344dfa63d43d5fffc3b7c.jpg"
+                ],
+                "attachmentMeta": [
+                    {
+                        "attachmentPath": "fuse-id-core-prod-rw_images/20250409/87a48aa3ff7344dfa63d43d5fffc3b7c.jpg",
+                        "attachmentFileType": "image"
+                    }
+                ],
+                "BirthdayCountry": 1,
+                "BirthdayCountryLabel": "Indonesia",
+                "BirthdayCountryLabelLocal": "Indonesia",
+                "salutation": 1,
+                "salutationLabel": "Mr",
+                "salutationLabelLocal": "",
+                "Marital": 1,
+                "MaritalLabel": "Married",
+                "MaritalLabelLocal": "Married",
+                "mobilePhone": "8123268989",
+                "email": "Test@qq.com",
+                "homeAddress": {
+                    "province": "1423416",
+                    "provinceName": "Bali",
+                    "provinceNameLocal": "Bali",
+                    "city": "1423451",
+                    "cityName": "Kab. Badung",
+                    "cityNameLocal": "Kab. Badung",
+                    "district": "1423962",
+                    "districtName": "Abiansemal",
+                    "districtNameLocal": "Abiansemal"
+                },
+                "homeDetailAddress": "Test",
+                "PostalCode": 21212,
+                "LA_Maiden_Name": "inusredmaiden",
+                "relationshipWithPh": 1,
+                "relationshipWithPhLabel": "",
+                "relationshipWithPhLabelLocal": "",
+                "RelationshipwithInsured": 1,
+                "RelationshipwithInsuredLabel": "Husband",
+                "RelationshipwithInsuredLabelLocal": "Husband"
+            }
+        ],
+        "policyHolderInfo": {
+            "age": 65,
+            "birthday": -307090800000,
+            "gender": 1,
+            "genderLabel": "Male",
+            "genderLabelLocal": "Laki-laki",
+            "height": 180,
+            "weight": 60,
+            "firstName": "test",
+            "lastName": "holder",
+            "identityType": "1",
+            "identityTypeLabel": "KTP",
+            "identityTypeLabelLocal": "KTP",
+            "identityNo": "1234560904601234",
+            "KTPPhoto": [
+                "fuse-id-core-prod-rw_images/20250409/87a48aa3ff7344dfa63d43d5fffc3b7c.jpg"
+            ],
+            "attachmentMeta": [
+                {
+                    "attachmentPath": "fuse-id-core-prod-rw_images/20250409/87a48aa3ff7344dfa63d43d5fffc3b7c.jpg",
+                    "attachmentFileType": "image"
+                }
+            ],
+            "BirthdayCountry": 1,
+            "BirthdayCountryLabel": "Indonesia",
+            "BirthdayCountryLabelLocal": "Indonesia",
+            "salutation": 1,
+            "salutationLabel": "Mr",
+            "salutationLabelLocal": "",
+            "Marital": 1,
+            "MaritalLabel": "Married",
+            "MaritalLabelLocal": "Married",
+            "mobilePhone": "8123268989",
+            "email": "Test@qq.com",
+            "homeAddress": {
+                "province": "1423416",
+                "provinceName": "Bali",
+                "provinceNameLocal": "Bali",
+                "city": "1423451",
+                "cityName": "Kab. Badung",
+                "cityNameLocal": "Kab. Badung",
+                "district": "1423962",
+                "districtName": "Abiansemal",
+                "districtNameLocal": "Abiansemal"
+            },
+            "homeDetailAddress": "Test",
+            "PostalCode": "21212",
+            "LA_Maiden_Name": "inusredmaiden",
+            "relationshipWithPh": 1,
+            "relationshipWithPhLabel": "",
+            "relationshipWithPhLabelLocal": "",
+            "RelationshipwithInsured": 1,
+            "RelationshipwithInsuredLabel": "Self",
+            "RelationshipwithInsuredLabelLocal": "Self",
+            "PH_Maiden_Name": "holder"
+        }
+    },
+    "mpCode": "M_00094",
+    "mpPlanCode": "MP_00212",
+    "isAdvancePremium": 1,
+    "partnerToCustomerDiscountAmountProducts": [
+        {
+            "productName": "PA Test Great Pro",
+            "productNameLocal": "PA Test Great Pro",
+            "productCode": "R_00140",
+            "planCode": "RP_00251",
+            "discountAmount": 0,
+            "discountFromPartnerSpecialBonusAmount": 0
+        }
+    ],
+    "inspectionFormJson": [
+        {
+            "productCode": "R_00140",
+            "inspectionCode": "PT_09460926092024:1",
+            "carInspectionData": {
+                "1727343815465_49870": {
+                    "1727343821218_70592": 2,
+                    "1727343821218_70592Label": "No",
+                    "1727343821218_70592LabelLocal": "No",
+                    "1727343823577_73861": 2,
+                    "1727343823577_73861Label": "No",
+                    "1727343823577_73861LabelLocal": "No",
+                    "1727343825902_94315": 2,
+                    "1727343825902_94315Label": "No",
+                    "1727343825902_94315LabelLocal": "No"
+                }
+            }
+        },
+        {
+            "productCode": "R_00140",
+            "inspectionCode": "PT_09414426092024:3",
+            "carInspectionData": {
+                "1727343580204_48118": {
+                    "1727343584994_203": 2,
+                    "1727343584994_203Label": "No",
+                    "1727343584994_203LabelLocal": "No"
+                }
+            }
+        },
+        {
+            "productCode": "R_00140",
+            "inspectionCode": "PT_08482019112024:10",
+            "carInspectionData": {
+                "1732005832308_30169": {
+                    "1732005876527_11308": 2,
+                    "1732005876527_11308Label": "No",
+                    "1732005876527_11308LabelLocal": "NO",
+                    "1732005933093_21201": 2,
+                    "1732005933093_21201Label": "No",
+                    "1732005933093_21201LabelLocal": "No",
+                    "1732005925342_84584": 2,
+                    "1732005925342_84584Label": "No",
+                    "1732005925342_84584LabelLocal": "No",
+                    "gender": 1,
+                    "1732005931596_67469": 2,
+                    "1732005931596_67469Label": "No",
+                    "1732005931596_67469LabelLocal": "No",
+                    "1732005928706_26081": 2,
+                    "1732005928706_26081Label": "No",
+                    "1732005928706_26081LabelLocal": "No",
+                    "genderLabel": "Male",
+                    "genderLabelLocal": "Male"
+                }
+            }
+        }
+    ]
+}
+}

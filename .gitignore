@@ -1,0 +1,15 @@
+.idea
+log4
+results
+__pycache__
+*.pyc
+log.html
+output.xml
+report.html
+settings.json
+Order-pord
+resources\testcase
+docs
+
+# 本地飞书 webhook 配置（勿提交）
+config/lark_config.json

@@ -1,0 +1,501 @@
+{
+  "quotationBody": {
+    "bizSource": 1,
+    "categoryId": "39",
+    "coverageDataJson": {
+        "auditFlag": true,
+        "discountSwitch": true,
+        "express": 0,
+        "filterRawProductCode": "R_00067",
+        "mainInsuranceCompanyCode": "6603000955",
+        "mainInsuranceCompanyName": "PT Sompo Insurance Indonesia",
+        "mpCode": "M_00039",
+        "mpName": "INTERNATIONAL - DELUXE",
+        "mpNameLocal": "INTERNATIONAL - DELUXE",
+        "mpPlanCode": "MP_00103",
+        "mpPlanName": "International  Deluxe  C - Annual Worldwide Schengen",
+        "mpPlanNameLocal": "International  Deluxe  C - Annual Worldwide Schengen",
+        "productHeaderPicture": "fuse-id-core-prod-rw_images/20240206/9d95e0cffd3943db8497c7c4e65b0ff2.png",
+        "productHeaderPictureLocal": "fuse-id-core-prod-rw_images/20240206/fb1b92747e044816814f1f3b82d1aeca.png",
+        "productListPicture": "fuse-id-core-prod-rw_images/20240206/72679fea9323491886c04b5fbb9226d5.png",
+        "productListPictureLocal": "fuse-id-core-prod-rw_images/20240206/e0dcfa12aff0409981bd25b34e2478b2.png",
+        "productLs": [
+            {
+                "commissionInfo": {
+                    "mulitCommissionType": 0,
+                    "partnerCommissionAmount": 902286,
+                    "partnerMatchCommissionRule": null,
+                    "partnerSpecialBonusAmount": 257796,
+                    "partnerSupportingFeeAmount": 0,
+                    "partnerCommissionIncomeTaxAmount": 22558,
+                    "partnerCommissionRate": 0,
+                    "partnerCommissionVatTaxAmount": 0,
+                    "partnerSpecialBonusIncomeTaxAmount": 6445,
+                    "partnerSpecialBonusRate": 0,
+                    "partnerSpecialBonusVatTaxAmount": 0,
+                    "partnerSupportingFeeIncomeTaxAmount": 0,
+                    "partnerSupportingFeeRate": 0,
+                    "partnerSupportingFeeVatTaxAmount": 0,
+                    "partnerUplineReferralRate": 0
+                },
+                "adminFee": 10000,
+                "coverageLs": [
+                    {
+                        "bindCoverages": [],
+                        "coverageCode": "CM_00047",
+                        "coverageFlag": 1,
+                        "coverageId": 600000800,
+                        "coverageName": "Deluxe",
+                        "coverageNameLocal": "Deluxe",
+                        "coverageRequired": 1,
+                        "coverageStandardCode": "PC_300024",
+                        "coverageTypeId": 3,
+                        "dutyDTOList": [
+                            {
+                                "coverageId": 600000800,
+                                "dutyCode": "D_00278",
+                                "dutyId": 1242,
+                                "dutyName": "Deluxe",
+                                "dutyNameLocal": "Deluxe",
+                                "dutyStandardCode": "PB_300032",
+                                "insuredAmount": [{"desc":"Dynamicallycalculatedbasedontraveldays.","descLocal":"Dihitungsecaradinamisberdasarkanhariperjalanan."}],
+                                "insuredType": 6,
+                                "insuredUnit": 2,
+                                "planDutyId": 40991,
+                                "insuredAmountDesc": "Dynamically calculated based on travel days.",
+                                "insuredAmountDescLocal": "Dihitung secara dinamis berdasarkan hari perjalanan."
+                            }
+                        ],
+                        "maxCoverageDiscount": 0,
+                        "minCoverageDiscount": 0,
+                        "planDutyId": 40991,
+                        "rawPlanId": 527,
+                        "vatRate": 0,
+                        "auditFlag": true,
+                        "commissionInfo": {
+                            "mulitCommissionType": 0,
+                            "partnerCommissionAmount": 902286,
+                            "partnerCommissionRate": 0.35,
+                            "partnerMatchCommissionRule": [
+                                "Rule:3588"
+                            ],
+                            "partnerSpecialBonusAmount": 257796,
+                            "partnerSpecialBonusRate": 0.1,
+                            "partnerSupportingFeeAmount": 0,
+                            "partnerSupportingFeeRate": 0,
+                            "partnerUplineReferralRate": 0,
+                            "pdBreakupFeeRate": 0,
+                            "pmBreakupFeeRate": 0,
+                            "uplineReferralsRate": {
+                                "1": 0,
+                                "2": 0,
+                                "3": 0,
+                                "4": 0,
+                                "5": 0,
+                                "6": 0
+                            }
+                        },
+                        "declineReason": [],
+                        "declineReasonLocal": [],
+                        "discountAmount": 0,
+                        "dutyLs": [
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": 0,
+                                "coverageId": 600000800,
+                                "dutyCode": "D_00278",
+                                "dutyId": 1242,
+                                "dutyName": "Deluxe",
+                                "dutyNameLocal": "Deluxe",
+                                "dutyStandardCode": "PB_300032",
+                                "insuredAmount": 0,
+                                "insuredType": 6,
+                                "insuredUnit": 2,
+                                "planDutyId": 40991,
+                                "insuredAmountDesc": "Dynamically calculated based on travel days.",
+                                "insuredAmountDescLocal": "Dihitung secara dinamis berdasarkan hari perjalanan.",
+                                "matchPremiumRule": [],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            }
+                        ],
+                        "installmentNetPremium": 0,
+                        "installmentPremium": 0,
+                        "installmentVatAmount": 0,
+                        "insuredAmount": 0,
+                        "netPremium": 2577960,
+                        "originalNetPremium": 0,
+                        "premium": 2577960,
+                        "riskRate": 0,
+                        "vatAmount": 0,
+                        "isSelect": true
+                    }
+                ],
+                "declineReason": [],
+                "declineReasonLocal": [],
+                "inspectionFlag": false,
+                "inspectionReason": [],
+                "inspectionReasonLocal": [],
+                "leaderGroup": true,
+                "matchPremiumRule": [
+                    "Rule:24100"
+                ],
+                "planCode": "RP_00121",
+                "planName": "Deluxe  C - Annual Worldwide Schengen",
+                "planNameLocal": "Deluxe  C - Annual Worldwide Schengen",
+                "planStandardCode": "PBP_300002",
+                "policyFee": 10000,
+                "productCode": "R_00067",
+                "productName": "INTERNATIONAL  DELUXE",
+                "productNameLocal": "INTERNATIONAL  DELUXE",
+                "quoteDimension": 4,
+                "serviceFee": 0,
+                "subPlanCode": "null|RP_00121",
+                "totalInstallmentNetPremium": 0,
+                "totalInstallmentPremium": 0,
+                "totalInstallmentVatAmount": 0,
+                "totalNetPremium": 2577960,
+                "totalNoCalculateCommissionPremium": 0,
+                "totalOriginalNetPremium": 0,
+                "totalPolicyDiscountAmount": 0,
+                "totalPolicyDiscountRate": 0,
+                "totalPremium": 2577960,
+                "totalRiderNetPremium": 0,
+                "totalRiderPremium": 0,
+                "totalStamp": 0,
+                "totalVATAmount": 0,
+                "insuranceFullName": "PT Sompo Insurance Indonesia",
+                "insuranceId": "6603000955",
+                "insuranceLogoUrl": "https://oss-pre.fuse.co.id/images/20240123/ca04e5eaefe74bc6bdcc7fb3a464d4f9.png?Expires=1751673599&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=q7ljNFwaXvYNR7cY0PiuAM7dzSc%3D",
+                "policyDiscountEnd": "0",
+                "policyDiscountStart": "0",
+                "rawPlanDTOList": [
+                    {
+                        "mandatory": 1,
+                        "rawPlanCode": "RP_00121",
+                        "rawPlanId": 527,
+                        "rawPlanName": "Deluxe  C - Annual Worldwide Schengen",
+                        "rawPlanNameLocal": "Deluxe  C - Annual Worldwide Schengen"
+                    }
+                ],
+                "rawProductId": 600200344,
+                "mandatory": 1,
+                "rawPlanCode": "RP_00121",
+                "rawPlanId": 527,
+                "rawPlanName": "Deluxe  C - Annual Worldwide Schengen",
+                "rawPlanNameLocal": "Deluxe  C - Annual Worldwide Schengen",
+                "brokerDiscountConfigVO": {
+                    "discountFromCommissionBy": 0,
+                    "discountFromCommissionDefault": 0,
+                    "discountFromSpecialBounsBy": 2,
+                    "discountFromSpecialBounsDefault": 0,
+                    "isByBroker": false,
+                    "isDiscountFromCommissionByBroker": false,
+                    "isDiscountFromSpecialBounsByBroker": false,
+                    "takeOn": true
+                },
+                "coInsFlag": 1,
+                "discountCommissionFromType": 0,
+                "discountCommissionType": 1,
+                "discountFromCommissionDefault": 0,
+                "discountFromSpecialBounsDefault": 0,
+                "discountSpecialBonusType": 2,
+                "inputType": 1,
+                "leaderBookAs": 1,
+                "maxDiscountAmount": 902286,
+                "maxDiscountFromPartnerSpecialBonusAmount": 238461,
+                "partnerCommissionDeductRebateIncomeTax": 22557.15,
+                "shareRate": 1,
+                "transactionNumber": "8BCD55CBA50646D786BD72448641D35A",
+                "maxDiscountRate": 35,
+                "rebateAmount": "0",
+                "rebateAmountDefault": 0,
+                "rebateRate": 0,
+                "rebateRateDefault": 0,
+                "maxDiscountFromPartnerSpecialBonusRate": 9,
+                "discountFromPartnerSpecialBonusAmount": 0,
+                "discountFromPartnerSpecialBonusAmountDefault": 0,
+                "discountFromPartnerSpecialBonusRate": 0,
+                "discountFromPartnerSpecialBonusRateDefault": 0
+            }
+        ],
+        "starLabel": 0,
+        "totalNetPremium": 2577960,
+        "totalPolicyDiscountAmount": 0,
+        "totalPremium": 2577960,
+        "totalVATAmount": 0,
+        "availableCouponNum": 1,
+        "mpId": 600300265,
+        "mpPlanId": 3884,
+        "rawDTOList": [
+            {
+                "insuranceFullName": "PT Sompo Insurance Indonesia",
+                "insuranceId": "6603000955",
+                "insuranceLogoUrl": "https://oss-pre.fuse.co.id/images/20240123/ca04e5eaefe74bc6bdcc7fb3a464d4f9.png?Expires=1751673599&OSSAccessKeyId=LTAI5tPgSx4JTJLnSZwvmfay&Signature=q7ljNFwaXvYNR7cY0PiuAM7dzSc%3D",
+                "policyDiscountEnd": "0",
+                "policyDiscountStart": "0",
+                "productCode": "R_00067",
+                "productName": "INTERNATIONAL  DELUXE",
+                "productNameLocal": "INTERNATIONAL  DELUXE",
+                "rawPlanDTOList": [
+                    {
+                        "mandatory": 1,
+                        "rawPlanCode": "RP_00121",
+                        "rawPlanId": 527,
+                        "rawPlanName": "Deluxe  C - Annual Worldwide Schengen",
+                        "rawPlanNameLocal": "Deluxe  C - Annual Worldwide Schengen"
+                    }
+                ],
+                "rawProductId": 600200344
+            }
+        ],
+        "adminFee": 10000,
+        "discountCommissionType": 1,
+        "discountSpecialBonusType": 2,
+        "maxRebateAmount": 902286,
+        "maxRebateRate": 0,
+        "partnerCommissionRateDimensionType": 2,
+        "serviceFee": 0
+    },
+    "quotationDataJson": {
+        "riskGroupInfo": {
+            "travel": {
+                "toDate": 1783357199000,
+                "travelType": 1,
+                "travelTypeLabel": "International",
+                "travelTypeLabelLocal": "International",
+                "travelDestination": 35,
+                "destination": "5",
+                "schengen": 1,
+                "schengenLabel": "Yes",
+                "schengenLabelLocal": "Yes",
+                "travelDestinationLabel": "Worldwide",
+                "travelDestinationLabelLocal": "Worldwide",
+                "policyType": 1,
+                "totalTravelers": 1,
+                "adult": 1,
+                "adultLabel": "1",
+                "adultLabelLocal": "1",
+                "policyTypeLabel": "Individual",
+                "policyTypeLabelLocal": "Individual",
+                "annualTrip": 1,
+                "travelTime": 31535999000,
+                "annualTripLabel": "Annual",
+                "annualTripLabelLocal": "Annual",
+                "fromDate": 1751821200000
+            }
+        },
+        "insuranceInfo": {
+            "premiumPaymentPeriod": 1,
+            "expiredDate": 1783357199000,
+            "effectiveDate": 1751821200000,
+            "coveragePeriodUnit": 1,
+            "productCode": "M_00039",
+            "productName": "INTERNATIONAL - DELUXE",
+            "productNameLocal": "INTERNATIONAL - DELUXE",
+            "planCode": "MP_00103",
+            "mpPlanName": "International  Deluxe  C - Annual Worldwide Schengen",
+            "mpPlanNameLocal": "International  Deluxe  C - Annual Worldwide Schengen",
+            "productInfo": [
+                {
+                    "productCode": "R_00067",
+                    "productName": "INTERNATIONAL  DELUXE",
+                    "productNameLocal": "INTERNATIONAL  DELUXE",
+                    "planCode": "RP_00121",
+                    "rawPlanName": "Deluxe  C - Annual Worldwide Schengen",
+                    "rawPlanNameLocal": "Deluxe  C - Annual Worldwide Schengen",
+                    "policyDiscount": 0,
+                    "coverageInfo": [
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CM_00047",
+                            "coverageName": "Deluxe",
+                            "coverageNameLocal": "Deluxe",
+                            "insuredAmount": 0,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00278",
+                                    "dutyName": "Deluxe",
+                                    "dutyNameLocal": "Deluxe",
+                                    "insuredAmount": 0,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+},
+  "placeOrderBody": {
+    "rfqNo": "RFQ-1940966475157651458",
+    "quoteNo": "QS-1940966475157651457",
+    "agentUid": "628123268989",
+    "bizSource": 1,
+    "creatorUid": "628123268989",
+    "appPlatform": "2",
+    "appVersion": "1.2.7",
+    "deviceId": "78717ed5c357c98c",
+    "osModel": "AKA-AL10",
+    "osVersion": "10",
+    "dataFormJson": {
+        "riskGroupInfo": {
+            "travel": {
+                "toDate": 1783357199000,
+                "travelType": 1,
+                "travelTypeLabel": "International",
+                "travelTypeLabelLocal": "International",
+                "travelDestination": 35,
+                "destination": "5",
+                "schengen": 1,
+                "schengenLabel": "Yes",
+                "schengenLabelLocal": "Yes",
+                "travelDestinationLabel": "Worldwide",
+                "travelDestinationLabelLocal": "Worldwide",
+                "policyType": 1,
+                "totalTravelers": 1,
+                "adult": 1,
+                "adultLabel": "1",
+                "adultLabelLocal": "1",
+                "policyTypeLabel": "Individual",
+                "policyTypeLabelLocal": "Individual",
+                "annualTrip": 1,
+                "travelTime": 31535999000,
+                "annualTripLabel": "Annual",
+                "annualTripLabelLocal": "Annual",
+                "fromDate": 1751821200000
+            }
+        },
+        "insuranceInfo": {
+            "premiumPaymentPeriod": 1,
+            "expiredDate": 1783357199000,
+            "effectiveDate": 1751821200000,
+            "coveragePeriodUnit": 1,
+            "productCode": "M_00039",
+            "productName": "INTERNATIONAL - DELUXE",
+            "productNameLocal": "INTERNATIONAL - DELUXE",
+            "planCode": "MP_00103",
+            "mpPlanName": "International  Deluxe  C - Annual Worldwide Schengen",
+            "mpPlanNameLocal": "International  Deluxe  C - Annual Worldwide Schengen",
+            "productInfo": [
+                {
+                    "productCode": "R_00067",
+                    "productName": "INTERNATIONAL  DELUXE",
+                    "productNameLocal": "INTERNATIONAL  DELUXE",
+                    "planCode": "RP_00121",
+                    "rawPlanName": "Deluxe  C - Annual Worldwide Schengen",
+                    "rawPlanNameLocal": "Deluxe  C - Annual Worldwide Schengen",
+                    "policyDiscount": 0,
+                    "coverageInfo": [
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CM_00047",
+                            "coverageName": "Deluxe",
+                            "coverageNameLocal": "Deluxe",
+                            "insuredAmount": 0,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00278",
+                                    "dutyName": "Deluxe",
+                                    "dutyNameLocal": "Deluxe",
+                                    "insuredAmount": 0,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "insuredInfo": [
+            {
+                "gender": 1,
+                "genderLabel": "Male",
+                "genderLabelLocal": "Male",
+                "identityType": "3",
+                "identityTypeLabel": "Passport",
+                "identityTypeLabelLocal": "Passport",
+                "age": 18,
+                "passengerType": 1,
+                "passengerTypeLabel": "Adult",
+                "passengerTypeLabelLocal": "Adult",
+                "attachments": [
+                    {
+                        "confirmPhotoUsage": [
+                            1
+                        ],
+                        "confirmPhotoUsageLabel": "Personal information and vehicle photos will only be used for claim documentation and other purposes as outlined in our terms and conditions Please contact FUSE to update your information after submission.",
+                        "confirmPhotoUsageLabelLocal": "Informasi pribadi dan foto kendaraan hanya akan digunakan untuk dokumentasi klaim dan tujuan lain sebagaimana diuraikan dalam syarat dan ketentuan kami. Silakan hubungi FUSE untuk memperbarui informasi Anda setelah penyerahan.",
+                        "passportPhoto": [
+                            "fuse-id-core-prod-rw_images/20250704/a7fc93c575c54159bb2e5e4c13ed09a8.png"
+                        ],
+                        "attachmentMeta": [
+                            {
+                                "attachmentPath": "fuse-id-core-prod-rw_images/20250704/a7fc93c575c54159bb2e5e4c13ed09a8.png",
+                                "attachmentFileType": "image",
+                                "metadata": {
+
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "firstName": "Test",
+                "lastName": "Test",
+                "birthday": 1152032400000,
+                "relationship": 0,
+                "relationshipLabel": "Self",
+                "relationshipLabelLocal": "Self",
+                "mobilePhone": "8123268989",
+                "email": "Test@qq.com",
+                "homeAddress": {
+                    "province": "1423416",
+                    "provinceName": "Bali",
+                    "provinceNameLocal": "Bali",
+                    "city": "1423451",
+                    "cityName": "Kab. Badung",
+                    "cityNameLocal": "Kab. Badung",
+                    "district": "1423962",
+                    "districtName": "Abiansemal",
+                    "districtNameLocal": "Abiansemal",
+                    "urban": "1431033",
+                    "urbanName": "Abiansemal",
+                    "urbanNameLocal": "Abiansemal"
+                },
+                "homeDetailAddress": "Test",
+                "identityNo": "1234567823"
+            }
+        ],
+        "beneficiaryInfo": [
+            {
+                "firstName": "Test",
+                "lastName": "API",
+                "relationShip": 1,
+                "relationShipLabel": "Husband",
+                "relationShipLabelLocal": "Husband"
+            }
+        ]
+    },
+    "mpCode": "M_00039",
+    "mpPlanCode": "MP_00103",
+    "isAdvancePremium": 1,
+    "partnerToCustomerDiscountAmountProducts": [
+        {
+            "productName": "INTERNATIONAL  DELUXE",
+            "productNameLocal": "INTERNATIONAL  DELUXE",
+            "productCode": "R_00067",
+            "planCode": "RP_00121",
+            "discountAmount": 0,
+            "discountFromPartnerSpecialBonusAmount": 0
+        }
+    ]
+},
+  "couponBody": {"couponOrderQOList":[{"adminFee":10000,"auditFlag":true,"discountFromPartnerSpecialBonusAmount":0,"filterRawProductCode":"R_00067","mainInsuranceCompanyCode":"6603000955","mainInsuranceCompanyName":"PT Sompo Insurance Indonesia","maxRebateAmount":902286,"maxRebateRate":0,"mpCode":"M_00039","mpName":"INTERNATIONAL - DELUXE","mpNameLocal":"INTERNATIONAL - DELUXE","mpPlanCode":"MP_00103","mpPlanName":"International  Deluxe  C - Annual Worldwide Schengen","mpPlanNameLocal":"International  Deluxe  C - Annual Worldwide Schengen","partnerCommissionRateDimensionType":2,"productHeaderPicture":"fuse-id-core-prod-rw_images/20240206/9d95e0cffd3943db8497c7c4e65b0ff2.png","productHeaderPictureLocal":"fuse-id-core-prod-rw_images/20240206/fb1b92747e044816814f1f3b82d1aeca.png","productListPicture":"fuse-id-core-prod-rw_images/20240206/72679fea9323491886c04b5fbb9226d5.png","productListPictureLocal":"fuse-id-core-prod-rw_images/20240206/e0dcfa12aff0409981bd25b34e2478b2.png","productLs":[{"adminFee":10000,"coInsFlag":1,"commissionInfo":{"mulitCommissionType":0,"partnerCommissionAmount":902286,"partnerCommissionIncomeTaxAmount":22558,"partnerCommissionRate":0,"partnerCommissionVatTaxAmount":0,"partnerSpecialBonusAmount":257796,"partnerSpecialBonusIncomeTaxAmount":6445,"partnerSpecialBonusRate":0,"partnerSpecialBonusVatTaxAmount":0,"partnerSupportingFeeAmount":0,"partnerSupportingFeeIncomeTaxAmount":0,"partnerSupportingFeeRate":0,"partnerSupportingFeeVatTaxAmount":0,"partnerUplineReferralRate":0},"coverageLs":[{"auditFlag":true,"commissionInfo":{"mulitCommissionType":0,"partnerCommissionAmount":902286,"partnerCommissionRate":0.35,"partnerMatchCommissionRule":["Rule:3588"],"partnerSpecialBonusAmount":257796,"partnerSpecialBonusRate":0.1,"partnerSupportingFeeAmount":0,"partnerSupportingFeeRate":0,"partnerUplineReferralRate":0,"pdBreakupFeeRate":0,"pmBreakupFeeRate":0,"uplineReferralsRate":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0}},"coverageCode":"CM_00047","coverageName":"Deluxe","coverageNameLocal":"Deluxe","coverageRequired":1,"declineReason":[],"declineReasonLocal":[],"discountAmount":0,"dutyLs":[{"dutyCode":"D_00278","dutyName":"Deluxe","dutyNameLocal":"Deluxe","dutyStandardCode":"PB_300032","insuredAmount":0,"insuredAmountDesc":"Dynamically calculated based on travel days.","insuredAmountDescLocal":"Dihitung secara dinamis berdasarkan hari perjalanan.","insuredType":6,"insuredUnit":2,"matchPremiumRule":[],"netPremium":0,"premium":0,"stamp":0,"vatAmount":0}],"installmentNetPremium":0,"installmentPremium":0,"installmentVatAmount":0,"insuredAmount":0,"netPremium":2577960,"originalNetPremium":0,"premium":2577960,"riskRate":0,"vatAmount":0,"vatRate":0}],"declineReason":[],"declineReasonLocal":[],"discountCommissionType":1,"discountFromPartnerSpecialBonusAmount":0,"inputType":1,"inspectionFlag":false,"inspectionReason":[],"inspectionReasonLocal":[],"leaderBookAs":1,"leaderGroup":true,"matchPremiumRule":["Rule:24100"],"maxDiscountFromPartnerSpecialBonusAmount":238461,"planCode":"RP_00121","planName":"Deluxe  C - Annual Worldwide Schengen","planNameLocal":"Deluxe  C - Annual Worldwide Schengen","policyFee":10000,"productCode":"R_00067","productName":"INTERNATIONAL  DELUXE","productNameLocal":"INTERNATIONAL  DELUXE","quoteDimension":4,"rebateAmount":0,"rebateRate":0,"serviceFee":0,"shareRate":1,"subPlanCode":"null|RP_00121","totalInstallmentNetPremium":0,"totalInstallmentPremium":0,"totalInstallmentVatAmount":0,"totalNetPremium":2577960,"totalNoCalculateCommissionPremium":0,"totalOriginalNetPremium":0,"totalPolicyDiscountAmount":0,"totalPolicyDiscountRate":0,"totalPremium":2577960,"totalRiderNetPremium":0,"totalRiderPremium":0,"totalStamp":0,"totalVATAmount":0}],"rebateAmount":0,"serviceFee":0,"totalNetPremium":2577960,"totalPolicyDiscountAmount":0,"totalPremium":2577960,"totalVATAmount":0}],"renewalApplyId":"","bizSource":1,"rfqNo":"RFQ-1940966475157651458"},
+  "UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE": "true",
+  "UNDERWRITING_OFFLINE_EXISTSASSIGNEE": "true"
+}

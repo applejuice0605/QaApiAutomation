@@ -1,0 +1,646 @@
+{
+  "quotationBody": {
+    "bizSource": 2,
+    "categoryId": "49",
+    "coverageDataJson": {
+        "auditFlag": true,
+        "discountSwitch": false,
+        "express": 0,
+        "filterRawProductCode": "R_00139",
+        "mainInsuranceCompanyCode": "6603001124",
+        "mainInsuranceCompanyName": "PT Asuransi Multi Artha Guna Tbk",
+        "mpCode": "M_00092",
+        "mpName": "MAG BASIC CAR",
+        "mpNameLocal": "MAG BASIC CAR",
+        "mpPlanCode": "MP_00207",
+        "mpPlanName": "MAG BASIC TOTAL LOSS ONLY",
+        "mpPlanNameLocal": "MAG BASIC TOTAL LOSS ONLY",
+        "productHeaderPicture": "fuse-id-core-prod-rw_images/20240926/bf981b29b8964a1a91f4fa9da2c1811d.jpg",
+        "productHeaderPictureLocal": "fuse-id-core-prod-rw_images/20240926/a43370357ded4c328d9b30399d3e67e5.jpg",
+        "productListPicture": "fuse-id-core-prod-rw_images/20240926/e443d93ae3db4659bc7d92903d3a74e4.jpg",
+        "productListPictureLocal": "fuse-id-core-prod-rw_images/20240926/7b6ad32b73eb46c69ef6d8e699bd1f13.jpg",
+        "productLs": [
+            {
+                "commissionInfo": {
+                    "mulitCommissionType": 0,
+                    "partnerCommissionAmount": 736983,
+                    "partnerMatchCommissionRule": null,
+                    "partnerSpecialBonusAmount": 294794,
+                    "partnerSupportingFeeAmount": 0
+                },
+                "adminFee": 35000,
+                "coverageLs": [
+                    {
+                        "bindCoverages": [
+
+                        ],
+                        "coverageCode": "CM_00129",
+                        "coverageFlag": 1,
+                        "coverageId": 600000908,
+                        "coverageName": "TOTAL LOSS ONLY",
+                        "coverageNameLocal": "TOTAL LOSS ONLY",
+                        "coverageRequired": 1,
+                        "coverageStandardCode": "PC_100022",
+                        "coverageTypeId": 1,
+                        "dutyDTOList": [
+                            {
+                                "coverageId": 600000908,
+                                "dutyCode": "D_00382",
+                                "dutyId": 1349,
+                                "dutyName": "Total Loss Only",
+                                "dutyNameLocal": "Total Loss Only",
+                                "dutyStandardCode": "PB_300030",
+                                "externalDutyCode": "TLO",
+                                "insuredType": 0,
+                                "insuredUnit": 2,
+                                "planDutyId": 35189
+                            }
+                        ],
+                        "maxCoverageDiscount": 0,
+                        "minCoverageDiscount": 0,
+                        "planDutyId": 35189,
+                        "rawPlanId": 655,
+                        "vatRate": 0,
+                        "auditFlag": true,
+                        "commissionInfo": {
+                            "mulitCommissionType": 0,
+                            "partnerCommissionAmount": 381375,
+                            "partnerCommissionRate": 0.25,
+                            "partnerMatchCommissionRule": [
+                                "Rule:4650"
+                            ],
+                            "partnerSpecialBonusAmount": 152550,
+                            "partnerSpecialBonusRate": 0.1,
+                            "partnerSupportingFeeAmount": 0,
+                            "partnerSupportingFeeRate": 0,
+                            "partnerUplineReferralRate": 0,
+                            "pdBreakupFeeRate": 0,
+                            "pmBreakupFeeRate": 0,
+                            "uplineReferralsRate": {
+                                "1": 0.1,
+                                "2": 0.05,
+                                "3": 0.025,
+                                "4": 0.0125,
+                                "5": 0.0063,
+                                "6": 0
+                            }
+                        },
+                        "declineReason": [
+
+                        ],
+                        "declineReasonLocal": [
+
+                        ],
+                        "discountAmount": 0,
+                        "discountRate": 0,
+                        "dutyLs": [
+                            {
+                                "deductibleAmountVal": 0,
+                                "insuredAmountVal": 0,
+                                "coverageId": 600000908,
+                                "dutyCode": "D_00382",
+                                "dutyId": 1349,
+                                "dutyName": "Total Loss Only",
+                                "dutyNameLocal": "Total Loss Only",
+                                "dutyStandardCode": "PB_300030",
+                                "externalDutyCode": "TLO",
+                                "insuredType": 0,
+                                "insuredUnit": 2,
+                                "planDutyId": 35189,
+                                "insuredAmount": 610200000,
+                                "matchPremiumRule": [
+
+                                ],
+                                "netPremium": 0,
+                                "premium": 0,
+                                "stamp": 0,
+                                "vatAmount": 0
+                            }
+                        ],
+                        "installmentNetPremium": 0,
+                        "installmentPremium": 0,
+                        "installmentVatAmount": 0,
+                        "insuredAmount": 610200000,
+                        "netPremium": 1525500,
+                        "originalNetPremium": 1525500,
+                        "premium": 1525500,
+                        "riskRate": 0.0025,
+                        "vatAmount": 0,
+                        "isSelect": true
+                    }
+                ],
+                "declineReason": [
+
+                ],
+                "declineReasonLocal": [
+
+                ],
+                "discountCommissionFromPartnerWhiteList": false,
+                "inspectionFlag": false,
+                "inspectionReason": [
+
+                ],
+                "inspectionReasonLocal": [
+
+                ],
+                "leaderGroup": false,
+                "matchPremiumRule": [
+                    "Rule:6324|null",
+                    "Rule:6324|null",
+                    "Rule:6324|null",
+                    "Rule:6324|null",
+                    "Rule:6324|null",
+                    "Rule:6324|null",
+                    "Rule:6324|null",
+                    "Rule:6324|null"
+                ],
+                "planCode": "RP_00248",
+                "planName": "MAG BASIC TOTAL LOSS ONLY",
+                "planNameLocal": "MAG BASIC TOTAL LOSS ONLY",
+                "planStandardCode": "PBP_100021",
+                "policyFee": 25000,
+                "productCode": "R_00139",
+                "productName": "MAG BASIC CAR",
+                "productNameLocal": "MAG BASIC CAR",
+                "quoteDimension": 4,
+                "serviceFee": 0,
+                "totalInstallmentNetPremium": 0,
+                "totalInstallmentPremium": 0,
+                "totalInstallmentVatAmount": 0,
+                "totalNetPremium": 2947940,
+                "totalNoCalculateCommissionPremium": 0,
+                "totalOriginalNetPremium": 2947940,
+                "totalPolicyDiscountAmount": 0,
+                "totalPolicyDiscountRate": 0,
+                "totalPremium": 2947940,
+                "totalRiderNetPremium": 1422440,
+                "totalRiderPremium": 1422440,
+                "totalStamp": 10000,
+                "totalVATAmount": 0,
+                "vehicleRepairType": 99,
+                "insuranceFullName": "PT Asuransi Multi Artha Guna Tbk",
+                "insuranceId": "6603001124",
+                "policyDiscountEnd": "0",
+                "policyDiscountStart": "0",
+                "rawPlanDTOList": [
+                    {
+                        "mandatory": 1,
+                        "rawPlanCode": "RP_00248",
+                        "rawPlanId": 655,
+                        "rawPlanName": "MAG BASIC TOTAL LOSS ONLY",
+                        "rawPlanNameLocal": "MAG BASIC TOTAL LOSS ONLY"
+                    }
+                ],
+                "rawProductId": 600200417,
+                "mandatory": 1,
+                "rawPlanCode": "RP_00248",
+                "rawPlanId": 655,
+                "rawPlanName": "MAG BASIC TOTAL LOSS ONLY",
+                "rawPlanNameLocal": "MAG BASIC TOTAL LOSS ONLY"
+            }
+        ],
+        "starLabel": 0,
+        "totalNetPremium": 2947940,
+        "totalPolicyDiscountAmount": 0,
+        "totalPremium": 2947940,
+        "totalVATAmount": 0,
+        "availableCouponNum": 11,
+        "mpId": 600300319,
+        "mpPlanId": 4691,
+        "rawDTOList": [
+            {
+                "insuranceFullName": "PT Asuransi Multi Artha Guna Tbk",
+                "insuranceId": "6603001124",
+                "policyDiscountEnd": "0",
+                "policyDiscountStart": "0",
+                "productCode": "R_00139",
+                "productName": "MAG BASIC CAR",
+                "productNameLocal": "MAG BASIC CAR",
+                "rawPlanDTOList": [
+                    {
+                        "mandatory": 1,
+                        "rawPlanCode": "RP_00248",
+                        "rawPlanId": 655,
+                        "rawPlanName": "MAG BASIC TOTAL LOSS ONLY",
+                        "rawPlanNameLocal": "MAG BASIC TOTAL LOSS ONLY"
+                    }
+                ],
+                "rawProductId": 600200417
+            }
+        ]
+    },
+    "quotationDataJson": {
+        "insuranceInfo": {
+            "premiumPaymentPeriod": 1,
+            "coveragePeriodUnit": 3,
+            "expiredDate": 1793422800000,
+            "idTimeZone": 46801000,
+            "coveragePeriod": 1,
+            "coveragePeriodLabel": "1 Year",
+            "coveragePeriodLabelLocal": "1 Tahun",
+            "effectiveDate": 1761886800000,
+            "productCode": "M_00092",
+            "productName": "MAG BASIC CAR",
+            "productNameLocal": "MAG BASIC CAR",
+            "planCode": "MP_00207",
+            "mpPlanName": "MAG BASIC TOTAL LOSS ONLY",
+            "mpPlanNameLocal": "MAG BASIC TOTAL LOSS ONLY",
+            "productInfo": [
+                {
+                    "productCode": "R_00139",
+                    "productName": "MAG BASIC CAR",
+                    "productNameLocal": "MAG BASIC CAR",
+                    "planCode": "RP_00248",
+                    "rawPlanName": "MAG BASIC TOTAL LOSS ONLY",
+                    "rawPlanNameLocal": "MAG BASIC TOTAL LOSS ONLY",
+                    "policyDiscount": 0,
+                    "coverageInfo": [
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CM_00129",
+                            "coverageName": "TOTAL LOSS ONLY",
+                            "coverageNameLocal": "TOTAL LOSS ONLY",
+                            "insuredAmount": 610200000,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00382",
+                                    "dutyName": "Total Loss Only",
+                                    "dutyNameLocal": "Total Loss Only",
+                                    "insuredAmount": 610200000,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "riskGroupInfo": {
+            "vehicle": {
+                "carModifyPrice": 610200000,
+                "carValue": 610200000,
+                "hasModification": 0,
+                "hasModificationLabel": "",
+                "hasModificationLabelLocal": "",
+                "brandCode": "AUDI",
+                "carPrice": 610200000,
+                "brandCodeLabel": "AUDI",
+                "brandCodeLabelLocal": "AUDI",
+                "vehicleManufactureYear": "2025",
+                "vehicleManufactureYearLabel": "2025",
+                "vehicleManufactureYearLabelLocal": "2025",
+                "brandModelCode": "A3",
+                "brandModelCodeLabel": "A3",
+                "brandModelCodeLabelLocal": "A3",
+                "brandSeriesCode": "SPORTBACK 1.2 TFSI",
+                "brandSeriesCodeLabel": "SPORTBACK 1.2 TFSI",
+                "brandSeriesCodeLabelLocal": "SPORTBACK 1.2 TFSI",
+                "vehicleType": "SEDAN",
+                "vehicleTypeLabel": "SEDAN",
+                "vehicleTypeLabelLocal": "SEDAN",
+                "plateCode": "A",
+                "plateArea": "2",
+                "plateCodeLabel": "A",
+                "plateCodeLabelLocal": "A",
+                "vehicleUsage": 2,
+                "vehicleUsageLabel": "Personal/Office",
+                "vehicleUsageLabelLocal": "Pribadi/Dinas",
+                "plateNo": "tba",
+                "confirmVehicleValue": 1,
+                "confirmVehicleValueLabel": "",
+                "confirmVehicleValueLabelLocal": ""
+            }
+        }
+    }
+},
+  "placeOrderBody": {
+    "rfqNo": "RFQ-1983709565529427971",
+    "quoteNo": "QS-1983709565529427970",
+    "agentUid": 20660000001269,
+    "bizSource": 2,
+    "creatorUid": 20660000001269,
+    "appPlatform": "3",
+    "appVersion": "5.74.1",
+    "deviceId": "78717ed5c357c98c",
+    "osModel": "AKA-AL10",
+    "osVersion": "10",
+    "dataFormJson": {
+        "insuranceInfo": {
+            "premiumPaymentPeriod": 1,
+            "coveragePeriodUnit": 3,
+            "expiredDate": 1793422800000,
+            "idTimeZone": 46801000,
+            "coveragePeriod": 1,
+            "coveragePeriodLabel": "1 Year",
+            "coveragePeriodLabelLocal": "1 Tahun",
+            "effectiveDate": 1761886800000,
+            "productCode": "M_00092",
+            "productName": "MAG BASIC CAR",
+            "productNameLocal": "MAG BASIC CAR",
+            "planCode": "MP_00207",
+            "mpPlanName": "MAG BASIC TOTAL LOSS ONLY",
+            "mpPlanNameLocal": "MAG BASIC TOTAL LOSS ONLY",
+            "productInfo": [
+                {
+                    "productCode": "R_00139",
+                    "productName": "MAG BASIC CAR",
+                    "productNameLocal": "MAG BASIC CAR",
+                    "planCode": "RP_00248",
+                    "rawPlanName": "MAG BASIC TOTAL LOSS ONLY",
+                    "rawPlanNameLocal": "MAG BASIC TOTAL LOSS ONLY",
+                    "policyDiscount": 0,
+                    "coverageInfo": [
+                        {
+                            "auditFlag": true,
+                            "coverageCode": "CM_00129",
+                            "coverageName": "TOTAL LOSS ONLY",
+                            "coverageNameLocal": "TOTAL LOSS ONLY",
+                            "insuredAmount": 610200000,
+                            "insuredPersonCount": 1,
+                            "dutyInfo": [
+                                {
+                                    "dutyCode": "D_00382",
+                                    "dutyName": "Total Loss Only",
+                                    "dutyNameLocal": "Total Loss Only",
+                                    "insuredAmount": 610200000,
+                                    "deductibleAmount": 0
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "riskGroupInfo": {
+            "vehicle": {
+                "carModifyPrice": 610200000,
+                "carValue": 610200000,
+                "hasModification": 0,
+                "hasModificationLabel": "",
+                "hasModificationLabelLocal": "",
+                "brandCode": "AUDI",
+                "carPrice": 610200000,
+                "brandCodeLabel": "AUDI",
+                "brandCodeLabelLocal": "AUDI",
+                "vehicleManufactureYear": "2025",
+                "vehicleManufactureYearLabel": "2025",
+                "vehicleManufactureYearLabelLocal": "2025",
+                "brandModelCode": "A3",
+                "brandModelCodeLabel": "A3",
+                "brandModelCodeLabelLocal": "A3",
+                "brandSeriesCode": "SPORTBACK 1.2 TFSI",
+                "brandSeriesCodeLabel": "SPORTBACK 1.2 TFSI",
+                "brandSeriesCodeLabelLocal": "SPORTBACK 1.2 TFSI",
+                "vehicleType": "SEDAN",
+                "vehicleTypeLabel": "SEDAN",
+                "vehicleTypeLabelLocal": "SEDAN",
+                "plateCode": "A",
+                "plateArea": "2",
+                "plateCodeLabel": "A",
+                "plateCodeLabelLocal": "A",
+                "vehicleUsage": 2,
+                "vehicleUsageLabel": "Personal/Office",
+                "vehicleUsageLabelLocal": "Pribadi/Dinas",
+                "plateNo": "tba",
+                "confirmVehicleValue": 1,
+                "confirmVehicleValueLabel": "",
+                "confirmVehicleValueLabelLocal": "",
+                "attachments": [
+                    {
+                        "confirmPhotoUsage": [
+                            1
+                        ],
+                        "confirmPhotoUsageLabel": "Personal information and vehicle photos will only be used for claim documentation and other purposes as outlined in our terms and conditions Please contact FUSE to update your information after submission.",
+                        "confirmPhotoUsageLabelLocal": "Informasi pribadi dan foto kendaraan hanya akan digunakan untuk dokumentasi klaim dan tujuan lain sebagaimana diuraikan dalam syarat dan ketentuan kami. Silakan hubungi FUSE untuk memperbarui informasi Anda setelah penyerahan.",
+                        "bstkPhoto": [
+                            "fuse-id-core-prod-rw_images/20251030/cd6b24d265c84c54a6b6a38d1b68eaf5.jpg"
+                        ],
+                        "attachmentMeta": [
+                            {
+                                "attachmentPath": "fuse-id-core-prod-rw_images/20251030/ff0807343a974229bd221075d90b3c3c.jpg",
+                                "attachmentFileType": "image",
+                                "metadata": {
+                                    "file": ""
+                                }
+                            }
+                        ],
+                        "ktpPhoto": [
+                            "fuse-id-core-prod-rw_images/20251030/ff0807343a974229bd221075d90b3c3c.jpg"
+                        ]
+                    },
+                    {
+                        "confirmPhotoUsage": [],
+                        "confirmPhotoUsageLabel": "",
+                        "confirmPhotoUsageLabelLocal": ""
+                    }
+                ],
+                "newCarFlag": 1,
+                "newCarFlagLabel": "New",
+                "newCarFlagLabelLocal": "Baru",
+                "insBranchLs": [],
+                "vehicleColor": "red",
+                "vehicleVinNo": "32ere23",
+                "vehicleEngineNo": "re32re"
+            }
+        },
+        "insuredInfo": [
+            {
+                "firstName": "testcar",
+                "lastName": "test",
+                "mobilePhone": "812326899",
+                "homeAddress": {
+                    "province": "1423416",
+                    "provinceName": "Bali",
+                    "provinceNameLocal": "Bali",
+                    "city": "1423451",
+                    "cityName": "Kab. Badung",
+                    "cityNameLocal": "Kab. Badung",
+                    "district": "1423962",
+                    "districtName": "Abiansemal",
+                    "districtNameLocal": "Abiansemal",
+                    "urban": "1431033",
+                    "urbanName": "Abiansemal",
+                    "urbanNameLocal": "Abiansemal"
+                },
+                "homeDetailAddress": "test@qq.com",
+                "email": "test@qq.com"
+            }
+        ],
+        "ownerPersonInfo": {
+            "homeAddress": {
+                "province": "1423416",
+                "provinceName": "Bali",
+                "provinceNameLocal": "Bali",
+                "city": "1423451",
+                "cityName": "Kab. Badung",
+                "cityNameLocal": "Kab. Badung",
+                "district": "1423962",
+                "districtName": "Abiansemal",
+                "districtNameLocal": "Abiansemal"
+            }
+        }
+    },
+    "mpCode": "M_00092",
+    "mpPlanCode": "MP_00207",
+    "isAdvancePremium": 0,
+    "partnerToCustomerDiscountAmountProducts": [
+        {
+            "productName": "MAG BASIC CAR",
+            "productNameLocal": "MAG BASIC CAR",
+            "productCode": "R_00139",
+            "planCode": "RP_00248",
+            "discountAmount": 0,
+            "discountFromPartnerSpecialBonusAmount": 0
+        }
+    ],
+    "tag": "web",
+    "couponUseInfo": []
+  },
+  "couponBody": {
+    "couponOrderQOList": [
+        {
+            "adminFee": 35000,
+            "auditFlag": true,
+            "discountFromPartnerSpecialBonusAmount": 0,
+            "filterRawProductCode": "R_00139",
+            "mainInsuranceCompanyCode": "6603001124",
+            "mainInsuranceCompanyName": "PT Asuransi Multi Artha Guna Tbk",
+            "mpCode": "M_00092",
+            "mpName": "MAG BASIC CAR",
+            "mpNameLocal": "MAG BASIC CAR",
+            "mpPlanCode": "MP_00207",
+            "mpPlanName": "MAG BASIC TOTAL LOSS ONLY",
+            "mpPlanNameLocal": "MAG BASIC TOTAL LOSS ONLY",
+            "productHeaderPicture": "fuse-id-core-prod-rw_images/20240926/bf981b29b8964a1a91f4fa9da2c1811d.jpg",
+            "productHeaderPictureLocal": "fuse-id-core-prod-rw_images/20240926/a43370357ded4c328d9b30399d3e67e5.jpg",
+            "productListPicture": "fuse-id-core-prod-rw_images/20240926/e443d93ae3db4659bc7d92903d3a74e4.jpg",
+            "productListPictureLocal": "fuse-id-core-prod-rw_images/20240926/7b6ad32b73eb46c69ef6d8e699bd1f13.jpg",
+            "productLs": [
+                {
+                    "adminFee": 35000,
+                    "commissionInfo": {
+                        "mulitCommissionType": 0,
+                        "partnerCommissionAmount": 736983,
+                        "partnerSpecialBonusAmount": 294794,
+                        "partnerSupportingFeeAmount": 0
+                    },
+                    "coverageLs": [
+                        {
+                            "auditFlag": true,
+                            "commissionInfo": {
+                                "mulitCommissionType": 0,
+                                "partnerCommissionAmount": 381375,
+                                "partnerCommissionRate": 0.25,
+                                "partnerMatchCommissionRule": [
+                                    "Rule:4650"
+                                ],
+                                "partnerSpecialBonusAmount": 152550,
+                                "partnerSpecialBonusRate": 0.1,
+                                "partnerSupportingFeeAmount": 0,
+                                "partnerSupportingFeeRate": 0,
+                                "partnerUplineReferralRate": 0,
+                                "pdBreakupFeeRate": 0,
+                                "pmBreakupFeeRate": 0,
+                                "uplineReferralsRate": {
+                                    "1": 0.1,
+                                    "2": 0.05,
+                                    "3": 0.025,
+                                    "4": 0.0125,
+                                    "5": 0.0063,
+                                    "6": 0
+                                }
+                            },
+                            "coverageCode": "CM_00129",
+                            "coverageName": "TOTAL LOSS ONLY",
+                            "coverageNameLocal": "TOTAL LOSS ONLY",
+                            "coverageRequired": 1,
+                            "declineReason": [],
+                            "declineReasonLocal": [],
+                            "discountAmount": 0,
+                            "discountRate": 0,
+                            "dutyLs": [
+                                {
+                                    "dutyCode": "D_00382",
+                                    "dutyName": "Total Loss Only",
+                                    "dutyNameLocal": "Total Loss Only",
+                                    "dutyStandardCode": "PB_300030",
+                                    "insuredAmount": 610200000,
+                                    "insuredType": 0,
+                                    "insuredUnit": 2,
+                                    "matchPremiumRule": [],
+                                    "netPremium": 0,
+                                    "premium": 0,
+                                    "stamp": 0,
+                                    "vatAmount": 0
+                                }
+                            ],
+                            "installmentNetPremium": 0,
+                            "installmentPremium": 0,
+                            "installmentVatAmount": 0,
+                            "insuredAmount": 610200000,
+                            "netPremium": 1525500,
+                            "originalNetPremium": 1525500,
+                            "premium": 1525500,
+                            "riskRate": 0.0025,
+                            "vatAmount": 0,
+                            "vatRate": 0
+                        }
+                    ],
+                    "declineReason": [],
+                    "declineReasonLocal": [],
+                    "discountCommissionFromPartnerWhiteList": false,
+                    "inspectionFlag": false,
+                    "inspectionReason": [],
+                    "inspectionReasonLocal": [],
+                    "leaderGroup": false,
+                    "matchPremiumRule": [
+                        "Rule:6324|null",
+                        "Rule:6324|null",
+                        "Rule:6324|null",
+                        "Rule:6324|null",
+                        "Rule:6324|null",
+                        "Rule:6324|null",
+                        "Rule:6324|null",
+                        "Rule:6324|null"
+                    ],
+                    "planCode": "RP_00248",
+                    "planName": "MAG BASIC TOTAL LOSS ONLY",
+                    "planNameLocal": "MAG BASIC TOTAL LOSS ONLY",
+                    "policyFee": 25000,
+                    "productCode": "R_00139",
+                    "productName": "MAG BASIC CAR",
+                    "productNameLocal": "MAG BASIC CAR",
+                    "quoteDimension": 4,
+                    "serviceFee": 0,
+                    "totalInstallmentNetPremium": 0,
+                    "totalInstallmentPremium": 0,
+                    "totalInstallmentVatAmount": 0,
+                    "totalNetPremium": 2947940,
+                    "totalNoCalculateCommissionPremium": 0,
+                    "totalOriginalNetPremium": 2947940,
+                    "totalPolicyDiscountAmount": 0,
+                    "totalPolicyDiscountRate": 0,
+                    "totalPremium": 2947940,
+                    "totalRiderNetPremium": 1422440,
+                    "totalRiderPremium": 1422440,
+                    "totalStamp": 10000,
+                    "totalVATAmount": 0
+                }
+            ],
+            "rebateAmount": 0,
+            "serviceFee": 0,
+            "totalNetPremium": 2947940,
+            "totalPolicyDiscountAmount": 0,
+            "totalPremium": 2947940,
+            "totalVATAmount": 0
+        }
+    ],
+    "renewalApplyId": "",
+    "bizSource": 2,
+    "rfqNo": "RFQ-1983709565529427971"
+},
+  "paymentBilling_manager_existsAssignee": "true",
+  "UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE": "true",
+  "UNDERWRITING_OFFLINE_EXISTSASSIGNEE": "true"
+}

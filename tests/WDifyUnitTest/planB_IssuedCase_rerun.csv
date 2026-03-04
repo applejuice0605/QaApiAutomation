@@ -1,0 +1,2 @@
+Question,Target Intent ID,Answer,Answer_json,need_clarification,explanation.clarification_need
+Saya lagi bosan nih,intent,intent_clarify,,False,
