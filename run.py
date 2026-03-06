@@ -72,6 +72,20 @@ def get_execution_path(module_name: str) -> Optional[Path]:
     return None
 
 
+def path_has_tests(path: Path) -> bool:
+    """检查目录下是否有至少一个 .robot 文件包含 *** Test Cases *** 或 *** Tasks ***。"""
+    if not path.is_dir():
+        return False
+    for f in path.rglob("*.robot"):
+        try:
+            text = f.read_text(encoding="utf-8", errors="ignore")
+            if "*** Test Cases ***" in text or "*** Tasks ***" in text:
+                return True
+        except OSError:
+            continue
+    return False
+
+
 def get_report_dir_name(module_name: Optional[str], report_type: str) -> str:
     """报告目录名：单模块为 {模块名}_{类型}_{时间戳}，全部为 all_{类型}_{时间戳}。"""
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -346,21 +360,26 @@ def main():
     else:
         module_names = available
 
-    # 解析执行路径
+    # 解析执行路径（仅包含含用例的目录，避免 Suite contains no tests 报错）
     execution_paths: list[Path] = []
+    run_module_names: list[str] = []
     for name in module_names:
         path = get_execution_path(name)
         if path is None:
             print(f"警告: 模块 '{name}' 对应路径不存在，跳过。", file=sys.stderr)
             continue
+        if not path_has_tests(path):
+            print(f"警告: 模块 '{name}' 下无 *** Test Cases *** / *** Tasks ***，跳过。", file=sys.stderr)
+            continue
         execution_paths.append(path)
+        run_module_names.append(name)
 
     if not execution_paths:
         print("错误: 没有可执行的路径。", file=sys.stderr)
         sys.exit(1)
 
-    # 报告目录名与路径
-    report_label = module_names[0] if len(module_names) == 1 else None
+    # 报告目录名与路径（用实际执行的模块名）
+    report_label = run_module_names[0] if len(run_module_names) == 1 else None
     report_dir_name = get_report_dir_name(report_label, report_type)
     output_dir = RESULTS_BASE / report_dir_name
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -368,7 +387,7 @@ def main():
     print("=" * 60)
     print("Robot Framework 执行")
     print("=" * 60)
-    print(f"模块: {', '.join(module_names)}")
+    print(f"模块: {', '.join(run_module_names)}")
     print(f"报告类型: {report_type}")
     print(f"输出目录: {output_dir}")
     print("=" * 60)
@@ -402,7 +421,7 @@ def main():
         status_emoji = "✅" if (exit_code == 0) else "❌"
         title = f"RF 测试报告 {status_emoji} {module_label} ({report_type})"
         content_blocks = [
-            [{"tag": "text", "text": f"模块 Module: {', '.join(module_names)}\n"}],
+            [{"tag": "text", "text": f"模块 Module: {', '.join(run_module_names)}\n"}],
             [{"tag": "text", "text": f"报告类型 Report Type: {report_type}\n"}],
         ]
         if stats:
