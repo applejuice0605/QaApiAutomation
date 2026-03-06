@@ -1,0 +1,6 @@
+# CI 用依赖：仅跑 RF 用例与 run.py 所需，不含 RIDE/wxPython（避免 Linux 无头环境构建失败）
+robotframework>=7.0
+robotframework-requests>=0.9.7
+robotframework-jsonlibrary>=0.5
+requests>=2.32.3
+python-dotenv>=1.2.1

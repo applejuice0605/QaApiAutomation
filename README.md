@@ -143,16 +143,16 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10.9'
-      - name: Install Poetry
-        run: pip install poetry
-      - name: Install dependencies
-        run: poetry install --no-interaction
+          python-version: '3.10'
+      - name: Install dependencies (CI)
+        run: pip install -r requirements-ci.txt
+      - name: Prepare results directory
+        run: mkdir -p results && touch results/.gitkeep
       - name: Run tests and notify Lark
         env:
           LARK_WEBHOOK: ${{ secrets.LARK_WEBHOOK }}
           LARK_REPORT_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
-        run: poetry run python run.py --module Login --rf
+        run: python run.py --module Login --rf
       - name: Upload report artifact
         uses: actions/upload-artifact@v4
         if: always()
@@ -160,12 +160,14 @@ jobs:
           name: test-results-${{ github.run_id }}
           path: results/
       - name: Output report URL for GitHub Pages
-        if: always() && hashFiles('results/*') != ''
+        if: always()
         run: |
-          REPORT_DIR=$(ls results/ 2>/dev/null | head -1)
+          REPORT_DIR=$(basename $(ls -d results/*/ 2>/dev/null | head -1) 2>/dev/null)
           if [ -n "$REPORT_DIR" ]; then
             echo "Report URL (available after deploy-report job):"
             echo "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/$REPORT_DIR/report.html"
+          else
+            echo "No report directory (run may have failed before generating report)."
           fi
 
   deploy-report:
