@@ -20,7 +20,8 @@ jobs:
         env:
           LARK_WEBHOOK: ${{ secrets.LARK_WEBHOOK }}
           LARK_REPORT_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
-        run: python run.py --module Login --rf
+        # run: python run.py --module Login --rf
+        run: python run.py --rf
       - name: Upload report artifact
         uses: actions/upload-artifact@v4
         if: always()
