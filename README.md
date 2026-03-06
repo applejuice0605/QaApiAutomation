@@ -143,14 +143,16 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.10'
+      - name: Install Poetry
+        run: pip install poetry
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: poetry install --no-interaction
       - name: Run tests and notify Lark
         env:
           LARK_WEBHOOK: ${{ secrets.LARK_WEBHOOK }}
           LARK_REPORT_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
-        run: python run.py --module Login --rf
+        run: poetry run python run.py --module Login --rf
       - name: Upload report artifact
         uses: actions/upload-artifact@v4
         if: always()
