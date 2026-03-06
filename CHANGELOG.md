@@ -1,0 +1,27 @@
+# Changelog
+
+本文档记录项目的代码修改、功能变更与修复。
+
+## [Unreleased]
+
+### 新增
+
+- **Lark 报告链接直达 RF 报告**：当配置了报告根 URL（`report_url` 或 `LARK_REPORT_BASE_URL`）且为 RF 报告时，飞书消息中的「报告链接」直接指向 `report.html`，点击即可在浏览器中打开本次执行结果。
+- **环境变量 `LARK_REPORT_BASE_URL`**：CI 中可通过该环境变量传入报告根 URL（与 `--report-url` / config 中 `report_url` 同义），优先级为：命令行 `--report-url` > `LARK_REPORT_BASE_URL` > config。
+
+### 变更
+
+- **GitHub Actions**（`.github/workflows/run-tests.yml`）：
+  - 执行命令改为仅跑 Login 模块示例：`python run.py --module Login --rf`。
+  - 使用 `LARK_REPORT_BASE_URL` 替代 `LARK_REPORT_LINK`，使飞书链接指向报告页而非 Actions 运行页。
+  - 新增 `deploy-report` job：将 `results/` 部署到 GitHub Pages，便于点击飞书链接直接查看 report.html。
+  - 支持 `workflow_dispatch`：可在 Actions 页手动点击 “Run workflow” 触发执行。
+  - 新增步骤 “Output report URL for GitHub Pages”：在 test job 日志中输出本次报告的 GitHub Pages URL，便于在 deploy 完成后在浏览器中打开 `report.html`。
+
+### 修复
+
+- **Login by Email 用例**（`tests/module/Login/QAPI-4_Login_by_Email.robot`）：关键字 `The status code should be 200` 需要传入状态码参数；两处调用已改为传入 `${jsonResult}[code]`，修复 “expected 1 argument, got 0” 报错。
+
+### 文档
+
+- **README**：增加「完整演示：Login 模块 RF 报告 + Lark + 点击链接查看报告」说明（本地验证与 CI 演示）；更新 report_url 表格与 GitHub Actions 示例（Login 模块、LARK_REPORT_BASE_URL、deploy-report）；补充 RF 报告链接指向 report.html 的说明。

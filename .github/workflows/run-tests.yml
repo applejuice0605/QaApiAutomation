@@ -2,6 +2,7 @@
 on:
   push:
     branches: [main]
+  workflow_dispatch:   # 支持在 Actions 页手动点击 “Run workflow” 执行
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -16,11 +17,37 @@ jobs:
       - name: Run tests and notify Lark
         env:
           LARK_WEBHOOK: ${{ secrets.LARK_WEBHOOK }}
-          LARK_REPORT_LINK: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: python run.py --rf
+          LARK_REPORT_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+        run: python run.py --module Login --rf
       - name: Upload report artifact
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: test-results-${{ github.run_id }}
           path: results/
+      - name: Output report URL for GitHub Pages
+        if: always() && hashFiles('results/*') != ''
+        run: |
+          REPORT_DIR=$(ls results/ 2>/dev/null | head -1)
+          if [ -n "$REPORT_DIR" ]; then
+            echo "Report URL (available after deploy-report job):"
+            echo "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/$REPORT_DIR/report.html"
+          fi
+
+  deploy-report:
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: always() && (needs.test.result == 'success' || needs.test.result == 'failure')
+    steps:
+      - name: Download report artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: test-results-${{ github.run_id }}
+      - name: Deploy report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          force_orphan: true

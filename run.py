@@ -377,9 +377,19 @@ def main():
         if report_link_override:
             report_link = report_link_override
         else:
-            report_url = args.report_url or report_url_from_config
+            # 报告根 URL：命令行 > 环境变量 LARK_REPORT_BASE_URL > config
+            report_url = (
+                args.report_url
+                or os.environ.get("LARK_REPORT_BASE_URL")
+                or report_url_from_config
+            )
             if report_url:
                 report_link = (report_url.rstrip("/") + "/" + report_dir_name).strip("/")
+                # RF 报告且为 http(s) 链接时，直接指向 report.html 便于点击即看
+                if report_type == "rf" and (
+                    report_link.startswith("http://") or report_link.startswith("https://")
+                ):
+                    report_link = report_link + "/report.html"
             else:
                 report_link = str(output_dir.resolve())
         if send_lark_webhook(lark_webhook, title, content_blocks, report_link):

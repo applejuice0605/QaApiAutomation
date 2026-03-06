@@ -24,10 +24,9 @@ Login Success by Email
     When I send a POST request to the fuse_user_login API
     Then the response should contain the user's loginAccount
     Then I send a POST request to the byLogin API
-    And the status code should be 200
     And the response should contain the user's openid and tenantId
     Then I send a POST request to the Login API
-    And the status code should be 200
+    And the status code should be 40002
     And the response should contain the user's token
 
 

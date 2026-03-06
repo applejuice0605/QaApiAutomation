@@ -110,23 +110,31 @@ python run.py --allure
 - **正文**：模块列表、报告类型、退出码、通过/失败/跳过数量（从 output.xml 解析）
 - **报告链接**：可点击的 URL，用于在飞书中打开本次报告。来源见下文「report_url / 报告链接」说明。
 
-**Webhook 配置方式**：在飞书群聊 → 设置 → 群机器人 → 添加自定义机器人 → 复制 webhook 地址。可通过以下任一方式传入（优先级从高到低）：命令行 `--lark-webhook "复制的URL"`、环境变量 `LARK_WEBHOOK`、本地配置文件 `config/lark_config.json`（该文件已加入 .gitignore，不会提交到仓库）。使用配置文件时，可将 `config/lark_config.example.json` 复制为 `config/lark_config.json` 并填入 `webhook_url` 和可选的 `report_url`。若机器人开启了「签名」或「关键词」校验，需在机器人设置里配置一致。
+**Webhook 配置方式**：在飞书群聊 → 设置 → 群机器人 → 添加自定义机器人 → 复制 webhook 地址。可通过以下任一方式传入（优先级从高到低）：命令行 `--lark-webhook "复制的URL"`、环境变量 `LARK_WEBHOOK`、本地配置文件 `config/lark_config.json`（该文件已加入 .gitignore，不会提交到仓库）。使用配置文件时，可将 `config/lark_config.example.json` 复制为 `config/lark_config.json` 并填入 `webhook_url` 和可选的 `report_url`。报告根 URL 也可通过环境变量 `LARK_REPORT_BASE_URL` 传入（CI 中常用）。若机器人开启了「签名」或「关键词」校验，需在机器人设置里配置一致。
 
 **report_url / 报告链接（如何填写）**：
 
 | 场景 | 建议 |
 |------|------|
 | **仅本机跑** | 留空即可，飞书消息里会显示本机报告目录路径。 |
-| **报告部署在固定前缀的 URL** | 填「报告根地址」。脚本会把本次报告目录名拼在后面，例如 `report_url` 填 `https://your-domain.com/artifacts`，链接即为 `https://your-domain.com/artifacts/Login_rf_2026-02-28_12-00-00`。适用于自建静态站、对象存储前缀等。 |
-| **GitHub Actions（上传 artifact）** | 不填 `report_url`。在 workflow 里上传 `results` 为 artifact，并设置环境变量 `LARK_REPORT_LINK` 为本次运行的 URL，飞书中的链接会直接指向该次 Actions 运行页，便于下载制品、查看日志。示例见下。 |
+| **报告部署在固定前缀的 URL** | 填「报告根地址」。脚本会把本次报告目录名拼在后面；RF 报告时链接会指向 `report.html`，例如 `report_url` 填 `https://your-domain.com/artifacts`，链接即为 `https://your-domain.com/artifacts/Login_rf_2026-02-28_12-00-00/report.html`。适用于自建静态站、对象存储前缀等。 |
+| **GitHub Actions（部署到 Pages，点击即看报告）** | 在 workflow 中设置环境变量 `LARK_REPORT_BASE_URL` 为 GitHub Pages 根 URL（如 `https://<owner>.github.io/<repo>/`），并将 `results/` 部署到 Pages；飞书中的链接会直接打开本次的 RF `report.html`。示例见下。 |
+| **GitHub Actions（仅上传 artifact）** | 不填 `report_url`。设置环境变量 `LARK_REPORT_LINK` 为本次 Actions 运行页 URL，飞书中的链接指向该页，便于下载制品、查看日志。 |
 
-**GitHub Actions 示例**（推送摘要 + 报告链接指向本次运行页）：
+**完整演示：Login 模块 RF 报告 + Lark + 点击链接查看报告**
+
+- **本地快速验证**：执行 `python run.py --module Login --rf --lark-webhook <webhook>`（或使用 `config/lark_config.json` 配置 webhook）。执行后会推送摘要到飞书，此时报告链接为本机路径，仅本机可打开；若需本地「点击即看」，可对 `results/<报告目录>` 起 HTTP 服务并配合 `--report-url` 或 tunnel 工具。
+- **CI 演示（推荐）**：push 到 `main` 后，workflow 会执行 Login 模块、生成 RF 报告、推送到 Lark，并将 `results/` 部署到 GitHub Pages；飞书中的「报告链接」会指向本次的 `report.html`，点击即可在浏览器中查看。需在仓库 **Settings → Pages** 中启用 GitHub Pages（发布自 gh-pages 分支或 GitHub Actions）。
+- **手动执行并查看报告**：workflow 已支持 `workflow_dispatch`。在 GitHub 仓库 **Actions** 页选择 “Run tests”，点击 **Run workflow** 即可手动触发。执行完成后：(1) 飞书会收到消息，其中的链接即本次报告的 `report.html`；(2) 在本次运行的 **test** job 日志里，“Output report URL for GitHub Pages” 步骤会打印报告 URL（形如 `https://<owner>.github.io/<repo>/Login_rf_<时间戳>/report.html`）。等 **deploy-report** job 完成后，用该 URL 即可在浏览器中打开本次 RF 报告。
+
+**GitHub Actions 示例**（Login 模块 + 推送 Lark + 报告部署到 Pages，链接直达 report.html）：
 
 ```yaml
 # .github/workflows/run-tests.yml
 on:
   push:
     branches: [main]
+  workflow_dispatch:   # 支持在 Actions 页手动点击 “Run workflow” 执行
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -141,17 +149,43 @@ jobs:
       - name: Run tests and notify Lark
         env:
           LARK_WEBHOOK: ${{ secrets.LARK_WEBHOOK }}
-          LARK_REPORT_LINK: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: python run.py --rf
+          LARK_REPORT_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+        run: python run.py --module Login --rf
       - name: Upload report artifact
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: test-results-${{ github.run_id }}
           path: results/
+      - name: Output report URL for GitHub Pages
+        if: always() && hashFiles('results/*') != ''
+        run: |
+          REPORT_DIR=$(ls results/ 2>/dev/null | head -1)
+          if [ -n "$REPORT_DIR" ]; then
+            echo "Report URL (available after deploy-report job):"
+            echo "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/$REPORT_DIR/report.html"
+          fi
+
+  deploy-report:
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: always() && (needs.test.result == 'success' || needs.test.result == 'failure')
+    steps:
+      - name: Download report artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: test-results-${{ github.run_id }}
+      - name: Deploy report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          force_orphan: true
 ```
 
-在仓库 Settings → Secrets 中配置 `LARK_WEBHOOK` 为飞书机器人 webhook 地址；运行后飞书消息里的「报告链接」会指向本次 Actions 运行页，可在该页下载 `test-results-xxx` 制品查看报告。
+在仓库 Settings → Secrets 中配置 `LARK_WEBHOOK` 为飞书机器人 webhook 地址；在 Settings → Pages 中启用 GitHub Pages。运行后飞书消息里的「报告链接」会指向本次的 RF 报告页（report.html），点击即可在浏览器中查看。
 
 
 # 生成测试报告
