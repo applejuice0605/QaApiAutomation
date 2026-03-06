@@ -184,6 +184,44 @@ def parse_robot_output_stats(output_xml_path: Path) -> Optional[dict]:
     return None
 
 
+def parse_robot_failure_messages(output_xml_path: Path) -> list[str]:
+    """从 Robot output.xml 解析失败用例的错误消息。返回错误消息列表。"""
+    if not output_xml_path.is_file():
+        return []
+    try:
+        tree = ET.parse(output_xml_path)
+        root = tree.getroot()
+        failures = []
+        # 查找所有失败用例 <test status="FAIL">
+        for test in root.findall(".//test"):
+            status_elem = test.find("./status")
+            if status_elem is not None and status_elem.get("status") == "FAIL":
+                test_name = test.get("name", "Unknown Test")
+                # 获取失败消息，优先获取 <kw> 下 <status> 的消息
+                failure_msg = ""
+                for kw in test.findall(".//kw"):
+                    kw_status = kw.find("./status")
+                    if kw_status is not None and kw_status.get("status") == "FAIL":
+                        msg = kw_status.text
+                        if msg:
+                            failure_msg = msg.strip()
+                            break
+                # 如果没有找到 kw 级别的失败消息，使用 test 级别的消息
+                if not failure_msg and status_elem.text:
+                    failure_msg = status_elem.text.strip()
+                if failure_msg:
+                    # 限制单条消息长度，避免过长
+                    if len(failure_msg) > 300:
+                        failure_msg = failure_msg[:297] + "..."
+                    failures.append(f"{test_name}: {failure_msg}")
+                else:
+                    failures.append(f"{test_name}: 失败原因未知")
+        return failures
+    except Exception:
+        pass
+    return []
+
+
 def send_lark_webhook(webhook_url: str, title: str, content_blocks: list[list[dict]], report_link: str) -> bool:
     """通过飞书/Lark 机器人 webhook 发送富文本消息。content_blocks 为 post.zh_cn.content 的段落列表。"""
     content = content_blocks + [[{"tag": "text", "text": "报告链接: "}, {"tag": "a", "text": report_link, "href": report_link}]]
@@ -364,14 +402,24 @@ def main():
         status_emoji = "✅" if (exit_code == 0) else "❌"
         title = f"RF 测试报告 {status_emoji} {module_label} ({report_type})"
         content_blocks = [
-            [{"tag": "text", "text": f"模块: {', '.join(module_names)}\n"}],
-            [{"tag": "text", "text": f"报告类型: {report_type}\n"}],
-            [{"tag": "text", "text": f"退出码: {exit_code}\n"}],
+            [{"tag": "text", "text": f"模块 Module: {', '.join(module_names)}\n"}],
+            [{"tag": "text", "text": f"报告类型 Report Type: {report_type}\n"}],
         ]
         if stats:
             content_blocks.append([
-                {"tag": "text", "text": f"通过: {stats['pass']} | 失败: {stats['fail']} | 跳过: {stats['skip']}\n"},
+                {"tag": "text", "text": f"通过 Pass: {stats['pass']} | 失败 Fail: {stats['fail']} | 跳过 Skip: {stats['skip']}\n"},
             ])
+        # 添加失败原因（如果有）
+        failure_messages = parse_robot_failure_messages(output_xml)
+        if failure_messages:
+            # 最多显示3条，超过3条则折叠显示
+            max_display = 3
+            content_blocks.append([{"tag": "text", "text": "\n失败原因 Failure Reasons:\n"}])
+            for i, msg in enumerate(failure_messages[:max_display]):
+                content_blocks.append([{"tag": "text", "text": f"  {i + 1}. {msg}\n"}])
+            if len(failure_messages) > max_display:
+                remaining = len(failure_messages) - max_display
+                content_blocks.append([{"tag": "text", "text": f"  ... 还有 {remaining} 个错误，点击报告链接查看详情\n"}])
         # 报告链接：优先完整链接（如 CI 中 LARK_REPORT_LINK），否则用 base URL + 报告目录名，否则用本地路径
         report_link_override = os.environ.get("LARK_REPORT_LINK")
         if report_link_override:

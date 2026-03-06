@@ -181,15 +181,25 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: test-results-${{ github.run_id }}
+      - name: List files to deploy
+        run: find . -type f | head -50
       - name: Deploy report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
+          publish_branch: gh-pages
           force_orphan: true
 ```
 
-在仓库 Settings → Secrets 中配置 `LARK_WEBHOOK` 为飞书机器人 webhook 地址；在 Settings → Pages 中启用 GitHub Pages。运行后飞书消息里的「报告链接」会指向本次的 RF 报告页（report.html），点击即可在浏览器中查看。
+在仓库 Settings → Secrets 中配置 `LARK_WEBHOOK` 为飞书机器人 webhook 地址。运行后飞书消息里的「报告链接」会指向本次的 RF 报告页（report.html），点击即可在浏览器中查看。
+
+**若报告链接打开为 404**：workflow 会把报告发布到 **gh-pages** 分支。请在仓库 **Settings → Pages** 中：
+1. **Source** 选择 **Deploy from a branch**；
+2. **Branch** 选择 **gh-pages**，目录选 **/ (root)**；
+3. 保存后等待 1–2 分钟让 Pages 构建完成，再访问报告链接。
+
+若此前从未部署过，首次运行 deploy-report 后才会出现 gh-pages 分支，再按上述设置即可。
 
 
 # 生成测试报告
