@@ -6,6 +6,8 @@
 
 ### 新增
 
+- **单文件执行 `--file`**：`run.py` 支持指定单个 `.robot` 文件执行（与 `--module` 二选一），报告目录名使用文件名（stem），可与 `--include`/`--exclude`、Lark 推送等组合使用。
+- **Tag 过滤 `--include` / `--exclude`**：`run.py` 支持按 Robot Framework tag 过滤用例。`--include TAG [TAG ...]` 只运行包含指定 tag 的用例，`--exclude TAG [TAG ...]` 排除指定 tag；可与 `--module` 或 `--file` 组合使用。
 - **Lark 消息增加执行时长**：推送到飞书的消息中增加「执行时长 Duration」字段，格式为 `Xm Ys` 或 `Zs`。
 - **Lark 消息改为卡片形式**：飞书推送由富文本 post 改为交互卡片（interactive card），支持 lark_md 富文本（加粗、斜体等），并保留「报告链接」按钮。
 - **Lark 报告链接直达 RF 报告**：当配置了报告根 URL（`report_url` 或 `LARK_REPORT_BASE_URL`）且为 RF 报告时，飞书消息中的「报告链接」直接指向 `report.html`，点击即可在浏览器中打开本次执行结果。

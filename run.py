@@ -93,7 +93,13 @@ def get_report_dir_name(module_name: Optional[str], report_type: str) -> str:
     return f"{label}_{report_type}_{timestamp}"
 
 
-def build_robot_cmd(execution_paths: list[Path], output_dir: Path, use_allure: bool) -> tuple[list[str], Path]:
+def build_robot_cmd(
+    execution_paths: list[Path],
+    output_dir: Path,
+    use_allure: bool,
+    include_tags: Optional[list[str]] = None,
+    exclude_tags: Optional[list[str]] = None,
+) -> tuple[list[str], Path]:
     """构建 robot 命令（列表形式，避免 shell=True）。返回 (cmd, robot_output_dir)。"""
     if use_allure:
         robot_output_dir = Path(tempfile.mkdtemp(prefix="rf_"))
@@ -107,6 +113,10 @@ def build_robot_cmd(execution_paths: list[Path], output_dir: Path, use_allure: b
         "--log", "log.html",
         "--report", "report.html",
     ]
+    for tag in (include_tags or []):
+        cmd.extend(["--include", tag])
+    for tag in (exclude_tags or []):
+        cmd.extend(["--exclude", tag])
     if use_allure:
         allure_results = output_dir / "allure-results"
         allure_results.mkdir(parents=True, exist_ok=True)
@@ -334,7 +344,13 @@ def main():
     parser.add_argument(
         "--module",
         metavar="NAME",
-        help="指定模块名（resources/api 下目录名），不传则执行全部模块",
+        help="指定模块名（resources/api 下目录名），不传则执行全部模块；与 --file 二选一",
+    )
+    parser.add_argument(
+        "--file",
+        metavar="PATH",
+        default=None,
+        help="指定单个 .robot 文件执行（与 --module 二选一，传文件路径）",
     )
     report_group = parser.add_mutually_exclusive_group()
     report_group.add_argument(
@@ -359,6 +375,20 @@ def main():
         default=None,
         help="报告访问地址前缀（如 https://ci.example.com/artifacts/），与目录名拼接后作为 Lark 消息中的报告链接；不填则发本地路径",
     )
+    parser.add_argument(
+        "--include",
+        metavar="TAG",
+        nargs="*",
+        default=None,
+        help="只运行包含指定 tag 的用例，可传多个（如 --include smoke login）",
+    )
+    parser.add_argument(
+        "--exclude",
+        metavar="TAG",
+        nargs="*",
+        default=None,
+        help="排除指定 tag 的用例，可传多个（如 --exclude wip skip）",
+    )
     args = parser.parse_args()
 
     # 报告类型：默认 RF
@@ -373,37 +403,53 @@ def main():
     )
     report_url_from_config = (lark_config or {}).get("report_url") or ""
 
-    # 模块列表
-    available = get_available_modules()
-    if not available:
-        print("错误: resources/api 下未找到任何模块。", file=sys.stderr)
-        sys.exit(1)
-
-    if args.module:
-        if args.module not in available:
-            print(f"错误: 未知模块 '{args.module}'。可选: {', '.join(available)}", file=sys.stderr)
-            sys.exit(1)
-        module_names = [args.module]
-    else:
-        module_names = available
-
-    # 解析执行路径（仅包含含用例的目录，避免 Suite contains no tests 报错）
     execution_paths: list[Path] = []
     run_module_names: list[str] = []
-    for name in module_names:
-        path = get_execution_path(name)
-        if path is None:
-            print(f"警告: 模块 '{name}' 对应路径不存在，跳过。", file=sys.stderr)
-            continue
-        if not path_has_tests(path):
-            print(f"警告: 模块 '{name}' 下无 *** Test Cases *** / *** Tasks ***，跳过。", file=sys.stderr)
-            continue
-        execution_paths.append(path)
-        run_module_names.append(name)
 
-    if not execution_paths:
-        print("错误: 没有可执行的路径。", file=sys.stderr)
-        sys.exit(1)
+    if args.file:
+        # 单文件模式：--file 与 --module 二选一
+        if args.module:
+            print("错误: --file 与 --module 不能同时使用，请二选一。", file=sys.stderr)
+            sys.exit(1)
+        path = Path(args.file)
+        if not path.is_absolute():
+            path = (Path.cwd() / path).resolve()
+        else:
+            path = path.resolve()
+        if not path.is_file():
+            print(f"错误: 文件不存在: {path}", file=sys.stderr)
+            sys.exit(1)
+        if path.suffix.lower() != ".robot":
+            print(f"错误: 请指定 .robot 文件，当前: {path}", file=sys.stderr)
+            sys.exit(1)
+        execution_paths = [path]
+        run_module_names = [path.stem]
+    else:
+        # 模块模式
+        available = get_available_modules()
+        if not available:
+            print("错误: resources/api 下未找到任何模块。", file=sys.stderr)
+            sys.exit(1)
+        if args.module:
+            if args.module not in available:
+                print(f"错误: 未知模块 '{args.module}'。可选: {', '.join(available)}", file=sys.stderr)
+                sys.exit(1)
+            module_names = [args.module]
+        else:
+            module_names = available
+        for name in module_names:
+            path = get_execution_path(name)
+            if path is None:
+                print(f"警告: 模块 '{name}' 对应路径不存在，跳过。", file=sys.stderr)
+                continue
+            if not path_has_tests(path):
+                print(f"警告: 模块 '{name}' 下无 *** Test Cases *** / *** Tasks ***，跳过。", file=sys.stderr)
+                continue
+            execution_paths.append(path)
+            run_module_names.append(name)
+        if not execution_paths:
+            print("错误: 没有可执行的路径。", file=sys.stderr)
+            sys.exit(1)
 
     # 报告目录名与路径（用实际执行的模块名）
     report_label = run_module_names[0] if len(run_module_names) == 1 else None
@@ -411,15 +457,29 @@ def main():
     output_dir = RESULTS_BASE / report_dir_name
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    include_list = args.include if args.include is not None else []
+    exclude_list = args.exclude if args.exclude is not None else []
+
     print("=" * 60)
     print("Robot Framework 执行")
     print("=" * 60)
-    print(f"模块: {', '.join(run_module_names)}")
+    if args.file:
+        print(f"文件: {run_module_names[0]}")
+    else:
+        print(f"模块: {', '.join(run_module_names)}")
     print(f"报告类型: {report_type}")
+    if include_list:
+        print(f"Tag 过滤 --include: {', '.join(include_list)}")
+    if exclude_list:
+        print(f"Tag 过滤 --exclude: {', '.join(exclude_list)}")
     print(f"输出目录: {output_dir}")
     print("=" * 60)
 
-    cmd, robot_output_dir = build_robot_cmd(execution_paths, output_dir, use_allure)
+    cmd, robot_output_dir = build_robot_cmd(
+        execution_paths, output_dir, use_allure,
+        include_tags=include_list if include_list else None,
+        exclude_tags=exclude_list if exclude_list else None,
+    )
     print(f"执行: {' '.join(cmd)}")
     print("-" * 60)
 
