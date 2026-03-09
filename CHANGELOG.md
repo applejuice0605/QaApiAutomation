@@ -6,6 +6,8 @@
 
 ### 新增
 
+- **Lark 消息增加执行时长**：推送到飞书的消息中增加「执行时长 Duration」字段，格式为 `Xm Ys` 或 `Zs`。
+- **Lark 消息改为卡片形式**：飞书推送由富文本 post 改为交互卡片（interactive card），支持 lark_md 富文本（加粗、斜体等），并保留「报告链接」按钮。
 - **Lark 报告链接直达 RF 报告**：当配置了报告根 URL（`report_url` 或 `LARK_REPORT_BASE_URL`）且为 RF 报告时，飞书消息中的「报告链接」直接指向 `report.html`，点击即可在浏览器中打开本次执行结果。
 - **环境变量 `LARK_REPORT_BASE_URL`**：CI 中可通过该环境变量传入报告根 URL（与 `--report-url` / config 中 `report_url` 同义），优先级为：命令行 `--report-url` > `LARK_REPORT_BASE_URL` > config。
 

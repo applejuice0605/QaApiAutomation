@@ -236,20 +236,47 @@ def parse_robot_failure_messages(output_xml_path: Path) -> list[str]:
     return []
 
 
-def send_lark_webhook(webhook_url: str, title: str, content_blocks: list[list[dict]], report_link: str) -> bool:
-    """通过飞书/Lark 机器人 webhook 发送富文本消息。content_blocks 为 post.zh_cn.content 的段落列表。"""
-    content = content_blocks + [[{"tag": "text", "text": "报告链接: "}, {"tag": "a", "text": report_link, "href": report_link}]]
-    payload = {
-        "msg_type": "post",
-        "content": {
-            "post": {
-                "zh_cn": {
-                    "title": title,
-                    "content": content,
-                }
-            }
+def _format_duration(seconds: float) -> str:
+    """将秒数格式化为可读时长，如 1m 23s 或 45s。"""
+    if seconds < 0:
+        return "0s"
+    s = int(round(seconds))
+    if s >= 60:
+        m, s = divmod(s, 60)
+        return f"{m}m {s}s"
+    return f"{s}s"
+
+
+def send_lark_card(
+    webhook_url: str,
+    title: str,
+    body_md: str,
+    report_link: str,
+    template: str = "green",
+) -> bool:
+    """通过飞书/Lark 机器人 webhook 发送交互卡片消息。body_md 为 lark_md 格式正文。"""
+    card = {
+        "config": {"wide_screen_mode": True, "enable_forward": True},
+        "header": {
+            "title": {"tag": "plain_text", "content": title},
+            "template": "green" if template == "green" else "red",
         },
+        "elements": [
+            {"tag": "div", "text": {"tag": "lark_md", "content": body_md}},
+            {
+                "tag": "action",
+                "actions": [
+                    {
+                        "tag": "button",
+                        "text": {"tag": "plain_text", "content": "报告链接 Report link"},
+                        "url": report_link,
+                        "type": "primary",
+                    }
+                ],
+            },
+        ],
     }
+    payload = {"msg_type": "interactive", "card": card}
     try:
         data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
         req = Request(webhook_url, data=data, headers={"Content-Type": "application/json"}, method="POST")
@@ -396,7 +423,9 @@ def main():
     print(f"执行: {' '.join(cmd)}")
     print("-" * 60)
 
+    start_time = time.perf_counter()
     exit_code = run_robot(cmd)
+    elapsed_seconds = time.perf_counter() - start_time
 
     if use_allure and exit_code is not None:
         allure_results = output_dir / "allure-results"
@@ -413,38 +442,37 @@ def main():
         print(f"  - log.html, report.html, output.xml")
     print("=" * 60)
 
-    # 飞书/Lark webhook 推送报告摘要与链接
+    # 飞书/Lark webhook 推送报告摘要与链接（卡片形式，含执行时长）
     if lark_webhook:
         output_xml = robot_output_dir / "output.xml"
         stats = parse_robot_output_stats(output_xml)
         module_label = report_label or "all"
         status_emoji = "✅" if (exit_code == 0) else "❌"
         title = f"RF 测试报告 {status_emoji} {module_label} ({report_type})"
-        content_blocks = [
-            [{"tag": "text", "text": f"模块 Module: {', '.join(run_module_names)}\n"}],
-            [{"tag": "text", "text": f"报告类型 Report Type: {report_type}\n"}],
+        duration_str = _format_duration(elapsed_seconds)
+        lines = [
+            f"**模块 Module**：{', '.join(run_module_names)}",
+            f"**报告类型 Report Type**：{report_type}",
+            f"**执行时长 Duration**：{duration_str}",
         ]
         if stats:
-            content_blocks.append([
-                {"tag": "text", "text": f"通过 Pass: {stats['pass']} | 失败 Fail: {stats['fail']} | 跳过 Skip: {stats['skip']}\n"},
-            ])
-        # 添加失败原因（如果有）
+            lines.append(
+                f"**通过 Pass**：{stats['pass']} | **失败 Fail**：{stats['fail']} | **跳过 Skip**：{stats['skip']}"
+            )
         failure_messages = parse_robot_failure_messages(output_xml)
         if failure_messages:
-            # 最多显示3条，超过3条则折叠显示
+            lines.append("\n**失败原因 Failure Reasons**：")
             max_display = 3
-            content_blocks.append([{"tag": "text", "text": "\n失败原因 Failure Reasons:\n"}])
             for i, msg in enumerate(failure_messages[:max_display]):
-                content_blocks.append([{"tag": "text", "text": f"  {i + 1}. {msg}\n"}])
+                lines.append(f"{i + 1}. {msg}")
             if len(failure_messages) > max_display:
                 remaining = len(failure_messages) - max_display
-                content_blocks.append([{"tag": "text", "text": f"  ... 还有 {remaining} 个错误，点击报告链接查看详情\n"}])
-        # 报告链接：优先完整链接（如 CI 中 LARK_REPORT_LINK），否则用 base URL + 报告目录名，否则用本地路径
+                lines.append(f"_… 还有 {remaining} 个错误，详见报告链接_")
+        body_md = "\n".join(lines)
         report_link_override = os.environ.get("LARK_REPORT_LINK")
         if report_link_override:
             report_link = report_link_override
         else:
-            # 报告根 URL：命令行 > 环境变量 LARK_REPORT_BASE_URL > config
             report_url = (
                 args.report_url
                 or os.environ.get("LARK_REPORT_BASE_URL")
@@ -452,14 +480,14 @@ def main():
             )
             if report_url:
                 report_link = (report_url.rstrip("/") + "/" + report_dir_name).strip("/")
-                # RF 报告且为 http(s) 链接时，直接指向 report.html 便于点击即看
                 if report_type == "rf" and (
                     report_link.startswith("http://") or report_link.startswith("https://")
                 ):
                     report_link = report_link + "/report.html"
             else:
                 report_link = str(output_dir.resolve())
-        if send_lark_webhook(lark_webhook, title, content_blocks, report_link):
+        template = "green" if (exit_code == 0) else "red"
+        if send_lark_card(lark_webhook, title, body_md, report_link, template):
             print("已推送报告摘要至 Lark。")
         else:
             print("Lark 推送失败，请检查 webhook 或网络。", file=sys.stderr)

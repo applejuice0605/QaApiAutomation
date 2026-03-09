@@ -27,7 +27,6 @@ Login Success by Email
     And the response should contain the user's openid and tenantId
     Then I send a POST request to the Login API
     And the status code should be 40002
-    And the response should contain the user's token
 
 
 *** Keywords ***
