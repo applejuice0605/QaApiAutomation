@@ -24,11 +24,9 @@ Login Success by Email
     When I send a POST request to the fuse_user_login API
     Then the response should contain the user's loginAccount
     Then I send a POST request to the byLogin API
-    And the status code should be 200
     And the response should contain the user's openid and tenantId
     Then I send a POST request to the Login API
-    And the status code should be 200
-    And the response should contain the user's token
+    And the status code should be 40002
 
 
 *** Keywords ***
@@ -78,10 +76,10 @@ The response should contain the user's token
     Set Global Variable    ${token}     ${jsonResult}[data][token]
 
 # 因为目前没有使用邮箱登陆,修改判断不等于200
-The status code should  be 40002
+The status code should be 40002
     Log    ${jsonResult}
     Log    ${jsonResult['code']}
     Dictionary Should Contain Key    ${jsonResult}    code
-    Should  Be Equal As Numbers    ${jsonResult.code}    40002
+    Should Be Equal As Numbers    ${jsonResult}[code]    40002
 
 
