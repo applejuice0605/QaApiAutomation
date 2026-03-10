@@ -14,7 +14,7 @@ ${CheckAccamount}=  8123268989
 
 *** Test Cases ***
 trigger withdrawal bonus 10000000 success
-    [Tags]    uat
+    [Tags]    notUsed
     Given Have logined fusepro and boss
     Then Input Withdrawal Amount More Than 20000000 And Send Withdrawal Application
     Then Confirm Manual Process And Get ManualId

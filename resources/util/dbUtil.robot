@@ -8,8 +8,8 @@ Resource    utilCommon.robot
 Variables   ../varfile_defvar.py
 
 *** Variables ***
-${csrftoken}    K5gpH4VFgaQ8W5VShL5Gz3Fo6y6sFeCGT9ILJWpKTkGPjMvk3GdDfVpMWkc02MoE
-${sessionid}    hlw19wveu70dr5obyqokt22ph8inx2wi
+${csrftoken}    0k7WMtSXaVm8hPOMiM6o9RVK9fdX95XvWXbQ7ZtMHfD6KhwVWOBaDuUrjY8gtFLL
+${sessionid}    8ez1ncsfcul41oly0r42nc5htjxb4frw
 
 
 
