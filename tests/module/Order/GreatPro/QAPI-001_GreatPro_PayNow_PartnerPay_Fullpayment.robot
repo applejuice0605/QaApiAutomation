@@ -30,6 +30,7 @@ ${paymentMethod}    VA
 *** Test Cases ***
 GreatPro_PayNow_PartnerPay_Fullpayment
     [Tags]    uat    order-greatpro  notUsed
+    Skip    # 暂不执行：notUsed
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}

@@ -9,11 +9,13 @@ ${password}=  268989
 *** Test Cases ***
 Trigger Point Exchange
     [Tags]  notUsed
+    Skip    # 暂不执行：notUsed
     By Phone Number Login FusePro Success
     Input Exchange Amount 10 And Click Submit Button
 
 After exchange, check Bonus & Fuse point balance Success
     [Tags]  notUsed
+    Skip    # 暂不执行：notUsed
     By Phone Number Login FusePro Success
     Check Bonus Fuse Point Balance
 

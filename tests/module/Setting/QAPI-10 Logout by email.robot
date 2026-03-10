@@ -13,6 +13,7 @@ ${password}=  268989a
 *** Test Cases ***
 Logout by phone number
     [Tags]  notUsed
+    Skip    # 暂不执行：notUsed
 #    Given Login FusePro Success
     Given By Phone Number Login FusePro Success  ${loginAccount}   ${password}
     When Logout FusePro By Phone Number

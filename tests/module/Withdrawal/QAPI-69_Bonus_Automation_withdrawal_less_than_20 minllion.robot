@@ -17,6 +17,7 @@ Test Teardown    Delete All Sessions
 *** Test Cases ***
 Withdrawal Amount Less Than 20000000 Success
     [Tags]    notUsed
+    Skip    # 暂不执行：notUsed
     Given I have logined
     Input Withdrawal Amount Less Than 20000000 And Send Withdrawal Application
 

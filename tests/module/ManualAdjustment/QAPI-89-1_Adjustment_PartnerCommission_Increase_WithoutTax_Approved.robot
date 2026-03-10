@@ -33,6 +33,7 @@ ${transactionType}  policyBonus
 *** Test Cases ***
 Manual Adjustment Partner Commission Increase Without Tax Approved
     [Tags]  notUsed
+    Skip    # 暂不执行：notUsed
     Given Setup Data Testing
     When Login Boss Success
     Then manualAdjustment.Submit Manual Adjustment Requeqst without Tax    ${AP_POSITIVE_DATA}    ${bossToken}    ${transactionAmount}      ${flowType}     transactionType=${transactionType}
