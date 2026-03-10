@@ -508,7 +508,7 @@ def main():
         stats = parse_robot_output_stats(output_xml)
         module_label = report_label or "all"
         status_emoji = "✅" if (exit_code == 0) else "❌"
-        title = f"RF 测试报告 {status_emoji} {module_label} ({report_type})"
+        title = f"API Automation RF Report {status_emoji} {module_label} ({report_type})"
         duration_str = _format_duration(elapsed_seconds)
         lines = [
             f"**模块 Module**：{', '.join(run_module_names)}",
