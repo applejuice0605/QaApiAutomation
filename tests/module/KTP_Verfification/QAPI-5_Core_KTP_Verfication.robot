@@ -37,6 +37,7 @@ Test Teardown    Delete All Sessions
 *** Test Cases ***
 Core - Register by share link
     [Tags]    notUsed
+    Skip    # 暂不执行：notUsed
     Given I have a valid login account and password and a unregisted mobile number
     When I Click button Invite Friend
     Then The status code should be 200    ${jsonResult}[code]

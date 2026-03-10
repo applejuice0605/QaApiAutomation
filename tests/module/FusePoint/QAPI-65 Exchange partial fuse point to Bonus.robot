@@ -9,6 +9,7 @@ ${password}=  268989
 *** Test Cases ***
 Exchange Partial Fuse Point To Bonus Success
     [Tags]  notUsed
+    Skip    # 暂不执行：notUsed
     By Phone Number Login FusePro Success
     Input Exchange Amount 10 And Click Submit Button
 

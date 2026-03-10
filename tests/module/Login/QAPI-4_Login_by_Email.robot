@@ -20,6 +20,7 @@ ${loginWay}    3
 *** Test Cases ***
 Login Success by Email
     [Tags]    notUsed
+    Skip    # 暂不执行：notUsed
     Given I have a valid email and password
     When I send a POST request to the fuse_user_login API
     Then the response should contain the user's loginAccount
