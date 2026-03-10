@@ -58,14 +58,14 @@ Create CurrentTime
     RETURN  ${CURRENT_TIME}
 
 Get Token And TenantId And OpenId
-    [Arguments]    ${loginAccount}  ${password}
-    ${response}=  api_bylogin.Send Request And Get Response Data  ${loginAccount}  ${password}
+    [Arguments]    ${loginAccount}  ${password}  ${loginMethod}=mobile
+    ${response}=  api_bylogin.Send Request And Get Response Data  ${loginAccount}  ${password}  ${loginMethod}
     ${res_json}=  Set Variable    ${response.json()}
     ${get_dict}=  Get From Dictionary    ${res_json}  data
     ${get_data}=  Get From List    ${get_dict}  0
     ${tenantId}=  Get From Dictionary    ${get_data}  tenantId
     ${openId}=  Get From Dictionary    ${get_data}  openId
-    ${res}=  api_login.Send Request And Get Response Data  ${loginAccount}    ${password}   ${openId}   ${tenantId}
+    ${res}=  api_login.Send Request And Get Response Data  ${loginAccount}  ${password}  ${openId}  ${tenantId}  ${loginMethod}
     ${res_json}=  Set Variable    ${res.json()}
     ${get_data}=   Get From Dictionary    ${res_json}  data
     ${token}=   Get From Dictionary   ${get_data}  token

@@ -11,7 +11,8 @@ ${withdrawalVerifation_review}=  https://boss-uat.fuse.co.id/api/bpm/flow/approv
 ${withdrawalPayment_assign}=  https://boss-uat.fuse.co.id/api/bpm/runtime/self/assign
 ${withdrawalPaymentConfirm_url}=  https://boss-uat.fuse.co.id/api/bpm/flow/approval
 ${withdrawalSession}=  withdrawalSession
-${manual_withdrawal}=   https://ptr-uat.fuse.co.id/api/local/id/bankCard/withdraw/manual
+# ${manual_withdrawal}=   https://ptr-uat.fuse.co.id/api/local/id/bankCard/withdraw/manual
+${manual_withdrawal}=   https://ptr-uat.fuse.co.id/api/prm/withdraw/manual
 ${withdrawalPaymentTaskId}=  https://boss-uat.fuse.co.id/api/trading/withdrawal/bpm/manager/payment/list
 ${withdrawalPaymentAssign}=  https://boss-uat.fuse.co.id/api/bpm/runtime/self/assign
 ${BalanceHistory_url}=  https://ptr-uat.fuse.co.id/api/account/flow/list/v2
@@ -28,13 +29,24 @@ Send Withdrawal Post Request
     RETURN  ${enMessage}
 
 Send Manual withdrawal Post Rquest
-    [Arguments]    ${fusetoken}   ${tenantId}  ${loginAccount}  ${withdrawalAmount}  ${password}
-    ${body}=  Set Variable      {"accountId":"${loginAccount}","cardId":"1867170204698062850","withdrawAmount":"${withdrawalAmount}","withdrawType":1,"autoTransferVersion":1,"passWord":"${password}","manuallyWithdraw":true}
+    [Arguments]    ${fusetoken}   ${tenantId}   ${withdrawalAmount}
+    # ${body}=  Set Variable      {"accountId":"${loginAccount}","cardId":"1867170204698062850","withdrawAmount":"${withdrawalAmount}","withdrawType":1,"autoTransferVersion":1,"passWord":"${password}","manuallyWithdraw":true}
+    ${body}=  Set Variable      {"bankCardNo": "81232689899", "bankUid": 1005000141, "bankName": "Allo Bank Indonesia", "bizSource": 1, "withdrawAmount": "${withdrawalAmount}", "manuallyWithdraw": true}
     ${headers}=  Create Dictionary      Content-Type=application/json   fusetoken=${fusetoken}  language=en_US  clientType=ANDROID  appCode=IDP_FUSE_PRO  tenantId="${tenantId}"
     ${res}=  Common.Send Post Request And Get Response Data   manual_withdrawalSession  ${manual_withdrawal}  ${body}  &{headers}
     ${get_json}=  Get From Dictionary    ${res.json()}  data
-    ${withdrawalId}=  Get From Dictionary    ${get_json}  withdrawalId
-#    Run Keyword If   '${enMessage}'=='You have exceeded daily instant withdrawal limit, you can only proceed the withdrawal by using manual disbursement. This process will take two working days maximum.'      Send Withdrawal Verification Assign To Me Post Request
+    ${status}    ${withdrawalId}=  Run Keyword And Ignore Error    Get From Dictionary    ${get_json}  withdrawalId
+    IF    '${status}' == 'FAIL'
+        Log    响应 data 中无 withdrawalId，当前 data 内容: ${get_json}，尝试备选 key    level=WARN
+        ${status}    ${withdrawalId}=  Run Keyword And Ignore Error    Get From Dictionary    ${get_json}  id
+        IF    '${status}' == 'FAIL'
+            ${status}    ${withdrawalId}=  Run Keyword And Ignore Error    Get From Dictionary    ${get_json}  withdrawId
+        END
+        IF    '${status}' == 'FAIL'
+            Log    响应 data 中无 withdrawalId/id/withdrawId，请检查接口返回或环境。完整 data: ${get_json}    level=ERROR
+            Fail    Dictionary does not contain key 'withdrawalId'. 响应 data: ${get_json}
+        END
+    END
     RETURN  ${withdrawalId}
 
 Send Check Manual Withdrawal TaskId Post Request

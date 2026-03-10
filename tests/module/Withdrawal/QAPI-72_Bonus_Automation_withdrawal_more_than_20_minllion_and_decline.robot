@@ -37,7 +37,7 @@ Input Withdrawal Amount More Than 20000000 And Send Withdrawal Application
     Send Withdrawal Post Request  ${fuseToken}   ${tenantId}  ${loginAccount}  ${withdrawalAmount}  ${password}
 
 Confirm Manual Process And Get ManualId
-    ${data}=  Send Manual withdrawal Post Rquest  ${fuseToken}   1000662  ${loginAccount}  ${withdrawalAmount}  ${password}
+    ${data}=  Send Manual withdrawal Post Rquest  ${fuseToken}    ${tenantId}    ${withdrawalAmount} 
     Set Test Variable    ${withdrawalId}  ${data}
 
 
