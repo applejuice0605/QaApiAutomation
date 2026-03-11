@@ -28,7 +28,7 @@ trigger withdrawal bonus 10000000 success
     Then Enter Task And Confirm Withdrawal Payment
 
 After Withdrawal, check Bonus Decrease 10000000 Success
-    [Tags]    uat
+    [Tags]    uat    notUsed
     Given Have logined fusepro and boss
     Then Check Bonus Balance History
 

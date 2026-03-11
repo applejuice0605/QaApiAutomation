@@ -2,8 +2,6 @@
 Resource    ../../../resources/biz/Withdrawal/withdrawal.robot
 Resource    ../../../resources/biz/Login/login.robot
 Resource    ../../../resources/resource.robot
-Resource    ../../../resources/api/Withdrawal/withdrawal.robot
-Resource    ../KTP_Verfification/QAPI-5_Core_KTP_Verfication.robot
 
 
 
@@ -65,9 +63,10 @@ I have verified band account and enough Balance
     Set Test Variable    ${bankName}    ${bankName}
     # 是否余额是否大于要提现的金额
     Check Balance Is Enough    ${fusetoken}    ${withdrawalAmount}
-    
+
 Input Withdrawal Amount More Than 20000000 And Send Withdrawal Application
-    Send Withdrawal Post Request  ${fuseToken}   ${tenantId}  ${loginAccount}  ${withdrawalAmount}  ${password}
+    ${jsonResult}=    Send Auto Withdrawal Post Request    ${fusetoken}    ${bankAccountNumber}    ${bankUid}    ${bankName}    ${withdrawalAmount}
+    Set Test Variable    ${jsonResult}    ${jsonResult}
 
 Confirm Send Manual Process
     ${jsonResult}=    Send Manual Withdrawal Post Request    ${fusetoken}    ${bankAccountNumber}    ${bankUid}    ${bankName}    ${withdrawalAmount}

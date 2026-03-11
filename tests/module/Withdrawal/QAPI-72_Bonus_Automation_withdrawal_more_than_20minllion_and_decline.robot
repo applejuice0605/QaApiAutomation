@@ -2,8 +2,6 @@
 Resource    ../../../resources/biz/Withdrawal/withdrawal.robot
 Resource    ../../../resources/biz/Login/login.robot
 Resource    ../../../resources/resource.robot
-Resource    ../../../resources/api/Withdrawal/withdrawal.robot
-Resource    ../KTP_Verfification/QAPI-5_Core_KTP_Verfication.robot
 
 
 
@@ -75,32 +73,4 @@ the response should exceeded-limit prompt and prompt use manual withdrawal
 Confirm Send Manual Process
     ${jsonResult}=    Send Manual Withdrawal Post Request    ${fusetoken}    ${bankAccountNumber}    ${bankUid}    ${bankName}    ${withdrawalAmount}
     Set Test Variable    ${jsonResult}    ${jsonResult}
-
-
-
-
-
-
-
-Check Withdrawal Verification TaskId
-    ${data}=  Send Check Manual Withdrawal TaskId Post Request   ${bossToken}  ${withdrawalId}
-    Set Test Variable    ${taskId}  ${data}
-    
-Enter Task Mgmt And Assign Withdrawal Verification To Ceo001
-    Send Withdrawal Verification Assign To Me Post Request   ${bossToken}   ${taskId}
-
-Enter Task And Review Withdrawal Verification
-    Send Withdrawal Review Post Request    ${bossToken}   ${taskId}  ${withdrawalId}
-
-Check Withdrawal Payment TaskId
-    ${data}=  Send Check Payment Withdrawal TaskId Post Request     ${bossToken}  ${withdrawalId}
-    Set Test Variable    ${PaymentTaskId}  ${data}
-
-Enter Task Mgmt And Assign Withdrawal Payment To Ceo001
-    Send Withdrawal Payment Assign To Me Post Request  ${bossToken}   ${PaymentTaskId}
-Enter Task And Confirm Withdrawal Payment
-    Send Withdrawal Payment Confirm Post Request   ${bossToken}   ${PaymentTaskId}  ${withdrawalId}
-
-    
-
 
