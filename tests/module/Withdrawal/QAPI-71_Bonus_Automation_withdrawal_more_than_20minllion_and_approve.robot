@@ -65,9 +65,22 @@ I have verified band account and enough Balance
     Set Test Variable    ${bankName}    ${bankName}
     # 是否余额是否大于要提现的金额
     Check Balance Is Enough    ${fusetoken}    ${withdrawalAmount}
-    
+
+
+
+
+
+
+
 Input Withdrawal Amount More Than 20000000 And Send Withdrawal Application
-    Send Withdrawal Post Request  ${fuseToken}   ${tenantId}  ${loginAccount}  ${withdrawalAmount}  ${password}
+    ${jsonResult}=    Send Auto Withdrawal Post Request    ${fusetoken}    ${bankAccountNumber}    ${bankUid}    ${bankName}    ${withdrawalAmount}
+    Set Test Variable    ${jsonResult}    ${jsonResult}
+the response should exceeded-limit prompt and prompt use manual withdrawal
+    [Arguments]    ${jsonResult}
+    ${message}=    Set Variable    ${jsonResult}[data][message]
+    Should Be Equal    ${message}    You have exceeded daily instant withdrawal limit, you can only proceed the withdrawal by using manual disbursement. This process will take two working days maximum.
+    
+
 
 Confirm Send Manual Process
     ${jsonResult}=    Send Manual Withdrawal Post Request    ${fusetoken}    ${bankAccountNumber}    ${bankUid}    ${bankName}    ${withdrawalAmount}
@@ -75,6 +88,28 @@ Confirm Send Manual Process
 
 
 
+
+
+
+
+Check Withdrawal Verification TaskId
+    ${data}=  Send Check Manual Withdrawal TaskId Post Request   ${bossToken}  ${withdrawalId}
+    Set Test Variable    ${taskId}  ${data}
+    
+Enter Task Mgmt And Assign Withdrawal Verification To Ceo001
+    Send Withdrawal Verification Assign To Me Post Request   ${bossToken}   ${taskId}
+
+Enter Task And Review Withdrawal Verification
+    Send Withdrawal Review Post Request    ${bossToken}   ${taskId}  ${withdrawalId}
+
+Check Withdrawal Payment TaskId
+    ${data}=  Send Check Payment Withdrawal TaskId Post Request     ${bossToken}  ${withdrawalId}
+    Set Test Variable    ${PaymentTaskId}  ${data}
+
+Enter Task Mgmt And Assign Withdrawal Payment To Ceo001
+    Send Withdrawal Payment Assign To Me Post Request  ${bossToken}   ${PaymentTaskId}
+Enter Task And Confirm Withdrawal Payment
+    Send Withdrawal Payment Confirm Post Request   ${bossToken}   ${PaymentTaskId}  ${withdrawalId}
 
     
 

@@ -47,6 +47,12 @@ Send Auto Withdrawal Post Request
     ${jsonResult}=    Set Variable    ${response.json()}
     RETURN    ${jsonResult}
 
+the response should exceeded-limit prompt and prompt use manual withdrawal
+    [Arguments]    ${jsonResult}
+    ${message}=    Set Variable    ${jsonResult}[data][message]
+    Should Be Equal    ${message}    You have exceeded daily instant withdrawal limit, you can only proceed the withdrawal by using manual disbursement. This process will take two working days maximum.
+    
+
 Send Manual Withdrawal Post Request
     [Documentation]    发送手动提现申请
     [Arguments]    ${fusetoken}   ${bankCardNo}    ${bankUid}    ${bankName}    ${withdrawAmount}
