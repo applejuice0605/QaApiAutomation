@@ -15,6 +15,7 @@
 
 ### 变更
 
+- **模块发现逻辑**（`run.py`）：`get_available_modules()` 改为同时扫描 `resources/api` 与 `tests/module` 子目录并取并集作为可选模块列表。仅存在于 `tests/module` 的模块（如 Clearing）也可通过 `--module Clearing` 执行；执行路径仍优先 `tests/module/<模块名>`，不存在时再使用 `resources/api/<模块名>`。
 - **GitHub Actions**（`.github/workflows/run-tests.yml`）：
   - 执行命令改为仅跑 Login 模块示例：`python run.py --module Login --rf`。
   - 使用 `LARK_REPORT_BASE_URL` 替代 `LARK_REPORT_LINK`，使飞书链接指向报告页而非 Actions 运行页。

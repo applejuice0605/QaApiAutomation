@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-外层执行脚本：按 resources/api 下模块执行 RF 用例，支持全部/单模块，支持 RF 或 Allure 报告。
+外层执行脚本：按模块执行 RF 用例，模块名来自 resources/api 与 tests/module 的并集；支持全部/单模块，支持 RF 或 Allure 报告。
 """
 
 import argparse
@@ -51,12 +51,17 @@ def load_lark_config() -> Optional[dict]:
 
 
 def get_available_modules():
-    """从 resources/api 子目录获取模块名列表。"""
-    if not RESOURCES_API.is_dir():
-        return []
-    return sorted(
-        d.name for d in RESOURCES_API.iterdir() if d.is_dir() and not d.name.startswith(".")
-    )
+    """从 resources/api 与 tests/module 子目录取并集，返回去重后的模块名列表（排序）。"""
+    names = set()
+    if RESOURCES_API.is_dir():
+        for d in RESOURCES_API.iterdir():
+            if d.is_dir() and not d.name.startswith("."):
+                names.add(d.name)
+    if TESTS_MODULE.is_dir():
+        for d in TESTS_MODULE.iterdir():
+            if d.is_dir() and not d.name.startswith("."):
+                names.add(d.name)
+    return sorted(names)
 
 
 def get_execution_path(module_name: str) -> Optional[Path]:
@@ -339,12 +344,12 @@ def _serve_allure_and_open_browser(allure_report_dir: Path, port: int = 8080) ->
 
 def main():
     parser = argparse.ArgumentParser(
-        description="按 resources/api 模块执行 RF 用例，支持 RF 或 Allure 报告。"
+        description="按模块执行 RF 用例（模块名来自 resources/api 与 tests/module 并集），支持 RF 或 Allure 报告。"
     )
     parser.add_argument(
         "--module",
         metavar="NAME",
-        help="指定模块名（resources/api 下目录名），不传则执行全部模块；与 --file 二选一",
+        help="指定模块名（来自 resources/api 或 tests/module 目录名，二者并集），不传则执行全部模块；与 --file 二选一",
     )
     parser.add_argument(
         "--file",
@@ -428,7 +433,7 @@ def main():
         # 模块模式
         available = get_available_modules()
         if not available:
-            print("错误: resources/api 下未找到任何模块。", file=sys.stderr)
+            print("错误: resources/api 与 tests/module 下均未找到任何模块。", file=sys.stderr)
             sys.exit(1)
         if args.module:
             if args.module not in available:

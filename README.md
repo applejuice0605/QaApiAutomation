@@ -67,7 +67,7 @@ python run.py [--module 模块名] [--rf | --allure]
 
 | 参数 | 说明 |
 |------|------|
-| `--module NAME` | 指定模块名（resources/api 下目录名，如 Login、payment）。不传则执行全部模块。 |
+| `--module NAME` | 指定模块名（来自 resources/api 或 tests/module 目录名，二者并集，如 Login、Clearing、payment）。不传则执行全部模块。 |
 | `--rf` | 生成 Robot Framework 报告（log.html、report.html、output.xml），**默认**。 |
 | `--allure` | 生成 Allure 报告；完成后会启动本地 HTTP 服务并尝试打开浏览器查看。 |
 | `--lark-webhook URL` | 飞书/Lark 机器人 webhook 地址；执行完成后推送报告摘要与报告链接。 |
