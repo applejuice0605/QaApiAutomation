@@ -1,25 +1,28 @@
 *** Settings ***
-Resource    ../../../resources/biz/Withdrawal/withdrawal.robot
 Resource    ../../../resources/biz/Login/login.robot
+Resource    ../../../resources/biz/Withdrawal/withdrawal.robot
+
+Resource    ../../../resources/util/utilCommon.robot
+Resource    ../../../resources/util/assertUtil.robot
 Resource    ../../../resources/resource.robot
+
 
 #Setup Test
 Test Setup    Setup Env Variable
 Test Teardown    Delete All Sessions
 
+
 *** Variables ***
-${withdrawalAmount}=  20000000
+${withdrawalAmount}=  100000
 
 *** Test Cases ***
-Withdrawal Amount Equal 20000000 Success
+Withdrawal Amount Less Than 20000000 Success
     [Tags]    uat    withdrawal
     Given I have logined
     When I have verified band account and enough Balance
-    Then Input Withdrawal Amount Equal 20000000 And Send Withdrawal Application
+    Then Input Withdrawal Amount Less Than 20000000 And Send Withdrawal Application
     Then The response should contain the withdrawalId    ${jsonResult}
-    Then Input Withdrawal Amount Equal 20000000 And Send Withdrawal Application
-    Then After Withdrawal, check Bonus Decrease 20000000 Success
-
+    Then After Withdrawal, check Bonus Decrease 10000000 Success
 
 *** Keywords ***
 I have logined
@@ -36,10 +39,11 @@ I have verified band account and enough Balance
     Check Balance Is Enough    ${fusetoken}    ${withdrawalAmount}
 
 
-Input Withdrawal Amount Equal 20000000 And Send Withdrawal Application
+Input Withdrawal Amount Less Than 20000000 And Send Withdrawal Application
     ${jsonResult}=    Send Auto Withdrawal Post Request    ${fusetoken}    ${bankAccountNumber}    ${bankUid}    ${bankName}    ${withdrawalAmount}
     Set Test Variable    ${jsonResult}    ${jsonResult}
-
-After Withdrawal, check Bonus Decrease 20000000 Success
+    
+After Withdrawal, check Bonus Decrease 10000000 Success
     Check Bonus History List should contain Withdrawal Id And Correct Amount and status    ${fusetoken}    ${withdrawalId}    ${withdrawalAmount}    False
 
+    

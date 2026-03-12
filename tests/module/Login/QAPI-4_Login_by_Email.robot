@@ -28,6 +28,7 @@ Login Success by Email
     And the response should contain the user's openid and tenantId
     Then I send a POST request to the Login API
     And the status code should be 40002
+    # And the response should contain the user's token
 
 
 *** Keywords ***
@@ -81,6 +82,21 @@ The status code should be 40002
     Log    ${jsonResult}
     Log    ${jsonResult['code']}
     Dictionary Should Contain Key    ${jsonResult}    code
+    Should Be Equal As Numbers    ${jsonResult}[code]    40002
+
+The status code should be 40002
+    Log    ${jsonResult}
+    Log    ${jsonResult}[code]
+    Should Be Equal As Numbers    ${jsonResult}[code]    40002
+
+The status code should be 40002
+    Log    ${jsonResult}
+    Log    ${jsonResult}[code]
+    Should Be Equal As Numbers    ${jsonResult}[code]    40002
+
+The status code should be 40002
+    Log    ${jsonResult}
+    Log    ${jsonResult}[code]
     Should Be Equal As Numbers    ${jsonResult}[code]    40002
 
 

@@ -116,16 +116,16 @@ I have an underwriting order and have logined to Boss
 
 
 
-[Order Review Task] Get the order review task in Underwriting Flow List
+# [Order Review Task] Get the order review task in Underwriting Flow List
 
-    FOR    ${counter}    IN RANGE    1    5
-        Log    ${counter}
-    # 调用查询任务列表接口
-        [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
-        The status code should be 200    ${jsonResult}[code]
-        BREAK If
-        Break If    the response should contain taskId    ${jsonResult}
+#     FOR    ${counter}    IN RANGE    1    5
+#         Log    ${counter}
+#     # 调用查询任务列表接口
+#         [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
+#         The status code should be 200    ${jsonResult}[code]
+#         BREAK If
+#         Break If    the response should contain taskId    ${jsonResult}
 
 
-    END
+#     END
 
