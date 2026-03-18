@@ -6,5 +6,5 @@ ktpNo = "8525860906938569"
 email = 'Shirley@fuseinsurtech.com'
 BossAccount = "ceo001"
 BossPassword = "Fuse!001"
-archeryName = ""
-archeryPwd = ""
+archeryName = "lifei"
+archeryPwd = "TkhIG=ngL#gK@pkj0"

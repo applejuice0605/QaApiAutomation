@@ -25,6 +25,7 @@
 
 ### 修复
 
+- **Clearing 核保流程**（`QAPI-101` / `102` / `103` / `104`）：与 `resources/biz/Underwriting/underwriting.robot` 对齐——使用 `the response should contain taskIds`；manager/todo 响应写入 `${jsonResult}`；`assigneToMe` 与 approve 传入 `${taskResult}`（不再使用已删除的 `taskId` 关键字及错误的 `${orderNo}`/`${jsonResult}` 参数）。
 - **GitHub Actions**：在「Run tests」前增加「Prepare results directory」步骤（`mkdir -p results && touch results/.gitkeep`），避免 run 未生成报告时 upload-artifact 报错 “No files were found with the provided path: results/”；报告 URL 输出步骤改为仅在有报告子目录时打印链接。
 - **GitHub Actions 依赖安装**：项目使用 Poetry（无 requirements.txt），workflow 改为先 `pip install poetry` 再 `poetry install --no-interaction`，运行命令改为 `poetry run python run.py ...`；Python 版本与 pyproject.toml 一致改为 3.10。
 - **Python 版本约束**：pyproject.toml 保持 `python = "3.10.9"`；CI 中通过 `setup-python` 指定 `python-version: '3.10.9'`，与项目一致，避免 Poetry 报版本不兼容及 lock 与 pyproject 不一致。移除 CI 中的「Sync lock file」步骤，避免在 runner 上执行 `poetry lock` 带来的虚拟环境创建与网络问题。
