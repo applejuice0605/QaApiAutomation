@@ -34,44 +34,19 @@ Non-API_policyUnderwritingWorkflow_Approved
     [Tags]    uat
     Given Setup Data Testing
     When I have an underwriting order and have logined to Boss
-
-
-
-
-    Then [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
-    Then [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
-    Then [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
-    Then [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
+    Then [Order Review Task] Using OrderNo Searching in Mgmt Task List    ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
+    Then I send request to assigneToMe API     ${taskResult}   ${bossToken}
     Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain taskId    ${jsonResult}
 
+    Then Using OrderNo Searching in Todo Task List    ${bossToken}    ${orderNo}
+    Then [Order Review Task] I send request to approve API      ${bossToken}    ${taskResult}   ${AP_POSITIVE_DATA}
 
-    Then I send request to assigneToMe API     ${jsonResult}   ${bossToken}
+    Then [toOffline Review Task] Using OrderNo Searching in Mgmt Task List    ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
+    Then I send request to assigneToMe API     ${taskResult}   ${bossToken}
     Then The status code should be 200    ${jsonResult}[code]
-    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
-    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
-    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
-    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
-    Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain taskId    ${jsonResult}
-    Then [Order Review Task] I send request to approve API      ${bossToken}    ${orderNo}   ${AP_POSITIVE_DATA}
 
-
-    Then [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
-    Then [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
-    Then [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
-    Then [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_AP_POSITIVE_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
-    Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain taskId    ${jsonResult}
-    Then I send request to assigneToMe API     ${jsonResult}   ${bossToken}
-    Then The status code should be 200    ${jsonResult}[code]
-    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
-    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
-    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
-    Then I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
-    Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain taskId    ${jsonResult}
-    Then [toOffline Task] I send request to approve API to approve toOffline task   ${bossToken}    ${orderNo}   ${AP_POSITIVE_DATA}
+    Then Using OrderNo Searching in Todo Task List    ${bossToken}    ${orderNo}
+    Then [toOffline Task] I send request to approve API to approve toOffline task   ${bossToken}    ${taskResult}   ${AP_POSITIVE_DATA}
 
     Then Send request to Boss:/api/oms/slip/v2/list API to get slipStatus    ${bossToken}    ${orderNo}
     Then The response's=${jsonResult} slipStatus should be ${slipStatus}

@@ -1,6 +1,7 @@
 *** Settings ***
 Library    Collections
 Library    RequestsLibrary
+Library    ArcheryCookieGenerator.py
 
 Resource    ../util/httpCommon.robot
 Resource    utilCommon.robot
@@ -8,8 +9,8 @@ Resource    utilCommon.robot
 Variables   ../varfile_defvar.py
 
 *** Variables ***
-${csrftoken}    0k7WMtSXaVm8hPOMiM6o9RVK9fdX95XvWXbQ7ZtMHfD6KhwVWOBaDuUrjY8gtFLL
-${sessionid}    8ez1ncsfcul41oly0r42nc5htjxb4frw
+${csrftoken}    xzfwe8EMaG1F6UoxUGiGK71274H8snKUH7VS4tQf476oQn9v5TztFw4jesdyp0Fu
+${sessionid}    65fdz6fy326m61u45vyk6zm3pxoux6qz
 
 
 
@@ -27,6 +28,9 @@ Get Invite Link SMS Code
     # 1. 准备请求数据：请求路径、请求头、请求数据
     ${base_url}=   Set Variable    https://rd-dms.fuseinsurtech.com
     ${path}=   Set Variable     /query/
+    # 获取Cookie和SessionId
+    ${csrftoken}    ${sessionid}=    ArcheryCookieGenerator.get_archery_cookie    ${archeryName}    ${archeryPwd}
+
     ${headers}=    Create Dictionary    cookie=csrftoken=${csrftoken}; sessionid=${sessionid}   x-csrftoken=${csrftoken}
     ${payload}=    Create Dictionary    instance_name=ID_UAT_CORE_MYSQL8.0      db_name=message     schema_name=null   tb_name=sms_record  sql_content=select data->'$.verificationCade' from message.sms_record where mobile='62${${mobile}}' order by id desc limit 1   limit_num=100
 
