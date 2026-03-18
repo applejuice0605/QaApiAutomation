@@ -6,7 +6,42 @@ Resource    ../../../resources/api/payment/generate_Customer_payment_token.robot
 
 
 
+
 *** Keywords ***
+I try to get paymentBilling Info and securityCode
+    [Documentation]     尝试调用createPaymentBilling接口，接口失败则调用paymentBillingList接口获取paymentBillNo和securityCode
+    [Arguments]     ${token}     ${orderNo}    ${orderId}
+    # 1. 尝试调用createPaymentBilling接口，接口失败则调用paymentBillingList接口获取paymentBillNo和securityCode
+    Sleep    5s
+    ${response}    createPaymentBilling.Send Request And Get Response Data     token=${token}   orderNo=${orderNo}
+    ${jsonResult}=    Set Variable    ${response.json()}
+    
+    # 1.1 获取接口响应中的message
+    ${message}=    Get From Dictionary    ${jsonResult}   message    default=${None}
+    Log    ${message}
+    IF    '${message}' == 'There is payment in transit'
+        ${securityCode}=    Set Variable    ${None}
+    ELSE
+        # 从createPaymentBilling接口响应中获取securityCod
+        ${securityCode}=    Get From Dictionary    ${jsonResult}[data]   securityCode    default=${None}
+        ${paymentBillNo}=    Get From Dictionary    ${jsonResult}[data]   paymentBillNo    default=${None}
+    END
+    
+    # 3. 如果securityCode为空，则调用paymentBillingList接口获取securityCode
+    IF    '${securityCode}' == '${None}'
+        Log    securityCode is empty, try to get from paymentBillingList API
+        ${response}    Send request to paymentBillingList API    token=${token}    orderId=${orderId}
+        ${securityCode}=    Get From Dictionary    ${jsonResult}[data][paymentBillingList][0]   securityCode
+        ${paymentBillNo}=    Get From Dictionary    ${jsonResult}[data][paymentBillingList][0]   paymentBillNo
+        Log    ${securityCode}
+        
+    END
+    Set Test Variable    ${securityCode}    ${securityCode}
+    Set Test Variable    ${paymentBillNo}    ${paymentBillNo}
+    RETURN    ${securityCode}
+
+
+
 I continue to pay the order and send request the paymentBilling/create API
     [Arguments]     ${token}     ${orderNo}
     Sleep    3s

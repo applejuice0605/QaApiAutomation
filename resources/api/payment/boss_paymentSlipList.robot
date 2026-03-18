@@ -17,5 +17,3 @@ Send Request And Get Response Data
 
     RETURN    ${response}
 
-
-Send

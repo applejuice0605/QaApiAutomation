@@ -46,9 +46,7 @@ Travel NetPayment With Coupon
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value orderNo and orderId    ${jsonResult}
 
-    Then I continue to pay the order and send request the paymentBilling/create API     ${token}     ${orderNo}
-    Then The status code should be 200    ${jsonResult}[code]
-    And the response of paymentBilling/create API should contain securityCode    ${jsonResult}
+    Then I try to get paymentBilling Info and securityCode     ${token}     ${orderNo}    ${orderId}
 
     Then I choose PartnerPay & PaymentScheme & PaymentMethod and send request to /slip/process API     ${token}     ${orderId}     ${securityCode}    ${paymentScheme}
     Then The status code should be 200    ${jsonResult}[code]

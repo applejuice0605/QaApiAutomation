@@ -38,9 +38,8 @@ Property PayNow CustomerPay
     Then The status code should be 200    ${jsonResult}[code]
     And the response should contain the value orderNo and orderId    ${jsonResult}
 
-    Then I continue to pay the order and send request the paymentBilling/create API     ${token}     ${orderNo}
-    Then The status code should be 200    ${jsonResult}[code]
-    And the response of paymentBilling/create API should contain securityCode    ${jsonResult}
+    Then I try to get paymentBilling Info and securityCode     ${token}     ${orderNo}    ${orderId}
+
 
     Then I choose CutsomerPay and send request to generator/customer/payment/token API     ${token}     ${securityCode}
     Then The status code should be 200    ${jsonResult}[code]

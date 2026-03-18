@@ -117,20 +117,23 @@ Use Customer Pay and Full Payment to complete the payment
 
 Done the underwriting workflow
     Sleep    10s
-    [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
-    the response should contain taskId    ${jsonResult}
-    I send request to assigneToMe API     ${jsonResult}   ${bossToken}
-    I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
-    the response should contain taskId    ${jsonResult}
-    [Order Review Task] I send request to approve API      ${bossToken}    ${orderNo}   ${Underwriting_DATA}
+    ${mgr_resp}=    [Order Review Task] I send request to underwritingV2/list/manager API    ${bossToken}    ${orderNo}    ${ORDER_MSG_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
+    Set Test Variable    ${jsonResult}    ${mgr_resp.json()}
+    the response should contain taskIds    ${jsonResult}
+    I send request to assigneToMe API    ${taskResult}    ${bossToken}
+    ${todo_resp}=    I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
+    Set Test Variable    ${jsonResult}    ${todo_resp.json()}
+    the response should contain taskIds    ${jsonResult}
+    [Order Review Task] I send request to approve API    ${bossToken}    ${taskResult}    ${Underwriting_DATA}
 
-
-    [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
-    the response should contain taskId    ${jsonResult}
-    I send request to assigneToMe API     ${jsonResult}   ${bossToken}
-    I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
-    the response should contain taskId    ${jsonResult}
-    [toOffline Task] I send request to approve API to approve toOffline task   ${bossToken}    ${orderNo}   ${Underwriting_DATA}
+    ${mgr2_resp}=    [toOffline Task] I send request to underwritingV2/list/manager API    ${bossToken}    ${orderNo}    ${ORDER_MSG_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
+    Set Test Variable    ${jsonResult}    ${mgr2_resp.json()}
+    the response should contain taskIds    ${jsonResult}
+    I send request to assigneToMe API    ${taskResult}    ${bossToken}
+    ${todo2_resp}=    I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
+    Set Test Variable    ${jsonResult}    ${todo2_resp.json()}
+    the response should contain taskIds    ${jsonResult}
+    [toOffline Task] I send request to approve API to approve toOffline task    ${bossToken}    ${taskResult}    ${Underwriting_DATA}
 
     Send request to Boss:/api/oms/slip/v2/list API to get slipStatus    ${bossToken}    ${orderNo}
     The response's=${jsonResult} slipStatus should be ${slipStatus}

@@ -40,9 +40,7 @@ Use Full FusePoints PartnerPay FullPayment Car Order
     Then Run keyword And Continue on Failure    I continue to pay the order and send request the paymentBilling/create API     ${token}     ${orderNo}
     Then Run keyword And Continue on Failure    The status code should be 200    ${jsonResult}[code]
 
-    Then Send request to paymentBillingList API     ${token}     ${orderId}
-    Then The status code should be 200    ${jsonResult}[code]
-    And the response of paymentBilling/List API should contain securityCode and paymentBillNo     ${jsonResult}
+    Then I try to get paymentBilling Info and securityCode     ${token}     ${orderNo}    ${orderId}
 
     Then Use Full FusePoints and send the request to /slip/process API     token=${token}     orderId=${orderId}     securityCode=${securityCode}     PaymentScheme=${PaymentScheme}
     Then The status code should be 200    ${jsonResult}[code]

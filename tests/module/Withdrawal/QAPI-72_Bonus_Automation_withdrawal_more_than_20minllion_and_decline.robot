@@ -14,7 +14,7 @@ ${withdrawalAmount}=  20000002
 ${CheckAccamount}=  8123268987
 
 *** Test Cases ***
-Withdrawal Amount More Than 20000000 And Approve Success
+Withdrawal Amount More Than 20000000 And Decline Success
     [Tags]    uat    withdrawal
     Given Have logined fusepro and boss
     When I have verified band account and enough Balance
@@ -26,26 +26,16 @@ Withdrawal Amount More Than 20000000 And Approve Success
     Then The response should contain the withdrawalId    ${jsonResult}
     Sleep   10
     # 进入提现verification流程
-    [Task Mgmt] Use withdrawalId Searching in Withdrawal Verification Task Mgmt List and Get taskId    ${bossToken}    ${withdrawalId}
+    [Task Mgmt] Use withdrawalId Searching in Withdrawal Verification Task Mgmt List and Get taskId   ${bossToken}    ${withdrawalId}
     # 将任务指派给我
     Assign the Task To Me    ${bossToken}    ${taskId}
     # 在任务界面获取Task
-    [Task] Use withdrawalId Searching in Withdrawal Verification Task List and Get taskId    ${bossToken}    ${withdrawalId}
-    # 提交Approve
-    [Withdrawal Verification] Approve Withdrawal Verification Task    ${bossToken}    ${withdrawalId}    ${taskId}
-    Sleep   10
-    # 进入提现打款流程
-    [Task Mgmt] Use withdrawalId Searching in Withdrawal Payment Task Mgmt List and Get taskId    ${bossToken}    ${withdrawalId}
-    # 将任务指派给我
-    Assign the Task To Me    ${bossToken}    ${taskId}
-    # 在任务界面获取Task
-    [Task] Use withdrawalId Searching in Withdrawal Payment Task List and Get taskId    ${bossToken}    ${withdrawalId}
-    # 提交Approve
-    [Withdrawal Payment] Approve Withdrawal Payment Task    ${bossToken}    ${withdrawalId}    ${taskId}
-
+    [Task] Use withdrawalId Searching in Withdrawal Verification Task List and Get taskId     ${bossToken}    ${withdrawalId}
+    # 拒绝打款任务
+    Decline Withdrawal Payment Task    ${bossToken}    ${withdrawalId}    ${taskId}
     # 检查Fusepro流水记录，是否提现成功
-    Check Bonus History List should contain Withdrawal Id And Correct Amount and status    ${fusetoken}    ${withdrawalId}    ${withdrawalAmount}    False
-    
+    Check Bonus History List should contain Withdrawal Id And Correct Amount and status    ${fusetoken}    ${withdrawalId}    ${withdrawalAmount}    True
+
 
 *** Keywords ***
 Have logined fusepro and boss
@@ -64,17 +54,23 @@ I have verified band account and enough Balance
     # 是否余额是否大于要提现的金额
     Check Balance Is Enough    ${fusetoken}    ${withdrawalAmount}
 
+
+
+
+
+
+
 Input Withdrawal Amount More Than 20000000 And Send Withdrawal Application
     ${jsonResult}=    Send Auto Withdrawal Post Request    ${fusetoken}    ${bankAccountNumber}    ${bankUid}    ${bankName}    ${withdrawalAmount}
     Set Test Variable    ${jsonResult}    ${jsonResult}
+the response should exceeded-limit prompt and prompt use manual withdrawal
+    [Arguments]    ${jsonResult}
+    ${message}=    Set Variable    ${jsonResult}[data][message]
+    Should Be Equal    ${message}    You have exceeded daily instant withdrawal limit, you can only proceed the withdrawal by using manual disbursement. This process will take two working days maximum.
+    
+
 
 Confirm Send Manual Process
     ${jsonResult}=    Send Manual Withdrawal Post Request    ${fusetoken}    ${bankAccountNumber}    ${bankUid}    ${bankName}    ${withdrawalAmount}
     Set Test Variable    ${jsonResult}    ${jsonResult}
-
-
-
-
-    
-
 
