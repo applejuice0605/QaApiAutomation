@@ -16,6 +16,8 @@ jobs:
         run: pip install -r requirements-ci.txt
       - name: Prepare results directory
         run: mkdir -p results && touch results/.gitkeep
+      - name: Prepare varfile_defvar.py for CI
+        run: cp resources/varfile_defvar.example.py resources/varfile_defvar.py
       - name: Run tests and notify Lark
         env:
           LARK_WEBHOOK: ${{ secrets.LARK_WEBHOOK }}

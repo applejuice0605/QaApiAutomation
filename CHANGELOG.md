@@ -15,9 +15,11 @@
 
 ### 变更
 
+- **敏感变量文件**：`resources/varfile_defvar.py` 停止版本跟踪，仅本地使用；新增 `resources/varfile_defvar.example.py` 模板；`.gitignore` 明确忽略 `resources/varfile_defvar.py`。历史提交若曾含明文密码请轮换。
 - **模块发现逻辑**（`run.py`）：`get_available_modules()` 改为同时扫描 `resources/api` 与 `tests/module` 子目录并取并集作为可选模块列表。仅存在于 `tests/module` 的模块（如 Clearing）也可通过 `--module Clearing` 执行；执行路径仍优先 `tests/module/<模块名>`，不存在时再使用 `resources/api/<模块名>`。
 - **GitHub Actions**（`.github/workflows/run-tests.yml`）：
-  - 执行命令改为仅跑 Login 模块示例：`python run.py --module Login --rf`。
+  - 增加「Prepare varfile_defvar.py」步骤：从 `varfile_defvar.example.py` 复制，避免仓库不再跟踪真实 varfile 后 CI 缺文件；真实账号建议在 Secrets 中注入覆盖。
+  - 当前 workflow 使用 `python run.py --rf`（全量）；若仅需 smoke 可改回 `--module Login`。
   - 使用 `LARK_REPORT_BASE_URL` 替代 `LARK_REPORT_LINK`，使飞书链接指向报告页而非 Actions 运行页。
   - 新增 `deploy-report` job：将 `results/` 部署到 GitHub Pages，便于点击飞书链接直接查看 report.html。
   - 支持 `workflow_dispatch`：可在 Actions 页手动点击 “Run workflow” 触发执行。
