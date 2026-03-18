@@ -83,20 +83,3 @@ The status code should be 40002
     Log    ${jsonResult['code']}
     Dictionary Should Contain Key    ${jsonResult}    code
     Should Be Equal As Numbers    ${jsonResult}[code]    40002
-
-The status code should be 40002
-    Log    ${jsonResult}
-    Log    ${jsonResult}[code]
-    Should Be Equal As Numbers    ${jsonResult}[code]    40002
-
-The status code should be 40002
-    Log    ${jsonResult}
-    Log    ${jsonResult}[code]
-    Should Be Equal As Numbers    ${jsonResult}[code]    40002
-
-The status code should be 40002
-    Log    ${jsonResult}
-    Log    ${jsonResult}[code]
-    Should Be Equal As Numbers    ${jsonResult}[code]    40002
-
-
