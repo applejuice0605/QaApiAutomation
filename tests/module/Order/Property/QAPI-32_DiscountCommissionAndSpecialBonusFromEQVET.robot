@@ -35,7 +35,7 @@ ${paymentMethod}    VA
 
 *** Test Cases ***
 Order Property and EQVET using discountCommission and specialBonus from EQVET PayLater PartnerPay Fullpayment
-    [Tags]    uat    order-property    discount  ww
+    [Tags]    uat    order-property    discount
     Given Setup Data Testing
     When I have a whitelist account and have logined
     Then I send the quotation request to savebinderrfq API   ${AP_POSITIVE_DATA}     ${token}
