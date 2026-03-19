@@ -9,6 +9,7 @@
 - **单文件执行 `--file`**：`run.py` 支持指定单个 `.robot` 文件执行（与 `--module` 二选一），报告目录名使用文件名（stem），可与 `--include`/`--exclude`、Lark 推送等组合使用。
 - **Tag 过滤 `--include` / `--exclude`**：`run.py` 支持按 Robot Framework tag 过滤用例。`--include TAG [TAG ...]` 只运行包含指定 tag 的用例，`--exclude TAG [TAG ...]` 排除指定 tag；可与 `--module` 或 `--file` 组合使用。
 - **Lark 消息增加执行时长**：推送到飞书的消息中增加「执行时长 Duration」字段，格式为 `Xm Ys` 或 `Zs`。
+- **Lark 消息增加报告时间**：推送到飞书的卡片正文中增加「报告时间 Report Time」（脚本执行结束时间，格式 `YYYY-MM-DD HH:MM:SS`）。
 - **Lark 消息改为卡片形式**：飞书推送由富文本 post 改为交互卡片（interactive card），支持 lark_md 富文本（加粗、斜体等），并保留「报告链接」按钮。
 - **Lark 报告链接直达 RF 报告**：当配置了报告根 URL（`report_url` 或 `LARK_REPORT_BASE_URL`）且为 RF 报告时，飞书消息中的「报告链接」直接指向 `report.html`，点击即可在浏览器中打开本次执行结果。
 - **环境变量 `LARK_REPORT_BASE_URL`**：CI 中可通过该环境变量传入报告根 URL（与 `--report-url` / config 中 `report_url` 同义），优先级为：命令行 `--report-url` > `LARK_REPORT_BASE_URL` > config。
@@ -18,7 +19,7 @@
 - **敏感变量文件**：`resources/varfile_defvar.py` 停止版本跟踪，仅本地使用；新增 `resources/varfile_defvar.example.py` 模板；`.gitignore` 明确忽略 `resources/varfile_defvar.py`。历史提交若曾含明文密码请轮换。
 - **模块发现逻辑**（`run.py`）：`get_available_modules()` 改为同时扫描 `resources/api` 与 `tests/module` 子目录并取并集作为可选模块列表。仅存在于 `tests/module` 的模块（如 Clearing）也可通过 `--module Clearing` 执行；执行路径仍优先 `tests/module/<模块名>`，不存在时再使用 `resources/api/<模块名>`。
 - **GitHub Actions**（`.github/workflows/run-tests.yml`）：
-  - 增加「Prepare varfile_defvar.py」步骤：从 `varfile_defvar.example.py` 复制，避免仓库不再跟踪真实 varfile 后 CI 缺文件；真实账号建议在 Secrets 中注入覆盖。
+  - 增加「Prepare varfile_defvar.py」步骤：从 example 复制后，用 **Secrets** 注入：`VARFILE_ENV` → `env`（默认 `uat`）、`ARCHERY_NAME`/`ARCHERY_PWD` → `archeryName`/`archeryPwd`（Python repr 转义）。仓库 Settings → Secrets and variables → Actions 中可按需配置 `VARFILE_ENV`（如 `uat`/`sit`/`prod`）及 Archery 两个 Secret。
   - 当前 workflow 使用 `python run.py --rf`（全量）；若仅需 smoke 可改回 `--module Login`。
   - 使用 `LARK_REPORT_BASE_URL` 替代 `LARK_REPORT_LINK`，使飞书链接指向报告页而非 Actions 运行页。
   - 新增 `deploy-report` job：将 `results/` 部署到 GitHub Pages，便于点击飞书链接直接查看 report.html。
@@ -28,6 +29,7 @@
 ### 修复
 
 - **Clearing 核保流程**（`QAPI-101` / `102` / `103` / `104`）：与 `resources/biz/Underwriting/underwriting.robot` 对齐——使用 `the response should contain taskIds`；manager/todo 响应写入 `${jsonResult}`；`assigneToMe` 与 approve 传入 `${taskResult}`（不再使用已删除的 `taskId` 关键字及错误的 `${orderNo}`/`${jsonResult}` 参数）。
+- **ArcheryCookieGenerator 导入报错**（CI）：移除 `resources/util/ArcheryCookieGenerator.py` 中“导入即执行”的调试代码；`get_archery_cookie` 改为从 Session cookies 读取 `csrftoken/sessionid` 并对缺失场景抛出可读错误，避免 `NoneType.split`。
 - **GitHub Actions**：在「Run tests」前增加「Prepare results directory」步骤（`mkdir -p results && touch results/.gitkeep`），避免 run 未生成报告时 upload-artifact 报错 “No files were found with the provided path: results/”；报告 URL 输出步骤改为仅在有报告子目录时打印链接。
 - **GitHub Actions 依赖安装**：项目使用 Poetry（无 requirements.txt），workflow 改为先 `pip install poetry` 再 `poetry install --no-interaction`，运行命令改为 `poetry run python run.py ...`；Python 版本与 pyproject.toml 一致改为 3.10。
 - **Python 版本约束**：pyproject.toml 保持 `python = "3.10.9"`；CI 中通过 `setup-python` 指定 `python-version: '3.10.9'`，与项目一致，避免 Poetry 报版本不兼容及 lock 与 pyproject 不一致。移除 CI 中的「Sync lock file」步骤，避免在 runner 上执行 `poetry lock` 带来的虚拟环境创建与网络问题。

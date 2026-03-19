@@ -515,10 +515,13 @@ def main():
         status_emoji = "✅" if (exit_code == 0) else "❌"
         title = f"API Automation RF Report {status_emoji} {module_label} ({report_type})"
         duration_str = _format_duration(elapsed_seconds)
+        # 报告生成时间（执行结束时间）
+        report_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         lines = [
             f"**模块 Module**：{', '.join(run_module_names)}",
             f"**报告类型 Report Type**：{report_type}",
             f"**执行时长 Duration**：{duration_str}",
+            f"**报告时间 Report Time**：{report_time}",
         ]
         if stats:
             lines.append(

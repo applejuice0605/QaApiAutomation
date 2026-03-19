@@ -16,8 +16,27 @@ jobs:
         run: pip install -r requirements-ci.txt
       - name: Prepare results directory
         run: mkdir -p results && touch results/.gitkeep
-      - name: Prepare varfile_defvar.py for CI
-        run: cp resources/varfile_defvar.example.py resources/varfile_defvar.py
+      - name: Prepare varfile_defvar.py for CI (inject from Secrets)
+        env:
+          VARFILE_ENV: ${{ secrets.VARFILE_ENV }}
+          ARCHERY_NAME: ${{ secrets.ARCHERY_NAME }}
+          ARCHERY_PWD: ${{ secrets.ARCHERY_PWD }}
+        run: |
+          cp resources/varfile_defvar.example.py resources/varfile_defvar.py
+          python3 << 'PY'
+          import os
+          p = "resources/varfile_defvar.py"
+          with open(p) as f:
+            c = f.read()
+          env_val = os.environ.get("VARFILE_ENV", "uat")
+          name = os.environ.get("ARCHERY_NAME", "")
+          pwd = os.environ.get("ARCHERY_PWD", "")
+          c = c.replace('env = "uat"', 'env = %s' % repr(env_val))
+          c = c.replace('archeryName = ""', 'archeryName = %s' % repr(name))
+          c = c.replace('archeryPwd = ""', 'archeryPwd = %s' % repr(pwd))
+          with open(p, "w") as f:
+            f.write(c)
+          PY
       - name: Run tests and notify Lark
         env:
           LARK_WEBHOOK: ${{ secrets.LARK_WEBHOOK }}
