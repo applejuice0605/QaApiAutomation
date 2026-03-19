@@ -124,12 +124,7 @@ Get And Verify Task Id
     # 如果该关键字内部的 Should Be Equal 失败，Wait Until... 就会捕获并触发下一次重试
     The response of task list should contain the taskId    ${json}    ${withdrawalId}
 
-[Task Mgmt] Use with    [Documentation]    根据withdrawalId 查询Task-Mgmt - Withdrawal Verification Task List, 找不到指定的taskId则重试
-    [Arguments]    ${bossToken}    ${withdrawalId}
-    # 将“发请求”和“校验逻辑”打包在一起进行 5 次重试
-    Wait Until Keyword Succeeds    5x    5s    Get And Verify Task Id    ${bossToken}    ${withdrawalId}    method_type=Task_Mgmt_Verify
-    # 重试成功后，taskId 已经在校验关键字里被 Set Test Variable 了，可以直接返回
-    RETURN    ${taskId}drawalId Searching in Withdrawal Verification Task Mgmt List and Get taskId
+[Task Mgmt] Use withdrawalId Searching in Withdrawal Verification Task Mgmt List and Get taskId
     [Documentation]    根据withdrawalId 查询Task-Mgmt - Withdrawal Verification Task List, 找不到指定的taskId则重试
     [Arguments]    ${bossToken}    ${withdrawalId}
     # 将“发请求”和“校验逻辑”打包在一起进行 5 次重试
