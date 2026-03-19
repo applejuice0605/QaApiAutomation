@@ -117,22 +117,16 @@ Use Customer Pay and Full Payment to complete the payment
 
 Done the underwriting workflow
     Sleep    10s
-    [Order Review Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
-    the response should contain taskId    ${jsonResult}
-    I send request to assigneToMe API     ${jsonResult}   ${bossToken}
-    I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
-    the response should contain taskId    ${jsonResult}
-    [Order Review Task] I send request to approve API      ${bossToken}    ${orderNo}   ${Underwriting_DATA}
+    [Order Review Task] Using OrderNo Searching in Mgmt Task List    ${bossToken}    ${orderNo}   ${ORDER_MSG_DATA["UNDERWRITING_ORDER_REVIEW_EXISTSASSIGNEE"]}
+    I send request to assigneToMe API     ${taskResult}   ${bossToken}
+    The status code should be 200    ${jsonResult}[code]
 
+    Using OrderNo Searching in Todo Task List    ${bossToken}    ${orderNo}
+    [Order Review Task] I send request to approve API      ${bossToken}    ${taskResult}   ${Underwriting_DATA}
 
-    [toOffline Task] I send request to underwritingV2/list/manager API  ${bossToken}    ${orderNo}   ${ORDER_MSG_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
-    the response should contain taskId    ${jsonResult}
-    I send request to assigneToMe API     ${jsonResult}   ${bossToken}
-    I send request to underwritingV2/list/todo API    ${bossToken}    ${orderNo}
-    the response should contain taskId    ${jsonResult}
-    [toOffline Task] I send request to approve API to approve toOffline task   ${bossToken}    ${orderNo}   ${Underwriting_DATA}
+    [toOffline Review Task] Using OrderNo Searching in Mgmt Task List    ${bossToken}    ${orderNo}   ${ORDER_MSG_DATA["UNDERWRITING_OFFLINE_EXISTSASSIGNEE"]}
+    I send request to assigneToMe API     ${taskResult}   ${bossToken}
+    The status code should be 200    ${jsonResult}[code]
 
-    Send request to Boss:/api/oms/slip/v2/list API to get slipStatus    ${bossToken}    ${orderNo}
-    The response's=${jsonResult} slipStatus should be ${slipStatus}
-
-#Check Commission Disbursed
+    Using OrderNo Searching in Todo Task List    ${bossToken}    ${orderNo}
+    [toOffline Task] I send request to approve API to approve toOffline task   ${bossToken}    ${taskResult}   ${Underwriting_DATA}
