@@ -33,6 +33,19 @@ https://blog.csdn.net/qq_37615098/article/details/103434726
 # 初始化
 PS: 拉取代码之后，需要初始化一次项目，加载虚拟环境的依赖包
 poetry install 
+
+## 本地变量文件 `resources/varfile_defvar.py`（勿提交）
+
+大量用例通过 `Variables` 引用该文件中的账号、环境等。**该文件已加入 .gitignore，不会进入仓库。**
+
+首次克隆或新环境请执行（Windows）：
+
+```text
+copy resources\varfile_defvar.example.py resources\varfile_defvar.py
+```
+
+再编辑 `resources/varfile_defvar.py` 填入真实值。**GitHub Actions / CI** 需在流水线中自行生成该文件（例如用 Secrets 写入），或复制 example 后注入变量；勿把含密码的文件提交到仓库。
+
 PS：使用 python 3.10 ，不要使用 3.12 或者以上
 每次要执行项目代码，需要进入虚拟环境
 poetry shell
