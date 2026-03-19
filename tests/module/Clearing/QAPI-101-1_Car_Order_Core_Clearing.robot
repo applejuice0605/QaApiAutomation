@@ -12,7 +12,7 @@ Resource    ../../../resources/biz/order/vehicle_order.robot
 Resource    ../../../resources/biz/Payment/creatBilling_choosePayTypeAndPaymentScheme.robot
 Resource    ../../../resources/biz/Payment/OVO.robot
 
-Resource    ../../../resources/biz/underwriting/underwriting.robot
+Resource    ../../../resources/biz/Underwriting/underwriting.robot
 Resource    ../../../resources/biz/orderInfo/getPolicyInfo.robot
 
 Resource    ../../../resources/util/utilCommon.robot
@@ -102,10 +102,10 @@ I have logined to FusePro and Boss
 
 
     # 调用询价业务
-    property_order.I send the quotation request to savebinderrfq API    ${ORDER_MSG_AP_POSITIVE_DATA}    ${token}
+    vehicle_order.I send the quotation request to savebinderrfq API    ${ORDER_MSG_AP_POSITIVE_DATA}    ${token}
     assertUtil.The response should contain the value quoteNo and rfqNo    ${jsonResult}
     # 调用下单业务
-    property_order.I send the place order request to createrfqorder API     ${ORDER_MSG_AP_POSITIVE_DATA}    ${token}    ${rfqNo}    ${quoteNo}    ${isAdvancePremium}
+    vehicle_order.I send the place order request to createrfqorder API     ${ORDER_MSG_AP_POSITIVE_DATA}    ${token}    ${rfqNo}    ${quoteNo}    ${isAdvancePremium}
     assertUtil.The response should contain the value orderNo and orderId    ${jsonResult}
 
     Log     ${orderNo}

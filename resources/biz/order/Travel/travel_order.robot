@@ -59,7 +59,11 @@ I send the place order request to createrfqorder API
 
     #2. updateJsonBody
     ${newidentityNo}=     utilCommon.Generate Random identityNo
-    Run Keyword If    ${identityNo} == '0'   Set Test Variable    ${identityNo}     ${newidentityNo}
+    # 注意：${identityNo} 可能以字符串形式包含前导 0（如 068...）。
+    # 若不加引号，Robot 在解析条件表达式时会把它当“前导零整数”交给 Python eval，导致 SyntaxError。
+    IF    '${identityNo}' == '0'
+        ${identityNo}=    Set Variable    ${newidentityNo}
+    END
 
     Log     ${identityNo}
     ${jsonBody}=    Update Value To Json    ${jsonBody}    $.rfqNo    ${rfqNo}
