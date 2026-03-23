@@ -33,6 +33,8 @@
 - **Clearing 用例关键字调用修正**：`QAPI-101-1` 的内部关键字由 `property_order` 调用改为 `vehicle_order`，与 `*** Settings ***` 引入的资源保持一致，避免 IDE/静态检查提示未定义关键字。
 - **QAPI-41 DoubleOrder leading zeros 修复**：在 `resources/biz/order/Travel/travel_order.robot` 中把 `${identityNo} == '0'` 的条件判断改为对字符串加引号并使用 `IF ... ${identityNo}= Set Variable ...` 更新变量，避免 Robot/Python eval 将 `068...` 当“前导零整数”导致 `SyntaxError`。
 - **QAPI-41 IF 条件引号修复**：修正 `resources/biz/order/Travel/travel_order.robot` 中 `identityNo` 默认参数从 `identityNo='0'` 改为 `identityNo=0`，避免出现表达式 `''0'' == '0'` 的 `Invalid IF condition`（引号重复导致的 SyntaxError）。
+- **slipStatus 关键字级重试**：在 `resources/biz/orderInfo/getPolicyInfo.robot` 新增 `[Retry] Get slipStatus from Boss and verify`（默认 `5x`、每次间隔 `5s`），并按 `underwriting.robot` 同风格重构为“外层重试 + 内层 `Get And Verify ...`（`method_type` 分流）+ 单次请求关键字”，用于处理 Boss slip 状态延迟同步导致的偶发失败。
+- **QAPI-99 保持原关键字调用并兼容重试**：`tests/module/Underwriting/QAPI-99...` 继续使用原两行关键字（请求 + 断言）；在 `resources/biz/orderInfo/getPolicyInfo.robot` 中将重试下沉到既有关键字实现，且将“Send request to Boss:/api/oms/slip/v2/list API to get slipStatus”关键字本身改为内置重试（`Wait Until Keyword Succeeds 5x 5s`），保证调用方式不变也能自动重试。
 - **ArcheryCookieGenerator 导入报错**（CI）：移除 `resources/util/ArcheryCookieGenerator.py` 中“导入即执行”的调试代码；`get_archery_cookie` 改为从 Session cookies 读取 `csrftoken/sessionid` 并对缺失场景抛出可读错误，避免 `NoneType.split`。
 - **GitHub Actions**：在「Run tests」前增加「Prepare results directory」步骤（`mkdir -p results && touch results/.gitkeep`），避免 run 未生成报告时 upload-artifact 报错 “No files were found with the provided path: results/”；报告 URL 输出步骤改为仅在有报告子目录时打印链接。
 - **GitHub Actions 依赖安装**：项目使用 Poetry（无 requirements.txt），workflow 改为先 `pip install poetry` 再 `poetry install --no-interaction`，运行命令改为 `poetry run python run.py ...`；Python 版本与 pyproject.toml 一致改为 3.10。
