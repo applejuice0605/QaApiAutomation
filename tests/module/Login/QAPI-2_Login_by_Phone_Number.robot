@@ -21,7 +21,8 @@ ${loginMethod}    mobile
 
 *** Test Cases ***
 Login Success by Phone Number
-    [Tags]    uatAndprod    prod    uat
+    [Tags]    uat    notUsed
+    Skip    # 暂不执行：目前需要通过archery获取cookie，暂时不执行,后续增加通过BOSS注册的场景
     Given I have a valid login account and password
     When I send a POST request to the byLogin API
     Then The response should contain the user's openid and tenantId
