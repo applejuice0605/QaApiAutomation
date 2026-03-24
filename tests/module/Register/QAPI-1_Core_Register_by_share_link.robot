@@ -36,7 +36,9 @@ Test Teardown    Delete All Sessions
 
 *** Test Cases ***
 Core - Register by share link
-    [Tags]    uatAndprod    uat
+    [Tags]    uatAndprod    uat robot:skip
+    # 使用robot:skip 加在Tags或者在这里加 Skip 关键字
+    Skip    skip first due to sms code need to retrieve manually from Archery
     Given I have a valid login account and password and a unregisted mobile number
     When I Click button Invite Friend
     Then The status code should be 200    ${jsonResult}[code]
