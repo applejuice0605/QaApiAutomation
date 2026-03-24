@@ -28,10 +28,8 @@ Check Partner Pay Full Payment Order's Commission Disbursed
     END
     Log    message
 
-Check Commission Disbursed
+Get And Verify Commission Disbursed
     [Arguments]    ${token}     ${slipIds}   ${expected_data_count}
-    Log    ${token}
-    Sleep    50s
     ${response}    account_flow_list_v2.Send Request And Get Response Data    ${token}
     ${resultdata}     Set Variable    ${response.json()}[data][data]
 
@@ -50,6 +48,12 @@ Check Commission Disbursed
         Log    ${len}
         Should Be True    ${len} == ${expected_data_count}
     END
+
+Check Commission Disbursed
+    [Arguments]    ${token}     ${slipIds}   ${expected_data_count}
+    [Documentation]    查询佣金发放情况，最多重试10次，每次间隔10秒
+    Log    ${token}
+    Wait Until Keyword Succeeds    10x    10s    Get And Verify Commission Disbursed    token=${token}    slipIds=${slipIds}    expected_data_count=${expected_data_count}
 
 
 

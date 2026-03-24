@@ -35,7 +35,7 @@ Test Teardown    Delete All Sessions
 
 
 *** Test Cases ***
-Core - Register by share link
+Core - KTP_Verfication
     [Tags]    notUsed
     Skip    # 暂不执行：notUsed
     Given I have a valid login account and password and a unregisted mobile number

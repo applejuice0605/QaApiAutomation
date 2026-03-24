@@ -12,7 +12,7 @@ Resource    ../../../resources/biz/order/Travel/travel_order.robot
 Resource    ../../../resources/biz/Payment/creatBilling_choosePayTypeAndPaymentScheme.robot
 Resource    ../../../resources/biz/Payment/OVO.robot
 
-Resource    ../../../resources/biz/underwriting/underwriting.robot
+Resource    ../../../resources/biz/Underwriting/underwriting.robot
 Resource    ../../../resources/biz/orderInfo/getPolicyInfo.robot
 
 

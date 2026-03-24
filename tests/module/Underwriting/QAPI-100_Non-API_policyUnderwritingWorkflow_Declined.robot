@@ -9,7 +9,7 @@ Library    JSONLibrary
 
 Resource    ../../../resources/biz/Login/login.robot
 Resource    ../../../resources/biz/order/property/property_order.robot
-Resource    ../../../resources/biz/underwriting/underwriting.robot
+Resource    ../../../resources/biz/Underwriting/underwriting.robot
 Resource    ../../../resources/biz/orderInfo/getPolicyInfo.robot
 
 

@@ -2,5 +2,6 @@
 robotframework>=7.0
 robotframework-requests>=0.9.7
 robotframework-jsonlibrary>=0.5
+robotframework-seleniumlibrary
 requests>=2.32.3
 python-dotenv>=1.2.1

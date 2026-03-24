@@ -27,7 +27,7 @@ Send Request And Get Response Data
 
     ${path}=   Set Variable     /api/account/flow/list/v2
     ${headers}=    Create Dictionary    Content-Type=application/json    clientType=ANDROID    appCode=IDP_FUSE_PRO     fusetoken=${token}  timeZone=7  tenantId=1000662
-    ${payload}=    Set Variable    {"mobile":"","pageSize":"10","pageNo":0,"queryCotFlag":"true","sort":"create_time","order":"DESC","controlAccount":null,"language":"en_US","isUpper":"no"}
+    ${payload}=    Set Variable    {"mobile":"","pageSize":"20","pageNo":0,"queryCotFlag":"true","sort":"create_time","order":"DESC","controlAccount":null,"language":"en_US","isUpper":"no"}
 
     # 2. 发送请求
     ${response}=    httpCommon.Send Post Request And Get Response Data    ${base_url}    ${path}    ${headers}    ${payload}
