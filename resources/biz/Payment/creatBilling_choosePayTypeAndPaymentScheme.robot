@@ -31,8 +31,8 @@ I try to get paymentBilling Info and securityCode
     IF    '${securityCode}' == '${None}'
         Log    securityCode is empty, try to get from paymentBillingList API
         ${response}    Send request to paymentBillingList API    token=${token}    orderId=${orderId}
-        ${securityCode}=    Get From Dictionary    ${jsonResult}[data][paymentBillingList][0]   securityCode
-        ${paymentBillNo}=    Get From Dictionary    ${jsonResult}[data][paymentBillingList][0]   paymentBillNo
+        ${securityCode}=    Get From Dictionary    ${jsonResult}[data][paymentBillingLs][0]   securityCode
+        ${paymentBillNo}=    Get From Dictionary    ${jsonResult}[data][paymentBillingLs][0]   paymentBillNo
         Log    ${securityCode}
         
     END
