@@ -23,7 +23,7 @@ ${BODY_FILE_PATH}    Car_PlaceOrderData.json
 ${isAdvancePremium}     0
 ${payerType}    2
 ${paymentScheme}    2
-${CouponCode}   PR00000792
+${CouponCode}   PR00000919
 ${paymentMethod}    OVO
 
 *** Test Cases ***

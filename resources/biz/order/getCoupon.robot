@@ -19,16 +19,19 @@ I send request to getAvailableCoupon API
     Log    ${jsonResult}
 
 the response should contain the available coupon list and get coupon info by couponCode
+    [Tags]    notUsed
     [Arguments]     ${jsonResult}   ${CouponCode}
     ${couponUseInfo}=    utilCommon.Get CouponId by CouponCode    ${jsonResult}[data]    ${CouponCode}
     Log    ${couponUseInfo}
     Set Test Variable    ${couponUseInfo}   ${couponUseInfo}
 
-the response should contain the available coupon list and get first available coupon
+the response should contain the available coupon list and return available couponUseInfo
     [Arguments]     ${jsonResult}
     ${couponUseInfo}=    utilCommon.Get First Available Coupon    ${jsonResult}[data]
     Log    ${couponUseInfo}
     Set Test Variable    ${couponUseInfo}   ${couponUseInfo}
+
+
 
 
 

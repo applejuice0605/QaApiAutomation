@@ -85,6 +85,10 @@ Get CouponId by CouponCode
 Get First Available Coupon
     [Arguments]    ${couponDTO}
     Log    ${couponDTO}
+    ${length}      Get Length    ${couponDTO}[0][couponAvailableList]
+    # 判断优惠券列表长度，并断言
+    Should Be True    ${length} > 0
+    # 获取第一个可用的券Id
     ${couponAvailableList}   Set Variable    ${couponDTO}[0][couponAvailableList]
     ${couponId}    Set Variable    ${couponAvailableList}[0][couponId]
 

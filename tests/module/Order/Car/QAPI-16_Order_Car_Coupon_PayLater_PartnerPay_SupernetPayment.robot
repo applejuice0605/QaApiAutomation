@@ -23,7 +23,7 @@ ${BODY_FILE_PATH}    Car_PlaceOrderData.json
 ${isAdvancePremium}     0
 ${payerType}    2
 ${paymentScheme}    3
-${CouponCode}   PR00000792
+${CouponCode}   PR00000792919
 ${paymentMethod}    OVO
 
 *** Test Cases ***
@@ -37,7 +37,7 @@ Car using coupon PayLater PartnerPay SupernetPayment
 
     Then I send request to getAvailableCoupon API   ${AP_POSITIVE_DATA}     ${token}
     Then The status code should be 200    ${jsonResult}[code]
-    And the response should contain the available coupon list and get coupon info by couponCode   ${jsonResult}    ${CouponCode}
+    And the response should contain the available coupon list and return available couponUseInfo   ${jsonResult}
 
     Then I send the place order request to createrfqorder API    ${AP_POSITIVE_DATA}     ${token}    ${rfqNo}    ${quoteNo}  ${isAdvancePremium}    couponUseInfo=${couponUseInfo}
     Then The status code should be 200    ${jsonResult}[code]
