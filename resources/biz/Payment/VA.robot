@@ -50,6 +50,8 @@ Customer Cashier click Next and Send request to slip/channel/process API
 Partner Cashier click Next and Send request to slip/channel/process API
     [Documentation]     Business operation: click Next in Partner Pay->Choose Bank Virtual Account Page after choosing bank
     [Arguments]     ${token}    ${amount}     ${securityCode}    ${bank}
+    # 将amount转换成正整数
+    ${amount}=    Evaluate    int(${amount})
     ${response}    slip_channel_process.Send Request And Get Response Data    payerType=2    token=${token}    securityCode=${securityCode}    methodCode=9204     amount=${amount}
 
     Set Test Variable    ${jsonResult}    ${response.json()}
