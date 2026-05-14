@@ -3,7 +3,9 @@ Resource    ../../lib/Common.robot
 
 *** Variables ***
 ${session}=  userLogoutSession
-${url}=  https://app-uat.fuseinsurtech.com/insurance-finance-vs-api/api/fuse/user/logout
+# ${url}=  https://app-uat.fuseinsurtech.com/insurance-finance-vs-api/api/fuse/user/logout
+${url}=  https://sso-uat.fuse.co.id/api/sso/app/user/logout #新接口
+
 
 
 *** Keywords ***
