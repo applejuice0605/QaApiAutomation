@@ -146,7 +146,8 @@ class ChangePassword:
         random_name = ''.join(random.choices(string.ascii_letters, k=6))
         # token = self.login_app('628188666666','666666')
         # usertoken = self.fms_login_app('628188666666','666666')
-        edit_url = "https://app-uat.fuseinsurtech.com/insurance-finance-vs-api/api/fuse/agent/updateInfo"
+        # edit_url = "https://app-uat.fuseinsurtech.com/insurance-finance-vs-api/api/fuse/agent/updateInfo"
+        edit_url = "https://ptr-uat.fuse.co.id/api/prm/partner/modify/information"
         edit_headers = {
             "Content-Type": "application/json",
             "version": "3.93.0.30-uat",
@@ -155,7 +156,7 @@ class ChangePassword:
             "language": "en_US",
             "tenantId": "1000662",
             # "fusetoken": f"{token}",
-            "host": "app-uat.fuseinsurtech.com",
+            "host": "ptr-uat.fuse.co.id",
             "x-app-code": "IDP_FUSE_PRO",
             "x-user-token": f"{usertoken}",
             "usertoken": f"{usertoken}",
