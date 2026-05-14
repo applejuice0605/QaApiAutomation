@@ -28,6 +28,7 @@
 
 ### 修复
 
+- **Setting/UserLogout URL 行内注释导致 404**：移除 `resources/api/Setting/UserLogout.robot` 中 `${url}` 后的行内注释，避免注释被拼进 URL（出现 `%20#...`）导致请求 404。
 - **Clearing 核保流程**（`QAPI-101` / `102` / `103` / `104`）：与 `resources/biz/Underwriting/underwriting.robot` 对齐——使用 `the response should contain taskIds`；manager/todo 响应写入 `${jsonResult}`；`assigneToMe` 与 approve 传入 `${taskResult}`（不再使用已删除的 `taskId` 关键字及错误的 `${orderNo}`/`${jsonResult}` 参数）。
 - **Linux CI 资源路径大小写**：修复用例 `Resource` 引入路径中 `biz/underwriting` 与目录 `biz/Underwriting` 大小写不一致的问题，避免 Linux 下关键词加载失败（“No keyword ... found”）。
 - **Clearing 用例关键字调用修正**：`QAPI-101-1` 的内部关键字由 `property_order` 调用改为 `vehicle_order`，与 `*** Settings ***` 引入的资源保持一致，避免 IDE/静态检查提示未定义关键字。
