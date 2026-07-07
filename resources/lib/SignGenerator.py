@@ -40,8 +40,8 @@ class SignGenerator(object):
 
         return str(sign.upper())
 
-    def get_keyword_names(self):
-        return ['generate_sign']
+#    def get_keyword_names(self):
+#        return ['generate_sign']
 
 if __name__ == '__main__':
     options = {'data': {

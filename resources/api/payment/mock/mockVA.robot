@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation
 ...    use to change change the payment status of the order using VA to pay
-...    BASE_URL: https://cashier-uat.fuse.co.id
+...    BASE_URL: https://cashier-sg-uat.fuse.co.id
 ...    path: /api/paymentBilling/create
 ...    POST
 ...    headers: {'Content-Type': 'application/json','clientType': 'ANDROID','appCode': 'IDP_FUSE_PRO', 'fusetoken': 'token'}
@@ -27,8 +27,8 @@ Send Request And Get Response Data
 
     RETURN    ${response}
 
-https://api.xendit.co/callback_virtual_accounts/external_id=4F9DE3BFDD5E436BA8740B73A4412B6C/simulate_payment
-https://api.xendit.co/callback_virtual_accounts/external_id=8CD58AE7F5E54F16A405222C7D592648/simulate_payment
-
-Basic eG5kX2RldmVsb3BtZW50X1JOODZyQWFwV1RvRnJxb3dqTUM3Zm5tYnVMaXZQblg4NjYwUlVNRFpGdW
-Basic eG5kX2RldmVsb3BtZW50X1JOODZyQWFwV1RvRnJxb3dqTUM3Zm5tYnVMaXZQblg4NjYwUlVNRFpGdWp2N1A2bDl3eU9sWmpSSWhxODUyOg==
+# https://api.xendit.co/callback_virtual_accounts/external_id=4F9DE3BFDD5E436BA8740B73A4412B6C/simulate_payment
+# https://api.xendit.co/callback_virtual_accounts/external_id=8CD58AE7F5E54F16A405222C7D592648/simulate_payment
+# 
+# Basic eG5kX2RldmVsb3BtZW50X1JOODZyQWFwV1RvRnJxb3dqTUM3Zm5tYnVMaXZQblg4NjYwUlVNRFpGdW
+# Basic eG5kX2RldmVsb3BtZW50X1JOODZyQWFwV1RvRnJxb3dqTUM3Zm5tYnVMaXZQblg4NjYwUlVNRFpGdWp2N1A2bDl3eU9sWmpSSWhxODUyOg==

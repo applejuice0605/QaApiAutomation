@@ -5,7 +5,7 @@ Resource    ../../lib/Common.robot
 ${session}=  userLogoutSession
 # ${url}=  https://app-uat.fuseinsurtech.com/insurance-finance-vs-api/api/fuse/user/logout
 # 新接口
-${url}=  https://sso-uat.fuse.co.id/api/sso/app/user/logout
+${url}=  https://sso-sg-uat.fuse.co.id/api/sso/app/user/logout
 
 
 

@@ -10,7 +10,7 @@ Resource    ../../../lib/Common.robot
 
 
 *** Variables ***
-${create_url}=  https://ptr-uat.fuse.co.id/api/order/createBinderOrder
+${create_url}=  https://ptr-sg-uat.fuse.co.id/api/order/createBinderOrder
 
 *** Keywords ***
 Send CarCreateBinderOrder Post Request

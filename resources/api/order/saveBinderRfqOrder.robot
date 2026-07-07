@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation
 ...    saveBinderRfqOrder API：when click "go quote" / "next" button in Pricing Detail page, the API will be called
-...    BASE_URL: https://ptr-uat.fuse.co.id
+...    BASE_URL: https://ptr-sg-uat.fuse.co.id
 ...    path: /api/rfq/order/saveBinderRfqOrder
 ...    POST
 ...    headers: {'Content-Type': 'application/json','clientType': 'ANDROID','appCode': 'IDP_FUSE_PRO', 'fusetoken': 'token'}

@@ -3,19 +3,19 @@ Resource    ../../lib/Common.robot
 Variables   ../../varfile_defvar.py
 
 *** Variables ***
-${withdrawal_url}=  https://ptr-uat.fuse.co.id/api/local/id/bankCard/withdraw
-${check_partnerCode_url}=  https://boss-uat.fuse.co.id/api/prm/partner/manager/list
-${check_manualWithdrawalTaskId_url}=  https://boss-uat.fuse.co.id/api/trading/withdrawal/bpm/manager/verification/list
-${withdrawalVerifation_assign}=  https://boss-uat.fuse.co.id/api/bpm/runtime/self/assign
-${withdrawalVerifation_review}=  https://boss-uat.fuse.co.id/api/bpm/flow/approval
-${withdrawalPayment_assign}=  https://boss-uat.fuse.co.id/api/bpm/runtime/self/assign
-${withdrawalPaymentConfirm_url}=  https://boss-uat.fuse.co.id/api/bpm/flow/approval
+${withdrawal_url}=  https://ptr-sg-uat.fuse.co.id/api/local/id/bankCard/withdraw
+${check_partnerCode_url}=  https://boss-sg-uat.fuse.co.id/api/prm/partner/manager/list
+${check_manualWithdrawalTaskId_url}=  https://boss-sg-uat.fuse.co.id/api/trading/withdrawal/bpm/manager/verification/list
+${withdrawalVerifation_assign}=  https://boss-sg-uat.fuse.co.id/api/bpm/runtime/self/assign
+${withdrawalVerifation_review}=  https://boss-sg-uat.fuse.co.id/api/bpm/flow/approval
+${withdrawalPayment_assign}=  https://boss-sg-uat.fuse.co.id/api/bpm/runtime/self/assign
+${withdrawalPaymentConfirm_url}=  https://boss-sg-uat.fuse.co.id/api/bpm/flow/approval
 ${withdrawalSession}=  withdrawalSession
-${manual_withdrawal}=   https://ptr-uat.fuse.co.id/api/local/id/bankCard/withdraw/manual
-${withdrawalPaymentTaskId}=  https://boss-uat.fuse.co.id/api/trading/withdrawal/bpm/manager/payment/list
-${withdrawalPaymentAssign}=  https://boss-uat.fuse.co.id/api/bpm/runtime/self/assign
-${BalanceHistory_url}=  https://ptr-uat.fuse.co.id/api/account/flow/list/v2
-${add_bank_account_url}=  https://ptr-uat.fuse.co.id/api/local/id/bankCard/add
+${manual_withdrawal}=   https://ptr-sg-uat.fuse.co.id/api/local/id/bankCard/withdraw/manual
+${withdrawalPaymentTaskId}=  https://boss-sg-uat.fuse.co.id/api/trading/withdrawal/bpm/manager/payment/list
+${withdrawalPaymentAssign}=  https://boss-sg-uat.fuse.co.id/api/bpm/runtime/self/assign
+${BalanceHistory_url}=  https://ptr-sg-uat.fuse.co.id/api/account/flow/list/v2
+${add_bank_account_url}=  https://ptr-sg-uat.fuse.co.id/api/local/id/bankCard/add
 *** Keywords ***
 
 # 发起提现请求
@@ -55,7 +55,7 @@ Get Bank Account List
     ...    Set Test Variable    ${base_url}    https://ptr.fuse.co.id/
     ...  ELSE
     ...    Set Test Variable    ${base_url}    https://ptr-${env}.fuse.co.id/
-    # curl -X POST -d '{}' 'https://ptr-uat.fuse.co.id/api/partner/bank/account/list?_v=1773122899538_41445'
+    # curl -X POST -d '{}' 'https://ptr-sg-uat.fuse.co.id/api/partner/bank/account/list?_v=1773122899538_41445'
     ${path}    Set Variable    /api/partner/bank/account/list
     ${headers}=  Create Dictionary      Content-Type=application/json   fusetoken=${fusetoken}  appCode=IDP_FUSE_PRO
     ${payload}=  Set Variable      {}
@@ -65,7 +65,7 @@ Get Bank Account List
 
 # 查询余额
 Get Account Balance
-    # curl -X POST -d '{}' 'https://ptr-uat.fuse.co.id/api/local/prm/account/balance?_v=1773122899299_61595'
+    # curl -X POST -d '{}' 'https://ptr-sg-uat.fuse.co.id/api/local/prm/account/balance?_v=1773122899299_61595'
     [Arguments]    ${fusetoken}
     # 1. 准备请求数据：请求路径、请求头、请求数据
     # 根据环境加载提现base url，默认是UAT
@@ -83,7 +83,7 @@ Get Account Balance
 
 Get Withdrawal History List
     [Documentation]    获取fusepro的流水列表，默认查询前20条
-    # curl -X POST -d '{pageNum: 2, pageSize: 10}' 'https://ptr-uat.fuse.co.id/api/withdraw/history/list?_v=1773125857612_89321'
+    # curl -X POST -d '{pageNum: 2, pageSize: 10}' 'https://ptr-sg-uat.fuse.co.id/api/withdraw/history/list?_v=1773125857612_89321'
     [Arguments]    ${fusetoken}    ${pageNum}=1    ${pageSize}=20
     # 1. 准备请求数据：请求路径、请求头、请求数据
     # 根据环境加载提现base url，默认是UAT

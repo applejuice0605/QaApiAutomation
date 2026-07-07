@@ -2,8 +2,8 @@
 Resource    ../../lib/Common.robot
 
 *** Variables ***
-${boss_byLogin}=  https://sso-uat.fuse.co.id/api/sso/h5/user/tenants/byLogin
-${boss_userLogin}=  https://sso-uat.fuse.co.id/api/sso/h5/user/login
+${boss_byLogin}=  https://sso-sg-uat.fuse.co.id/api/sso/h5/user/tenants/byLogin
+${boss_userLogin}=  https://sso-sg-uat.fuse.co.id/api/sso/h5/user/login
 ${BossLoginAccount}=   ceo001
 ${BossPassword}=  Fuse!001
 

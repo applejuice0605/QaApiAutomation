@@ -2,9 +2,9 @@
 Resource    ../../lib/Common.robot
 
 *** Variables ***
-${PointExchangeUrl}=  https://ptr-uat.fuse.co.id/api/account/points/exchange/v3
-${checkBalanceAmountUrl}=  https://ptr-uat.fuse.co.id/api/account/queryBalance/v3
-${queryBalanceUrl}=  https://ptr-uat.fuse.co.id/api/account/flow/list/v2
+${PointExchangeUrl}=  https://ptr-sg-uat.fuse.co.id/api/account/points/exchange/v3
+${checkBalanceAmountUrl}=  https://ptr-sg-uat.fuse.co.id/api/account/queryBalance/v3
+${queryBalanceUrl}=  https://ptr-sg-uat.fuse.co.id/api/account/flow/list/v2
 *** Keywords ***
 Send Point Exchange Post Request
     [Arguments]  ${fusetoken}  ${body}

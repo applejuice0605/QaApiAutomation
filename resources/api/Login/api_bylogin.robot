@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation
 ...    Login by login account and password and Will get openId & tenantId
-...    BASE_URL: https://sso-uat.fuse.co.id
+...    BASE_URL: https://sso-sg-uat.fuse.co.id
 ...    path: /api/sso/h5/user/tenants/byLogin
 ...    POST
 ...    headers: {'Content-Type': 'application/json','clientType': 'ANDROID','appCode': 'IDP_FUSE_PRO'}

@@ -6,7 +6,7 @@ Library    BuiltIn
 
 Resource    ../../../lib/Common.robot
 *** Variables ***
-${coupon_url}=  https://ptr-uat.fuse.co.id/api/local/mcs/coupon/redeem/query/available
+${coupon_url}=  https://ptr-sg-uat.fuse.co.id/api/local/mcs/coupon/redeem/query/available
 ${session}=  CarcouponSession
 
 

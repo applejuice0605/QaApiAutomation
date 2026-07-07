@@ -8,7 +8,7 @@ Resource    ../../util/httpCommon.robot
 POST FusePro:/api/order/v2/slip/slipLs
     [Arguments]    ${token}   ${orderId}
     # 1. 准备请求数据：请求路径、请求头、请求数据
-    ${base_url}=   Set Variable     https://ptr-uat.fuse.co.id
+    ${base_url}=   Set Variable     https://ptr-sg-uat.fuse.co.id
     ${path}=   Set Variable     /api/order/v2/slip/slipLs
     ${headers}=    Create Dictionary    Content-Type=application/json    clientType=ANDROID    appCode=IDP_FUSE_PRO    fusetoken=${token}
     ${payload}=    Set Variable     {"orderId":"${orderId}"}
@@ -21,7 +21,7 @@ POST FusePro:/api/order/v2/slip/slipLs
 POST Boss:/api/oms/slip/v2/list
     [Arguments]    ${token}   ${orderNo}
     # 1. 准备请求数据：请求路径、请求头、请求数据
-    ${base_url}=   Set Variable     https://boss-uat.fuse.co.id
+    ${base_url}=   Set Variable     https://boss-sg-uat.fuse.co.id
     ${path}=   Set Variable     /api/oms/slip/v2/list
     ${headers}=    Create Dictionary    Content-Type=application/json;charset=UTF-8    appCode=IDP_BOSS     fusetoken=${token}
     ${payload}=    Set Variable     {"pageNo":0,"pageSize":20,"multiFieldQuery":"${orderNo}"}

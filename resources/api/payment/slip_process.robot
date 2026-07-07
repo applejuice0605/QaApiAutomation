@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation
 ...    slip/process API
-...    BASE_URL: https://cashier-uat.fuse.co.id
+...    BASE_URL: https://cashier-sg-uat.fuse.co.id
 ...    path: api/cashier/partner/payment/slip/process
 ...    POST
 ...    headers: {'Content-Type': 'application/json','clientType': 'ANDROID','appCode': 'IDP_FUSE_PRO', 'fusetoken': 'token'}
@@ -21,7 +21,7 @@ Resource    ../../util/httpCommon.robot
 Send Request And Get Response Data
     [Arguments]    ${payerType}     ${token}   ${selectType}     ${paymentScheme}    ${orderId}    ${securityCode}     ${bonusDeduction}=0    ${pointsDeduction}=0     ${methodCode}=""
     # 1. 准备请求数据：请求路径、请求头、请求数据
-    ${base_url}=   Set Variable     https://cashier-uat.fuse.co.id
+    ${base_url}=   Set Variable     https://cashier-sg-uat.fuse.co.id
     ${headers}=    Get appHeader By PayerType    ${payerType}    ${token}
 
     ${payerTypeStr}    httpCommon.Get String PayerType    ${payerType}
@@ -41,7 +41,7 @@ Send Request And Get Response Data
 Partner Pay Send Request And Get Response Data
     [Arguments]    ${token}   ${selectType}     ${paymentScheme}    ${orderId}    ${securityCode}     ${bonusDeduction}=0    ${pointsDeduction}=0     ${methodCode}=9204
     # 1. 准备请求数据：请求路径、请求头、请求数据
-    ${base_url}=   Set Variable     https://cashier-uat.fuse.co.id
+    ${base_url}=   Set Variable     https://cashier-sg-uat.fuse.co.id
     ${path}=   Set Variable     api/cashier/partner/payment/slip/process
     ${headers}=    Create Dictionary    Content-Type=application/json    clientType=ANDROID    appCode=IDP_FUSE_PRO    fusetoken=${token}
     ${payload}=    Set Variable     {"paymentScheme": ${paymentScheme},"payerType": 2,"bonusDeduction": ${bonusDeduction},"orderId": "${orderId}","securityCode": "${securityCode}","selectType": ${selectType},"pointsDeduction": ${pointsDeduction},"methodCode": ${methodCode}}
@@ -54,7 +54,7 @@ Partner Pay Send Request And Get Response Data
 Customer Pay Send Request And Get Response Data
     [Arguments]    ${token}   ${orderId}    ${securityCode}     ${bonusDeduction}=0    ${pointsDeduction}=0
     # 1. 准备请求数据：请求路径、请求头、请求数据
-    ${base_url}=   Set Variable     https://cashier-uat.fuse.co.id
+    ${base_url}=   Set Variable     https://cashier-sg-uat.fuse.co.id
     ${path}=   Set Variable     api/cashier/customer/payment/slip/process
     ${headers}=    Create Dictionary    Content-Type=application/json    x-5a-temp-token=${token}
 #    在app选中customer pay-> click continue时调用该接口，select type = 1

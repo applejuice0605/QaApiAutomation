@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation
 ...    slip/process API
-...    BASE_URL: https://cashier-uat.fuse.co.id
+...    BASE_URL: https://cashier-sg-uat.fuse.co.id
 ...    path: /api/cashier/partner/payment/slip/getChannelFee
 ...    POST
 ...    headers: {'Content-Type': 'application/json','clientType': 'ANDROID','appCode': 'IDP_FUSE_PRO', 'fusetoken': 'token'}
@@ -16,7 +16,7 @@ Resource    ../../util/httpCommon.robot
 Send Request And Get Response Data
     [Arguments]    ${payerType}     ${token}   ${securityCode}   ${methodCode}    ${bank}=BCA
     # 1. 准备请求数据：请求路径、请求头、请求数据
-    ${base_url}=   Set Variable     https://cashier-uat.fuse.co.id
+    ${base_url}=   Set Variable     https://cashier-sg-uat.fuse.co.id
     ${headers}=    Get appHeader By PayerType    ${payerType}    ${token}
 
     ${payerTypeStr}    httpCommon.Get String PayerType    ${payerType}

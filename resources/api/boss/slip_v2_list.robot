@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation
 ...    boss get policy list, when click in policy list v2.0 menu, this api will be called
-...    BASE_URL: https://boss-uat.fuse.co.id
+...    BASE_URL: https://boss-sg-uat.fuse.co.id
 ...    path: /api/oms/slip/v2/list
 ...    POST
 ...    headers: {'Content-Type': 'application/json','clientType': 'ANDROID','appCode': 'IDP_FUSE_PRO'}

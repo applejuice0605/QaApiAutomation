@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation
 ...    createBinderOrder API：when click "Pay Now" / "Pay Later" button in Pricing Detail page, the API will be called
-...    BASE_URL: https://ptr-uat.fuse.co.id
+...    BASE_URL: https://ptr-sg-uat.fuse.co.id
 ...    path: /api/local/quote/generateQuotePDF
 ...    POST
 ...    headers: {'Content-Type': 'application/json','clientType': 'ANDROID','appCode': 'IDP_FUSE_PRO', 'fusetoken': 'token'}

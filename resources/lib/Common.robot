@@ -10,7 +10,8 @@ Resource    ../api/Login/api_bylogin.robot
 Resource    ../api/Login/api_login.robot
 
 *** Variables ***
-${FmsLogin_Url}=  https://app-uat.fuseinsurtech.com/insurance-finance-vs-api/api/fuse/user/login
+# ${FmsLogin_Url}=  https://app-uat.fuseinsurtech.com/insurance-finance-vs-api/api/fuse/user/login
+${FmsLogin_Url}=  https://app-sg-uat.fuseinsurtech.com/insurance-finance-vs-api/api/fuse/user/login
 
 *** Keywords ***
 

@@ -3,20 +3,20 @@ Resource    ../../lib/Common.robot
 
 
 *** Variables ***
-${withdrawal_url}=  https://ptr-uat.fuse.co.id/api/local/id/bankCard/withdraw
-${check_partnerCode_url}=  https://boss-uat.fuse.co.id/api/prm/partner/manager/list
-${check_manualWithdrawalTaskId_url}=  https://boss-uat.fuse.co.id/api/trading/withdrawal/bpm/manager/verification/list
-${withdrawalVerifation_assign}=  https://boss-uat.fuse.co.id/api/bpm/runtime/self/assign
-${withdrawalVerifation_review}=  https://boss-uat.fuse.co.id/api/bpm/flow/approval
-${withdrawalPayment_assign}=  https://boss-uat.fuse.co.id/api/bpm/runtime/self/assign
-${withdrawalPaymentConfirm_url}=  https://boss-uat.fuse.co.id/api/bpm/flow/approval
+${withdrawal_url}=  https://ptr-sg-uat.fuse.co.id/api/local/id/bankCard/withdraw
+${check_partnerCode_url}=  https://boss-sg-uat.fuse.co.id/api/prm/partner/manager/list
+${check_manualWithdrawalTaskId_url}=  https://boss-sg-uat.fuse.co.id/api/trading/withdrawal/bpm/manager/verification/list
+${withdrawalVerifation_assign}=  https://boss-sg-uat.fuse.co.id/api/bpm/runtime/self/assign
+${withdrawalVerifation_review}=  https://boss-sg-uat.fuse.co.id/api/bpm/flow/approval
+${withdrawalPayment_assign}=  https://boss-sg-uat.fuse.co.id/api/bpm/runtime/self/assign
+${withdrawalPaymentConfirm_url}=  https://boss-sg-uat.fuse.co.id/api/bpm/flow/approval
 ${withdrawalSession}=  withdrawalSession
-# ${manual_withdrawal}=   https://ptr-uat.fuse.co.id/api/local/id/bankCard/withdraw/manual
-${manual_withdrawal}=   https://ptr-uat.fuse.co.id/api/prm/withdraw/manual
-${withdrawalPaymentTaskId}=  https://boss-uat.fuse.co.id/api/trading/withdrawal/bpm/manager/payment/list
-${withdrawalPaymentAssign}=  https://boss-uat.fuse.co.id/api/bpm/runtime/self/assign
-${BalanceHistory_url}=  https://ptr-uat.fuse.co.id/api/account/flow/list/v2
-${add_bank_account_url}=  https://ptr-uat.fuse.co.id/api/local/id/bankCard/add
+# ${manual_withdrawal}=   https://ptr-sg-uat.fuse.co.id/api/local/id/bankCard/withdraw/manual
+${manual_withdrawal}=   https://ptr-sg-uat.fuse.co.id/api/prm/withdraw/manual
+${withdrawalPaymentTaskId}=  https://boss-sg-uat.fuse.co.id/api/trading/withdrawal/bpm/manager/payment/list
+${withdrawalPaymentAssign}=  https://boss-sg-uat.fuse.co.id/api/bpm/runtime/self/assign
+${BalanceHistory_url}=  https://ptr-sg-uat.fuse.co.id/api/account/flow/list/v2
+${add_bank_account_url}=  https://ptr-sg-uat.fuse.co.id/api/local/id/bankCard/add
 *** Keywords ***
 Send Withdrawal Post Request
     [Arguments]    ${fusetoken}   ${tenantId}  ${loginAccount}  ${withdrawalAmount}  ${password}

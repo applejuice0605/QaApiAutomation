@@ -6,7 +6,7 @@ Library    BuiltIn
 #Resource    ../../../api/Login/Login.robot
 Resource    ../../../lib/Common.robot
 *** Variables ***
-${save_url}=  https://ptr-uat.fuse.co.id/api/rfq/order/saveBinderRfqOrder
+${save_url}=  https://ptr-sg-uat.fuse.co.id/api/rfq/order/saveBinderRfqOrder
 ${session}=  carSaveSession
 
 

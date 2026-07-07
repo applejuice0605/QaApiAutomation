@@ -2,7 +2,7 @@
 
 Documentation   接口描述、定义，请求体示例
 ...    Login by login account & password & tenantId & openId and Will get token
-...    BASE_URL: https://sso-uat.fuse.co.id
+...    BASE_URL: https://sso-sg-uat.fuse.co.id
 ...    path: /api/sso/app/user/login
 ...    POST
 ...    headers: {'Content-Type': 'application/json','clientType': 'ANDROID','appCode': 'IDP_FUSE_PRO'}

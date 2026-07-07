@@ -3,10 +3,10 @@ Resource    ../../lib/Common.robot
 
 
 *** Variables ***
-${add_adjustment_Url}=  https://boss-uat.fuse.co.id/api/account/trading/manager/add
-${check_taskId}=  https://boss-uat.fuse.co.id/api/adjustment/review/list/manager
-${adjustment_assign_url}=  https://boss-uat.fuse.co.id/api/bpm/runtime/self/assign
-${adjustment_approval_url}=  https://tmp-uat.fuse.co.id/trading/flow/approval
+${add_adjustment_Url}=  https://boss-sg-uat.fuse.co.id/api/account/trading/manager/add
+${check_taskId}=  https://boss-sg-uat.fuse.co.id/api/adjustment/review/list/manager
+${adjustment_assign_url}=  https://boss-sg-uat.fuse.co.id/api/bpm/runtime/self/assign
+${adjustment_approval_url}=  https://tmp-sg-uat.fuse.co.id/trading/flow/approval
 
 
 *** Keywords ***

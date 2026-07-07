@@ -11,7 +11,7 @@ Send Request And Get Response Data
     #payload的existsAssignee参数需要根据实际boss的指派规则来设置
     [Arguments]    ${bossToken}     ${transactionId}
     # 1. 准备请求数据：请求路径、请求头、请求数据
-    ${base_url}=   Set Variable     https://tmp-uat.fuse.co.id
+    ${base_url}=   Set Variable     https://tmp-sg-uat.fuse.co.id
     ${path}=   Set Variable     /dps/adjustment/review/list/todo
     ${headers}=    Create Dictionary    Content-Type=application/json    clientType=application/json;charset=UTF-8    appCode=IDP_BOSS  fusetoken=${bossToken}
 

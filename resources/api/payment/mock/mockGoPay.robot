@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation
 ...    use to change change the payment status of the order using VA to pay
-...    BASE_URL: https://cashier-uat.fuse.co.id
+...    BASE_URL: https://cashier-sg-uat.fuse.co.id
 ...    path: /api/paymentBilling/create
 ...    POST
 ...    headers: {'Content-Type': 'application/json','clientType': 'ANDROID','appCode': 'IDP_FUSE_PRO', 'fusetoken': 'token'}
@@ -26,7 +26,7 @@ Send Request And Get Response Data
     Log    ${payment_slip_no}
 
     # 1. 准备请求数据：请求路径、请求头、请求数据
-    ${base_url}=   Set Variable     https://pg-uat.fuse.co.id/callback
+    ${base_url}=   Set Variable     https://pg-sg-uat.fuse.co.id/callback
     ${path}=   Set Variable     /mock/channel/midtrans/callback
     ${headers}=    Create Dictionary    Content-Type=application/json
     #1. getJsonBody
