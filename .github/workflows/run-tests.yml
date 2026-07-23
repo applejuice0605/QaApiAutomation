@@ -28,10 +28,10 @@ jobs:
           p = "resources/varfile_defvar.py"
           with open(p) as f:
             c = f.read()
-          env_val = os.environ.get("VARFILE_ENV", "uat")
+          env_val = os.environ.get("VARFILE_ENV", "sg-uat")
           name = os.environ.get("ARCHERY_NAME", "")
           pwd = os.environ.get("ARCHERY_PWD", "")
-          c = c.replace('env = "uat"', 'env = %s' % repr(env_val))
+          c = c.replace('env = "sg-uat"', 'env = %s' % repr(env_val))
           c = c.replace('archeryName = ""', 'archeryName = %s' % repr(name))
           c = c.replace('archeryPwd = ""', 'archeryPwd = %s' % repr(pwd))
           with open(p, "w") as f:
