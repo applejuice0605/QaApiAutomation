@@ -46,7 +46,7 @@ class EditProfile:
         return sign.upper()
 
     def fms_login_app(self, mobile, password):
-        fms_login_url = "https://app-uat.fuseinsurtech.com/insurance-finance-vs-api/api/fuse/user/login"
+        fms_login_url = "https://app-sg-uat.fuseinsurtech.com/insurance-finance-vs-api/api/fuse/user/login"
         fms_headers = {
             "language":"en_US",
             "version":"5.28.0.0-uat",

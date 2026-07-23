@@ -4,7 +4,7 @@ Library    OperatingSystem
 Library     ../../lib/SignGenerator.py
 Resource   ../../lib/Common.robot
 *** Variables ***
-${updateDetail_url}=  https://app-uat.fuseinsurtech.com/insurance-finance-vs-api/api/fuse/agent/updateDetail
+${updateDetail_url}=  https://app-sg-uat.fuseinsurtech.com/insurance-finance-vs-api/api/fuse/agent/updateDetail
 ${updateSession}=   updateSession
 ${token}=  eyJhbGciOiJIUzI1NiIsInppcCI6IkRFRiJ9.eNpcUdFKwzAU_RXJ8wppm6bp3sQpDEWrIogv4ZpEF03T0qbiGPt3b1PG5t7COeeec3LvjgTjwQdpNVmmlFLOswUZxneyJDwTaZZnXFSiIgvSdsZHGbkrH9lbnd--8oIhMQ6ml33rDLID0rs9gsqBbaRqmw78Vo7TnB-dOydUq82BCdsO3ylK2tGHfrueK6U5R6xp1ff6aDIrruI0Wa8wEFQEpYdmwmrogzf9xdx9UO3kTchsdB81s5X57TCmzNOcUsEYGnXdYRsM0xfEQogKyitOJ8VXsOilTJErpvOkNEwkrCyKBMOKJBXAs6wEURpNZjt16FnLm5fna1k_PSDzA85qCEZ20EMz_F_QxuJST9Zmh0vdWE-WH-AGc_xuPMjZpeJBIpEKPCktBS15RZHRRtkG3Mp-2oCB9KTEBrx2pp_z9n8AAAD__w.zSu8FYM11pcBkrgKz3Ty5NtDoQ09-YlSLzf1LsoKqIU
 *** Keywords ***

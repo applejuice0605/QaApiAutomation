@@ -30,13 +30,13 @@ uat_email = "nora.cai@fuse.co.id"
 uat_password = "Csb2337763269."
 uat_workflow_app_id = "ddb9a73f-379c-46da-94ce-b305fc369c89"
 uat_llm_app_id = "2dd06e89-cbee-4f63-9737-64a786dadd36"
-uat_webhook_url = "https://pchat-uat.fuse.co.id"
+uat_webhook_url = "https://pchat-sg-uat.fuse.co.id"
 uat_sf_chatflow_id = "c7e4acff-24eb-4c03-9cd4-e3dc2f1a6990"
-uat_domain = "https://pchat-uat.fuse.co.id/api"
+uat_domain = "https://pchat-sg-uat.fuse.co.id/api"
 
 
 prod_workflow_app_id = "9ccd26c1-4ff7-451c-a21e-95dd3a87faa4"
-prod_webhook_url = "https://pchat-uat.fuse.co.id"
+prod_webhook_url = "https://pchat-sg-uat.fuse.co.id"
 prod_sf_chatflow_id = "aa49783f-d336-48fd-8027-ee2ae49b7983"
 prod_domain = "https://pchat.fuse.co.id/api"
 

@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation
 ...    Login by ktp and return userAccount(loginAccount)
-...    BASE_URL: https://app-uat.fuseinsurtech.com
+...    BASE_URL: https://app-sg-uat.fuseinsurtech.com
 ...    path: insurance-finance-vs-api/api/fuse/user/login
 ...    POST
 ...    headers: {'Content-Type': 'application/json','clientType': 'ANDROID','appCode': 'IDP_FUSE_PRO'}
